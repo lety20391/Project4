@@ -21,6 +21,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ShopComponent } from './shop-module/shop.component';
 import { IndexComponent } from './index-module/index.component';
 import { BannerSmallComponent } from './UIComponent/banner-small/banner-small.component';
+import { ProductMockupComponent } from './UIComponent/product-mockup/product-mockup.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { BannerSmallComponent } from './UIComponent/banner-small/banner-small.co
     FunFactComponent,
     ShopComponent,
     IndexComponent,
-    BannerSmallComponent
+    BannerSmallComponent,
+    ProductMockupComponent
   ],
   imports: [
     BrowserModule,
