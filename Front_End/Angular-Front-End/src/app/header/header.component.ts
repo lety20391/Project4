@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import {NgModule} from '@angular/core';
+import {NavbarSectionComponent} from '../navbar-section/navbar-section.component';
+
+@NgModule({
+  declarations: [
+    NavbarSectionComponent
+  ]
+})
 
 @Component({
   selector: 'app-header',
