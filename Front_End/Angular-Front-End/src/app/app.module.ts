@@ -16,6 +16,7 @@ import { OurArticlesComponent } from './our-articles/our-articles.component';
 import { CTAComponent } from './cta/cta.component';
 import { AwardsComponent } from './awards/awards.component';
 import { FooterSectionComponent } from './footer-section/footer-section.component';
+import { FunFactComponent } from './fun-fact/fun-fact.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { FooterSectionComponent } from './footer-section/footer-section.componen
     OurArticlesComponent,
     CTAComponent,
     AwardsComponent,
-    FooterSectionComponent
+    FooterSectionComponent,
+    FunFactComponent
   ],
   imports: [
     BrowserModule
