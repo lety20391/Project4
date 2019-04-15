@@ -22,6 +22,7 @@ import { ShopComponent } from './shop-module/shop.component';
 import { IndexComponent } from './index-module/index.component';
 import { BannerSmallComponent } from './UIComponent/banner-small/banner-small.component';
 import { ProductMockupComponent } from './UIComponent/product-mockup/product-mockup.component';
+import { HttpClientModule }    from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ProductMockupComponent } from './UIComponent/product-mockup/product-moc
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

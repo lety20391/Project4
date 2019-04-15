@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { productEntity } from '../../productEntity/productEntity';
 
 @Component({
@@ -7,6 +7,8 @@ import { productEntity } from '../../productEntity/productEntity';
   styleUrls: ['./product-mockup.component.css']
 })
 export class ProductMockupComponent implements OnInit {
+
+  @Input() inputProduct: productEntity;
 
   product: productEntity = {
     id: 1,
