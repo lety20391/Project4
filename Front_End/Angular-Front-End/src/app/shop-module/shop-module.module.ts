@@ -16,7 +16,7 @@ import { CTAComponent } from '../UIComponent/cta/cta.component';
 import { AwardsComponent } from '../UIComponent/awards/awards.component';
 import { FooterSectionComponent } from '../UIComponent/footer-section/footer-section.component';
 import { FunFactComponent } from '../UIComponent/fun-fact/fun-fact.component';
-import { BannerSmall } from '../UIComponent/banner-small/banner-small.component';
+import { BannerSmallComponent } from '../UIComponent/banner-small/banner-small.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,7 @@ import { BannerSmall } from '../UIComponent/banner-small/banner-small.component'
     AwardsComponent,
     FooterSectionComponent,
     FunFactComponent,
-    BannerSmall
+    BannerSmallComponent
 
   ],
   imports: [
