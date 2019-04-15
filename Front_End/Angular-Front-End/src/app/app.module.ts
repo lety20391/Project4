@@ -20,6 +20,7 @@ import { FunFactComponent } from './UIComponent/fun-fact/fun-fact.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ShopComponent } from './shop-module/shop.component';
 import { IndexComponent } from './index-module/index.component';
+import { BannerSmallComponent } from './UIComponent/banner-small/banner-small.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { IndexComponent } from './index-module/index.component';
     FooterSectionComponent,
     FunFactComponent,
     ShopComponent,
-    IndexComponent
+    IndexComponent,
+    BannerSmallComponent
   ],
   imports: [
     BrowserModule,
