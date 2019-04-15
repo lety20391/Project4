@@ -2,21 +2,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { LoadPageComponent } from './load-page/load-page.component';
-import { BackTopSectionComponent } from './back-top-section/back-top-section.component';
-import { HeaderComponent } from './header/header.component';
-import { NavbarSectionComponent } from './navbar-section/navbar-section.component';
-import { BannerComponent } from './banner/banner.component';
-import { AboutComponent } from './about/about.component';
-import { OurServicesComponent } from './our-services/our-services.component';
-import { DoPetsComponent } from './do-pets/do-pets.component';
-import { MeetVeterinaryComponent } from './meet-veterinary/meet-veterinary.component';
-import { HappyClientsComponent } from './happy-clients/happy-clients.component';
-import { OurArticlesComponent } from './our-articles/our-articles.component';
-import { CTAComponent } from './cta/cta.component';
-import { AwardsComponent } from './awards/awards.component';
-import { FooterSectionComponent } from './footer-section/footer-section.component';
-import { FunFactComponent } from './fun-fact/fun-fact.component';
+import { LoadPageComponent } from './UIComponent/load-page/load-page.component';
+import { BackTopSectionComponent } from './UIComponent/back-top-section/back-top-section.component';
+import { HeaderComponent } from './UIComponent/header/header.component';
+import { NavbarSectionComponent } from './UIComponent/navbar-section/navbar-section.component';
+import { BannerComponent } from './UIComponent/banner/banner.component';
+import { AboutComponent } from './UIComponent/about/about.component';
+import { OurServicesComponent } from './UIComponent/our-services/our-services.component';
+import { DoPetsComponent } from './UIComponent/do-pets/do-pets.component';
+import { MeetVeterinaryComponent } from './UIComponent/meet-veterinary/meet-veterinary.component';
+import { HappyClientsComponent } from './UIComponent/happy-clients/happy-clients.component';
+import { OurArticlesComponent } from './UIComponent/our-articles/our-articles.component';
+import { CTAComponent } from './UIComponent/cta/cta.component';
+import { AwardsComponent } from './UIComponent/awards/awards.component';
+import { FooterSectionComponent } from './UIComponent/footer-section/footer-section.component';
+import { FunFactComponent } from './UIComponent/fun-fact/fun-fact.component';
 
 @NgModule({
   declarations: [
