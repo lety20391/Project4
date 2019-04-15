@@ -17,6 +17,8 @@ import { CTAComponent } from './UIComponent/cta/cta.component';
 import { AwardsComponent } from './UIComponent/awards/awards.component';
 import { FooterSectionComponent } from './UIComponent/footer-section/footer-section.component';
 import { FunFactComponent } from './UIComponent/fun-fact/fun-fact.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ShopComponent } from './shop-module/shop.component';
 
 @NgModule({
   declarations: [
@@ -35,10 +37,12 @@ import { FunFactComponent } from './UIComponent/fun-fact/fun-fact.component';
     CTAComponent,
     AwardsComponent,
     FooterSectionComponent,
-    FunFactComponent
+    FunFactComponent,
+    ShopComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
