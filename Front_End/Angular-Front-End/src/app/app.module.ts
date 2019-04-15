@@ -19,6 +19,7 @@ import { FooterSectionComponent } from './UIComponent/footer-section/footer-sect
 import { FunFactComponent } from './UIComponent/fun-fact/fun-fact.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ShopComponent } from './shop-module/shop.component';
+import { IndexComponent } from './index-module/index.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ShopComponent } from './shop-module/shop.component';
     AwardsComponent,
     FooterSectionComponent,
     FunFactComponent,
-    ShopComponent
+    ShopComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
