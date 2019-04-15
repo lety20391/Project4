@@ -14,6 +14,8 @@ export class AppComponent implements OnInit {
     this.loadScript('./assets/js/vendor/modernizr.min.js');
   }
 
+
+  //load external js file into component
   public loadScript(url: string) {
     const body = <HTMLDivElement> document.body;
     const script = document.createElement('script');
