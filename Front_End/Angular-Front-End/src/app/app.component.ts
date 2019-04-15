@@ -11,10 +11,10 @@ export class AppComponent implements OnInit {
   title = 'Angular-Front-End';
 
   ngOnInit(){
-    this.loadScript('./assets/js/vendor/bootstrap.min.js');
-    this.loadScript('./assets/js/vendor/form-script.min.js');
-    this.loadScript('./assets/js/vendor/jquery.magnific-popup.min.js');
     this.loadScript('./assets/js/vendor/jquery.min.js');
+    this.loadScript('./assets/js/vendor/jquery.magnific-popup.min.js');
+    this.loadScript('./assets/js/vendor/bootstrap.min.js');
+    this.loadScript('./assets/js/vendor/form-scripts.js');
     this.loadScript('./assets/js/vendor/modernizr.min.js');
     this.loadScript('./assets/js/vendor/owl.carousel.js');
     this.loadScript('./assets/js/vendor/validator.min.js');
