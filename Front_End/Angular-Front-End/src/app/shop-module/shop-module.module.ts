@@ -19,6 +19,7 @@ import { FunFactComponent } from '../UIComponent/fun-fact/fun-fact.component';
 import { BannerSmallComponent } from '../UIComponent/banner-small/banner-small.component';
 import { HttpClientModule }    from '@angular/common/http';
 import { ProductMockupComponent } from '../UIComponent/product-mockup/product-mockup.component';
+import { TopSellerComponent } from './top-seller/top-seller.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ProductMockupComponent } from '../UIComponent/product-mockup/product-mo
     FooterSectionComponent,
     FunFactComponent,
     BannerSmallComponent,
-    ProductMockupComponent
+    ProductMockupComponent,
+    TopSellerComponent
 
   ],
   imports: [

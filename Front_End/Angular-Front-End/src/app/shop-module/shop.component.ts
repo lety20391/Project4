@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { productEntity } from '../productEntity/productEntity';
 import { ProductManageService } from './product-manage.service';
 
+
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',

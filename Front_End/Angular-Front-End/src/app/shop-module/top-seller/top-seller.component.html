@@ -1,0 +1,11 @@
+<div *ngFor='let item of topSellerProduct'>
+  <div class="shop-item-sidebar">
+    <div class="media">
+      <img src="{{item.image}}" alt="" class="img-fluid">
+    </div>
+    <div class="body-text">
+      <h4 class="title"><a href="shop-single.html">{{item.name}}</a></h4>
+      <div class="price">${{item.price}}</div>
+    </div>
+  </div>
+</div>
