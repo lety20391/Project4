@@ -13,8 +13,8 @@ export class ProductManageService {
   ) { }
 
   getProductList(): Observable<productEntity[]> {
-    console.log("------Get API ------");
+    console.log("------Get API Product Service ------");
     //console.log(this.http.get<productEntity[]>("http://localhost:34828/1Hero-web/rest/product/"));
-    return this.http.get<productEntity[]>("http://localhost:34828/1Hero-web/rest/product/");
+    return this.http.get<productEntity[]>("http://localhost:8080/1Hero-web/rest/product");
   }
 }
