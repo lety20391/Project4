@@ -51,6 +51,7 @@ public class ManageBookingMaster {
     @Produces(MediaType.APPLICATION_JSON)
     public List<bookingMasterEntity> getJson() {
         //TODO return proper representation object
+        System.out.println("-------RestAPI ManageBMaster----");        
         return bookingMasterSessionBeanLocal.listAll();
     }
 

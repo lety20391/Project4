@@ -43,22 +43,20 @@ public class bookingMasterEntity {
     private boolean Status;
     
     @ManyToOne
-    @JoinColumn(name = "UserID")
-    private userEntity users;
+    @JoinColumn(name = "User_ID")
+    private userEntity userEntity;
     
-    @OneToMany(mappedBy = "bookingMasterEntity", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "bookingMasterEntity", fetch = FetchType.EAGER)
     private List<bookingDetailEntity> bookingdetails;
 
-
-    
-    
     public bookingMasterEntity() {
     }
 
-    public bookingMasterEntity(Date CreDate, boolean Status, userEntity users) {
+    public bookingMasterEntity(Long BookingID, Date CreDate, boolean Status, List<bookingDetailEntity> bookingdetails) {
+        this.BookingID = BookingID;
         this.CreDate = CreDate;
         this.Status = Status;
-        this.users = users;
+        this.bookingdetails = bookingdetails;
     }
 
     public Long getBookingID() {
@@ -85,12 +83,12 @@ public class bookingMasterEntity {
         this.Status = Status;
     }
 
-    public userEntity getUsers() {
-        return users;
-    }
+//    public userEntity getUserEntity() {
+//        return userEntity;
+//    }
 
-    public void setUsers(userEntity users) {
-        this.users = users;
+    public void setUserEntity(userEntity userEntity) {
+        this.userEntity = userEntity;
     }
 
     public List<bookingDetailEntity> getBookingdetails() {
@@ -101,5 +99,9 @@ public class bookingMasterEntity {
         this.bookingdetails = bookingdetails;
     }
 
+
+    
+    
+    
    
 }

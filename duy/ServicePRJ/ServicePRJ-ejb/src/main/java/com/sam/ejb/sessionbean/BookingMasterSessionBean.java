@@ -25,6 +25,7 @@ public class BookingMasterSessionBean implements BookingMasterSessionBeanLocal {
     
     @Override
     public List<bookingMasterEntity> listAll() {
+        System.out.println("------BMaster Bean----");
         em = entityManagerFactory.createEntityManager();
         return em.createNamedQuery("bm.findAll").getResultList(); 
     }

@@ -45,18 +45,20 @@ public class userEntity {
     @Column(name="UserStatus")
     private boolean UserStatus;
     
-    @OneToMany(mappedBy = "users", fetch = FetchType.LAZY)
-    private List<bookingMasterEntity> bookingmasters;
+    @OneToMany(mappedBy = "userEntity", fetch = FetchType.EAGER)
+    private List<bookingMasterEntity> listBookingmasters;
 
     public userEntity() {
     }
 
-    public userEntity(String UserName, String UserTel, String UserMail, Date DOB, boolean UserStatus) {
+    public userEntity( String UserName, String UserTel, String UserMail, Date DOB, boolean UserStatus, List<bookingMasterEntity> listBookingmasters) {
+        
         this.UserName = UserName;
         this.UserTel = UserTel;
         this.UserMail = UserMail;
         this.DOB = DOB;
         this.UserStatus = UserStatus;
+        this.listBookingmasters = listBookingmasters;
     }
 
     public Long getUserID() {
@@ -107,12 +109,15 @@ public class userEntity {
         this.UserStatus = UserStatus;
     }
 
-    public List<bookingMasterEntity> getBookingmasters() {
-        return bookingmasters;
+    public List<bookingMasterEntity> getListBookingmasters() {
+        return listBookingmasters;
     }
 
-    public void setBookingmasters(List<bookingMasterEntity> bookingmasters) {
-        this.bookingmasters = bookingmasters;
+    public void setListBookingmasters(List<bookingMasterEntity> listBookingmasters) {
+        this.listBookingmasters = listBookingmasters;
     }
 
+    
+    
+    
 }

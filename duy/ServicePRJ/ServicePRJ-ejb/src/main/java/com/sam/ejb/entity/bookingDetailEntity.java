@@ -80,17 +80,17 @@ public class bookingDetailEntity {
         this.Status = Status;
     }
 
-    public bookingMasterEntity getBookingMasterEntity() {
-        return bookingMasterEntity;
-    }
+//    public bookingMasterEntity getBookingMasterEntity() {
+//        return bookingMasterEntity;
+//    }
 
     public void setBookingMasterEntity(bookingMasterEntity bookingMasterEntity) {
         this.bookingMasterEntity = bookingMasterEntity;
     }
 
-    public serviceEntity getServiceEntity() {
-        return serviceEntity;
-    }
+//    public serviceEntity getServiceEntity() {
+//        return serviceEntity;
+//    }
 
     public void setServiceEntity(serviceEntity serviceEntity) {
         this.serviceEntity = serviceEntity;
