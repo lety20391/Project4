@@ -19,6 +19,7 @@ export class ProductManageService {
     console.log("------Get API Product Service ------");
     //console.log(this.http.get<productEntity[]>("http://localhost:34828/1Hero-web/rest/product/"));
 
+    //change your url name here
     this.urlAPI = listUrlAPI.find(url => url.name === 'productResource');
     return this.http.get<productEntity[]>(this.urlAPI.path);
   }
