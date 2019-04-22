@@ -5,6 +5,7 @@
  */
 package com.sam.ejb.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -46,6 +47,7 @@ public class userEntity {
     private boolean UserStatus;
     
     @OneToMany(mappedBy = "users", fetch = FetchType.LAZY)
+   @JsonIgnore
     private List<bookingMasterEntity> bookingmasters;
 
     public userEntity() {

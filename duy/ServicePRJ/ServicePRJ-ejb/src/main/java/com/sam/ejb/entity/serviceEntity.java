@@ -5,6 +5,7 @@
  */
 package com.sam.ejb.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Collection;
 import java.util.List;
 import javax.persistence.Column;
@@ -44,6 +45,7 @@ public class serviceEntity {
     private boolean Status;
     
     @OneToMany(mappedBy = "serviceEntity", fetch = FetchType.LAZY)
+   @JsonIgnore
     private List<bookingDetailEntity> bookingDetailEntitys;
 
     public serviceEntity() {
