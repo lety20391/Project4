@@ -5,6 +5,7 @@
  */
 package com.sam.ejb.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -36,16 +37,16 @@ import javax.persistence.Table;
 public class bookingMasterEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long BookingID;    
+    private Long BookingID;
     @Column(name="CreDate")
     private Date CreDate;
     @Column(name="Status")
     private boolean Status;
-    
+
     @ManyToOne
     @JoinColumn(name = "User_ID")
     private userEntity userEntity;
-    
+
     @OneToMany(mappedBy = "bookingMasterEntity", fetch = FetchType.EAGER)
     private List<bookingDetailEntity> bookingdetails;
 
@@ -100,8 +101,8 @@ public class bookingMasterEntity {
     }
 
 
-    
-    
-    
-   
+
+
+
+
 }

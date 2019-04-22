@@ -5,6 +5,7 @@
  */
 package com.sam.ejb.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -33,7 +34,7 @@ import javax.persistence.Table;
 public class userEntity {
      @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long UserID;    
+    private Long UserID;
     @Column(name="UserName")
     private String UserName;
     @Column(name="UserTel")
@@ -44,15 +45,17 @@ public class userEntity {
     private Date DOB;
     @Column(name="UserStatus")
     private boolean UserStatus;
-    
+
+
     @OneToMany(mappedBy = "userEntity", fetch = FetchType.EAGER)
     private List<bookingMasterEntity> listBookingmasters;
+
 
     public userEntity() {
     }
 
     public userEntity( String UserName, String UserTel, String UserMail, Date DOB, boolean UserStatus, List<bookingMasterEntity> listBookingmasters) {
-        
+
         this.UserName = UserName;
         this.UserTel = UserTel;
         this.UserMail = UserMail;
@@ -117,7 +120,7 @@ public class userEntity {
         this.listBookingmasters = listBookingmasters;
     }
 
-    
-    
-    
+
+
+
 }
