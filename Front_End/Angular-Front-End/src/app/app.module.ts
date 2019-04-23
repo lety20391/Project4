@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FullCalendarModule } from '@fullcalendar/angular';
+import { BookingModuleModule } from './booking-module/booking-module.module';
 
 import { AppComponent } from './app.component';
 import { LoadPageComponent } from './UIComponent/load-page/load-page.component';
@@ -54,7 +54,7 @@ import { TopSellerComponent } from './shop-module/top-seller/top-seller.componen
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FullCalendarModule
+    BookingModuleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
