@@ -50,6 +50,9 @@ public class userEntity {
     @OneToMany(mappedBy = "userEntity", fetch = FetchType.EAGER)
     private List<bookingMasterEntity> listBookingmasters;
 
+    @OneToMany(mappedBy = "userEntity", fetch = FetchType.EAGER)
+    private List<DatingMasterEntity> listDatingMasterEntity;
+
 
     public userEntity() {
     }
