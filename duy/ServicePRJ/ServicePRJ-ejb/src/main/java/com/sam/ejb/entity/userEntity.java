@@ -53,6 +53,8 @@ public class userEntity {
     @OneToMany(mappedBy = "userEntity", fetch = FetchType.EAGER)
     private List<DatingMasterEntity> listDatingMasterEntity;
 
+    @OneToMany(mappedBy = "userEntity", fetch = FetchType.EAGER)
+    private List<PetEntity> listPetEntity;
 
     public userEntity() {
     }
@@ -121,6 +123,22 @@ public class userEntity {
 
     public void setListBookingmasters(List<bookingMasterEntity> listBookingmasters) {
         this.listBookingmasters = listBookingmasters;
+    }
+
+    public List<DatingMasterEntity> getListDatingMasterEntity() {
+        return listDatingMasterEntity;
+    }
+
+    public void setListDatingMasterEntity(List<DatingMasterEntity> listDatingMasterEntity) {
+        this.listDatingMasterEntity = listDatingMasterEntity;
+    }
+
+    public List<PetEntity> getListPetEntity() {
+        return listPetEntity;
+    }
+
+    public void setListPetEntity(List<PetEntity> listPetEntity) {
+        this.listPetEntity = listPetEntity;
     }
 
 

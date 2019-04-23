@@ -13,6 +13,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -52,8 +54,15 @@ public class PetEntity {
     @Column(name="dob")
     private Date PetDOB;
     
+    @Column(name="UserOwner")
+    private Long UserID;
+    
     @OneToMany(mappedBy = "petEntity", fetch = FetchType.EAGER)
     private List<DatingDetailEntity> listDatingDetail;
+    
+    @ManyToOne
+    @JoinColumn(name = "UserOwner_ID")
+    private userEntity userEntity;
 
 
     public PetEntity() {
@@ -132,6 +141,22 @@ public class PetEntity {
 
     public void setListDatingDetail(List<DatingDetailEntity> listDatingDetail) {
         this.listDatingDetail = listDatingDetail;
+    }
+
+    public Long getUserID() {
+        return UserID;
+    }
+
+    public void setUserID(Long UserID) {
+        this.UserID = UserID;
+    }
+
+//    public userEntity getUserEntity() {
+//        return userEntity;
+//    }
+
+    public void setUserEntity(userEntity userEntity) {
+        this.userEntity = userEntity;
     }
     
     
