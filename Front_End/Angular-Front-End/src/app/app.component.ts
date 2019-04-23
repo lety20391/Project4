@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'Angular-Front-End';
+  calendarPlugins = [dayGridPlugin];
 
   ngOnInit(){
     this.loadScript('./assets/js/vendor/jquery.min.js');

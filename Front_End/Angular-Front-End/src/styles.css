@@ -6,3 +6,7 @@
 @import url("assets/css/vendor/magnific-popup.css");
 @import url("assets/css/vendor/animate.min.css");
 @import url("assets/css/style.css");
+
+/* this section import for FullCalendar */
+@import '~@fullcalendar/core/main.css';
+@import '~@FullCalendar/daygrid/main.css';
