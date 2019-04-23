@@ -35,4 +35,21 @@ Insert into dbo.tbBookingDetail values
 (2018-5-22,1,3,3),
 (2018-5-23,1,5,1)
 
+Insert into dbo.petEntity (breed, dob, [image], [name], price, [status], UserOwner) values
+('Coggy', 2017-1-1, 'null', 'MinMin', 100, 1, 1),
+('Coggy', 2017-1-1, 'null', 'Milk', 100, 1, 1),
+('Coggy', 2017-1-1, 'null', 'Mi', 100, 1, 2),
+('Coggy', 2017-1-1, 'null', 'Coggy', 100, 1, 3)
+
+Insert into dbo.datingMasterEntity  ( creDate, locat, [status], userID ) values
+(2018-1-1, 'hcm', 1, 1),
+(2018-2-1, 'tn', 1, 2),
+(2018-3-1, 'hn', 1, 3),
+(2018-4-1, 'hcm', 1, 1)
+
+Insert into dbo.datingDetailEntity  ([date], datingMasterID, petID)  values
+(2019-1-1, 1, 1),
+(2019-2-1, 2, 3),
+(2019-3-1, 3, 2),
+(2019-4-1, 1, 2)
 
