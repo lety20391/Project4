@@ -45,6 +45,10 @@ public class DatingDetailEntity {
     @ManyToOne
     @JoinColumn(name = "Pet_ID")
     private PetEntity petEntity;
+    
+    @ManyToOne
+    @JoinColumn(name = "DatingMaster_ID")
+    private DatingMasterEntity datingMasterEntity;
 
     public DatingDetailEntity() {
     }

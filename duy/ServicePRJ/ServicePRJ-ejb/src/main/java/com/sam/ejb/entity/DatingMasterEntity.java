@@ -48,7 +48,7 @@ public class DatingMasterEntity {
     @Column(name="status")
     private boolean Status;
     
-    @OneToMany(mappedBy = "petEntity", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "datingMasterEntity", fetch = FetchType.EAGER)
     private List<DatingDetailEntity> listDatingDetail;
 
     @ManyToOne
