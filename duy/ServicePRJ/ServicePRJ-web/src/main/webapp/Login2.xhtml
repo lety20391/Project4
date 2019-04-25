@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        <ui:composition template="/templates/common.xhtml">
+            <ui:define name="header">
+                <center>
+                    <h2><h:outputText value="Trainee Management"/></h2>
+                </center>
+            </ui:define>
+        <ui:define name="content">
+            <div class="row"> 
+                <div class="col-sm-4">
+                    <!-- Form de Create new Trainee -->
+                        <h:form>
+                            <h:panelGrid columns="2">
+
+                                <h:outputLabel for="txtName">Name:</h:outputLabel>
+                                <h:inputText value="#{traineeViewMB.name}" id="txtName"></h:inputText>
+
+                                <h:outputLabel for="txtEmail">Email:</h:outputLabel>
+                                <h:inputText value="#{traineeViewMB.email}" id="txtEmail" >
+                                </h:inputText>
+
+                                <h:outputLabel for="txtClassName">ClassName:</h:outputLabel>
+                                <h:inputText value="#{traineeViewMB.className}" id="txtClassName" >
+                                </h:inputText>
+
+                                <h:commandButton action="#{traineeViewMB.addNewTrainee()}" value="Save"></h:commandButton>
+
+                            </h:panelGrid>
+                        </h:form>
+                    <!-- Form de Create new Trainee -->
+                    
+                </div>
+            <div class="col-sm-8">
+                
+                    <!-- List Trainee  -->
+                
+                    <h:dataTable value="#{traineeViewMB.fetchTraineeList()}" var="s">
+                    <h:column>
+                        <f:facet name="header">ID</f:facet>
+                        <h:outputText value="#{s.id}" />
+                    </h:column>
+                        
+                    <h:column>
+                        <f:facet name="header">Name</f:facet>
+                        <h:outputText value="#{s.name}" />
+                    </h:column>
+                        
+                    <h:column>
+                        <f:facet name="header">Email</f:facet>
+                        <h:outputText value="#{s.email}" />
+                    </h:column>
+                        
+                    <h:column>
+                        <f:facet name="header">Class</f:facet>
+                        <h:outputText value="#{s.className}" />
+                    </h:column>
+                        
+                    <h:column>
+                        <h:form>
+                        <h:commandButton value="Detail" >
+                            <f:ajax event="click" execute="" listener="#{traineeViewMB.viewDetailTrainee()}" render="detailArea">        
+                                <f:setPropertyActionListener value="#{s}" target="#{traineeViewMB.currentTrainee}"></f:setPropertyActionListener>
+                            </f:ajax>
+                        </h:commandButton>
+                        </h:form>
+                    </h:column>
+
+                </h:dataTable>
+                    <!-- List Trainee  -->
+            </div>  
+            </div>
+                    
+                    
+            <div class="row" >
+            <div class="col-sm-4" id="detailArea">
+                <!-- Detail Trainee  -->
+                <h:form>     
+                    <h:dataTable value="#{traineeViewMB.currentTrainee}" var="t">                                  
+                        <h:column>
+                            <f:facet name="header">ID</f:facet>
+                            <h:outputText value="#{t.id}" />                                    
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Name</f:facet>
+                            <h:outputText value="#{t.name}" />                                    
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Email</f:facet>
+                            <h:outputText value="#{t.email}" />                                    
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Class</f:facet>
+                            <h:outputText value="#{t.className}" />                                    
+                        </h:column>
+
+                        <h:column>
+                            <!-- Day la Button Edit -->
+                            <h:commandButton value="Edit" >
+                                <!-- viewDetailTrainee khong thuc hien gi ca -->
+                                <f:ajax event="click" execute="" listener="#{traineeViewMB.viewDetailTrainee()}" render="editArea">        
+                                    <f:setPropertyActionListener value="#{t}" target="#{traineeViewMB.currentTrainee}"></f:setPropertyActionListener>
+                                </f:ajax>
+                            </h:commandButton>
+                            <!-- Day la Button Edit -->
+                            
+                            <!-- Day la Button Delete -->
+                            <h:commandButton value="Delete" action="#{traineeViewMB.deleteTrainee()}" >   
+                            </h:commandButton>
+                            <!-- Day la Button Delete -->
+
+                        </h:column>
+
+                    </h:dataTable>
+                    </h:form>
+                <!-- Detail Trainee  -->                
+            </div>
+                <div class="col-sm-8" id="editArea">
+                    <!-- Edit Trainee -->
+                    <h:form>
+                    <h:panelGrid columns="2">
+
+                        <h:outputLabel for="txtName">Name:</h:outputLabel>
+                        <h:inputText value="#{traineeViewMB.currentTrainee.id}" id="txtName"></h:inputText>
+
+                        <h:outputLabel for="txtEmail">Email:</h:outputLabel>
+                        <h:inputText value="#{traineeViewMB.currentTrainee.name}" id="txtEmail" >
+                        </h:inputText>
+
+                        <h:outputLabel for="txtClassName">ClassName:</h:outputLabel>
+                        <h:inputText value="#{traineeViewMB.currentTrainee.className}" id="txtClassName" >
+                        </h:inputText>
+
+                        <h:commandButton action="#{traineeViewMB.updateTrainee()}" value="Save"></h:commandButton>
+
+                    </h:panelGrid>
+                </h:form>
+                    <!-- Edit Trainee -->
+                </div>
+            </div>
+        </ui:define>
+        </ui:composition>
+        
+
+
+
+    </h:body>
+</html>
+
