@@ -45,7 +45,7 @@ public class serviceEntity {
     private boolean Status;
     
     @OneToMany(mappedBy = "serviceEntity", fetch = FetchType.LAZY)
-   @JsonIgnore
+//   @JsonIgnore
     private List<bookingDetailEntity> bookingDetailEntitys;
 
     public serviceEntity() {
