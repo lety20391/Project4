@@ -11,6 +11,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import org.apache.commons.text.RandomStringGenerator;
+import static org.apache.commons.text.CharacterPredicates.DIGITS;
+import static org.apache.commons.text.CharacterPredicates.LETTERS;
 
 /**
  *
@@ -41,9 +44,11 @@ public class LoginManagedBean implements Serializable{
     }
     
     public void getCode(){
-        this.code = "abcdef";
+        //generate random alpha numeric key
+        RandomStringGenerator generator = new RandomStringGenerator.Builder().withinRange('0', 'z').filteredBy(LETTERS, DIGITS).build();
+        this.code = generator.generate(6);
         System.out.println("----ManagedBean: getCode(): " + this.code);
-        mobileService.getMobileCode(this.code);
+        //mobileService.getMobileCode(this.code);
         //return "Login";
     }
     
