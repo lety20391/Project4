@@ -23,7 +23,8 @@ import { ProductMockupComponent } from '../UIComponent/product-mockup/product-mo
 import { HttpClientModule }    from '@angular/common/http';
 import { TopSellerComponent } from '../shop-module/top-seller/top-seller.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
-
+import { LoginComponent } from '../login-module/login/login.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     LoadPageComponent,
@@ -46,12 +47,14 @@ import { MainLayoutComponent } from './main-layout/main-layout.component';
     BannerSmallComponent,
     ProductMockupComponent,
     TopSellerComponent,
-    MainLayoutComponent
+    MainLayoutComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   exports: [
     MainLayoutComponent

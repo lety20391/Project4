@@ -16,16 +16,17 @@
     </head>
     <body>
         <div class="wrapper">
-            <form class="form-signin" action="LoginServlet" method="POST">
+            <form class="form-signin" action="" method="POST" enctype="application/json">
                 <h2 class="form-signin-heading">Xin mời đăng nhập</h2>
                 <input type="text" class="form-control" name="username" id="username"/><br/>
                 <input type="password" class="form-control" name="password" id="password"/><br/>                
-                <button class="btn-btn-lg btn-primary btn-block" type="submit">Đăng Nhập</button>
+                <button class="btn-btn-lg btn-primary btn-block" id="btnLogin" type="button">Đăng Nhập</button>
                 
             </form>
                 
                 
             
         </div>
+        <script src ="<c:url value='js/login.js' />" ></script>
     </body>
 </html>

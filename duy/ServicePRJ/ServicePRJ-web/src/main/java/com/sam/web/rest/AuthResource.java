@@ -80,7 +80,8 @@ public class AuthResource {
         String token = this.jwtStore.generateToken(username, Arrays.asList("ADMIN", "MEMBER"));
         //logger.info( () -> MessageFormat.format("Token={0}", token));
         System.out.println(token);
-
-        return Response.ok().header(AUTHORIZATION, "Bearer " + token).build();
+        if ("dat".equals(username) && "abc".equals(password))
+            return Response.ok().header(AUTHORIZATION, "Bearer " + token).build();
+        return Response.noContent().build();
     }
 }

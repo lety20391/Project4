@@ -5,12 +5,18 @@
  */
 package com.sam.web.manageBean;
 
+import com.sam.web.temp.JWTStore;
 import java.io.Serializable;
+import java.util.Arrays;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletResponse;
+import static javax.ws.rs.core.HttpHeaders.AUTHORIZATION;
+import javax.ws.rs.core.Response;
 import org.apache.commons.text.RandomStringGenerator;
 import static org.apache.commons.text.CharacterPredicates.DIGITS;
 import static org.apache.commons.text.CharacterPredicates.LETTERS;
@@ -27,6 +33,7 @@ public class LoginManagedBean implements Serializable{
     private String pass = "";
     private String code = "";
     private MobileService mobileService = new MobileService();
+    private JWTStore jwtStore;
     
     @PostConstruct
     public void init(){
@@ -35,12 +42,21 @@ public class LoginManagedBean implements Serializable{
         System.out.println("Init Current User: " + phone);
     }
     
-    public String checkLogin(){
+    public Response checkLogin(){
         System.out.println("-----LoginMB: checkLogin()-------");
         System.out.println("Current User: " + phone + "-" + pass);
-        if ( this.code.equals(pass))
-            return "success";
-        return "Login";
+        
+        jwtStore = new JWTStore();
+        // TODO: Groups should retrieve from database based on authenticate user.
+        String token = this.jwtStore.generateToken(phone, Arrays.asList("ADMIN", "MEMBER"));
+        //logger.info( () -> MessageFormat.format("Token={0}", token));
+        System.out.println(token);
+        
+        if ( "abc".equals(pass)){
+            System.out.println("--CheckLogin(): OK---");
+            return Response.ok().header(AUTHORIZATION, "Bearer " + token).build();
+        }
+        return Response.serverError().build();
     }
     
     public void getCode(){
