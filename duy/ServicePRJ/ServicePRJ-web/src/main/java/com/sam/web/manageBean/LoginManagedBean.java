@@ -48,7 +48,7 @@ public class LoginManagedBean implements Serializable{
         RandomStringGenerator generator = new RandomStringGenerator.Builder().withinRange('0', 'z').filteredBy(LETTERS, DIGITS).build();
         this.code = generator.generate(6);
         System.out.println("----ManagedBean: getCode(): " + this.code);
-        //mobileService.getMobileCode(this.code);
+        mobileService.getMobileCode(this.code, this.phone);
         //return "Login";
     }
     

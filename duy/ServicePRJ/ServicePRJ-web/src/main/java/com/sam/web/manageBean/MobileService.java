@@ -18,14 +18,14 @@ import org.apache.http.util.EntityUtils;
  * @author Dat Le
  */
 public class MobileService {
-    public String getMobileCode(String hashCode){
+    public String getMobileCode(String hashCode, String mobilePhone){
         String url = "http://rest.esms.vn/MainService.svc/json/SendMultipleMessage_V4_post_json/";
         //Noi dung thay doi trong content
         String body = " {\n" +
 "	\"ApiKey\":\"2EFF2FDBB7A6AD84DFC2488C6DF704\",\n" +
 "	\"Brandname\":\"Verify\",\n" +
 "	\"Content\":\"Ma xac nhan dang nhap cua ban la: " + hashCode +"\",\n" +
-"	\"Phone\":\"0394641271\",\n" +
+"	\"Phone\":\"" + mobilePhone + "\",\n" +
 "	\"SecretKey\":\"644034136AA870DCCD960255F76543\",\n" +
 "	\"SmsType\":\"2\"\n" +
 "} ";
