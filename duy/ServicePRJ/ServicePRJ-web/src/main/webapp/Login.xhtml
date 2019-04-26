@@ -17,12 +17,14 @@
                         <h:form>
                             <h:panelGrid columns="2">
 
-                                <h:outputLabel for="txtName">Name:</h:outputLabel>
-                                <h:inputText value="#{loginManagedBean.name}" id="txtName"></h:inputText>
+                                <h:outputLabel for="txtPhone">Phone: </h:outputLabel>
+                                <h:inputText value="#{loginManagedBean.phone}" id="txtPhone"></h:inputText>
 
                                 <h:outputLabel for="txtPass">Pass:</h:outputLabel>
                                 <h:inputSecret value="#{loginManagedBean.pass}" id="txtPass" >
                                 </h:inputSecret>
+                                
+                                <h:commandButton action="#{loginManagedBean.getCode()}" value="GetCode"></h:commandButton>
 
                                 <h:commandButton action="#{loginManagedBean.checkLogin()}" value="Login"></h:commandButton>
 
