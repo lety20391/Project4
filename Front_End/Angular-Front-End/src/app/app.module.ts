@@ -24,10 +24,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule }    from '@angular/common/http';
 // import { TopSellerComponent } from './shop-module/top-seller/top-seller.component';
 import {MainlayoutModuleModule} from './mainlayout-module/mainlayout-module.module';
-
+import { ServiceMockupComponent } from './UIComponent/service-mockup/service-mockup/service-mockup.component';
+import { SerComponent} from './service-module/ser.component';
 @NgModule({
   declarations: [
     AppComponent,
+    SerComponent,
+    ServiceMockupComponent,
     // LoadPageComponent,
     // BackTopSectionComponent,
     // HeaderComponent,
