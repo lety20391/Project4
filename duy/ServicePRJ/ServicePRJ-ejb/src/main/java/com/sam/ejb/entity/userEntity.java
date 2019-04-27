@@ -28,11 +28,12 @@ import javax.persistence.Table;
 @Table(name="tbUser")
 @NamedQueries
         ({
-            @NamedQuery(name="u.findAll",query = "SELECT u FROM userEntity u")
-//            @NamedQuery(name="ser.search", query ="SELECT s FROM serviceEntity s WHERE s.name LIKE :str ")
+            @NamedQuery(name="u.findAll",query = "SELECT u FROM userEntity u"),
+            @NamedQuery(name="u.searchByName", query ="SELECT u FROM userEntity u WHERE u.UserName LIKE :str "),
+            @NamedQuery(name="u.searchByPhone", query ="SELECT u FROM userEntity u WHERE u.UserTel LIKE :str ")
         })
 public class userEntity {
-     @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long UserID;
     @Column(name="UserName")
@@ -45,6 +46,10 @@ public class userEntity {
     private Date DOB;
     @Column(name="UserStatus")
     private boolean UserStatus;
+    @Column(name="keyCode")
+    private String KeyCode;
+    @Column(name="key_dateCreated")
+    private Date Key_dateCreated;
 
 
     @OneToMany(mappedBy = "userEntity", fetch = FetchType.EAGER)
@@ -140,6 +145,24 @@ public class userEntity {
     public void setListPetEntity(List<PetEntity> listPetEntity) {
         this.listPetEntity = listPetEntity;
     }
+
+    public String getKeyCode() {
+        return KeyCode;
+    }
+
+    public void setKeyCode(String KeyCode) {
+        this.KeyCode = KeyCode;
+    }
+
+    public Date getKey_dateCreated() {
+        return Key_dateCreated;
+    }
+
+    public void setKey_dateCreated(Date Key_dateCreated) {
+        this.Key_dateCreated = Key_dateCreated;
+    }
+
+    
 
 
 
