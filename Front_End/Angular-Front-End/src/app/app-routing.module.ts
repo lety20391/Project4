@@ -4,11 +4,14 @@ import {RouterModule, Routes} from '@angular/router';
 import {ShopComponent} from './shop-module/shop.component';
 import { IndexComponent } from './index-module/index.component';
 import { LoginComponent } from './login-module/login/login.component';
+import {FormComponent} from './UIComponent/form/form.component';
+
 
 const routes: Routes = [
   {path: 'shops', component: ShopComponent},
   {path: 'index', component: IndexComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'form', component: FormComponent}
 
 ];
 

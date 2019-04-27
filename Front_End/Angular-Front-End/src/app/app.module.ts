@@ -25,10 +25,13 @@ import { HttpClientModule }    from '@angular/common/http';
 // import { TopSellerComponent } from './shop-module/top-seller/top-seller.component';
 import {MainlayoutModuleModule} from './mainlayout-module/mainlayout-module.module';
 import { FormsModule } from '@angular/forms';
+import { FormComponent } from './UIComponent/form/form.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    FormComponent,
     // LoadPageComponent,
     // BackTopSectionComponent,
     // HeaderComponent,
