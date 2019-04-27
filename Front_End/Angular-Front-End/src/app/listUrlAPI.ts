@@ -1,7 +1,7 @@
 import { UrlAPIEntity } from './UrlAPIEntity';
 
 //change your localhost here
-const localhost = 'http://localhost:34828';
+const localhost = 'http://localhost:8080';
 
 export const listUrlAPI: UrlAPIEntity[] = [
   {name:'productResource', path: localhost + '/1Hero-web/rest/product'},
