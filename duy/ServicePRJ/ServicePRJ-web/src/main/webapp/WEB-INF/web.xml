@@ -35,7 +35,7 @@
                 </init-param>
                 <init-param>
                     <param-name>com.sun.jersey.spi.container.ContainerResponseFilters</param-name>
-                    <param-value>com.sun.jersey.api.container.filter.LoggingFilter;com.sam.web.CrossDomainFilter</param-value>
+                    <param-value>com.sun.jersey.api.container.filter.LoggingFilter;com.sam.web.CrossDomainFilter.CrossDomainFilter</param-value>
                 </init-param>
             <load-on-startup>1</load-on-startup>
         </servlet>
