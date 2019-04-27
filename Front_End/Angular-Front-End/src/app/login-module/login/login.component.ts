@@ -5,7 +5,7 @@ import { listUrlAPI } from '../../listUrlAPI';
 import { UrlAPIEntity } from '../../UrlAPIEntity';
 import { User } from './user';
 import { HttpHeaders } from '@angular/common/http';
-
+import { HttpResponse } from '@angular/common/http';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json'
@@ -45,6 +45,11 @@ export class LoginComponent implements OnInit {
     this.loginUser.password= this.pass;
     console.log(this.loginUser.username);
     console.log(this.loginUser.password);
-    this.http.post<User>(this.urlAPI.path, this.loginUser, httpOptions).subscribe(result => {console.log(result)});
+    this.http.post<HttpResponse<Object>>(this.urlAPI.path, this.loginUser, httpOptions)
+    .subscribe(
+       response => {
+         console.log( response.body )
+       }
+     );
   }
 }
