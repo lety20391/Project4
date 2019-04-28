@@ -29,6 +29,7 @@ import { HomecontentComponent } from './UIComponent/homecontent/homecontent.comp
 import { RegisterComponent } from './UIComponent/register/register.component';
 import { LoginComponent } from './UIComponent/login/login.component';
 import { GalleryComponent } from './UIComponent/gallery/gallery.component';
+import { ProductSingleComponent } from './UIComponent/product-single/product-single.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { GalleryComponent } from './UIComponent/gallery/gallery.component';
     RegisterComponent,
     LoginComponent,
     GalleryComponent,
+    ProductSingleComponent,
     // LoadPageComponent,
     // BackTopSectionComponent,
     // HeaderComponent,

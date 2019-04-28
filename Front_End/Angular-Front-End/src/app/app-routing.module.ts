@@ -8,6 +8,7 @@ import { HomecontentComponent } from './UIComponent/homecontent/homecontent.comp
 import { RegisterComponent } from './UIComponent/register/register.component';
 import { LoginComponent } from './UIComponent/login/login.component';
 import { GalleryComponent } from './UIComponent/gallery/gallery.component';
+import { ProductSingleComponent } from './UIComponent/product-single/product-single.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path: 'home', component: HomecontentComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'gallery', component: GalleryComponent}
+  {path: 'gallery', component: GalleryComponent},
+  {path: 'productsingle', component: ProductSingleComponent}
 ];
 
 @NgModule({
