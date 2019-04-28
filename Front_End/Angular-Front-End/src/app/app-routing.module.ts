@@ -7,6 +7,7 @@ import {FormComponent} from './UIComponent/form/form.component';
 import { HomecontentComponent } from './UIComponent/homecontent/homecontent.component';
 import { RegisterComponent } from './UIComponent/register/register.component';
 import { LoginComponent } from './UIComponent/login/login.component';
+import { GalleryComponent } from './UIComponent/gallery/gallery.component';
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'form', component: FormComponent},
   {path: 'home', component: HomecontentComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'gallery', component: GalleryComponent}
 ];
 
 @NgModule({

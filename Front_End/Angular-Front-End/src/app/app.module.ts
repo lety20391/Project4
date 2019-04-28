@@ -28,6 +28,7 @@ import { FormComponent } from './UIComponent/form/form.component';
 import { HomecontentComponent } from './UIComponent/homecontent/homecontent.component';
 import { RegisterComponent } from './UIComponent/register/register.component';
 import { LoginComponent } from './UIComponent/login/login.component';
+import { GalleryComponent } from './UIComponent/gallery/gallery.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { LoginComponent } from './UIComponent/login/login.component';
     HomecontentComponent,
     RegisterComponent,
     LoginComponent,
+    GalleryComponent,
     // LoadPageComponent,
     // BackTopSectionComponent,
     // HeaderComponent,
