@@ -47,9 +47,35 @@
         <welcome-file-list>
         <welcome-file>index.xhtml</welcome-file>
         </welcome-file-list>
+        
+        
         <session-config>
-        <session-timeout>
-        30
-        </session-timeout>
+            <session-timeout>
+            30
+            </session-timeout>
+
+        <!-- Session configuration -->
+            <cookie-config>
+                <http-only>true</http-only> <!-- Prevent client side scripting from accessing/manipulating session cookie. -->
+            </cookie-config>
+            <tracking-mode>COOKIE</tracking-mode> <!-- This disables URL rewriting. -->
         </session-config>
+
+        <security-constraint>
+            <web-resource-collection>
+                <web-resource-name>Authorize user pages</web-resource-name>
+                <url-pattern>/rest/tokens/*</url-pattern>
+            </web-resource-collection>
+            <!-- OMIT auth-constraint -->
+        </security-constraint>
+
+        <security-constraint>
+            <web-resource-collection>
+                <web-resource-name>Admin pages</web-resource-name>
+                <url-pattern>/resources/admin/*</url-pattern>
+            </web-resource-collection>
+            <auth-constraint>
+                <role-name>member</role-name>
+            </auth-constraint>
+        </security-constraint>
 </web-app>
