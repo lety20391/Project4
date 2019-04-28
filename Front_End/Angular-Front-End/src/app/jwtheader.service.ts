@@ -10,13 +10,15 @@ export class JWTHeaderService {
 
   addJWT(receivedJWT: string){
     this.jwtString = receivedJWT;
+    localStorage.setItem('JWT', receivedJWT);
   }
 
   cleanJWT(){
     this.jwtString = '';
+    localStorage.setItem('JWT', '');
   }
 
   getJWT(): string{
-    return this.jwtString;
+    return localStorage.getItem('JWT');
   }
 }
