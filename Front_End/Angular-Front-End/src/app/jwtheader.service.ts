@@ -19,6 +19,8 @@ export class JWTHeaderService {
   }
 
   getJWT(): string{
-    return localStorage.getItem('JWT');
+    if(localStorage.getItem('JWT') != null)
+      return localStorage.getItem('JWT');
+    return '';
   }
 }

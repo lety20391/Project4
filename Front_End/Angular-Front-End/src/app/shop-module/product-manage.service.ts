@@ -6,6 +6,14 @@ import { listUrlAPI } from '../listUrlAPI';
 import { UrlAPIEntity } from '../UrlAPIEntity';
 import { JWTHeaderService } from '../jwtheader.service';
 import { HttpHeaders } from '@angular/common/http';
+
+// const httpOptions = {
+//   headers: new HttpHeaders({
+//     'Content-Type':  'application/json',
+//     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkYXQiLCJhdWQiOiJKYXZhRUUgU290ZXJpYSBKV1QiLCJyZWFsbV9hY2Nlc3MiOnsiZ3JvdXBzIjpbIkFETUlOIiwiTUVNQkVSIl19LCJpc3MiOiJzd2hwIiwiZXhwIjoxNTU2NzA0OTU3LCJpYXQiOjE1NTY0NDU3NTd9.qEBsCgRiKsJgO9j2sktzxiqOTyGLcr6gO86zE83saOI'
+//   })
+// };
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,18 +30,13 @@ export class ProductManageService {
     //console.log(this.http.get<productEntity[]>("http://localhost:34828/1Hero-web/rest/product/"));
     console.log(this.jwtService.getJWT());
 
-    let httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Authorization': this.jwtService.getJWT()
-      })
-    }
-
     //change your url name here
     this.urlAPI = listUrlAPI.find(url => url.name === 'productResource');
     return this.http.get<productEntity[]>(
       this.urlAPI.path,
-      httpOptions
+      {
+        headers: {'Content-Type':  'application/json','Authorization': this.jwtService.getJWT()}
+      }
     );
   }
 
