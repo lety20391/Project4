@@ -26,12 +26,14 @@ import { HttpClientModule }    from '@angular/common/http';
 import {MainlayoutModuleModule} from './mainlayout-module/mainlayout-module.module';
 import { FormComponent } from './UIComponent/form/form.component';
 import { HomecontentComponent } from './UIComponent/homecontent/homecontent.component';
+import { RegisterComponent } from './UIComponent/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
     HomecontentComponent,
+    RegisterComponent,
     // LoadPageComponent,
     // BackTopSectionComponent,
     // HeaderComponent,
