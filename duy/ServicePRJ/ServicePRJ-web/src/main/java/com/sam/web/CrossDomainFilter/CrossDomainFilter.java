@@ -22,11 +22,14 @@ public class CrossDomainFilter implements ContainerResponseFilter {
     public ContainerResponse filter(ContainerRequest creq, ContainerResponse cres) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         System.out.println("----CrossDomainFilter: init----");
+        //sua loi CORS
         cres.getHttpHeaders().add("Access-Control-Allow-Origin", "*");
         cres.getHttpHeaders().add("Access-Control-Allow-Headers", "origin, content-type, accept, authorization");
         cres.getHttpHeaders().add("Access-Control-Allow-Credentials", "true");
         cres.getHttpHeaders().add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD");
         cres.getHttpHeaders().add("Access-Control-Max-Age", "1209600");
+        //cho phep javascript lay Header: Authorization de lay JWT
+        cres.getHttpHeaders().add("Access-Control-Expose-Headers", "Authorization");
         System.out.println("----CrossDomainFilter: finish----");
         return cres;
     }
