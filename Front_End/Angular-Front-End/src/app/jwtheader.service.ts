@@ -15,4 +15,8 @@ export class JWTHeaderService {
   cleanJWT(){
     this.jwtString = '';
   }
+
+  getJWT(): string{
+    return this.jwtString;
+  }
 }

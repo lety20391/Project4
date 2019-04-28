@@ -4,7 +4,7 @@ import { UrlAPIEntity } from './UrlAPIEntity';
 const localhost = 'http://localhost:34828';
 
 export const listUrlAPI: UrlAPIEntity[] = [
-  {name:'productResource', path: localhost + '/1Hero-web/rest/product'},
-  {name:'loginResource', path: localhost + '/ServicePRJ-web/rest/tokens'},  
+  {name:'productResource', path: localhost + '/ServicePRJ-web/rest/product'},
+  {name:'loginResource', path: localhost + '/ServicePRJ-web/rest/tokens'},
   {name: 'YourResource', path: localhost + 'YourURL like example above'}
 ];
