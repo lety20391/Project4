@@ -6,6 +6,7 @@ import { IndexComponent } from './index-module/index.component';
 import {FormComponent} from './UIComponent/form/form.component';
 import { HomecontentComponent } from './UIComponent/homecontent/homecontent.component';
 import { RegisterComponent } from './UIComponent/register/register.component';
+import { LoginComponent } from './UIComponent/login/login.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'index', component: IndexComponent},
   {path: 'form', component: FormComponent},
   {path: 'home', component: HomecontentComponent},
-  {path: 'register', component: RegisterComponent}
+  {path: 'register', component: RegisterComponent},
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({

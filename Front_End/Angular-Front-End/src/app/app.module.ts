@@ -27,6 +27,7 @@ import {MainlayoutModuleModule} from './mainlayout-module/mainlayout-module.modu
 import { FormComponent } from './UIComponent/form/form.component';
 import { HomecontentComponent } from './UIComponent/homecontent/homecontent.component';
 import { RegisterComponent } from './UIComponent/register/register.component';
+import { LoginComponent } from './UIComponent/login/login.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { RegisterComponent } from './UIComponent/register/register.component';
     FormComponent,
     HomecontentComponent,
     RegisterComponent,
+    LoginComponent,
     // LoadPageComponent,
     // BackTopSectionComponent,
     // HeaderComponent,
