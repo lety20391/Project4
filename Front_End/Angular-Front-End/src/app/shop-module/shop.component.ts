@@ -22,6 +22,7 @@ export class ShopComponent implements OnInit {
 
   ngOnInit() {
     this.fetchProduct();
+    this.loadScript('./assets/js/search.js');
   }
 
   fetchProduct(): void{
@@ -29,5 +30,16 @@ export class ShopComponent implements OnInit {
       listResult => this.listProduct = listResult
     );
   }
+
+    //load external js file into component
+    public loadScript(url: string) {
+      const body = <HTMLDivElement> document.body;
+      const script = document.createElement('script');
+      script.innerHTML = '';
+      script.src = url;
+      script.async = false;
+      script.defer = true;
+      body.appendChild(script);
+    }
 
 }

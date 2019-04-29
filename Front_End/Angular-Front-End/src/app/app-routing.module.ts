@@ -10,6 +10,7 @@ import { LoginComponent } from './UIComponent/login/login.component';
 import { GalleryComponent } from './UIComponent/gallery/gallery.component';
 import { ProductSingleComponent } from './UIComponent/product-single/product-single.component';
 import { TopsellerComponent } from './UIComponent/topseller/topseller.component';
+import { SearchComponent } from './UIComponent/search/search.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'gallery', component: GalleryComponent},
   {path: 'productsingle', component: ProductSingleComponent},
-  {path: 'topseller', component: TopsellerComponent}
+  {path: 'topseller', component: TopsellerComponent},
+  {path: 'search', component: SearchComponent}
 ];
 
 @NgModule({

@@ -31,6 +31,7 @@ import { LoginComponent } from './UIComponent/login/login.component';
 import { GalleryComponent } from './UIComponent/gallery/gallery.component';
 import { ProductSingleComponent } from './UIComponent/product-single/product-single.component';
 import { TopsellerComponent } from './UIComponent/topseller/topseller.component';
+import { SearchComponent } from './UIComponent/search/search.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { TopsellerComponent } from './UIComponent/topseller/topseller.component'
     GalleryComponent,
     ProductSingleComponent,
     TopsellerComponent,
+    SearchComponent,
     // LoadPageComponent,
     // BackTopSectionComponent,
     // HeaderComponent,
