@@ -28,6 +28,8 @@ import { ServiceMockupComponent } from './UIComponent/service-mockup/service-moc
 import { SerComponent} from './service-module/ser.component';
 import { ServiceDetailComponent } from './service-detail-module/service-detail/service-detail.component';
 import { ServiceDetailModule } from './service-detail-module/service-detail.module';
+import {ServiceDetailComponent} from './service-detail-module/service-detail/service-detail.component';
+
 @NgModule({
   declarations: [
     AppComponent,

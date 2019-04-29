@@ -23,4 +23,5 @@ export class ServiceManageService {
     this.urlAPI = listUrlAPI.find(url => url.name === 'serviceResource');
     return this.http.get<serviceEntity[]>(this.urlAPI.path);
   }
+
   }
