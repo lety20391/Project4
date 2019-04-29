@@ -54,3 +54,49 @@ nb-configuration.xml
 release.properties
 pom.xml.releaseBackup
 pom.xml.tag
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+# dependencies
+Front_End/AdminUI2/node_modules
+Front_End/Angular-Front-End/node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+Front_End/AdminUI2/.sass-cache
+Front_End/AdminUI2/connect.lock
+Front_End/AdminUI2/coverage
+Front_End/AdminUI2/libpeerconnection.log
+Front_End/AdminUI2/typings
+
+Front_End/Angular-Front-End/.sass-cache
+Front_End/Angular-Front-End/connect.lock
+Front_End/Angular-Front-End/coverage
+Front_End/Angular-Front-End/libpeerconnection.log
+npm-debug.log
+testem.log
+Front_End/Angular-Front-End/typings
+
+# e2e
+Front_End/AdminUI2/e2e/*.js
+Front_End/AdminUI2/e2e/*.map
+Front_End/Angular-Front-End/e2e/*.js
+Front_End/Angular-Front-End/e2e/*.map
