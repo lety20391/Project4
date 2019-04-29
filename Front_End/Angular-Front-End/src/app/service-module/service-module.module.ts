@@ -19,7 +19,7 @@ import { FunFactComponent } from '../UIComponent/fun-fact/fun-fact.component';
 import { BannerSmallComponent } from '../UIComponent/banner-small/banner-small.component';
 import { HttpClientModule }    from '@angular/common/http';
 // import { SerComponent } from './ser/ser.component';
-import { ServiceMockupComponent } from '../UIComponent/service-mockup/service-mockup.component';
+import { ServiceMockupComponent } from '../UIComponent/service-mockup/service-mockup/service-mockup.component';
 @NgModule({
   declarations: [
     LoadPageComponent,

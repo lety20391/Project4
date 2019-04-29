@@ -22,10 +22,10 @@
 
   <div class="rs-image-box">
     <div class="media">
-      <a href="services-single.html"><img src="{{inputService.serImage}}" alt="" class="img-fluid"></a>
+      <a routerLink="/services/{{inputService.serID}}"><img src="{{inputService.serImage}}" alt="" class="img-fluid"></a>
     </div>
     <div class="body-text">
-      <h3 class="title"><a href="services-single.html">{{inputService.serName}}</a></h3>
-      {{inputService.serDes}}
+      <h3 class="title"><a routerLink="/services/{{inputService.serID}}">{{inputService.serName}}</a></h3>
+      {{inputService.serShortDes}}
     </div>
   </div>

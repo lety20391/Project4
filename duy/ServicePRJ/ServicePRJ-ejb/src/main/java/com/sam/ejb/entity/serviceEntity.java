@@ -35,11 +35,13 @@ public class serviceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long SerID;    
-    @Column(name="SerName")
+    @Column(name="SerName",columnDefinition = "VARCHAR(255) NOT NULL")
     private String SerName;
-    @Column(name="SerDes")
+    @Column(name="SerDes", columnDefinition = "VARCHAR(max) NOT NULL")
     private String SerDes;
-    @Column(name="SerImage")
+    @Column(name="SerShortDes", columnDefinition="VARCHAR(max) NOT NULL")
+    private String SerShortDes;
+    @Column(name="SerImage" ,columnDefinition = "VARCHAR(max) NOT NULL")
     private String SerImage;
     @Column(name="Status")
     private boolean Status;
@@ -51,11 +53,13 @@ public class serviceEntity {
     public serviceEntity() {
     }
 
-    public serviceEntity(String SerName, String SerDes, String SerImage, boolean Status) {
+    public serviceEntity(String SerName, String SerDes, String SerShortDes, String SerImage, boolean Status, List<bookingDetailEntity> bookingDetailEntitys) {
         this.SerName = SerName;
         this.SerDes = SerDes;
+        this.SerShortDes = SerShortDes;
         this.SerImage = SerImage;
         this.Status = Status;
+        this.bookingDetailEntitys = bookingDetailEntitys;
     }
 
     public Long getSerID() {
@@ -82,6 +86,14 @@ public class serviceEntity {
         this.SerDes = SerDes;
     }
 
+    public String getSerShortDes() {
+        return SerShortDes;
+    }
+
+    public void setSerShortDes(String SerShortDes) {
+        this.SerShortDes = SerShortDes;
+    }
+
     public String getSerImage() {
         return SerImage;
     }
@@ -106,5 +118,4 @@ public class serviceEntity {
         this.bookingDetailEntitys = bookingDetailEntitys;
     }
 
-    
 }

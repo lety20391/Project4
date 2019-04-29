@@ -4,7 +4,7 @@ import { serviceEntity } from '../serviceEntity/serviceEntity';
 import {Observable, of} from 'rxjs';
 import { listUrlAPI } from '../listUrlAPI';
 import { UrlAPIEntity } from '../UrlAPIEntity';
-
+import { catchError, map, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -24,4 +24,11 @@ export class ServiceManageService {
     return this.http.get<serviceEntity[]>(this.urlAPI.path);
   }
 
+  getServiceDetail(id: number): Observable<any> {
+    console.log("------Get API Service ------");
+    this.urlAPI = listUrlAPI.find(url => url.name === 'serviceResource');
+    // const url = `${this.urlAPI}/${id}`;
+    return this.http.get(this.urlAPI.path + id);
+    console.log("------Get API Service Success ------");
+  }
   }

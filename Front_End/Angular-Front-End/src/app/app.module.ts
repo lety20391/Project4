@@ -27,8 +27,9 @@ import {MainlayoutModuleModule} from './mainlayout-module/mainlayout-module.modu
 import { ServiceMockupComponent } from './UIComponent/service-mockup/service-mockup/service-mockup.component';
 import { SerComponent} from './service-module/ser.component';
 import { ServiceDetailComponent } from './service-detail-module/service-detail/service-detail.component';
-import { ServiceDetailModule } from './service-detail-module/service-detail.module';
-import {ServiceDetailComponent} from './service-detail-module/service-detail/service-detail.component';
+import { ServiceCateComponent } from './UIComponent/service-cate-mockup/service-cate/service-cate.component';
+// import { ServiceDetailModule } from './service-detail-module/service-detail.module';
+
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import {ServiceDetailComponent} from './service-detail-module/service-detail/ser
     SerComponent,
     ServiceMockupComponent,
     ServiceDetailComponent,
+    ServiceCateComponent,
     // LoadPageComponent,
     // BackTopSectionComponent,
     // HeaderComponent,
@@ -61,8 +63,7 @@ import {ServiceDetailComponent} from './service-detail-module/service-detail/ser
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MainlayoutModuleModule,
-    ServiceDetailModule
+    MainlayoutModuleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
