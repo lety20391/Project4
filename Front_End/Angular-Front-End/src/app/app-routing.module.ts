@@ -9,6 +9,7 @@ import { RegisterComponent } from './UIComponent/register/register.component';
 import { LoginComponent } from './UIComponent/login/login.component';
 import { GalleryComponent } from './UIComponent/gallery/gallery.component';
 import { ProductSingleComponent } from './UIComponent/product-single/product-single.component';
+import { TopsellerComponent } from './UIComponent/topseller/topseller.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'gallery', component: GalleryComponent},
-  {path: 'productsingle', component: ProductSingleComponent}
+  {path: 'productsingle', component: ProductSingleComponent},
+  {path: 'topseller', component: TopsellerComponent}
 ];
 
 @NgModule({
