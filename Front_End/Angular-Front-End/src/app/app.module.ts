@@ -26,11 +26,14 @@ import { HttpClientModule }    from '@angular/common/http';
 import {MainlayoutModuleModule} from './mainlayout-module/mainlayout-module.module';
 import { ServiceMockupComponent } from './UIComponent/service-mockup/service-mockup/service-mockup.component';
 import { SerComponent} from './service-module/ser.component';
+import { ServiceDetailComponent } from './service-detail-module/service-detail/service-detail.component';
+import { ServiceDetailModule } from './service-detail-module/service-detail.module';
 @NgModule({
   declarations: [
     AppComponent,
     SerComponent,
     ServiceMockupComponent,
+    ServiceDetailComponent,
     // LoadPageComponent,
     // BackTopSectionComponent,
     // HeaderComponent,
@@ -56,7 +59,8 @@ import { SerComponent} from './service-module/ser.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MainlayoutModuleModule
+    MainlayoutModuleModule,
+    ServiceDetailModule
   ],
   providers: [],
   bootstrap: [AppComponent]
