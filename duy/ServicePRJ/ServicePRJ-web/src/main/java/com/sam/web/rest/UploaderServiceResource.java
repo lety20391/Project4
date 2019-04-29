@@ -22,6 +22,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import javax.ws.rs.core.Response;
+
 
 /**
  * REST Web Service
@@ -37,33 +39,15 @@ public class UploaderServiceResource {
     
     private static final String UPLOAD_FOLDER = "e:/uploadedFiles/";
 
-    /**
-     * Creates a new instance of UploaderServiceResource
-     */
+    
     public UploaderServiceResource() {
     }
 
-    /**
-     * Retrieves representation of an instance of com.sam.web.rest.UploaderServiceResource
-     * @return an instance of java.lang.String
-     */
-    @GET
-    @Produces(MediaType.APPLICATION_XML)
-    public String getXml() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * PUT method for updating or creating an instance of UploaderServiceResource
-     * @param content representation for the resource
-     */
-    @PUT
-    @Consumes(MediaType.APPLICATION_XML)
-    public void putXml(String content) {
-    }
+    
+    
     
     @POST
+    @Path("file")
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
 	public Response uploadFile(
 			@FormDataParam("file") InputStream uploadedInputStream,
@@ -88,14 +72,7 @@ public class UploaderServiceResource {
 		return Response.status(200)
 				.entity("File saved to " + uploadedFileLocation).build();
 	}
-	/**
-	 * Utility method to save InputStream data to target location/file
-	 * 
-	 * @param inStream
-	 *            - InputStream to be saved
-	 * @param target
-	 *            - full path to destination file
-	 */
+	
 	private void saveToFile(InputStream inStream, String target)
 			throws IOException {
 		OutputStream out = null;
@@ -108,14 +85,7 @@ public class UploaderServiceResource {
 		out.flush();
 		out.close();
 	}
-	/**
-	 * Creates a folder to desired location if it not already exists
-	 * 
-	 * @param dirName
-	 *            - full path to the folder
-	 * @throws SecurityException
-	 *             - in case you don't have permission to create the folder
-	 */
+	
 	private void createFolderIfNotExists(String dirName)
 			throws SecurityException {
 		File theDir = new File(dirName);

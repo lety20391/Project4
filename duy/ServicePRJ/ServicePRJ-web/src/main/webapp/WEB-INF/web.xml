@@ -25,13 +25,17 @@
         <url-pattern>*.xhtml</url-pattern>
         </servlet-mapping>
         <servlet>
-        <servlet-name>restful</servlet-name>
-        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
-        <init-param>
-        <param-name>com.sun.jersey.config.property.packages</param-name>
-        <param-value>com.sam.web.rest</param-value>
-        </init-param>
-        <load-on-startup>1</load-on-startup>
+            <servlet-name>restful</servlet-name>
+            <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+            <init-param>
+                <param-name>com.sun.jersey.config.property.packages</param-name>
+                <param-value>com.sam.web.rest</param-value>
+            </init-param>
+            <init-param>
+                <param-name>jersey.config.server.provider.classnames</param-name>
+                <param-value>org.glassfish.jersey.media.multipart.MultiPartFeature</param-value>
+            </init-param>
+            <load-on-startup>1</load-on-startup>
         </servlet>
         <servlet-mapping>
         <servlet-name>restful</servlet-name>
