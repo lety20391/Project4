@@ -6,8 +6,3 @@
 @import url("assets/css/vendor/magnific-popup.css");
 @import url("assets/css/vendor/animate.min.css");
 @import url("assets/css/style.css");
-.crop img {
-    width: 350px;
-    height: 350px;
-
-}
