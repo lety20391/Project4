@@ -18,6 +18,7 @@ export class CreatePetComponent implements OnInit {
   }
 
   getUrl(code: string): void{
+    //code will be use to create image Folder on server
     console.log("------Create Pet: getUrl() ------");
 
     //change your url name here
