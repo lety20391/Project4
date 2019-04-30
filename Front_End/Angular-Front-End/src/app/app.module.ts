@@ -24,12 +24,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule }    from '@angular/common/http';
 // import { TopSellerComponent } from './shop-module/top-seller/top-seller.component';
 import {MainlayoutModuleModule} from './mainlayout-module/mainlayout-module.module';
+import { FormsModule } from '@angular/forms';
 import { FormComponent } from './UIComponent/form/form.component';
 import { HomecontentComponent } from './UIComponent/homecontent/homecontent.component';
 import { RegisterComponent } from './UIComponent/register/register.component';
 import { LoginComponent } from './UIComponent/login/login.component';
 import { GalleryComponent } from './UIComponent/gallery/gallery.component';
 import { ProductSingleComponent } from './UIComponent/product-single/product-single.component';
+import { ServiceMockupComponent } from './UIComponent/service-mockup/service-mockup/service-mockup.component';
+import { SerComponent} from './service-module/ser.component';
+import { ServiceDetailComponent } from './service-detail-module/service-detail/service-detail.component';
+import { ServiceCateComponent } from './UIComponent/service-cate-mockup/service-cate/service-cate.component';
+// import { ServiceDetailModule } from './service-detail-module/service-detail.module';
+
 
 @NgModule({
   declarations: [
@@ -40,6 +47,10 @@ import { ProductSingleComponent } from './UIComponent/product-single/product-sin
     LoginComponent,
     GalleryComponent,
     ProductSingleComponent,
+    SerComponent,
+    ServiceMockupComponent,
+    ServiceDetailComponent,
+    ServiceCateComponent
     // LoadPageComponent,
     // BackTopSectionComponent,
     // HeaderComponent,
@@ -65,7 +76,8 @@ import { ProductSingleComponent } from './UIComponent/product-single/product-sin
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MainlayoutModuleModule
+    MainlayoutModuleModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
