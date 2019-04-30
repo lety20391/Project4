@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {ShopComponent} from './shop-module/shop.component';
 import { IndexComponent } from './index-module/index.component';
-import { LoginComponent } from './login-module/login/login.component';
+// import { LoginComponent } from './login-module/login/login.component';
 import {FormComponent} from './UIComponent/form/form.component';
 import { HomecontentComponent } from './UIComponent/homecontent/homecontent.component';
 import { RegisterComponent } from './UIComponent/register/register.component';
