@@ -26,12 +26,22 @@ import { HttpClientModule }    from '@angular/common/http';
 import {MainlayoutModuleModule} from './mainlayout-module/mainlayout-module.module';
 import { FormsModule } from '@angular/forms';
 import { FormComponent } from './UIComponent/form/form.component';
+import { ServiceMockupComponent } from './UIComponent/service-mockup/service-mockup/service-mockup.component';
+import { SerComponent} from './service-module/ser.component';
+import { ServiceDetailComponent } from './service-detail-module/service-detail/service-detail.component';
+import { ServiceCateComponent } from './UIComponent/service-cate-mockup/service-cate/service-cate.component';
+// import { ServiceDetailModule } from './service-detail-module/service-detail.module';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
+    SerComponent,
+    ServiceMockupComponent,
+    ServiceDetailComponent,
+    ServiceCateComponent,
     // LoadPageComponent,
     // BackTopSectionComponent,
     // HeaderComponent,
