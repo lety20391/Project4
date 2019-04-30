@@ -5,7 +5,7 @@ import {ShopComponent} from './shop-module/shop.component';
 import { IndexComponent } from './index-module/index.component';
 import { LoginComponent } from './login-module/login/login.component';
 import {FormComponent} from './UIComponent/form/form.component';
-import { UploadComponent } from './UIComponent/upload/upload.component';
+import { UploaderComponent } from './upload-module/uploader/uploader.component';
 
 
 const routes: Routes = [
@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: 'index', component: IndexComponent},
   {path: 'login', component: LoginComponent},
   {path: 'form', component: FormComponent},
-  {path: 'upload', component: UploadComponent}
+  {path: 'upload', component: UploaderComponent}
 
 ];
 

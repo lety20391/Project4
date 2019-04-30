@@ -27,7 +27,6 @@ import {MainlayoutModuleModule} from './mainlayout-module/mainlayout-module.modu
 import { FormsModule } from '@angular/forms';
 import { FormComponent } from './UIComponent/form/form.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

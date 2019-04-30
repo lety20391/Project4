@@ -24,8 +24,8 @@ import { HttpClientModule }    from '@angular/common/http';
 import { TopSellerComponent } from '../shop-module/top-seller/top-seller.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { LoginComponent } from '../login-module/login/login.component';
-import { UploadComponent } from '../UIComponent/upload/upload.component';
 import { FormsModule } from '@angular/forms';
+import { UploadModuleModule } from '../upload-module/upload-module.module';
 @NgModule({
   declarations: [
     LoadPageComponent,
@@ -49,14 +49,14 @@ import { FormsModule } from '@angular/forms';
     ProductMockupComponent,
     TopSellerComponent,
     MainLayoutComponent,
-    LoginComponent,
-    UploadComponent
+    LoginComponent
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    UploadModuleModule
   ],
   exports: [
     MainLayoutComponent
