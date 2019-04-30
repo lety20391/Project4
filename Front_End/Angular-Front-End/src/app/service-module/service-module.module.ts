@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SerComponent } from './ser.component';
 import { LoadPageComponent } from '../UIComponent/load-page/load-page.component';
 import { BackTopSectionComponent } from '../UIComponent/back-top-section/back-top-section.component';
 import { HeaderComponent } from '../UIComponent/header/header.component';
@@ -15,16 +16,10 @@ import { CTAComponent } from '../UIComponent/cta/cta.component';
 import { AwardsComponent } from '../UIComponent/awards/awards.component';
 import { FooterSectionComponent } from '../UIComponent/footer-section/footer-section.component';
 import { FunFactComponent } from '../UIComponent/fun-fact/fun-fact.component';
-import { AppRoutingModule } from '../app-routing.module';
-import { ShopComponent } from '../shop-module/shop.component';
-import { IndexComponent } from '../index-module/index.component';
 import { BannerSmallComponent } from '../UIComponent/banner-small/banner-small.component';
-import { ProductMockupComponent } from '../UIComponent/product-mockup/product-mockup.component';
 import { HttpClientModule }    from '@angular/common/http';
-import { TopSellerComponent } from '../shop-module/top-seller/top-seller.component';
-import { MainLayoutComponent } from './main-layout/main-layout.component';
-import { LoginComponent } from '../login-module/login/login.component';
-import { FormsModule } from '@angular/forms';
+// import { SerComponent } from './ser/ser.component';
+import { ServiceMockupComponent } from '../UIComponent/service-mockup/service-mockup/service-mockup.component';
 @NgModule({
   declarations: [
     LoadPageComponent,
@@ -42,22 +37,13 @@ import { FormsModule } from '@angular/forms';
     AwardsComponent,
     FooterSectionComponent,
     FunFactComponent,
-    ShopComponent,
-    IndexComponent,
     BannerSmallComponent,
-    ProductMockupComponent,
-    TopSellerComponent,
-    MainLayoutComponent,
-    LoginComponent
+    SerComponent,
+    ServiceMockupComponent
   ],
   imports: [
-    CommonModule,
-    AppRoutingModule,
     HttpClientModule,
-    FormsModule
-  ],
-  exports: [
-    MainLayoutComponent
+    CommonModule
   ]
 })
-export class MainlayoutModuleModule { }
+export class ServiceModuleModule { }
