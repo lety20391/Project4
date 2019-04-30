@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sam.ejb.ProductSessionBean;
+package com.sam.ejb.OrderDetailSessionBean;
 
-import com.sam.ejb.entity.productEntity;
-import com.sam.ejb.entity.serviceEntity;
+import com.sam.ejb.entity.OrderDetailEntity;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -18,41 +17,40 @@ import javax.persistence.PersistenceUnit;
  * @author DuDu
  */
 @Stateless
-public class ProductSessionBean implements ProductSessionBeanLocal {
+public class OrderDetailSessionBean implements OrderDetailSessionBeanLocal {
 
     @PersistenceUnit(unitName = "ServiceDB")
     private EntityManagerFactory entityManagerFactory;
     private EntityManager em;
 
     @Override
-    public List<productEntity> listAll() {
+    public List<OrderDetailEntity> listAll() {
         em = entityManagerFactory.createEntityManager();
-        return em.createNamedQuery("pro.findAll").getResultList();
+        return em.createNamedQuery("od.findAll").getResultList();
     }
 
     @Override
-    public productEntity addProduct(productEntity product) {
+    public OrderDetailEntity addOrderDetail(OrderDetailEntity orderDetail) {
         em = entityManagerFactory.createEntityManager();
-        em.persist(product);
-        return product;
+        em.persist(orderDetail);
+        return orderDetail;
     }
 
     @Override
-    public productEntity editProduct(productEntity product) {
+    public OrderDetailEntity editOrderDetail(OrderDetailEntity orderDetail) {
         em = entityManagerFactory.createEntityManager();
-        return em.merge(product);
+        return em.merge(orderDetail);
     }
 
     @Override
-    public void deleteProduct(Long id) {
-        em = entityManagerFactory.createEntityManager();
-        em.remove(em.find(productEntity.class, id));
-    }
+    public void deleteOrderDetail(Long id) {
+em = entityManagerFactory.createEntityManager();
+        em.remove(em.find(OrderDetailEntity.class, id));    }
 
     @Override
-    public productEntity findOne(Long id) {
-        em = entityManagerFactory.createEntityManager();
-        return em.find(productEntity.class, id);
+    public OrderDetailEntity findOne(Long id) {
+         em = entityManagerFactory.createEntityManager();
+        return em.find(OrderDetailEntity.class, id);
     }
 
     // Add business logic below. (Right-click in editor and choose

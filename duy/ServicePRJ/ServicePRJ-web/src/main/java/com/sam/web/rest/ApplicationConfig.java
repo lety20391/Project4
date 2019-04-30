@@ -33,6 +33,8 @@ public class ApplicationConfig extends Application {
         resources.add(com.sam.web.rest.ManageBookingMaster.class);
         resources.add(com.sam.web.rest.ManageDatingDetail.class);
         resources.add(com.sam.web.rest.ManageDatingMaster.class);
+        resources.add(com.sam.web.rest.ManageOrderDetail.class);
+        resources.add(com.sam.web.rest.ManageOrderMaster.class);
         resources.add(com.sam.web.rest.ManagePet.class);
         resources.add(com.sam.web.rest.ManageProduct.class);
         resources.add(com.sam.web.rest.ManageService.class);

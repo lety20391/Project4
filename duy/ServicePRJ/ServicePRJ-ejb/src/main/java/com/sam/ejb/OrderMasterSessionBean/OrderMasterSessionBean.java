@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sam.ejb.sessionbean;
+package com.sam.ejb.OrderMasterSessionBean;
 
+import com.sam.ejb.entity.OrderMasterEntity;
 import com.sam.ejb.entity.bookingMasterEntity;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -17,42 +18,44 @@ import javax.persistence.PersistenceUnit;
  * @author DuDu
  */
 @Stateless
-public class BookingMasterSessionBean implements BookingMasterSessionBeanLocal {
+public class OrderMasterSessionBean implements OrderMasterSessionBeanLocal {
 
     @PersistenceUnit(unitName = "ServiceDB")
     private EntityManagerFactory entityManagerFactory;
     private EntityManager em;
-    
+
     @Override
-    public List<bookingMasterEntity> listAll() {
+    public List<OrderMasterEntity> listAll() {
         System.out.println("------BMaster Bean----");
         em = entityManagerFactory.createEntityManager();
-        return em.createNamedQuery("bm.findAll").getResultList(); 
+        return em.createNamedQuery("om.findAll").getResultList();
     }
 
     @Override
-    public bookingMasterEntity addbookingMaster(bookingMasterEntity service) {
+    public OrderMasterEntity addOrderMaster(OrderMasterEntity orderMaster) {
         em = entityManagerFactory.createEntityManager();
-        em.persist(service);
-        return service;
+        em.persist(orderMaster);
+        return orderMaster;
     }
 
     @Override
-    public bookingMasterEntity editbookingMaster(bookingMasterEntity service) {
+    public OrderMasterEntity editOrderMaster(OrderMasterEntity orderMaster) {
         em = entityManagerFactory.createEntityManager();
-        return em.merge(service);
+        return em.merge(orderMaster);
     }
 
     @Override
-    public void deletebookingMaster(Long id) {
+    public void deleteOrderMaster(Long id) {
         em = entityManagerFactory.createEntityManager();
-        em.remove(em.find(bookingMasterEntity.class, id));
+        em.remove(em.find(OrderMasterEntity.class, id));
     }
 
     @Override
-    public bookingMasterEntity findOne(Long id) {
+    public OrderMasterEntity findOne(Long id) {
         em = entityManagerFactory.createEntityManager();
-        return em.find(bookingMasterEntity.class, id);
+        return em.find(OrderMasterEntity.class, id);
     }
-    
+
+    // Add business logic below. (Right-click in editor and choose
+    // "Insert Code > Add Business Method")
 }

@@ -61,6 +61,8 @@ public class userEntity {
     @OneToMany(mappedBy = "userEntity", fetch = FetchType.EAGER)
     private List<PetEntity> listPetEntity;
 
+    @OneToMany(mappedBy="userEntity", fetch = FetchType.EAGER)
+    private List<OrderMasterEntity> listOrderMaster;
     public userEntity() {
     }
 

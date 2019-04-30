@@ -5,6 +5,7 @@
  */
 package com.sam.ejb.entity;
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -49,10 +51,13 @@ public class productEntity {
     @JoinColumn(name = "Cate_ID")
     private cateEntity cateEntity;
 
+    @OneToMany(mappedBy = "productEntity", fetch = FetchType.EAGER)
+    private List<OrderDetailEntity> listOrderDetailEntity;
+
     public productEntity() {
     }
 
-    public productEntity(String ProName, String SerDes, Integer ProPrice, String ProColor, String ProImage, boolean Status, cateEntity cateEntity) {
+    public productEntity(String ProName, String SerDes, Integer ProPrice, String ProColor, String ProImage, boolean Status, cateEntity cateEntity, List<OrderDetailEntity> listOrderDetailEntity) {
         this.ProName = ProName;
         this.SerDes = SerDes;
         this.ProPrice = ProPrice;
@@ -60,6 +65,7 @@ public class productEntity {
         this.ProImage = ProImage;
         this.Status = Status;
         this.cateEntity = cateEntity;
+        this.listOrderDetailEntity = listOrderDetailEntity;
     }
 
     public Long getProID() {
@@ -125,5 +131,14 @@ public class productEntity {
     public void setCateEntity(cateEntity cateEntity) {
         this.cateEntity = cateEntity;
     }
+
+    public List<OrderDetailEntity> getListOrderDetailEntity() {
+        return listOrderDetailEntity;
+    }
+
+    public void setListOrderDetailEntity(List<OrderDetailEntity> listOrderDetailEntity) {
+        this.listOrderDetailEntity = listOrderDetailEntity;
+    }
+    
     
 }
