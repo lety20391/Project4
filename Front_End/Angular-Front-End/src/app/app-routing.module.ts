@@ -12,6 +12,7 @@ import { GalleryComponent } from './UIComponent/gallery/gallery.component';
 import { ProductSingleComponent } from './UIComponent/product-single/product-single.component';
 import {SerComponent} from './service-module/ser.component';
 import {ServiceDetailComponent} from './service-detail-module/service-detail/service-detail.component';
+import { AppointmentComponent } from './UIComponent/appointment/appointment.component';
 
 
 const routes: Routes = [
@@ -25,7 +26,9 @@ const routes: Routes = [
   {path: 'gallery', component: GalleryComponent},
   {path: 'productsingle', component: ProductSingleComponent},
   {path: 'services', component: SerComponent},
-  {path: 'services/:id', component: ServiceDetailComponent}
+  {path: 'services/:id', component: ServiceDetailComponent},
+
+  {path: 'appointment', component: AppointmentComponent}
 ];
 
 @NgModule({
