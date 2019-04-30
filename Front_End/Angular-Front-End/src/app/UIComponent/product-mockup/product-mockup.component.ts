@@ -10,12 +10,12 @@ export class ProductMockupComponent implements OnInit {
 
   @Input() inputProduct: productEntity;
 
-  product: productEntity = {
-    id: 1,
-    name: 'Cat & Dog carried',
-    price: 100,
-    image: 'assets/images/dummy-img-600x600.jpg'
-  };
+  // product: productEntity = {
+  //   id: 1,
+  //   name: 'Cat & Dog carried',
+  //   price: 100,
+  //   image: 'assets/images/dummy-img-600x600.jpg'
+  // };
 
   constructor() { }
 

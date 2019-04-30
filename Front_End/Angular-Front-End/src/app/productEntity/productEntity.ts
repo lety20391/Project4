@@ -1,6 +1,10 @@
 export class productEntity{
-  id: number;
-  name: string;
-  price: number;
-  image: string;
+  ProID: number;
+  ProName: string;
+  ProDes: string;
+  ProPrice: number;
+  ProColor: string;
+  ProImage: string;
+  Status: boolean;
+  Cate_ID: string;
 }
