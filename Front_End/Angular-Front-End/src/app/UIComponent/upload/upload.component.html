@@ -1,3 +1,15 @@
+<p>
+  upload works!
+</p>
+
+<hr>
+
+  <form action="http://localhost:34828/ServicePRJ-web/rest/uploader/file" method="post" enctype="multipart/form-data">
+  	<input name="file" id="filename" type="file" /><br><br>
+  	<input  type="submit" value="Upload"/>
+  </form>
+
+<hr>
 <div class="col-md-6"  >
   <div [fileUploadInputFor]="fileUploadQueue" class="upload-drop-zone" style="height:5rem; border: 1px groove green;
     border-radius: 10px;padding:10px;">
@@ -12,7 +24,7 @@
 
 <mat-file-upload-queue #fileUploadQueue
     [fileAlias]="'file'"
-    [httpUrl]="'http://localhost:8180/jax-rs-jersey-application-sample'">
+    [httpUrl]="'http://localhost:34828/ServicePRJ-web/rest/uploader/file'">
 
     <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
 </mat-file-upload-queue>
