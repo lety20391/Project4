@@ -33,45 +33,37 @@ import javax.ws.rs.core.Response;
 @Path("uploader")
 @RequestScoped
 public class UploaderServiceResource {
-
     @Context
     private UriInfo context;
-    
     private static final String UPLOAD_FOLDER = "e:/uploadedFiles/";
-
-    
     public UploaderServiceResource() {
-    }
-
-    
-    
-    
+    }  
     @POST
     @Path("file")
-	@Consumes(MediaType.MULTIPART_FORM_DATA)
-	public Response uploadFile(
-			@FormDataParam("file") InputStream uploadedInputStream,
-			@FormDataParam("file") FormDataContentDisposition fileDetail) {
-		// check if all form parameters are provided
-		if (uploadedInputStream == null || fileDetail == null)
-			return Response.status(400).entity("Invalid form data").build();
-		// create our destination folder, if it not exists
-		try {
-			createFolderIfNotExists(UPLOAD_FOLDER);
-		} catch (SecurityException se) {
-			return Response.status(500)
-					.entity("Can not create destination folder on server")
-					.build();
-		}
-		String uploadedFileLocation = UPLOAD_FOLDER + fileDetail.getFileName();
-		try {
-			saveToFile(uploadedInputStream, uploadedFileLocation);
-		} catch (IOException e) {
-			return Response.status(500).entity("Can not save file").build();
-		}
-		return Response.status(200)
-				.entity("File saved to " + uploadedFileLocation).build();
-	}
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public Response uploadFile(
+                    @FormDataParam("file") InputStream uploadedInputStream,
+                    @FormDataParam("file") FormDataContentDisposition fileDetail) {
+            // check if all form parameters are provided
+            if (uploadedInputStream == null || fileDetail == null)
+                    return Response.status(400).entity("Invalid form data").build();
+            // create our destination folder, if it not exists
+            try {
+                    createFolderIfNotExists(UPLOAD_FOLDER);
+            } catch (SecurityException se) {
+                    return Response.status(500)
+                                    .entity("Can not create destination folder on server")
+                                    .build();
+            }
+            String uploadedFileLocation = UPLOAD_FOLDER + fileDetail.getFileName();
+            try {
+                    saveToFile(uploadedInputStream, uploadedFileLocation);
+            } catch (IOException e) {
+                    return Response.status(500).entity("Can not save file").build();
+            }
+            return Response.status(200)
+                            .entity("File saved to " + uploadedFileLocation).build();
+    }
 	
 	private void saveToFile(InputStream inStream, String target)
 			throws IOException {
