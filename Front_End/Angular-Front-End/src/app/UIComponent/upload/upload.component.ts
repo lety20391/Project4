@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 
@@ -9,7 +9,7 @@ import {Observable, of} from 'rxjs';
 })
 export class UploadComponent implements OnInit {
 
-  startURL = '';
+  @Input() finalUrl: string;
 
   constructor(
     private http: HttpClient

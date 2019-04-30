@@ -7,7 +7,7 @@ import { UploadComponent } from '../../UIComponent/upload/upload.component';
   styleUrls: ['./create-pet.component.css']
 })
 export class CreatePetComponent implements OnInit {
-
+  uploadUrl = 'http://localhost:34828/ServicePRJ-web/rest/uploader/file/1';
   constructor() { }
 
   ngOnInit() {
