@@ -25,6 +25,9 @@ import { TopSellerComponent } from '../shop-module/top-seller/top-seller.compone
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { LoginComponent } from '../login-module/login/login.component';
 import { FormsModule } from '@angular/forms';
+import { CartModuleModule } from '../cart-module/cart-module.module';
+
+
 @NgModule({
   declarations: [
     LoadPageComponent,
@@ -54,7 +57,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CartModuleModule
   ],
   exports: [
     MainLayoutComponent
