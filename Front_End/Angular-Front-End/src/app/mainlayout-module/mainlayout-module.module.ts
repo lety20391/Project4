@@ -27,7 +27,7 @@ import { LoginComponent } from '../login-module/login/login.component';
 import { FormsModule } from '@angular/forms';
 //import { UploadModuleModule } from '../upload-module/upload-module.module';
 import { PetModuleModule } from '../pet-module/pet-module.module';
-import { CreatePetComponent } from '../pet-module/create-pet/create-pet.component';
+//import { CreatePetComponent } from '../pet-module/create-pet/create-pet.component';
 @NgModule({
   declarations: [
     LoadPageComponent,
@@ -51,8 +51,8 @@ import { CreatePetComponent } from '../pet-module/create-pet/create-pet.componen
     ProductMockupComponent,
     TopSellerComponent,
     MainLayoutComponent,
-    LoginComponent,
-    CreatePetComponent
+    LoginComponent
+    //CreatePetComponent
   ],
   imports: [
     CommonModule,

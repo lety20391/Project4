@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UploadComponent } from '../../UIComponent/upload/upload.component';
 
 @Component({
   selector: 'app-create-pet',
