@@ -7,8 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BannerSmallComponent implements OnInit {
 
-  @Input() bannerTitle ;
-  @Input() bannerContent;
+  @Input() bannerTitle: string ;
+  @Input() bannerContent: string;
 
   constructor( ) {   }
 

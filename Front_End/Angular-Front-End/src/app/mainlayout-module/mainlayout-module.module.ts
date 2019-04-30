@@ -18,7 +18,6 @@ import { FunFactComponent } from '../UIComponent/fun-fact/fun-fact.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { ShopComponent } from '../shop-module/shop.component';
 import { IndexComponent } from '../index-module/index.component';
-import { BannerSmallComponent } from '../UIComponent/banner-small/banner-small.component';
 import { ProductMockupComponent } from '../UIComponent/product-mockup/product-mockup.component';
 import { HttpClientModule }    from '@angular/common/http';
 import { TopSellerComponent } from '../shop-module/top-seller/top-seller.component';
@@ -47,7 +46,6 @@ import { CartModuleModule } from '../cart-module/cart-module.module';
     FunFactComponent,
     ShopComponent,
     IndexComponent,
-    BannerSmallComponent,
     ProductMockupComponent,
     TopSellerComponent,
     MainLayoutComponent,
