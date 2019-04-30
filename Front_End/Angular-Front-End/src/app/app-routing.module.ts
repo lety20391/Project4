@@ -13,7 +13,7 @@ import { ProductSingleComponent } from './UIComponent/product-single/product-sin
 import {SerComponent} from './service-module/ser.component';
 import {ServiceDetailComponent} from './service-detail-module/service-detail/service-detail.component';
 import { AppointmentComponent } from './UIComponent/appointment/appointment.component';
-import { ShopingCartComponent } from './UIComponent/shoping-cart/shoping-cart.component';
+
 
 const routes: Routes = [
   {path: '', redirectTo: "/home", pathMatch: 'full'},
@@ -27,7 +27,7 @@ const routes: Routes = [
   {path: 'productsingle', component: ProductSingleComponent},
   {path: 'services', component: SerComponent},
   {path: 'services/:id', component: ServiceDetailComponent},
-  {path: 'cart', component: ShopingCartComponent},
+
   {path: 'appointment', component: AppointmentComponent}
 ];
 

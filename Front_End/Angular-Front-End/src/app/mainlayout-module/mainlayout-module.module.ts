@@ -25,7 +25,6 @@ import { TopSellerComponent } from '../shop-module/top-seller/top-seller.compone
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { LoginComponent } from '../login-module/login/login.component';
 import { FormsModule } from '@angular/forms';
-import { ShopingCartComponent } from '../UIComponent/shoping-cart/shoping-cart.component';
 @NgModule({
   declarations: [
     LoadPageComponent,
@@ -49,8 +48,7 @@ import { ShopingCartComponent } from '../UIComponent/shoping-cart/shoping-cart.c
     ProductMockupComponent,
     TopSellerComponent,
     MainLayoutComponent,
-    LoginComponent,
-    ShopingCartComponent
+    LoginComponent
   ],
   imports: [
     CommonModule,
