@@ -1,15 +1,5 @@
-<p>
-  upload works!
-</p>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<hr>
-
-  <form action="http://localhost:34828/ServicePRJ-web/rest/uploader/file" method="post" enctype="multipart/form-data">
-  	<input name="file" id="filename" type="file" /><br><br>
-  	<input  type="submit" value="Upload"/>
-  </form>
-
-<hr>
 <div class="col-md-6"  >
   <div [fileUploadInputFor]="fileUploadQueue" class="upload-drop-zone" style="height:5rem; border: 1px groove green;
     border-radius: 10px;padding:10px;">
