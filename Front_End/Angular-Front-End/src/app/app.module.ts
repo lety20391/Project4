@@ -37,6 +37,7 @@ import { ServiceMockupComponent } from './UIComponent/service-mockup/service-moc
 import { SerComponent} from './service-module/ser.component';
 import { ServiceDetailComponent } from './service-detail-module/service-detail/service-detail.component';
 import { ServiceCateComponent } from './UIComponent/service-cate-mockup/service-cate/service-cate.component';
+import { AboutusComponent } from './UIComponent/aboutus/aboutus.component';
 // import { ServiceDetailModule } from './service-detail-module/service-detail.module';
 
 
@@ -54,7 +55,8 @@ import { ServiceCateComponent } from './UIComponent/service-cate-mockup/service-
     SerComponent,
     ServiceMockupComponent,
     ServiceDetailComponent,
-    ServiceCateComponent
+    ServiceCateComponent,
+    AboutusComponent
     // LoadPageComponent,
     // BackTopSectionComponent,
     // HeaderComponent,

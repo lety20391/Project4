@@ -14,6 +14,7 @@ import { TopsellerComponent } from './UIComponent/topseller/topseller.component'
 import { SearchComponent } from './UIComponent/search/search.component';
 import {SerComponent} from './service-module/ser.component';
 import {ServiceDetailComponent} from './service-detail-module/service-detail/service-detail.component';
+import { AboutusComponent } from './UIComponent/aboutus/aboutus.component';
 
 
 const routes: Routes = [
@@ -29,7 +30,8 @@ const routes: Routes = [
   {path: 'topseller', component: TopsellerComponent},
   {path: 'search', component: SearchComponent},
   {path: 'services', component: SerComponent},
-  {path: 'services/:id', component: ServiceDetailComponent}
+  {path: 'services/:id', component: ServiceDetailComponent},
+  {path: 'aboutus', component: AboutusComponent}
 ];
 
 @NgModule({
