@@ -35,31 +35,27 @@ public class serviceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long SerID;    
-    @Column(name="SerName",columnDefinition = "VARCHAR(255) NOT NULL")
+    @Column(name="SerName")
     private String SerName;
-    @Column(name="SerDes", columnDefinition = "VARCHAR(max) NOT NULL")
+    @Column(name="SerDes")
     private String SerDes;
-    @Column(name="SerShortDes", columnDefinition="VARCHAR(max) NOT NULL")
-    private String SerShortDes;
-    @Column(name="SerImage" ,columnDefinition = "VARCHAR(max) NOT NULL")
+    @Column(name="SerImage")
     private String SerImage;
     @Column(name="Status")
     private boolean Status;
     
     @OneToMany(mappedBy = "serviceEntity", fetch = FetchType.LAZY)
-//   @JsonIgnore
+   @JsonIgnore
     private List<bookingDetailEntity> bookingDetailEntitys;
 
     public serviceEntity() {
     }
 
-    public serviceEntity(String SerName, String SerDes, String SerShortDes, String SerImage, boolean Status, List<bookingDetailEntity> bookingDetailEntitys) {
+    public serviceEntity(String SerName, String SerDes, String SerImage, boolean Status) {
         this.SerName = SerName;
         this.SerDes = SerDes;
-        this.SerShortDes = SerShortDes;
         this.SerImage = SerImage;
         this.Status = Status;
-        this.bookingDetailEntitys = bookingDetailEntitys;
     }
 
     public Long getSerID() {
@@ -86,14 +82,6 @@ public class serviceEntity {
         this.SerDes = SerDes;
     }
 
-    public String getSerShortDes() {
-        return SerShortDes;
-    }
-
-    public void setSerShortDes(String SerShortDes) {
-        this.SerShortDes = SerShortDes;
-    }
-
     public String getSerImage() {
         return SerImage;
     }
@@ -118,4 +106,5 @@ public class serviceEntity {
         this.bookingDetailEntitys = bookingDetailEntitys;
     }
 
+    
 }

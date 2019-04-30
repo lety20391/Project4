@@ -25,7 +25,7 @@ import javax.persistence.Table;
  * @author Dat Le
  */
 @Entity
-@Table(name="tbPet")
+@Table(name="petEntity")
 @NamedQueries
         ({
             @NamedQuery(name="pet.findAll",query = "SELECT p FROM PetEntity p"),
@@ -53,13 +53,12 @@ public class PetEntity {
     
     @Column(name="dob")
     private Date PetDOB;
-//    
-//    @Column(name="UserOwner")
-//    private Long UserID;
-//    
+    
+    @Column(name="UserOwner")
+    private Long UserID;
+    
     @OneToMany(mappedBy = "petEntity", fetch = FetchType.EAGER)
     private List<DatingDetailEntity> listDatingDetail;
-    
     
     @ManyToOne
     @JoinColumn(name = "UserOwner_ID")
@@ -143,14 +142,14 @@ public class PetEntity {
     public void setListDatingDetail(List<DatingDetailEntity> listDatingDetail) {
         this.listDatingDetail = listDatingDetail;
     }
-//
-//    public Long getUserID() {
-//        return UserID;
-//    }
-//
-//    public void setUserID(Long UserID) {
-//        this.UserID = UserID;
-//    }
+
+    public Long getUserID() {
+        return UserID;
+    }
+
+    public void setUserID(Long UserID) {
+        this.UserID = UserID;
+    }
 
 //    public userEntity getUserEntity() {
 //        return userEntity;
