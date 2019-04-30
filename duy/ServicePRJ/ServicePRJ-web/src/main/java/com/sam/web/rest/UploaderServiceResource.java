@@ -23,6 +23,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import javax.ws.rs.OPTIONS;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
 
@@ -36,23 +37,24 @@ import javax.ws.rs.core.Response;
 public class UploaderServiceResource {
     @Context
     private UriInfo context;
-    private static final String UPLOAD_FOLDER = "e:/uploadedFiles/";
+    private String UPLOAD_FOLDER = "e:/uploadedFiles/";
     public UploaderServiceResource() {
     }  
     
     @OPTIONS
-    @Path("file")
-    public Response justResponse(){
+    @Path("/file/{code}")
+    public Response justResponse(@PathParam("code") String code){
         return Response.status(200).entity("OK Go").build();
     }
     
     @POST
-    @Path("file")
+    @Path("/file/{code}")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response uploadFile(
                     @FormDataParam("file") InputStream uploadedInputStream,
-                    @FormDataParam("file") FormDataContentDisposition fileDetail) {
-            System.out.println("---uploadFile: processing-----");
+                    @FormDataParam("file") FormDataContentDisposition fileDetail,
+                    @PathParam("code") String code) {
+            System.out.println("---uploadFile: processing-----" + code);
             // check if all form parameters are provided
             if (uploadedInputStream == null || fileDetail == null){        
                     System.out.println("-------Invalid form data-------");
@@ -61,6 +63,7 @@ public class UploaderServiceResource {
             // create our destination folder, if it not exists
             try {
                     System.out.println("----Create folder uploadedFiles------");
+                    UPLOAD_FOLDER += code + "/";
                     createFolderIfNotExists(UPLOAD_FOLDER);
             } catch (SecurityException se) {
                     System.out.println("----Cannot create folder on server----");
