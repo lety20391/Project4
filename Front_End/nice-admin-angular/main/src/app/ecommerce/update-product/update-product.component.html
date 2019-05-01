@@ -5,7 +5,7 @@
                 <h4 class="card-title">Form update Product</h4>
                 <h6 class="card-subtitle">This is the form update page for Admin
                 </h6>
-                <form #heroForm="ngForm">
+                <form #productForm="ngForm">
                     <div [hidden]="heroForm.submitted">
 
                         <div class="form-group">
@@ -91,8 +91,17 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-danger" [disabled]="heroForm.invalid">Update</button>
-                        <button type="button" class="btn btn-inverse" (click)="heroForm.resetForm({})">Reset</button>
+                        <div class="form-group">
+                            <label>Image upload</label>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Upload</span>
+                                <input type="file" class="btn">
+                            </div>
+
+                        </div>
+
+                        <button type="submit" class="btn btn-danger" [disabled]="productForm.invalid">Update</button>
+                        <button type="button" class="btn btn-inverse" (click)="productForm.resetForm({})">Reset</button>
 
                     </div>
                     <div class="submitted-message" *ngIf="heroForm.submitted">
