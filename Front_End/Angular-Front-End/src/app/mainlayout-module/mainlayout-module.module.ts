@@ -25,7 +25,7 @@ import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { LoginComponent } from '../login-module/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { CartModuleModule } from '../cart-module/cart-module.module';
-
+import { PetModuleModule } from '../pet-module/pet-module.module';
 
 @NgModule({
   declarations: [
@@ -56,7 +56,8 @@ import { CartModuleModule } from '../cart-module/cart-module.module';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    CartModuleModule
+    CartModuleModule,
+    PetModuleModule
   ],
   exports: [
     MainLayoutComponent
