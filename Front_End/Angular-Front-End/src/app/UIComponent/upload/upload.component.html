@@ -14,7 +14,9 @@
 
 <mat-file-upload-queue #fileUploadQueue
     [fileAlias]="'file'"
-    [httpUrl]="finalUrl">
+    [httpUrl]="finalUrl"
+    [httpRequestHeaders] = 'requestHeader'
+    >
 
     <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
 </mat-file-upload-queue>

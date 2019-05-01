@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 
 @Component({
@@ -10,6 +10,7 @@ import {Observable, of} from 'rxjs';
 export class UploadComponent implements OnInit {
 
   @Input() finalUrl: string;
+  @Input() requestHeader: HttpHeaders ;
 
   constructor(
     private http: HttpClient

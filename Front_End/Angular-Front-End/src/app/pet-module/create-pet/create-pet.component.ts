@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UploadComponent } from '../../UIComponent/upload/upload.component';
 import { listUrlAPI } from '../../listUrlAPI';
 import { UrlAPIEntity } from '../../UrlAPIEntity';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-create-pet',
@@ -12,9 +13,11 @@ export class CreatePetComponent implements OnInit {
   uploadUrl = 'http://localhost:34828/ServicePRJ-web/';
   UrlEntity: UrlAPIEntity;
   inputID = '';
+  jwtHeader = new HttpHeaders().set("Content-Type", "multipart/form-data");
   constructor() { }
 
   ngOnInit() {
+    this.getUrl(5);
   }
 
   getUrl(code: string): void{
