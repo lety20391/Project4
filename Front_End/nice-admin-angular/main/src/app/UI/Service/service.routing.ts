@@ -10,8 +10,8 @@ export const ServiceRoutes: Routes = [
         path: 'services',
         component: ServiceComponentComponent,
         data: {
-          title: 'Service',
-          urls: [{ title: 'Dashboard', url: '/dashboard' },{ title: 'Services', url: '/service/services' }]
+          title: 'Service list',
+          urls: [{ title: 'Dashboard', url: '/dashboard' },{ title: 'Service list', url: '/service/services' }]
         }
       },
       {
@@ -20,6 +20,14 @@ export const ServiceRoutes: Routes = [
         data: {
           title: 'Booking',
           urls: [{ title: 'Dashboard', url: '/dashboard' },{ title: 'Bookings', url: '/service/services' }]
+        }
+      },
+      {
+        path: 'services/:id',
+        component: ServiceComponentComponent,
+        data: {
+          title: 'Service Detail',
+          urls: [{ title: 'Dashboard', url: '/dashboard' },{ title: 'Service list', url: '/service/services' }]
         }
       }
 
