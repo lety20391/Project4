@@ -17,7 +17,7 @@ export class CreatePetComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.getUrl(5);
+    this.getUrl('5');
   }
 
   getUrl(code: string): void{
