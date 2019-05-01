@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ProductEntity} from '../product/ProductEntity';
 
 @Component({
   selector: 'app-add-product',
