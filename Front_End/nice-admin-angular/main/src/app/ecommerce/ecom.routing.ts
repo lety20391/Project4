@@ -11,6 +11,7 @@ import { ListCategoryComponent } from './list-category/list-category.component';
 import { CateDetailComponent } from './cate-detail/cate-detail.component';
 import {UpdateCateComponent} from './update-cate/update-cate.component';
 import { AddCateComponent } from './add-cate/add-cate.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 export const EcomRoutes: Routes = [
   {
@@ -123,6 +124,14 @@ export const EcomRoutes: Routes = [
         component: OrderComponent,
         data: {
           title: 'Orders',
+          urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Orders' }]
+        }
+      },
+      {
+        path: 'addProduct',
+        component: AddProductComponent,
+        data: {
+          title: 'Add New Product',
           urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Orders' }]
         }
       },
