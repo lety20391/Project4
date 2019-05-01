@@ -6,7 +6,7 @@ import { ProductEntity } from './ProductEntity';
 })
 export class ProductComponent {
 
-  listProduct: productEntity[] = [
+  listProduct: ProductEntity[] = [
     {
       ProID: 1,
       ProName: 'Pro1',
