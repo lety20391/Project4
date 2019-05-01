@@ -3,21 +3,26 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <h3 class="card-title">{{detail.serName}}</h3>
+                <h2 class="card-title">{{detail.serName}}</h2>
+                  <h6 class="card-subtitle">{{detail.serShortDes}}</h6>
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-6">
                         <div class="white-box text-center">
-                            <img src="assets/images/gallery/chair.jpg" class="img-responsive"> </div>
+                            <img src="{{detail.serImage}}" class="img-fluid"> </div>
                     </div>
                     <div class="col-lg-9 col-md-9 col-sm-6">
-                        <h3 class="box-title m-t-40">Product description</h3>
-                        <p>{{detail.serDes}}</p>
+                        <h2 class="box-title m-t-40">Service description</h2>
+                        <h4>{{detail.serDes}}</h4>
                         <!-- <h2 class="m-t-40">$153
                             <small class="text-success">(36% off)</small>
                         </h2> -->
-                        <div>
-                        <button class="btn btn-info btn-rounded btn-md" data-toggle="tooltip" title="" data-original-title="Delete">  Edit  </button>
-                        <button class="btn btn-danger btn-rounded btn-md"> Delete </button>
+                        <div class="row">
+                        <div class="col-sm-2">
+                        <a href="service/edit/{{detail.serID}}"> <button class="btn btn-info btn-rounded btn-md btn-block" data-toggle="tooltip" title="" data-original-title="Delete" > Edit </button> </a>
+                        </div>
+                        <div class="col-sm-2">
+                        <button class="btn btn-danger btn-rounded btn-md  btn-block"> Delete </button>
+                        </div>
                         </div>
                         <!-- <h3 class="box-title m-t-40">Key Highlights</h3>
                         <ul class="list-unstyled">

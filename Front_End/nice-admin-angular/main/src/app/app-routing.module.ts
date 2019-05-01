@@ -20,6 +20,10 @@ export const Approutes: Routes = [
         loadChildren: './UI/Service/service-module.module#ServiceModuleModule'
       },
       {
+        path:'',
+        loadChildren: './UI/Service-edit/service-edit.module#ServiceEditModule'
+      },
+      {
         path: '',
         loadChildren: './UI/Service-detail/service-detail.module#ServiceDetailModule'
       },

@@ -7,7 +7,7 @@ export const ServiceDetailRoutes: Routes = [
     path: '',
     children: [
       {
-        path: 'detail/:id',
+        path: 'service/detail/:id',
         component: ServiceDetailComponent,
         data: {
           title: 'Service Detail',
