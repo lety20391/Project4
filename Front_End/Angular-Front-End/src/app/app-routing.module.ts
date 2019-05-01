@@ -10,10 +10,13 @@ import { RegisterComponent } from './UIComponent/register/register.component';
 import { LoginComponent } from './UIComponent/login/login.component';
 import { GalleryComponent } from './UIComponent/gallery/gallery.component';
 import { ProductSingleComponent } from './UIComponent/product-single/product-single.component';
+import { TopsellerComponent } from './UIComponent/topseller/topseller.component';
+import { SearchComponent } from './UIComponent/search/search.component';
 import {SerComponent} from './service-module/ser.component';
 import {ServiceDetailComponent} from './service-detail-module/service-detail/service-detail.component';
 import { AppointmentComponent } from './UIComponent/appointment/appointment.component';
 import { ShopingCartComponent } from './cart-module/shoping-cart/shoping-cart.component';
+import { AboutusComponent } from './UIComponent/aboutus/aboutus.component';
 
 const routes: Routes = [
   {path: '', redirectTo: "/home", pathMatch: 'full'},
@@ -25,10 +28,13 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'gallery', component: GalleryComponent},
   {path: 'productsingle', component: ProductSingleComponent},
+  {path: 'topseller', component: TopsellerComponent},
+  {path: 'search', component: SearchComponent},
   {path: 'services', component: SerComponent},
   {path: 'services/:id', component: ServiceDetailComponent},
   {path: 'cart', component: ShopingCartComponent},
-  {path: 'appointment', component: AppointmentComponent}
+  {path: 'appointment', component: AppointmentComponent},
+  {path: 'aboutus', component: AboutusComponent}
 ];
 
 @NgModule({

@@ -31,11 +31,14 @@ import { RegisterComponent } from './UIComponent/register/register.component';
 import { LoginComponent } from './UIComponent/login/login.component';
 import { GalleryComponent } from './UIComponent/gallery/gallery.component';
 import { ProductSingleComponent } from './UIComponent/product-single/product-single.component';
+import { TopsellerComponent } from './UIComponent/topseller/topseller.component';
+import { SearchComponent } from './UIComponent/search/search.component';
 import { ServiceMockupComponent } from './UIComponent/service-mockup/service-mockup/service-mockup.component';
 import { SerComponent} from './service-module/ser.component';
 import { ServiceDetailComponent } from './service-detail-module/service-detail/service-detail.component';
 import { ServiceCateComponent } from './UIComponent/service-cate-mockup/service-cate/service-cate.component';
 import { AppointmentComponent } from './UIComponent/appointment/appointment.component';
+import { AboutusComponent } from './UIComponent/aboutus/aboutus.component';
 // import { ServiceDetailModule } from './service-detail-module/service-detail.module';
 
 
@@ -48,11 +51,14 @@ import { AppointmentComponent } from './UIComponent/appointment/appointment.comp
     LoginComponent,
     GalleryComponent,
     ProductSingleComponent,
+    TopsellerComponent,
+    SearchComponent,
     SerComponent,
     ServiceMockupComponent,
     ServiceDetailComponent,
     ServiceCateComponent,
-    AppointmentComponent
+    AppointmentComponent,
+    AboutusComponent
     // LoadPageComponent,
     // BackTopSectionComponent,
     // HeaderComponent,
