@@ -11,6 +11,9 @@ import { ProductEntity } from '../product/ProductEntity';
 })
 export class UpdateProductComponent implements OnInit {
 
+    powers = ['Really Smart', 'Super Flexible', 'Weather Changer'];
+
+    hero = { name: 'Dr.', alterEgo: 'Dr. What', power: this.powers[0] };
   detailedProduct: ProductEntity = {
         ProID: 1,
         ProName: 'Product2',
