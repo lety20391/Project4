@@ -16,6 +16,7 @@ import { NgbdtimepickerBasicComponent } from './timepicker/timepicker.component'
 import { NgbdtypeheadBasicComponent } from './typehead/typehead.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import {UserComponent} from './user/user.component';
+import { DetailUserComponent } from './detail-user/detail-user.component';
 
 export const ComponentsRoutes: Routes = [
   {
@@ -194,6 +195,18 @@ export const ComponentsRoutes: Routes = [
         component: UserComponent,
         data: {
           title: 'List User',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'ngComponent' },
+            { title: 'Typehead' }
+          ]
+        }
+      },
+      {
+        path: 'detailUser/:id',
+        component: DetailUserComponent,
+        data: {
+          title: 'Detail User',
           urls: [
             { title: 'Dashboard', url: '/dashboard' },
             { title: 'ngComponent' },

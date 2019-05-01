@@ -24,6 +24,7 @@ import { NgbdtypeheadBasicComponent } from './typehead/typehead.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { CardsComponent } from './card/card.component';
 import {UserComponent} from './user/user.component';
+import { DetailUserComponent } from './detail-user/detail-user.component';
 
 @NgModule({
   imports: [
@@ -51,7 +52,8 @@ import {UserComponent} from './user/user.component';
     NgbdtypeheadBasicComponent,
     ButtonsComponent,
     CardsComponent,
-    UserComponent
+    UserComponent,
+    DetailUserComponent
   ]
 })
 export class ComponentsModule { }
