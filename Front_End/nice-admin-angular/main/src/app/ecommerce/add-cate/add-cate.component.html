@@ -1,0 +1,41 @@
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title"> Create New Category Form</h4>
+                <h6 class="card-subtitle">This is the Create Category page for Admin
+                </h6>
+                <form #productForm="ngForm">
+                    <div [hidden]="productForm.submitted">
+
+                        <div class="form-group">
+                            <label for="ID">Category ID</label>
+                            <input id="ID" name="ID" class="form-control" type ="number" [(ngModel)]="detailedCategory.CateID">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Category Name</label>
+                            <input id="name" name="name" class="form-control" required minlength="3" maxlength="50" [(ngModel)]="detailedCategory.CateName" #name="ngModel">
+                            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+                                <div *ngIf="name.errors.required"> Name is required. </div>
+                                <div *ngIf="name.errors.minlength"> Name must be at least 3 characters long. </div>
+                                <div *ngIf="name.errors.maxlength"> Name can not greater than 50 characters long. </div>
+                                <!-- <div *ngIf="name.errors.forbiddenName"> Name cannot be Bob. </div> -->
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-info btn-rounded" [disabled]="productForm.invalid">Create New</button>
+                        <button type="button" class="btn btn-inverse btn-rounded" (click)="productForm.resetForm({})">Reset</button>
+
+                    </div>
+                    <div class="submitted-message" *ngIf="productForm.submitted">
+                        <p>You've submitted your hero, {{ productForm.value.name }}!</p>
+                        <button class="btn btn-inverse" (click)="productForm.resetForm({})">Add new hero</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

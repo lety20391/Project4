@@ -10,6 +10,7 @@ import {UpdateProductComponent} from './update-product/update-product.component'
 import { ListCategoryComponent } from './list-category/list-category.component';
 import { CateDetailComponent } from './cate-detail/cate-detail.component';
 import {UpdateCateComponent} from './update-cate/update-cate.component';
+import { AddCateComponent } from './add-cate/add-cate.component';
 
 export const EcomRoutes: Routes = [
   {
@@ -75,6 +76,18 @@ export const EcomRoutes: Routes = [
         component: ListCategoryComponent,
         data: {
           title: 'category list',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'category list' }
+          ]
+        }
+      },
+
+      {
+        path: 'addCategory',
+        component: AddCateComponent,
+        data: {
+          title: 'Add new Category',
           urls: [
             { title: 'Dashboard', url: '/dashboard' },
             { title: 'category list' }
