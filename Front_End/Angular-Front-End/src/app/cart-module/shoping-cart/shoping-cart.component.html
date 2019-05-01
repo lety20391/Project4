@@ -7,7 +7,7 @@
     <div class="container">
 <!-- list bought product -->
       <div id="page-content" class="block">
-                          
+
 
                           <!-- Invoice Block -->
                           <div class="block full">
@@ -16,11 +16,11 @@
                                   <div class="block-options pull-right">
                                       <div class="btn-group">
                                           <a href="javascript:void(0)" class="btn btn-primary" onclick="window.print();"><i class="fa fa-print"></i> Print</a>
-                                          <a href="javascript:void(0)" class="btn btn-primary" data-toggle="tooltip" title="Save"><i class="fa fa-floppy-o"></i></a>
+                                          <!-- <a href="javascript:void(0)" class="btn btn-primary" data-toggle="tooltip" title="Save"><i class="fa fa-floppy-o"></i></a> -->
                                           <a href="javascript:void(0)" class="btn btn-primary" data-toggle="tooltip" title="Delete"><i class="fa fa-times"></i></a>
                                       </div>
                                   </div>
-                                  <h2><i class="fa fa-file-text-o"></i> #INV001528</h2>
+                                  <h2><i class="fa fa-file-text-o"></i> #INV001528: {{listOrderDetail.length}} items</h2>
                               </div>
                               <!-- END Invoice Title -->
 
@@ -29,7 +29,7 @@
                               <div class="row gutter30 block-section">
                                   <!-- Company Info -->
                                   <div class="col-sm-6">
-                                      <h3 class="sub-header"><i class="fa fa-suitcase"></i> Company Inc.</h3>
+                                      <h3 class="sub-header"><i class="fa fa-suitcase"></i> Pet Paradise.</h3>
                                       <address>
                                           <strong>Name</strong><br>
                                           Address<br>
@@ -43,7 +43,7 @@
 
                                   <!-- Client Info -->
                                   <div class="col-sm-6">
-                                      <h3 class="sub-header text-right">Client <i class="fa fa-user"></i></h3>
+                                      <h3 class="sub-header text-right">Your Info <i class="fa fa-user"></i></h3>
                                       <address class="text-right">
                                           <strong><i class="fa fa-suitcase"></i> Name</strong><br>
                                           Address<br>
@@ -63,6 +63,7 @@
                                       <thead>
                                           <tr>
                                               <th></th>
+                                              <th class="text-center">Image</th>
                                               <th style="width: 70%;">Product</th>
                                               <th class="text-center">Quantity</th>
                                               <th class="text-center">Unit Price</th>
@@ -70,65 +71,35 @@
                                           </tr>
                                       </thead>
                                       <tbody>
-                                          <tr>
+                                          <tr *ngFor='let item of listOrderDetail'>
                                               <td class="text-center">1</td>
+                                              <td class="text-center"><img src="assets/images/productSingle.jpg" style="width:30px;"/></td>
                                               <td>
-                                                  <h4>Logo Design</h4>
-                                                  <span class="label label-info"><i class="fa fa-clock-o"></i> 2 weeks</span>
-                                                  <span class="label label-success"><i class="fa fa-angle-right"></i> Revisions Available</span>
+                                                  <h4>{{item.productEntity.ProName}}</h4>
+                                                  <p>{{item.productEntity.ProDes}}</p>
+                                                  <!-- <span class="label label-info"><i class="fa fa-clock-o"></i> 2 weeks</span>
+                                                  <span class="label label-success"><i class="fa fa-angle-right"></i> Revisions Available</span> -->
                                               </td>
-                                              <td class="text-center"><span class="badge">1</span></td>
-                                              <td class="text-center"><span class="label label-default">$ 1000</span></td>
-                                              <td class="text-right"><span class="label label-primary">$ 1000</span></td>
-                                          </tr>
-                                          <tr>
-                                              <td class="text-center">2</td>
-                                              <td>
-                                                  <h4>Website Design</h4>
-                                                  <span class="label label-info"><i class="fa fa-clock-o"></i> 3 weeks</span>
-                                                  <span class="label label-success"><i class="fa fa-angle-right"></i> Revisions Available</span>
-                                              </td>
-                                              <td class="text-center"><span class="badge">1</span></td>
-                                              <td class="text-center"><span class="label label-default">$ 1000</span></td>
-                                              <td class="text-right"><span class="label label-primary">$ 1000</span></td>
-                                          </tr>
-                                          <tr>
-                                              <td class="text-center">3</td>
-                                              <td>
-                                                  <h4>Application Design</h4>
-                                                  <span class="label label-info"><i class="fa fa-clock-o"></i> 2 weeks</span>
-                                                  <span class="label label-success"><i class="fa fa-angle-right"></i> Android</span>
-                                              </td>
-                                              <td class="text-center"><span class="badge">1</span></td>
-                                              <td class="text-center"><span class="label label-default">$ 1000</span></td>
-                                              <td class="text-right"><span class="label label-primary">$ 1000</span></td>
-                                          </tr>
-                                          <tr>
-                                              <td class="text-center">4</td>
-                                              <td>
-                                                  <h4>Application Marketing</h4>
-                                                  <span class="label label-info"><i class="fa fa-clock-o"></i> 2 months</span>
-                                                  <span class="label label-success"><i class="fa fa-angle-right"></i> Social + Ads</span>
-                                              </td>
-                                              <td class="text-center"><span class="badge">1</span></td>
-                                              <td class="text-center"><span class="label label-default">$ 1000</span></td>
-                                              <td class="text-right"><span class="label label-primary">$ 1000</span></td>
+                                              <td class="text-center"><span class="badge">{{item.Qty}}</span></td>
+                                              <td class="text-center"><span class="label label-default">$ {{item.productEntity.ProPrice}}</span></td>
+                                              <td class="text-right"><span class="label label-primary">$ {{item.productEntity.ProPrice * item.Qty}}</span></td>
+
                                           </tr>
                                           <tr class="active">
-                                              <td colspan="4" class="text-right">SUBTOTAL</td>
-                                              <td class="text-right">$ 4000</td>
+                                              <td colspan="5" class="text-right">SUBTOTAL</td>
+                                              <td class="text-right">$ 130</td>
                                           </tr>
                                           <tr class="active">
-                                              <td colspan="4" class="text-right">VAT RATE</td>
-                                              <td class="text-right">20%</td>
+                                              <td colspan="5" class="text-right">VAT RATE</td>
+                                              <td class="text-right">10%</td>
                                           </tr>
                                           <tr class="active">
-                                              <td colspan="4" class="text-right">VAT DUE</td>
-                                              <td class="text-right">$ 800</td>
+                                              <td colspan="5" class="text-right">VAT DUE</td>
+                                              <td class="text-right">$ 13</td>
                                           </tr>
                                           <tr class="success">
-                                              <td colspan="4" class="text-right"><strong>TOTAL DUE</strong></td>
-                                              <td class="text-right"><span class="label label-success">$ 4800</span></td>
+                                              <td colspan="5" class="text-right"><strong>TOTAL DUE</strong></td>
+                                              <td class="text-right"><span class="label label-success">$ 143</span></td>
                                           </tr>
                                       </tbody>
                                   </table>
@@ -136,7 +107,7 @@
                               <!-- END Table -->
 
                               <div class="clearfix">
-                                  <a href="javascript:void(0)" class="btn btn-lg btn-success pull-right"><i class="fa fa-check"></i> Send Invoice</a>
+                                  <a href="javascript:void(0)" class="btn btn-lg btn-primary pull-right"><i class="fa fa-check"></i>CheckOut</a>
                               </div>
                               <!-- END Invoice Content -->
                           </div>

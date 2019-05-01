@@ -3,3 +3,19 @@
 @import url("../../../assets/admin/themes.css");
 @import url("../../../assets/admin/plugins.css");
 @import url("../../../assets/admin/bootstrap.css");
+
+.btn-primary {
+  background-color:#ffc107;
+}
+
+.btn-primary:hover{
+    background-color: #f2b149;
+}
+
+.label-primary{
+  background-color: #ffc107;
+}
+
+#page-content {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
