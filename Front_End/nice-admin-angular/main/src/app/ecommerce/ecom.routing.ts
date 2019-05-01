@@ -6,6 +6,7 @@ import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
 import { OrderComponent } from './orders/orders.component';
 import { ProductComponent } from './product/product.component';
+import {UpdateProductComponent} from './update-product/update-product.component';
 
 export const EcomRoutes: Routes = [
   {
@@ -38,6 +39,17 @@ export const EcomRoutes: Routes = [
           urls: [
             { title: 'Dashboard', url: '/dashboard' },
             { title: 'Product Details' }
+          ]
+        }
+      },
+      {
+        path: 'updateProduct/:id',
+        component: UpdateProductComponent,
+        data: {
+          title: 'Product update',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'Product Update' }
           ]
         }
       },
