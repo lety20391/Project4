@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { PetMockupComponent } from './pet-mockup/pet-mockup.component';
 import { ListPetComponent } from './list-pet/list-pet.component';
 import { ListDatingComponent } from './list-dating/list-dating.component';
+import { PetDetailComponent } from './pet-detail/pet-detail.component';
 
 @NgModule({
   declarations: [
     PetMockupComponent,
     ListPetComponent,
-    ListDatingComponent
+    ListDatingComponent,
+    PetDetailComponent
   ],
   imports: [
     CommonModule
@@ -16,7 +18,8 @@ import { ListDatingComponent } from './list-dating/list-dating.component';
   exports:[
     PetMockupComponent,
     ListPetComponent,
-    ListDatingComponent
+    ListDatingComponent,
+    PetDetailComponent
   ]
 })
 export class PetModuleModule { }

@@ -19,6 +19,7 @@ import { ShopingCartComponent } from './cart-module/shoping-cart/shoping-cart.co
 import { AboutusComponent } from './UIComponent/aboutus/aboutus.component';
 import { ListPetComponent } from './pet-module/list-pet/list-pet.component';
 import { ListDatingComponent } from './pet-module/list-dating/list-dating.component';
+import { PetDetailComponent } from './pet-module/pet-detail/pet-detail.component';
 
 const routes: Routes = [
   {path: '', redirectTo: "/home", pathMatch: 'full'},
@@ -38,7 +39,8 @@ const routes: Routes = [
   {path: 'appointment', component: AppointmentComponent},
   {path: 'aboutus', component: AboutusComponent},
   {path: 'listPet', component: ListPetComponent},
-  {path: 'listDating', component: ListDatingComponent}
+  {path: 'listDating', component: ListDatingComponent},
+  {path: 'petDetail/:id', component: PetDetailComponent},
 ];
 
 @NgModule({
