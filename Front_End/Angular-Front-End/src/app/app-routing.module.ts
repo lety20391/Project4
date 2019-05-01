@@ -18,6 +18,7 @@ import { AppointmentComponent } from './UIComponent/appointment/appointment.comp
 import { ShopingCartComponent } from './cart-module/shoping-cart/shoping-cart.component';
 import { AboutusComponent } from './UIComponent/aboutus/aboutus.component';
 import { ListPetComponent } from './pet-module/list-pet/list-pet.component';
+import { ListDatingComponent } from './pet-module/list-dating/list-dating.component';
 
 const routes: Routes = [
   {path: '', redirectTo: "/home", pathMatch: 'full'},
@@ -36,7 +37,8 @@ const routes: Routes = [
   {path: 'cart', component: ShopingCartComponent},
   {path: 'appointment', component: AppointmentComponent},
   {path: 'aboutus', component: AboutusComponent},
-  {path: 'listPet', component: ListPetComponent}
+  {path: 'listPet', component: ListPetComponent},
+  {path: 'listDating', component: ListDatingComponent}
 ];
 
 @NgModule({
