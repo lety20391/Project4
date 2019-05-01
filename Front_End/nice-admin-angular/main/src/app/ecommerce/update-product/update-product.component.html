@@ -6,7 +6,7 @@
                 <h6 class="card-subtitle">This is the form update page for Admin
                 </h6>
                 <form #productForm="ngForm">
-                    <div [hidden]="heroForm.submitted">
+                    <div [hidden]="productForm.submitted">
 
                         <div class="form-group">
                             <label for="ID">ID</label>
@@ -104,9 +104,9 @@
                         <button type="button" class="btn btn-inverse" (click)="productForm.resetForm({})">Reset</button>
 
                     </div>
-                    <div class="submitted-message" *ngIf="heroForm.submitted">
-                        <p>You've submitted your hero, {{ heroForm.value.name }}!</p>
-                        <button class="btn btn-inverse" (click)="heroForm.resetForm({})">Add new hero</button>
+                    <div class="submitted-message" *ngIf="productForm.submitted">
+                        <p>You've submitted your hero, {{ productForm.value.name }}!</p>
+                        <button class="btn btn-inverse" (click)="productForm.resetForm({})">Add new hero</button>
                     </div>
                 </form>
             </div>
