@@ -22,7 +22,10 @@ export class ShopComponent implements OnInit {
       ProColor: 'red',
       ProImage: '',
       Status: true,
-      Cate_ID: 1,
+      cateEntity: {
+                    CateID: 1,
+                    CateName: 'Category1'
+                  }
     },
     {
       ProID: 2,
@@ -32,7 +35,10 @@ export class ShopComponent implements OnInit {
       ProColor: 'shit',
       ProImage: '',
       Status: true,
-      Cate_ID: 2,
+      cateEntity: {
+                    CateID: 2,
+                    CateName: 'Category2'
+                  }
     }
   ];
 

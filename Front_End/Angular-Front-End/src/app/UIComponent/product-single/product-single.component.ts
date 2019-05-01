@@ -18,7 +18,10 @@ export class ProductSingleComponent implements OnInit {
     ProColor: 'red',
     ProImage: '',
     Status: true,
-    Cate_ID: 1,
+    cateEntity: {
+                  CateID: 1,
+                  CateName: 'CateGory1'
+                }
   };
 
   constructor(

@@ -1,3 +1,4 @@
+import { CategoryEntity  } from '../shop-module/CategoryEntity';
 export class productEntity{
   ProID: number;
   ProName: string;
@@ -6,5 +7,5 @@ export class productEntity{
   ProColor: string;
   ProImage: string;
   Status: boolean;
-  Cate_ID: number;
+  cateEntity: CategoryEntity;
 }
