@@ -7,6 +7,8 @@ import { EditComponent } from './edit/edit.component';
 import { OrderComponent } from './orders/orders.component';
 import { ProductComponent } from './product/product.component';
 import {UpdateProductComponent} from './update-product/update-product.component';
+import { ListCategoryComponent } from './list-category/list-category.component';
+import { CateDetailComponent } from './cate-detail/cate-detail.component';
 
 export const EcomRoutes: Routes = [
   {
@@ -42,6 +44,7 @@ export const EcomRoutes: Routes = [
           ]
         }
       },
+
       {
         path: 'updateProduct/:id',
         component: UpdateProductComponent,
@@ -53,6 +56,31 @@ export const EcomRoutes: Routes = [
           ]
         }
       },
+
+      {
+        path: 'listCategory',
+        component: ListCategoryComponent,
+        data: {
+          title: 'category list',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'category list' }
+          ]
+        }
+      },
+      {
+        path: 'detailCategory/:id',
+        component: CateDetailComponent,
+        data: {
+          title: 'category list',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'category list' }
+          ]
+        }
+      },
+
+
       {
         path: 'edit',
         component: EditComponent,
