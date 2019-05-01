@@ -32,9 +32,9 @@
 						<div class="single-shop">
 
 							<p class="title-heading text-secondary mb-1">
-								Leather Belt
+								{{detailedProduct.ProName}}
 							</p>
-							<div class="price">$12</div>
+							<div class="price">${{detailedProduct.ProPrice}}</div>
 							<div class="rating">
 								<span></span>
 								<span></span>
@@ -43,11 +43,11 @@
 								<span></span>
 							</div>
 
-							<p class="mt-4">Soft and Comfort Velvet Cotton Webbing Dog Leash Collar,with Premium Adjustable Buckle Clip</p>
+							<p class="mt-4">{{detailedProduct.ProDes}}</p>
 
 							<a href="#" class="btn btn-primary mt-4 mb-4">Buy Now</a>
 
-							<p>SKU : N/A <br>Categories : Outfit <br>Product ID : 01254</p>
+							<p>SKU : N/A <br>Categories : {{detailedProduct.Cate_ID}} <br>Product ID : 01254</p>
 							<div class="spacer-50"></div>
 
 

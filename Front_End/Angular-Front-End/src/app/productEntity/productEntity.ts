@@ -6,5 +6,5 @@ export class productEntity{
   ProColor: string;
   ProImage: string;
   Status: boolean;
-  Cate_ID: string;
+  Cate_ID: number;
 }

@@ -30,7 +30,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'gallery', component: GalleryComponent},
-  {path: 'productsingle', component: ProductSingleComponent},
+  {path: 'productsingle/:id', component: ProductSingleComponent},
   {path: 'topseller', component: TopsellerComponent},
   {path: 'search', component: SearchComponent},
   {path: 'services', component: SerComponent},

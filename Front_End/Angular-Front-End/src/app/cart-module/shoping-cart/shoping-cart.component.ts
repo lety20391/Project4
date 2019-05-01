@@ -18,7 +18,7 @@ export class ShopingCartComponent implements OnInit {
     ProColor: 'Red',
     ProImage: '',
     Status: true,
-    Cate_ID: '1', },
+    Cate_ID: 1, },
     {
     ProID: 2,
     ProName: 'Pro2',
@@ -27,7 +27,7 @@ export class ShopingCartComponent implements OnInit {
     ProColor: 'Blue',
     ProImage: '',
     Status: true,
-    Cate_ID: '2', }
+    Cate_ID: 2, }
   ];
 
     listOrderDetail: OrderDetail [] = [
