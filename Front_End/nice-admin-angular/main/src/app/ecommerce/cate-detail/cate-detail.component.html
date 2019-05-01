@@ -1,3 +1,56 @@
 <p>
   cate-detail works!
 </p>
+<div class="row">
+    <!-- Column -->
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">{{detailedCategory.CateName}}</h3>
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="white-box text-center">
+                            <img src="assets/images/logo.png" class="img-responsive"> </div>
+                    </div>
+
+                    <div class="col-lg-9 col-md-9 col-sm-6">
+                        <h4 class="box-title m-t-40"> {{detailedCategory.CateName}} description</h4>
+
+                        <button class="btn btn-dark btn-rounded m-r-5" data-toggle="tooltip" title="" data-original-title="Add to cart">
+                            Delete
+                        </button>
+                        <a class="btn btn-primary btn-rounded" style ="color:white;" href="/ecom/updateProduct/{{detailedProduct.ProID}}"> Update </a>
+
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <h3 class="box-title m-t-40">General Info</h3>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td width="390">Brand</td>
+                                        <td> Stellar </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Suitable For</td>
+                                        <td> puppy, cats, rabbits,.. </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Care Instructions</td>
+                                        <td> oganic healthy food </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Finish Type</td>
+                                        <td> Matte </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Column -->
+</div>
