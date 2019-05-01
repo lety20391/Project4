@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { ProductEntity } from '../product/ProductEntity';
 
 @Component({
   templateUrl: 'details.component.html'
@@ -8,7 +9,19 @@ import { Location } from '@angular/common';
 
 export class DetailsComponent {
 
-
+      detailedProduct: ProductEntity = {
+            ProID: 1,
+            ProName: 'Product2',
+            ProDes: 'Product1 Description',
+            ProPrice: 12,
+            ProColor: 'red',
+            ProImage: '',
+            Status: true,
+            cateEntity: {
+                        CateID: 1,
+                        CateName: 'CateGory1'
+                      }
+        };
 
       constructor(
                   private route: ActivatedRoute,
