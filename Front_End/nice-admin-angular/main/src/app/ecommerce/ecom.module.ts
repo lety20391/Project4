@@ -19,6 +19,7 @@ import { UpdateCateComponent } from './update-cate/update-cate.component';
 import { AddCateComponent } from './add-cate/add-cate.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { ListPetComponent } from './list-pet/list-pet.component';
+import { AddPetComponent } from './add-pet/add-pet.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule.forChild(EcomRoutes), FormsModule, NgbModule],
@@ -35,7 +36,8 @@ import { ListPetComponent } from './list-pet/list-pet.component';
     UpdateCateComponent,
     AddCateComponent,
     AddProductComponent,
-    ListPetComponent
+    ListPetComponent,
+    AddPetComponent
   ]
 })
 export class EcomModule {}
