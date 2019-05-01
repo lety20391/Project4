@@ -4,12 +4,18 @@ import { Routes, RouterModule } from '@angular/router';
 import { FullComponent } from './layouts/full/full.component';
 import { BlankComponent } from './layouts/blank/blank.component';
 
+import { ServiceComponentComponent } from './UI/Service/service-component.component';
 export const Approutes: Routes = [
+
   {
     path: '',
     component: FullComponent,
     children: [
-      { path: '', redirectTo: '/dashboard/classic', pathMatch: 'full' },
+      { path: '', redirectTo: 'dashboard/classic', pathMatch: 'full' },
+      {
+        path: 'service',
+        loadChildren: './UI/Service/service-module.module#ServiceModuleModule'
+      },
       {
         path: 'dashboard',
         loadChildren: './dashboards/dashboard.module#DashboardModule'

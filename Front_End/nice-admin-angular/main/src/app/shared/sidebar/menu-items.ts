@@ -67,7 +67,7 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: [
       {
-        path: '',
+        path: '/service/services',
         title: 'Services',
         icon: ' icon-arrow-right-circle',
         class: '',
@@ -75,7 +75,7 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
       {
-        path: '',
+        path: 'service/booking',
         title: 'Booking Services',
         icon: ' icon-arrow-right-circle',
         class: '',
