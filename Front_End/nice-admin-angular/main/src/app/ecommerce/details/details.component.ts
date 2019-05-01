@@ -11,10 +11,10 @@ export class DetailsComponent {
 
       detailedProduct: ProductEntity = {
             ProID: 1,
-            ProName: 'Product2',
-            ProDes: 'Product1 Description',
+            ProName: 'Pink leather',
+            ProDes: 'real leather',
             ProPrice: 12,
-            ProColor: 'red',
+            ProColor: 'pink',
             ProImage: '',
             Status: true,
             cateEntity: {

@@ -9,8 +9,8 @@ export class ProductComponent {
   listProduct: ProductEntity[] = [
     {
       ProID: 1,
-      ProName: 'Pro1',
-      ProDes: 'Product1 Description',
+      ProName: 'pink belt',
+      ProDes: 'real leather',
       ProPrice: 12,
       ProColor: 'red',
       ProImage: '',
