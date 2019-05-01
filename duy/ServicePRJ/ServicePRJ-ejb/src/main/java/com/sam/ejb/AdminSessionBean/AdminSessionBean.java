@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sam.ejb.sessionbean;
+package com.sam.ejb.AdminSessionBean;
 
+import com.sam.ejb.entity.adminEntity;
 import com.sam.ejb.entity.userEntity;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -17,43 +18,39 @@ import javax.persistence.PersistenceUnit;
  * @author DuDu
  */
 @Stateless
-public class UserSessionBean implements UserSessionBeanLocal {
-
+public class AdminSessionBean implements AdminSessionBeanLocal {
     @PersistenceUnit(unitName = "ServiceDB")
     private EntityManagerFactory entityManagerFactory;
     private EntityManager em;
-
     @Override
-    public List<userEntity> listAll() {
+    public List<adminEntity> listAll() {
         em = entityManagerFactory.createEntityManager();
-        return em.createNamedQuery("u.findAll").getResultList();
+        return em.createNamedQuery("a.findAll").getResultList();
     }
 
     @Override
-    public userEntity addUser(userEntity user) {
+    public adminEntity addAdmin(adminEntity admin) {
         em = entityManagerFactory.createEntityManager();
-        em.persist(user);
-        return user;
+        em.persist(admin);
+        return admin;
     }
 
     @Override
-    public userEntity editUser(userEntity user) {
+    public adminEntity editAdmin(adminEntity admin) {
         em = entityManagerFactory.createEntityManager();
-        return em.merge(user);
+        return em.merge(admin);
     }
 
     @Override
-    public void deleteUser(Long id) {
+    public void deleteAdmin(Long id) {
         em = entityManagerFactory.createEntityManager();
-        em.remove(em.find(userEntity.class, id));
+        em.remove(em.find(adminEntity.class, id));
     }
 
     @Override
-    public userEntity findOne(Long id) {
+    public adminEntity findOne(Long id) {
         em = entityManagerFactory.createEntityManager();
-        return em.find(userEntity.class, id);
+        return em.find(adminEntity.class, id);
     }
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
 }
