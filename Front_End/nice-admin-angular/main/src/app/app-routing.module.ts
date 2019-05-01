@@ -8,7 +8,8 @@ export const Approutes: Routes = [
     {path: '',
     component: FullComponent,
     children: [
-      { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+
+      { path: '', redirectTo: '/dashboard/classic', pathMatch: 'full' },
 
       {
         path: 'dashboard',
@@ -61,17 +62,17 @@ export const Approutes: Routes = [
       }
     ]
   },
-  {
-    path: '',
-    component: BlankComponent,
-    children: [
-      {
-        path: 'authentication',
-        loadChildren:
-          './authentication/authentication.module#AuthenticationModule'
-      }
-    ]
-  },
+  // {
+  //   path: '',
+  //   component: BlankComponent,
+  //   children: [
+  //     {
+  //       path: 'authentication',
+  //       loadChildren:
+  //         './authentication/authentication.module#AuthenticationModule'
+  //     }
+  //   ]
+  // },
   {
     path: '**',
     redirectTo: '/authentication/404'

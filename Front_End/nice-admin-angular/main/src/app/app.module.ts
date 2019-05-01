@@ -25,8 +25,8 @@ import { SpinnerComponent } from './shared/spinner.component';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-import { ServiceModuleModule } from './UI/Service/service-module.module';
-import { ServiceDetailModule } from './UI/Service-detail/service-detail.module';
+// import { ServiceModuleModule } from './UI/Service/service-module.module';
+// import { ServiceDetailModule } from './UI/Service-detail/service-detail.module';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -56,8 +56,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     RouterModule.forRoot(Approutes),
     PerfectScrollbarModule,
     AgmCoreModule.forRoot({ apiKey: 'AIzaSyBUb3jDWJQ28vDJhuQZxkC0NXr_zycm8D0' }),
-    ServiceModuleModule,
-    ServiceDetailModule
+    // ServiceModuleModule,
+    // ServiceDetailModule
   ],
   providers: [
     {

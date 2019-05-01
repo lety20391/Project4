@@ -11,7 +11,7 @@ export const ServiceDetailRoutes: Routes = [
         component: ServiceDetailComponent,
         data: {
           title: 'Service Detail',
-          urls: [{ title: 'Dashboard', url: '/dashboard' },{ title: 'Service list', url: '/service/services' }]
+          urls: [{ title: 'Services', url: '/service/services' },{ title: 'Service detail', url: '' }]
         }
       }
     ]
