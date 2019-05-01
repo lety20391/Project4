@@ -63,7 +63,7 @@
         								<!-- Item 1 -->
         								<div class="shop-item-sidebar">
         									<div class="media">
-        										<img src="images/dummy-img-600x600.jpg" alt="" class="img-fluid">
+        										<img src="assets/images/Pet/1.jpg" alt="" class="img-fluid">
         									</div>
         									<div class="body-text">
         										<h4 class="title"><a href="shop-single.html">Min</a></h4>
@@ -73,7 +73,7 @@
         								<!-- Item 2 -->
         								<div class="shop-item-sidebar">
         									<div class="media">
-        										<img src="images/dummy-img-600x600.jpg" alt="" class="img-fluid">
+        										<img src="assets/images/Pet/2.jpg" alt="" class="img-fluid">
         									</div>
         									<div class="body-text">
         										<h4 class="title"><a href="shop-single.html">Milk</a></h4>
@@ -83,7 +83,7 @@
         								<!-- Item 3 -->
         								<div class="shop-item-sidebar">
         									<div class="media">
-        										<img src="images/dummy-img-600x600.jpg" alt="" class="img-fluid">
+        										<img src="assets/images/Pet/3.jpg" alt="" class="img-fluid">
         									</div>
         									<div class="body-text">
         										<h4 class="title"><a href="shop-single.html">Mi</a></h4>
@@ -100,11 +100,11 @@
 
         						<div class="row">
         							<!-- Item 1 -->
-        							<div class="col-sm-4 col-md-4">
+        							<div class="col-sm-4 col-md-4" *ngFor='let pet of listPet'>
         								<div class="rs-shop-box mb-5">
         									<div class="box-gallery">
         										<a href="shop-single.html">
-        										<img src="assets/images/Pet/1.jpg" alt="" class="img-fluid">
+        										<img src="{{pet.PetImage}}" alt="" class="img-fluid">
 
         										<div class="project-info">
         											<div class="project-icon">
@@ -116,12 +116,72 @@
         									</div>
 
         									<div class="body-text">
-        										<h4 class="title"><a href="shop-single.html">Kuku</a></h4>
+        										<h4 class="title"><a href="shop-single.html">{{pet.PetName}}</a></h4>
         										<div class="meta">
-        											<div class="price">$29
+        											<div class="price">${{pet.PetPrice}}
                               </div>
         											<div class="rating">
-        												<div class="price">Coggy</div>
+        												<div class="price">{{pet.PetBreed}}</div>
+        											</div>
+        										</div>
+        									</div>
+
+        								</div>
+        							</div>
+
+                      <!-- duplicate  -->
+                      <div class="col-sm-4 col-md-4" *ngFor='let pet of listPet'>
+        								<div class="rs-shop-box mb-5">
+        									<div class="box-gallery">
+        										<a href="shop-single.html">
+        										<img src="{{pet.PetImage}}" alt="" class="img-fluid">
+
+        										<div class="project-info">
+        											<div class="project-icon">
+        												<h3><span>Pet Detail</span></h3>
+        											</div>
+        										</div>
+                            </a>
+
+        									</div>
+
+        									<div class="body-text">
+        										<h4 class="title"><a href="shop-single.html">{{pet.PetName}}</a></h4>
+        										<div class="meta">
+        											<div class="price">${{pet.PetPrice}}
+                              </div>
+        											<div class="rating">
+        												<div class="price">{{pet.PetBreed}}</div>
+        											</div>
+        										</div>
+        									</div>
+
+        								</div>
+        							</div>
+
+                      <!-- duplicate  -->
+                      <div class="col-sm-4 col-md-4" *ngFor='let pet of listPet'>
+        								<div class="rs-shop-box mb-5">
+        									<div class="box-gallery">
+        										<a href="shop-single.html">
+        										<img src="{{pet.PetImage}}" alt="" class="img-fluid">
+
+        										<div class="project-info">
+        											<div class="project-icon">
+        												<h3><span>Pet Detail</span></h3>
+        											</div>
+        										</div>
+                            </a>
+
+        									</div>
+
+        									<div class="body-text">
+        										<h4 class="title"><a href="shop-single.html">{{pet.PetName}}</a></h4>
+        										<div class="meta">
+        											<div class="price">${{pet.PetPrice}}
+                              </div>
+        											<div class="rating">
+        												<div class="price">{{pet.PetBreed}}</div>
         											</div>
         										</div>
         									</div>
@@ -130,25 +190,30 @@
         							</div>
 
 
+
+
         						</div>
+
+                    <div class="row">
+          						<div class="col-sm-12 col-md-12">
+
+          							<nav aria-label="Page navigation">
+          							  <ul class="pagination">
+          							    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+          							    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+          							    <li class="page-item"><a class="page-link" href="#">2</a></li>
+          							    <li class="page-item"><a class="page-link" href="#">3</a></li>
+          							    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          							  </ul>
+          							</nav>
+
+          						</div>
+          					</div>
+
         					</div>
         						<!-- end shop -->
 
-        					<div class="row">
-        						<div class="col-sm-12 col-md-12">
 
-        							<nav aria-label="Page navigation">
-        							  <ul class="pagination">
-        							    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-        							    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-        							    <li class="page-item"><a class="page-link" href="#">2</a></li>
-        							    <li class="page-item"><a class="page-link" href="#">3</a></li>
-        							    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        							  </ul>
-        							</nav>
-
-        						</div>
-        					</div>
 
 
 
