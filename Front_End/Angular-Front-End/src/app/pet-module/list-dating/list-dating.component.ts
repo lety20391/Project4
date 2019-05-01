@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { PetEntity } from '../PetEntity';
 @Component({
   selector: 'app-list-dating',
   templateUrl: './list-dating.component.html',
