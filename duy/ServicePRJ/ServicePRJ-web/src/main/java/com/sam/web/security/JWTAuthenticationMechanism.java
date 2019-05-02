@@ -32,8 +32,7 @@ public class JWTAuthenticationMechanism implements HttpAuthenticationMechanism {
     private static final List<String> WHITELISTED = Arrays.asList(whitelistURL);
     private final Logger logger = Logger.getLogger(getClass().getName());
 
-    @Inject
-    IdentityStore identityStore;
+    private JWTIdentityStore jwtIdentityStore = new JWTIdentityStore();
 
 //    @Inject
 //    JWTStore jwtStore;
@@ -49,7 +48,7 @@ public class JWTAuthenticationMechanism implements HttpAuthenticationMechanism {
         String authorizationHeader = req.getHeader(AUTHORIZATION);
         String requestMethod = req.getMethod();
         System.out.println(logClass + "Header: "+ authorizationHeader +"----");
-        System.out.println(logClass + "Http Request Metho: " + requestMethod + "-----");
+        System.out.println(logClass + "Http Request Method: " + requestMethod + "-----");
         Credential credential = null;
         
         if(requestMethod.equals("OPTIONS")){
@@ -66,7 +65,7 @@ public class JWTAuthenticationMechanism implements HttpAuthenticationMechanism {
 
         if (credential != null) {
             System.out.println(logClass + "Valid credential----");
-            return context.notifyContainerAboutLogin(this.identityStore.validate(credential));
+            return context.notifyContainerAboutLogin(this.jwtIdentityStore.validate(credential));
         } else {
             System.out.println(logClass + "InValid credential----");
             if (WHITELISTED.contains(req.getPathInfo())) {

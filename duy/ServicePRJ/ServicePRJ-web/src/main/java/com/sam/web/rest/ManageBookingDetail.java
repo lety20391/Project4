@@ -8,6 +8,7 @@ package com.sam.web.rest;
 import com.sam.ejb.entity.bookingDetailEntity;
 import com.sam.ejb.sessionbean.bookingDetailSessionBeanLocal;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -59,6 +60,15 @@ public class ManageBookingDetail {
     @Path("/getAll")
     @Produces(MediaType.APPLICATION_JSON)
     public List<bookingDetailEntity> getJson() {
+        //TODO return proper representation object
+        return bookingDetailSessionBeanLocal.listAll();
+    }
+    
+    @GET
+    @Path("/getBy")
+    @RolesAllowed("SUPERADMIN")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<bookingDetailEntity> getBy() {
         //TODO return proper representation object
         return bookingDetailSessionBeanLocal.listAll();
     }

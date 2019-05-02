@@ -20,13 +20,16 @@ import java.util.stream.Collectors;
 @ApplicationScoped
 public class JWTIdentityStore implements IdentityStore {
     private final Logger logger = Logger.getLogger(getClass().getName());
-
+    private final String logClass = "----JWTIdentityStore: ";
+    
     @Override
     public CredentialValidationResult validate(Credential credential) {
+        System.out.println(logClass + "Init");
         if (credential instanceof JWTCredential) {
             // this means we had a valid token
             JWTCredential jwtCredential = (JWTCredential) credential;
             logger.info( () -> MessageFormat.format("Caller={0} ({1})", jwtCredential.getCaller(), log(jwtCredential.getGroups())));
+            
             return new CredentialValidationResult(jwtCredential.getCaller(), jwtCredential.getGroups());
         }
 
