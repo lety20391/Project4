@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { serviceEntity } from '../../serviceEntity/serviceEntity';
 import {Observable, of} from 'rxjs';
 import { listUrlAPI } from '../../listUrlAPI';
@@ -34,8 +34,9 @@ export class ServiceManageService {
   deleteServiceDetail(id: number): Observable<any> {
     this.urlAPI = listUrlAPI.find(url => url.name === 'serviceResource');
     // const url = `${this.urlAPI}/${id}`;
-    return this.http.delete(this.urlAPI.path + id);
+    return this.http.delete<HttpResponse<Object>>(this.urlAPI.path + id);
     console.log("------Delete API Service Success ------");
+
   }
 
 

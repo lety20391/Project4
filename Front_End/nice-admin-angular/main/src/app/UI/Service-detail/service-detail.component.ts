@@ -5,6 +5,8 @@ import { serviceEntity } from '../../serviceEntity/serviceEntity';
 import { ServiceManageService } from '../Service/service-manage.service';
 import { MatDialog } from '@angular/material';
 import { ConfirmDialogComponent } from '../Dialog/confirm-dialog.component';
+import {Observable, of} from 'rxjs';
+// import { ServiceComponentComponent} from '../Service/service-component.component';
 @Component({
   selector: 'app-service-detail',
   templateUrl: './service-detail.component.html',
@@ -18,7 +20,8 @@ export class ServiceDetailComponent implements OnInit {
      private ServiceManageService: ServiceManageService,
      private dialog: MatDialog,
      private router: Router,
-     private location: Location
+     private location: Location,
+     // private serviceComponentComponent : ServiceComponentComponent
   ) { }
 
   ngOnInit() {
@@ -33,13 +36,12 @@ export class ServiceDetailComponent implements OnInit {
         .subscribe(detail => this.detail = detail);
     }
 
-
-  deleteServiceDetail(): void {
+  deleteServiceDetail(){
         const id = +this.route.snapshot.paramMap.get('id');
         this.ServiceManageService.deleteServiceDetail(id)
         .subscribe();
-        this.router.navigate(['/service/services']);
         console.log("delete complete");
+         setTimeout(() =>{this.location.back()}, 500);
       }
       // fetchServiceCate(): void{
       //   this.ServiceManageService.getServiceList().subscribe(
@@ -62,4 +64,5 @@ openDeleteDialog(): void {
           }
         });
       }
+
 }
