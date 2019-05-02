@@ -25,7 +25,11 @@ import java.util.logging.Logger;
 @ApplicationScoped
 public class JWTAuthenticationMechanism implements HttpAuthenticationMechanism {
     private static final String BEARER = "Bearer ";
-    private static final List<String> WHITELISTED = Arrays.asList(new String[] {"/tokens"});
+    private static String whitelistURL[] = new String [] {
+                                                            "/tokens",
+                                                            "/BookingDetail/getAll"    
+                                                        };
+    private static final List<String> WHITELISTED = Arrays.asList(whitelistURL);
     private final Logger logger = Logger.getLogger(getClass().getName());
 
     @Inject

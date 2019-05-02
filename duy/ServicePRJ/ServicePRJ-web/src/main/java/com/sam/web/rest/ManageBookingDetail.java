@@ -56,6 +56,7 @@ public class ManageBookingDetail {
      */
     //List all booking detail
     @GET
+    @Path("/getAll")
     @Produces(MediaType.APPLICATION_JSON)
     public List<bookingDetailEntity> getJson() {
         //TODO return proper representation object
