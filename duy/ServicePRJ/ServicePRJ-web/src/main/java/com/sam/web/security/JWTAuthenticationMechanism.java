@@ -35,36 +35,38 @@ public class JWTAuthenticationMechanism implements HttpAuthenticationMechanism {
 //    JWTStore jwtStore;
     //private IdentityStore identityStore = new IdentityStore();
     private JWTStore jwtStore = new JWTStore();
+    private String logClass = "---JWTAuthMechanism: ";
 
     @Override
     public AuthenticationStatus validateRequest(HttpServletRequest req, HttpServletResponse res, HttpMessageContext context) throws AuthenticationException {
-        System.out.println("------Validating Request: JWTAuthentication-----");
-    	logger.info( () -> "Validating " + req.getPathInfo());
+        System.out.println(logClass + "Validating Request URL: " + req.getPathInfo());
+    	//logger.info( () -> "Validating " + req.getPathInfo());
 
         String authorizationHeader = req.getHeader(AUTHORIZATION);
         String requestMethod = req.getMethod();
-        System.out.println("----Header: "+ authorizationHeader +"----");
-        System.out.println("---Http Request Metho: " + requestMethod + "-----");
+        System.out.println(logClass + "Header: "+ authorizationHeader +"----");
+        System.out.println(logClass + "Http Request Metho: " + requestMethod + "-----");
         Credential credential = null;
         
         if(requestMethod.equals("OPTIONS")){
-            System.out.println("----This is pre-light Request: OK----");
+            System.out.println(logClass + "This is pre-light Request: OK----");
             return context.doNothing();
         }
 
         if (authorizationHeader != null && authorizationHeader.startsWith(BEARER)) {
-            System.out.println("----Check Authen Token----");
+            System.out.println(logClass + "Check Authen Token----");
             String token = authorizationHeader.substring(BEARER.length());
             credential = this.jwtStore.getCredential(token);
         }
         
 
         if (credential != null) {
-            System.out.println("----Valid credential----");
+            System.out.println(logClass + "Valid credential----");
             return context.notifyContainerAboutLogin(this.identityStore.validate(credential));
         } else {
-            System.out.println("---InValid credential----");
+            System.out.println(logClass + "InValid credential----");
             if (WHITELISTED.contains(req.getPathInfo())) {
+                System.out.println(logClass + "This is whitelist URL---");
             	return context.doNothing();
             } else {
             	return context.responseUnauthorized();

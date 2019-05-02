@@ -82,7 +82,7 @@ public class AuthResource {
         //logger.info( () -> MessageFormat.format("Token={0}", token));
         System.out.println(token);
         if ("dat".equals(username) && "abc".equals(password))
-            return Response.ok().header(AUTHORIZATION, "Bearer " + token).build();
+            return Response.ok().header(AUTHORIZATION, token).build();
         return Response.noContent().build();
     }
 }
