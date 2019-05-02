@@ -21,10 +21,11 @@ import { AppRoutingModule } from './app-routing.module';
 // import { IndexComponent } from './index-module/index.component';
 // import { BannerSmallComponent } from './UIComponent/banner-small/banner-small.component';
 // import { ProductMockupComponent } from './UIComponent/product-mockup/product-mockup.component';
-import { HttpClientModule }    from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS }    from '@angular/common/http';
 // import { TopSellerComponent } from './shop-module/top-seller/top-seller.component';
 import {MainlayoutModuleModule} from './mainlayout-module/mainlayout-module.module';
 import { FormsModule } from '@angular/forms';
+import {AuthInterceptorService} from './authentication/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,9 @@ import { FormsModule } from '@angular/forms';
     MainlayoutModuleModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

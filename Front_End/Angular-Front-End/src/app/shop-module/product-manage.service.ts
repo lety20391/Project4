@@ -33,10 +33,7 @@ export class ProductManageService {
     //change your url name here
     this.urlAPI = listUrlAPI.find(url => url.name === 'productResource');
     return this.http.get<productEntity[]>(
-      this.urlAPI.path,
-      {
-        headers: {'Content-Type':  'application/json','Authorization': this.jwtService.getJWT()}
-      }
+      this.urlAPI.path
     );
   }
 
