@@ -16,6 +16,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.enterprise.context.RequestScoped;
+import javax.ws.rs.OPTIONS;
 import javax.ws.rs.POST;
 import static javax.ws.rs.core.HttpHeaders.AUTHORIZATION;
 import javax.ws.rs.core.MediaType;
@@ -38,6 +39,12 @@ public class AuthResource {
      * Creates a new instance of AuthResource
      */
     public AuthResource() {
+    }
+    
+    @OPTIONS
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response resToRequest(){
+        return Response.ok().build();
     }
 
     /**

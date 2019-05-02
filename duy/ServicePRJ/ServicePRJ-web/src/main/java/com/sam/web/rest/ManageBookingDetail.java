@@ -18,6 +18,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.OPTIONS;
 import javax.ws.rs.POST;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
@@ -41,6 +42,12 @@ public class ManageBookingDetail {
      * Creates a new instance of ManageBookingDetail
      */
     public ManageBookingDetail() {
+    }
+    
+    @OPTIONS
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response resToRequest(){
+        return Response.ok().build();
     }
 
     /**
