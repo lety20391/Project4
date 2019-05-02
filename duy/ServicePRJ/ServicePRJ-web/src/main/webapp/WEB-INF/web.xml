@@ -1,87 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-	 version="3.1">
-        <servlet>
-            <servlet-name>Faces Servlet</servlet-name>
-                <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-            <load-on-startup>1</load-on-startup>
-        </servlet>
-        
-        <servlet-mapping>
-            <servlet-name>Faces Servlet</servlet-name>
-            <url-pattern>/faces/*</url-pattern>
-        </servlet-mapping>
-        
-        <servlet-mapping>
-            <servlet-name>Faces Servlet</servlet-name>
-            <url-pattern>*.jsf</url-pattern>
-        </servlet-mapping>
-        
-        <servlet-mapping>
-            <servlet-name>Faces Servlet</servlet-name>
-            <url-pattern>*.faces</url-pattern>
-        </servlet-mapping>
-        
-        <servlet-mapping>
-            <servlet-name>Faces Servlet</servlet-name>
-            <url-pattern>*.xhtml</url-pattern>
-        </servlet-mapping>
-        
-        
-        <servlet>
-            <servlet-name>restful</servlet-name>        
-            <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
-                <init-param>
-                    <param-name>com.sun.jersey.config.property.packages</param-name>
-                    <param-value>com.sam.web.rest</param-value>
-                </init-param>
-                <init-param>
-                    <param-name>com.sun.jersey.spi.container.ContainerResponseFilters</param-name>
-                    <param-value>com.sun.jersey.api.container.filter.LoggingFilter;com.sam.web.CrossDomainFilter.CrossDomainFilter</param-value>
-                </init-param>
-            <load-on-startup>1</load-on-startup>
-        </servlet>
-        
-        <servlet-mapping>
-            <servlet-name>restful</servlet-name>
-            <url-pattern>/rest/*</url-pattern>
-        </servlet-mapping>
-        
-        <welcome-file-list>
-            <welcome-file>index.xhtml</welcome-file>
-        </welcome-file-list>
-        
-        
-        <session-config>
-            <session-timeout>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.jsf</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.faces</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>restful</servlet-name>
+        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>com.sun.jersey.config.property.packages</param-name>
+            <param-value>com.sam.web.rest</param-value>
+        </init-param>
+        <init-param>
+            <param-name>com.sun.jersey.spi.container.ContainerResponseFilters</param-name>
+            <param-value>com.sun.jersey.api.container.filter.LoggingFilter;com.sam.web.CrossDomainFilter.CrossDomainFilter</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>restful</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>index.xhtml</welcome-file>
+    </welcome-file-list>
+    <session-config>
+        <session-timeout>
             30
             </session-timeout>
-
         <!-- Session configuration -->
-            <cookie-config>
-                <http-only>true</http-only> <!-- Prevent client side scripting from accessing/manipulating session cookie. -->
-            </cookie-config>
-            <tracking-mode>COOKIE</tracking-mode> <!-- This disables URL rewriting. -->
-        </session-config>
-
-        <security-constraint>
-            <web-resource-collection>
-                <web-resource-name>Authorize user pages</web-resource-name>
-                <url-pattern>/rest/tokens/*</url-pattern>
-            </web-resource-collection>
-            <!-- OMIT auth-constraint -->
-        </security-constraint>
-
-        <security-constraint>
-            <web-resource-collection>
-                <web-resource-name>Admin pages</web-resource-name>
-                <url-pattern>/resources/admin/*</url-pattern>
-            </web-resource-collection>
-            <auth-constraint>
-                <role-name>member</role-name>
-            </auth-constraint>
-        </security-constraint>
+        <cookie-config>
+            <http-only>true</http-only>
+            <!-- Prevent client side scripting from accessing/manipulating session cookie. -->
+        </cookie-config>
+        <tracking-mode>COOKIE</tracking-mode>
+        <!-- This disables URL rewriting. -->
+    </session-config>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Authorize user pages</web-resource-name>
+            <description/>
+            <url-pattern>/rest/tokens/*</url-pattern>
+        </web-resource-collection>
+        <!-- OMIT auth-constraint -->
+    </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Admin pages</web-resource-name>
+            <url-pattern>/resources/admin/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>member</role-name>
+        </auth-constraint>
+    </security-constraint>
 </web-app>
