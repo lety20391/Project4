@@ -64,9 +64,9 @@ public class ManageBookingDetail {
         return bookingDetailSessionBeanLocal.listAll();
     }
     
+    @RolesAllowed("ADMIN")
     @GET
-    @Path("/getBy")
-    @RolesAllowed("SUPERADMIN")
+    @Path("/getBy")    
     @Produces(MediaType.APPLICATION_JSON)
     public List<bookingDetailEntity> getBy() {
         //TODO return proper representation object
