@@ -5,6 +5,7 @@ import {Observable, of} from 'rxjs';
 import { listUrlAPI } from '../../listUrlAPI';
 import { UrlAPIEntity } from '../../UrlAPIEntity';
 import { catchError, map, tap } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -34,6 +35,8 @@ export class ServiceManageService {
     this.urlAPI = listUrlAPI.find(url => url.name === 'serviceResource');
     // const url = `${this.urlAPI}/${id}`;
     return this.http.delete(this.urlAPI.path + id);
-    console.log("------Get API Service Success ------");
+    console.log("------Delete API Service Success ------");
   }
+
+
   }

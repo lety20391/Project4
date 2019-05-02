@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { serviceEntity } from '../../serviceEntity/serviceEntity';
 import { ServiceManageService } from './service-manage.service';
+
 @Component({
   selector: 'app-service-component',
   templateUrl: './service-component.component.html',
@@ -14,8 +15,10 @@ export class ServiceComponentComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+      
       this.fetchService();
     }
+
     fetchService(): void{
       this.serviceManageService.getServiceList().subscribe(
         listResult => this.listService = listResult

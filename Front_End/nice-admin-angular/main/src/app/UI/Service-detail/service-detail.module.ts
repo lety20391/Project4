@@ -7,15 +7,19 @@ import { Routes, RouterModule } from '@angular/router';
 import { ServiceDetailRoutes} from './service-detail.routing'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import { ServiceMockupComponent } from '../Service/service-mockup/service-mockup.component';
+// add thu vien dialog
+
 
 @NgModule({
-  declarations: [ServiceDetailComponent],
+  declarations: [
+    ServiceDetailComponent
+  ],
   imports: [
     CommonModule,
     HttpClientModule,
     RouterModule.forChild(ServiceDetailRoutes),
     NgbModule
-
   ]
+
 })
 export class ServiceDetailModule { }
