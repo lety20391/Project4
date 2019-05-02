@@ -7,5 +7,5 @@ export const listUrlAPI: UrlAPIEntity[] = [
   {name:'productResource', path: localhost + '/1Hero-web/rest/product'},
   {name:'loginResource', path: localhost + '/ServicePRJ-web/rest/tokens'},
   {name: 'serviceResource', path: localhost + '/ServicePRJ-web/rest/Service/'},
-  {name: 'serviceDetailResource', path: localhost + '/ServicePRJ-web/rest/Service/:id'}
+  // {name: 'serviceDetailResource', path: localhost + '/ServicePRJ-web/rest/Service/:id'}
 ];

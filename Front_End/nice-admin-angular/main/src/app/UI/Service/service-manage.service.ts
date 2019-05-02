@@ -30,4 +30,10 @@ export class ServiceManageService {
     return this.http.get(this.urlAPI.path + id);
     console.log("------Get API Service Success ------");
   }
+  deleteServiceDetail(id: number): Observable<any> {
+    this.urlAPI = listUrlAPI.find(url => url.name === 'serviceResource');
+    // const url = `${this.urlAPI}/${id}`;
+    return this.http.delete(this.urlAPI.path + id);
+    console.log("------Get API Service Success ------");
+  }
   }

@@ -17,6 +17,7 @@ export class ServiceDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getServiceDetail();
+
      // this.fetchServiceCate();
   }
   getServiceDetail(): void {
@@ -24,6 +25,12 @@ export class ServiceDetailComponent implements OnInit {
       this.ServiceManageService.getServiceDetail(id)
         .subscribe(detail => this.detail = detail);
     }
+      deleteServiceDetail(): void {
+        const id = +this.route.snapshot.paramMap.get('id');
+        this.ServiceManageService.deleteServiceDetail(id)
+        .subscribe();
+        console.log("delete complete");
+      }
       // fetchServiceCate(): void{
       //   this.ServiceManageService.getServiceList().subscribe(
       //     listResult => this.listServiceCate = listResult
