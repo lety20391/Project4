@@ -42,21 +42,28 @@ public class JWTAuthenticationMechanism implements HttpAuthenticationMechanism {
     	logger.info( () -> "Validating " + req.getPathInfo());
 
         String authorizationHeader = req.getHeader(AUTHORIZATION);
-        System.out.println("----Header----");
-        System.out.println(authorizationHeader);
+        String requestMethod = req.getMethod();
+        System.out.println("----Header: "+ authorizationHeader +"----");
+        System.out.println("---Http Request Metho: " + requestMethod + "-----");
         Credential credential = null;
+        
+        if(requestMethod.equals("OPTIONS")){
+            System.out.println("----This is pre-light Request: OK----");
+            return context.doNothing();
+        }
 
         if (authorizationHeader != null && authorizationHeader.startsWith(BEARER)) {
             System.out.println("----Check Authen Token----");
             String token = authorizationHeader.substring(BEARER.length());
             credential = this.jwtStore.getCredential(token);
         }
+        
 
         if (credential != null) {
-            System.out.println("----Invalid credential----");
+            System.out.println("----Valid credential----");
             return context.notifyContainerAboutLogin(this.identityStore.validate(credential));
         } else {
-            System.out.println("---Valid credential----");
+            System.out.println("---InValid credential----");
             if (WHITELISTED.contains(req.getPathInfo())) {
             	return context.doNothing();
             } else {
