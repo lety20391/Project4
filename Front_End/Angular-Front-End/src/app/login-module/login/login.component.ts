@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
     this.loginUser.password= this.pass;
     console.log(this.loginUser.username);
     console.log(this.loginUser.password);
-    
+
     this.http.post<HttpResponse<Object>>(
       this.urlAPI.path,
       this.loginUser,

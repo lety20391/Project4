@@ -26,10 +26,12 @@ import { HttpClientModule, HTTP_INTERCEPTORS }    from '@angular/common/http';
 import {MainlayoutModuleModule} from './mainlayout-module/mainlayout-module.module';
 import { FormsModule } from '@angular/forms';
 import {AuthInterceptorService} from './authentication/auth-interceptor.service';
+import { FormComponent } from './UIComponent/form/form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    FormComponent,
     // LoadPageComponent,
     // BackTopSectionComponent,
     // HeaderComponent,

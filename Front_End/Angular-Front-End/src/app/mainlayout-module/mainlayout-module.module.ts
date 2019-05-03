@@ -25,6 +25,9 @@ import { TopSellerComponent } from '../shop-module/top-seller/top-seller.compone
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { LoginComponent } from '../login-module/login/login.component';
 import { FormsModule } from '@angular/forms';
+//import { UploadModuleModule } from '../upload-module/upload-module.module';
+import { PetModuleModule } from '../pet-module/pet-module.module';
+//import { CreatePetComponent } from '../pet-module/create-pet/create-pet.component';
 @NgModule({
   declarations: [
     LoadPageComponent,
@@ -54,7 +57,9 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    PetModuleModule
+    // UploadModuleModule
   ],
   exports: [
     MainLayoutComponent
