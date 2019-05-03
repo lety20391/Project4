@@ -8,7 +8,7 @@ import { ServiceManageService } from '../Service/service-manage.service';
   styleUrls: ['./service-edit.component.css']
 })
 export class ServiceEditComponent implements OnInit {
-  @Input() edit: serviceEntity;
+  @Input() edit = new serviceEntity();
   constructor(
     private route: ActivatedRoute,
     private ServiceManageService: ServiceManageService

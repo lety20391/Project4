@@ -41,13 +41,11 @@ public class serviceEntity {
     private String SerDes;
     @Column(name="SerShortDes", columnDefinition="VARCHAR(max) NOT NULL")
     private String SerShortDes;
-    @Column(name="SerImage" ,columnDefinition = "VARCHAR(max) NOT NULL")
+    @Column(name="SerImage" ,columnDefinition = "VARCHAR(max)")
     private String SerImage;
     @Column(name="Status")
     private boolean Status;
-    
     @OneToMany(mappedBy = "serviceEntity", fetch = FetchType.LAZY)
-//   @JsonIgnore
     private List<bookingDetailEntity> bookingDetailEntitys;
 
     public serviceEntity() {
@@ -113,7 +111,6 @@ public class serviceEntity {
     public List<bookingDetailEntity> getBookingDetailEntitys() {
         return bookingDetailEntitys;
     }
-
     public void setBookingDetailEntitys(List<bookingDetailEntity> bookingDetailEntitys) {
         this.bookingDetailEntitys = bookingDetailEntitys;
     }

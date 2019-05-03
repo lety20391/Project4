@@ -4,5 +4,5 @@ export class serviceEntity{
   serDes: string;
   serShortDes: string;
   serImage: string;
-  serStatus: boolean;
+  status: boolean;
 }

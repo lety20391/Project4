@@ -11,18 +11,18 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Service Name</label>
-                                    <input type="text" id="firstName" class="form-control" placeholder=""> </div>
+                                    <input type="text" [(ngModel)]="Name" name="firstName" class="form-control"  placeholder=""> </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Status</label>
                                     <br/>
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                                        <input type="radio" id="customRadioInline1" [(ngModel)]="Status" value=true name="customRadioInline1" class="custom-control-input">
                                         <label class="custom-control-label" for="customRadioInline1" >Available</label>
                                     </div>
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                                        <input type="radio" id="customRadioInline2" [(ngModel)]="Status" value=false name="customRadioInline1" class="custom-control-input">
                                         <label class="custom-control-label" for="customRadioInline2">Unavailable</label>
                                     </div>
                                 </div>
@@ -32,7 +32,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="control-label">Short Description</label>
-                                    <textarea class="form-control" rows="2"></textarea> </div>
+                                    <<textarea name="shortdes" rows="8" cols="80" class="form-control" [(ngModel)]="ShortDes" ></textarea></div>
                             </div>
                             </div>
                         <!--/row-->
@@ -40,7 +40,7 @@
                         <div class="row">
                             <div class="col-md-12 ">
                                 <div class="form-group">
-                                    <textarea class="form-control" rows="7"></textarea>
+                                    <<textarea name="des" class="form-control" [(ngModel)]="Des" rows="8" cols="80"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -67,7 +67,7 @@
                     <div class="form-actions m-t-40">
                       <div class="row">
                       <div class="col-md-2">
-                        <button type="submit" class="btn btn-success btn-rounded btn-lg btn-block">
+                        <button type="submit" class="btn btn-success btn-rounded btn-lg btn-block" name="btnSubmit" (click)="addNewService()">
                             <i class="fa fa-check"></i> Add New </button>
                             </div>
                             <div class="col-md-2">

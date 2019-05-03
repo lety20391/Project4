@@ -13,7 +13,7 @@ import {Observable, of} from 'rxjs';
   styleUrls: ['./service-detail.component.css']
 })
 export class ServiceDetailComponent implements OnInit {
-  @Input() detail: serviceEntity;
+  @Input() detail = new serviceEntity();
   // listServiceCate: serviceEntity[];
   constructor(
      private route: ActivatedRoute,
@@ -26,8 +26,6 @@ export class ServiceDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getServiceDetail();
-
-     // this.fetchServiceCate();
   }
 
   getServiceDetail(): void {
