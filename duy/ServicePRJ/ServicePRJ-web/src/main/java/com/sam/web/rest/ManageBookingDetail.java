@@ -8,6 +8,7 @@ package com.sam.web.rest;
 import com.sam.ejb.entity.bookingDetailEntity;
 import com.sam.ejb.sessionbean.bookingDetailSessionBeanLocal;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -67,20 +68,20 @@ public class ManageBookingDetail {
         return bookingDetailSessionBeanLocal.listAll();
     }
     
-    //@RolesAllowed("ADMIN")
+    @RolesAllowed("ADMIN")
     @GET
     @Path("/getBy")    
     @Produces(MediaType.APPLICATION_JSON)
     public List<bookingDetailEntity> getBy() {
-        //TODO return proper representation object
-        //sc.isUserInRole("ADMIN");
-        System.out.println("---BookingDetail: Principal: " );
-        if( sc.isUserInRole("ADMIN")){
-                System.out.println("---Check Role: ADMIN---");
-                return null;
-        }
-        else
-            System.out.println("---Check Role: Not Admin");
+        //TODO return proper representation object  
+//        System.out.println("---BookingDetail: Principal: " );
+//        if( sc.isUserInRole("ADMIN")){
+//                System.out.println("---Check Role: ADMIN---");
+//                return null;
+//        }
+//        else
+//            System.out.println("---Check Role: Not Admin");
+        
         return bookingDetailSessionBeanLocal.listAll();
     }
 
