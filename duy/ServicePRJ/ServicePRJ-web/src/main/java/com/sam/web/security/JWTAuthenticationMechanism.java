@@ -49,7 +49,7 @@ public class JWTAuthenticationMechanism implements HttpAuthenticationMechanism {
         String requestMethod = req.getMethod();
         System.out.println(logClass + "Header: "+ authorizationHeader +"----");
         System.out.println(logClass + "Http Request Method: " + requestMethod + "-----");
-        Credential credential = null;
+        JWTCredential credential = null;
         
         if(requestMethod.equals("OPTIONS")){
             System.out.println(logClass + "This is pre-light Request: OK----");
