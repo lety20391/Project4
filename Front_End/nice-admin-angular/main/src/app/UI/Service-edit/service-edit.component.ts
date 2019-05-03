@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { serviceEntity } from '../../serviceEntity/serviceEntity';
 import { ServiceManageService } from '../Service/service-manage.service';
+
 @Component({
   selector: 'app-service-edit',
   templateUrl: './service-edit.component.html',
@@ -9,6 +10,7 @@ import { ServiceManageService } from '../Service/service-manage.service';
 })
 export class ServiceEditComponent implements OnInit {
   @Input() edit = new serviceEntity();
+  s = new serviceEntity();
   constructor(
     private route: ActivatedRoute,
     private ServiceManageService: ServiceManageService

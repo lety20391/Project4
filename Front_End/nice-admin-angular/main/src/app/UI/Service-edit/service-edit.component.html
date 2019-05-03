@@ -14,15 +14,15 @@
                                     <input type="text" id="firstName" class="form-control" placeholder="{{edit.serName}}"> </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group" >
                                     <label>Status</label>
                                     <br/>
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                                        <input type="radio" id="customRadioInline1" [(ngModel)]="edit.status" [value]=true name="customRadioInline1" class="custom-control-input">
                                         <label class="custom-control-label" for="customRadioInline1" >Available</label>
                                     </div>
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                                        <input type="radio" id="customRadioInline2" [(ngModel)]="edit.status" [value]=false name="customRadioInline1" class="custom-control-input">
                                         <label class="custom-control-label" for="customRadioInline2">Unavailable</label>
                                     </div>
                                 </div>

@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ServiceEditRoutes} from './service-edit.routing';
-
+import { FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -14,7 +14,8 @@ import { ServiceEditRoutes} from './service-edit.routing';
     CommonModule,
     HttpClientModule,
     RouterModule.forChild(ServiceEditRoutes),
-    NgbModule
+    NgbModule,
+    FormsModule
   ]
 })
 export class ServiceEditModule { }

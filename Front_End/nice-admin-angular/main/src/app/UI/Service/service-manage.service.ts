@@ -32,13 +32,13 @@ export class ServiceManageService {
   getServiceDetail(id: number): Observable<any> {
     console.log("------Get API Service ------");
     this.urlAPI = listUrlAPI.find(url => url.name === 'serviceResource');
-    return this.http.get(this.urlAPI.path + id);
+    return this.http.get<serviceEntity>(this.urlAPI.path + id);
     console.log("------Get API Service Success ------");
   }
   deleteServiceDetail(id: number): Observable<any> {
     this.urlAPI = listUrlAPI.find(url => url.name === 'serviceResource');
     return this.http.delete<HttpResponse<Object>>(this.urlAPI.path + id);
-    console.log("------Delete API Service Success ------");
+
   }
 
 }
