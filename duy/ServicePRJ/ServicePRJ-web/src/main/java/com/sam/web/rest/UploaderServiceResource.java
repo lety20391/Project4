@@ -5,8 +5,7 @@
  */
 package com.sam.web.rest;
 
-import com.sun.jersey.core.header.FormDataContentDisposition;
-import com.sun.jersey.multipart.FormDataParam;
+
 import java.io.InputStream;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -25,6 +24,8 @@ import java.io.OutputStream;
 import javax.ws.rs.OPTIONS;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
+import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
+import org.glassfish.jersey.media.multipart.FormDataParam;
 
 
 /**
@@ -32,7 +33,7 @@ import javax.ws.rs.core.Response;
  *
  * @author Dat Le
  */
-@Path("uploader")
+@Path("/uploader")
 @RequestScoped
 public class UploaderServiceResource {
     @Context
