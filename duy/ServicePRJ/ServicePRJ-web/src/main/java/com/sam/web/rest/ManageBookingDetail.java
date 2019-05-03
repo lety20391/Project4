@@ -36,6 +36,9 @@ public class ManageBookingDetail {
 
     @Context
     private UriInfo context;
+    
+    @Context
+    SecurityContext sc;
 
     @EJB
     bookingDetailSessionBeanLocal bookingDetailSessionBeanLocal;
@@ -68,12 +71,14 @@ public class ManageBookingDetail {
     @GET
     @Path("/getBy")    
     @Produces(MediaType.APPLICATION_JSON)
-    public List<bookingDetailEntity> getBy(@Context SecurityContext sc) {
+    public List<bookingDetailEntity> getBy() {
         //TODO return proper representation object
         //sc.isUserInRole("ADMIN");
         System.out.println("---BookingDetail: Principal: " );
-        if( sc.isUserInRole("ADMIN"))
+        if( sc.isUserInRole("ADMIN")){
                 System.out.println("---Check Role: ADMIN---");
+                return null;
+        }
         else
             System.out.println("---Check Role: Not Admin");
         return bookingDetailSessionBeanLocal.listAll();

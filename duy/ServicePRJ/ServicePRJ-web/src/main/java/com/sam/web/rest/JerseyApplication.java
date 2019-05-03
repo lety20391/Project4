@@ -6,6 +6,7 @@
 package com.sam.web.rest;
 
 import com.sam.web.CrossDomainFilter.CrossDomainFilter;
+import com.sam.web.security.AuthFilter;
 import javax.ws.rs.ApplicationPath;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
@@ -20,6 +21,7 @@ public class JerseyApplication extends ResourceConfig {
     public JerseyApplication() {
         packages("com.sam.web.rest");
         register(RolesAllowedDynamicFeature.class);
+        register(new AuthFilter());
         register(new CrossDomainFilter());
     }
     

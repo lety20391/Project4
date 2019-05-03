@@ -1,29 +1,28 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.sam.web.security;
 
-import static javax.ws.rs.core.HttpHeaders.AUTHORIZATION;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.security.enterprise.AuthenticationException;
-import javax.security.enterprise.AuthenticationStatus;
-import javax.security.enterprise.authentication.mechanism.http.HttpAuthenticationMechanism;
-import javax.security.enterprise.authentication.mechanism.http.HttpMessageContext;
-import javax.security.enterprise.credential.Credential;
-import javax.security.enterprise.identitystore.IdentityStore;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Logger;
+import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.container.ContainerRequestFilter;
+import javax.ws.rs.container.PreMatching;
+import static javax.ws.rs.core.HttpHeaders.AUTHORIZATION;
 
 /**
  *
- * @author Sukma Wardana
- * @author Werner Keil
- * @since 1.0
+ * @author Dat Le
  */
-@ApplicationScoped
-public class JWTAuthenticationMechanism implements HttpAuthenticationMechanism {
+@PreMatching
+public class AuthFilter implements ContainerRequestFilter{
+
     private static final String BEARER = "Bearer ";
     private static String whitelistURL[] = new String [] {
                                                             "/tokens",
@@ -38,14 +37,15 @@ public class JWTAuthenticationMechanism implements HttpAuthenticationMechanism {
 //    JWTStore jwtStore;
     //private IdentityStore identityStore = new IdentityStore();
     private JWTStore jwtStore = new JWTStore();
-    private String logClass = "---JWTAuthMechanism: ";
-
+    private String logClass = "---AUTHFILTER: ";
+    
     @Override
-    public AuthenticationStatus validateRequest(HttpServletRequest req, HttpServletResponse res, HttpMessageContext context) throws AuthenticationException {
-        System.out.println(logClass + "Validating Request URL: " + req.getPathInfo());
+    public void filter(ContainerRequestContext req) throws IOException {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println(logClass + "Validating Request URL: " + req.getUriInfo());
     	//logger.info( () -> "Validating " + req.getPathInfo());
 
-        String authorizationHeader = req.getHeader(AUTHORIZATION);
+        String authorizationHeader = req.getHeaderString(AUTHORIZATION);
         String requestMethod = req.getMethod();
         System.out.println(logClass + "Header: "+ authorizationHeader +"----");
         System.out.println(logClass + "Http Request Method: " + requestMethod + "-----");
@@ -53,7 +53,7 @@ public class JWTAuthenticationMechanism implements HttpAuthenticationMechanism {
         
         if(requestMethod.equals("OPTIONS")){
             System.out.println(logClass + "This is pre-light Request: OK----");
-            return context.doNothing();
+            return;
         }
 
         if (authorizationHeader != null && authorizationHeader.startsWith(BEARER)) {
@@ -64,15 +64,27 @@ public class JWTAuthenticationMechanism implements HttpAuthenticationMechanism {
 
         if (credential != null) {
             System.out.println(logClass + "Valid credential----");
-            return context.notifyContainerAboutLogin(this.jwtIdentityStore.validate(credential));
+            String name = credential.getCaller();
+            Set roleSet = credential.getGroups();
+            List<String> roleList = new ArrayList<>();
+            for (Object role : roleSet) {
+                roleList.add(role.toString());
+            }
+            User currentUser = new User(name, roleList);
+            
+            System.out.println(logClass + "Set SecurityContext");
+            String scheme = req.getUriInfo().getRequestUri().getScheme();
+            System.out.println(logClass + " User: " + currentUser.getName() + " Role:" + currentUser.getRole().toString());
+            req.setSecurityContext(new JerseySecurity(currentUser, scheme));
         } else {
             System.out.println(logClass + "InValid credential----");
-            if (WHITELISTED.contains(req.getPathInfo())) {
+            if (WHITELISTED.contains(req.getUriInfo())) {
                 System.out.println(logClass + "This is whitelist URL---");
-            	return context.doNothing();
+            	return;
             } else {
-            	return context.responseUnauthorized();
+            	return;
             }
         }
     }
+    
 }
