@@ -47,14 +47,23 @@ public class JWTAuthenticationMechanism implements HttpAuthenticationMechanism {
 
         String authorizationHeader = req.getHeader(AUTHORIZATION);
         String requestMethod = req.getMethod();
+        String contentType = req.getHeader("Content-Type");
         System.out.println(logClass + "Header: "+ authorizationHeader +"----");
         System.out.println(logClass + "Http Request Method: " + requestMethod + "-----");
+        System.out.println(logClass + "Content-Type: " + contentType);
         JWTCredential credential = null;
         
         if(requestMethod.equals("OPTIONS")){
             System.out.println(logClass + "This is pre-light Request: OK----");
+            //res.setStatus(200);
             return context.doNothing();
         }
+        
+        if(contentType != null && contentType.contains("multipart/form-data")){
+            System.out.println(logClass + "This is upload data");
+            return context.doNothing();
+        }
+            
 
         if (authorizationHeader != null && authorizationHeader.startsWith(BEARER)) {
             System.out.println(logClass + "Check Authen Token----");

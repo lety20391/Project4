@@ -13,7 +13,7 @@ export class CreatePetComponent implements OnInit {
   uploadUrl = 'http://localhost:34828/ServicePRJ-web/';
   UrlEntity: UrlAPIEntity;
   inputID = '';
-  jwtHeader = new HttpHeaders().set("Content-Type", "multipart/form-data");
+  jwtHeader = new HttpHeaders().set("Authorization", "multipart/form-data");
   constructor() { }
 
   ngOnInit() {
