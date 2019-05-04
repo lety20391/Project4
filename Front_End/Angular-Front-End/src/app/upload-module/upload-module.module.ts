@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UploaderComponent } from './uploader/uploader.component';
 import { UploadComponent } from '../UIComponent/upload/upload.component';
 import { MatFileUploadModule } from 'angular-material-fileupload';
-
+import { MatButtonModule } from '@angular/material';
 @NgModule({
   declarations: [
     UploadComponent,
@@ -11,11 +11,13 @@ import { MatFileUploadModule } from 'angular-material-fileupload';
   ],
   imports: [
     CommonModule,
-    MatFileUploadModule
+    MatFileUploadModule,
+    MatButtonModule
   ],
   exports: [
     UploaderComponent,
-    MatFileUploadModule
+    MatFileUploadModule,
+    MatButtonModule
 
   ]
 })

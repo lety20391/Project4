@@ -8,5 +8,6 @@ export const listUrlAPI: UrlAPIEntity[] = [
   {name:'loginResource', path: localhost + '/ServicePRJ-web/rest/tokens'},
   {name: 'YourResource', path: localhost + 'YourURL like example above'},
   {name: 'serviceResource', path: localhost + '/ServicePRJ-web/rest/Service/'},
-  {name: 'serviceDetailResource', path: localhost + '/ServicePRJ-web/rest/Service/:id'}
+  {name: 'serviceDetailResource', path: localhost + '/ServicePRJ-web/rest/Service/:id'},
+  {name: 'uploadResource', path: localhost + '/ServicePRJ-web/rest/uploader'}
 ];

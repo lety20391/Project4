@@ -8,6 +8,7 @@ import { CreatePetComponent } from './create-pet/create-pet.component';
 import { UploadComponent } from '../UIComponent/upload/upload.component';
 import { MatFileUploadModule } from 'angular-material-fileupload';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,11 @@ import { FormsModule } from '@angular/forms';
     UploadComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    MatFileUploadModule,
+    MatButtonModule
+
   ],
   exports:[
     PetMockupComponent,
@@ -27,7 +32,8 @@ import { FormsModule } from '@angular/forms';
     ListDatingComponent,
     PetDetailComponent,
     UploadComponent,
-    MatFileUploadModule
+    MatFileUploadModule,
+    MatButtonModule
 
   ]
 })

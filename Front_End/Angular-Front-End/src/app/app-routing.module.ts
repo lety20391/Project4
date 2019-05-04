@@ -7,7 +7,7 @@ import { IndexComponent } from './index-module/index.component';
 import {FormComponent} from './UIComponent/form/form.component';
 import { HomecontentComponent } from './UIComponent/homecontent/homecontent.component';
 import { RegisterComponent } from './UIComponent/register/register.component';
-import { LoginComponent } from './UIComponent/login/login.component';
+import { LoginComponent } from './login-module/login/login.component';
 import { GalleryComponent } from './UIComponent/gallery/gallery.component';
 import { ProductSingleComponent } from './UIComponent/product-single/product-single.component';
 import { TopsellerComponent } from './UIComponent/topseller/topseller.component';
