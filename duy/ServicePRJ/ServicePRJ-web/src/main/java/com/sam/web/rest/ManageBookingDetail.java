@@ -8,6 +8,7 @@ package com.sam.web.rest;
 import com.sam.ejb.entity.bookingDetailEntity;
 import com.sam.ejb.sessionbean.bookingDetailSessionBeanLocal;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -18,10 +19,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.OPTIONS;
 import javax.ws.rs.POST;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
 
 /**
  * REST Web Service
@@ -34,6 +37,9 @@ public class ManageBookingDetail {
 
     @Context
     private UriInfo context;
+    
+    @Context
+    SecurityContext sc;
 
     @EJB
     bookingDetailSessionBeanLocal bookingDetailSessionBeanLocal;
@@ -42,6 +48,12 @@ public class ManageBookingDetail {
      */
     public ManageBookingDetail() {
     }
+    
+    @OPTIONS
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response resToRequest(){
+        return Response.ok().build();
+    }
 
     /**
      * Retrieves representation of an instance of com.sam.web.rest.ManageBookingDetail
@@ -49,9 +61,27 @@ public class ManageBookingDetail {
      */
     //List all booking detail
     @GET
+    @Path("/getAll")
     @Produces(MediaType.APPLICATION_JSON)
     public List<bookingDetailEntity> getJson() {
         //TODO return proper representation object
+        return bookingDetailSessionBeanLocal.listAll();
+    }
+    
+    @RolesAllowed("ADMIN")
+    @GET
+    @Path("/getBy")    
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<bookingDetailEntity> getBy() {
+        //TODO return proper representation object  
+//        System.out.println("---BookingDetail: Principal: " );
+//        if( sc.isUserInRole("ADMIN")){
+//                System.out.println("---Check Role: ADMIN---");
+//                return null;
+//        }
+//        else
+//            System.out.println("---Check Role: Not Admin");
+        
         return bookingDetailSessionBeanLocal.listAll();
     }
 

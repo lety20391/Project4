@@ -20,6 +20,8 @@ import { AboutusComponent } from './UIComponent/aboutus/aboutus.component';
 import { ListPetComponent } from './pet-module/list-pet/list-pet.component';
 import { ListDatingComponent } from './pet-module/list-dating/list-dating.component';
 import { PetDetailComponent } from './pet-module/pet-detail/pet-detail.component';
+import { UploaderComponent } from './upload-module/uploader/uploader.component';
+import { CreatePetComponent } from './pet-module/create-pet/create-pet.component';
 
 const routes: Routes = [
   {path: '', redirectTo: "/home", pathMatch: 'full'},
@@ -41,6 +43,9 @@ const routes: Routes = [
   {path: 'listPet', component: ListPetComponent},
   {path: 'listDating', component: ListDatingComponent},
   {path: 'petDetail/:id', component: PetDetailComponent},
+  {path: 'form', component: FormComponent},
+  {path: 'createPet', component: CreatePetComponent}
+
 ];
 
 @NgModule({

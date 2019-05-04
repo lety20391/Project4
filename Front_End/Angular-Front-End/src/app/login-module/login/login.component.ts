@@ -5,13 +5,14 @@ import { listUrlAPI } from '../../listUrlAPI';
 import { UrlAPIEntity } from '../../UrlAPIEntity';
 import { User } from './user';
 import { HttpHeaders } from '@angular/common/http';
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-    'Authorization': 'my-auth-token'
-  })
-};
+import { HttpResponse } from '@angular/common/http';
+import { JWTHeaderService } from '../../jwtheader.service';
+// const httpOptions = {
+//   headers: new HttpHeaders({
+//     'Content-Type':  'application/json'
+//     // 'Authorization': 'my-auth-token'
+//   })
+// };
 
 @Component({
   selector: 'app-login',
@@ -30,7 +31,8 @@ export class LoginComponent implements OnInit {
   };
   urlAPI: UrlAPIEntity;
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private jwtService: JWTHeaderService
   ) { }
 
   ngOnInit() {
@@ -45,6 +47,23 @@ export class LoginComponent implements OnInit {
     this.loginUser.password= this.pass;
     console.log(this.loginUser.username);
     console.log(this.loginUser.password);
-    this.http.post<User>(this.urlAPI.path, this.loginUser, httpOptions).subscribe(result => {console.log(result)});
+
+    this.http.post<HttpResponse<Object>>(
+      this.urlAPI.path,
+      this.loginUser,
+      {
+        headers: new HttpHeaders().set('Content-Type', 'application/json'),
+        observe: 'response'
+      }
+    ).subscribe(
+       response => {
+         console.log( response);
+         console.log( response.status );
+         console.log( response.headers.get('Authorization') );
+         let auth = response.headers.get('Authorization');
+         this.jwtService.addJWT(auth);
+         console.log('Get jwt: ' + this.jwtService.getJWT());
+       }
+     );
   }
 }

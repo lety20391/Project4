@@ -21,10 +21,11 @@ import { AppRoutingModule } from './app-routing.module';
 // import { IndexComponent } from './index-module/index.component';
 // import { BannerSmallComponent } from './UIComponent/banner-small/banner-small.component';
 // import { ProductMockupComponent } from './UIComponent/product-mockup/product-mockup.component';
-import { HttpClientModule }    from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS }    from '@angular/common/http';
 // import { TopSellerComponent } from './shop-module/top-seller/top-seller.component';
 import {MainlayoutModuleModule} from './mainlayout-module/mainlayout-module.module';
 import { FormsModule } from '@angular/forms';
+import {AuthInterceptorService} from './authentication/auth-interceptor.service';
 import { FormComponent } from './UIComponent/form/form.component';
 import { HomecontentComponent } from './UIComponent/homecontent/homecontent.component';
 import { RegisterComponent } from './UIComponent/register/register.component';
@@ -40,7 +41,6 @@ import { ServiceCateComponent } from './UIComponent/service-cate-mockup/service-
 import { AppointmentComponent } from './UIComponent/appointment/appointment.component';
 import { AboutusComponent } from './UIComponent/aboutus/aboutus.component';
 // import { ServiceDetailModule } from './service-detail-module/service-detail.module';
-
 
 @NgModule({
   declarations: [
@@ -87,7 +87,9 @@ import { AboutusComponent } from './UIComponent/aboutus/aboutus.component';
     MainlayoutModuleModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

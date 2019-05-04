@@ -1,7 +1,7 @@
 
 Use Prj4
 
-Insert into dbo.tbUser Values 
+Insert into dbo.tbUser([DOB], [UserMail], [UserName], [UserStatus], [UserTel]) Values 
 (1996-10-20,'mail2@gmail.com','name2',1,'0909090909'),
 (1995-10-20,'mail3@gmail.com','name3',1,'0909090909'),
 (1994-10-20,'mail4@gmail.com','name4',1,'0909090909'),
