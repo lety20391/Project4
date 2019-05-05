@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { productEntity } from '../../productEntity/productEntity';
 import { ProductManageService } from '../../shop-module/product-manage.service';
+import {CategoryEntity} from '../../shop-module/CategoryEntity';
 
 @Component({
   selector: 'app-product-single',
@@ -30,6 +31,7 @@ export class ProductSingleComponent implements OnInit {
 
   getID(): void{
     this.currentID = +this.route.snapshot.paramMap.get('id');
+    this.currentProduct.cateEntity = new CategoryEntity();
   }
 
   getProductByID(id: number): void{
