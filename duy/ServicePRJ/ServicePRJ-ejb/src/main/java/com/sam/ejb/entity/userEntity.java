@@ -64,6 +64,7 @@ public class userEntity {
 
     @OneToMany(mappedBy="userEntity", fetch = FetchType.EAGER)
     private List<OrderMasterEntity> listOrderMaster;
+    
     public userEntity() {
     }
 
@@ -163,6 +164,14 @@ public class userEntity {
 
     public void setKey_dateCreated(Date Key_dateCreated) {
         this.Key_dateCreated = Key_dateCreated;
+    }
+
+//    public List<OrderMasterEntity> getListOrderMaster() {
+//        return listOrderMaster;
+//    }
+
+    public void setListOrderMaster(List<OrderMasterEntity> listOrderMaster) {
+        this.listOrderMaster = listOrderMaster;
     }
 
     
