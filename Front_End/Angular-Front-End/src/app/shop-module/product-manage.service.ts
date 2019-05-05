@@ -32,7 +32,7 @@ export class ProductManageService {
 
     //change your url name here
     this.urlAPI = listUrlAPI.find(url => url.name === 'productResource');
-    return this.http.get<productEntity[]>(this.urlAPI.path + "/getBy" );
+    return this.http.get<productEntity[]>(this.urlAPI.path );
   }
 
 //Login and Authentication success

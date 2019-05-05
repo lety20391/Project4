@@ -13,34 +13,7 @@ export class ShopComponent implements OnInit {
   //this is title and content for small banner
   shopTitle = 'Shop';
   shopContent = "Your pet's health and well-being are our top priority.";
-  listProduct: productEntity[] = [
-    {
-      ProID: 1,
-      ProName: 'Pro1',
-      ProDes: 'Product1 Description',
-      ProPrice: 12,
-      ProColor: 'red',
-      ProImage: '',
-      Status: true,
-      cateEntity: {
-                    CateID: 1,
-                    CateName: 'Category1'
-                  }
-    },
-    {
-      ProID: 2,
-      ProName: 'Pro2',
-      ProDes: 'Product2 Description',
-      ProPrice: 24,
-      ProColor: 'shit',
-      ProImage: '',
-      Status: true,
-      cateEntity: {
-                    CateID: 2,
-                    CateName: 'Category2'
-                  }
-    }
-  ];
+  listProduct: productEntity[];
 
   constructor(
     private productManageService: ProductManageService
@@ -53,6 +26,7 @@ export class ShopComponent implements OnInit {
   }
 
   fetchProduct(): void{
+
     this.productManageService.getProductList().subscribe(
       listResult => this.listProduct = listResult
     );
