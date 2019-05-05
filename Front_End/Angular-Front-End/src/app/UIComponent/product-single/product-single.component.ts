@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { productEntity } from '../../productEntity/productEntity';
+import { ProductManageService } from '../../shop-module/product-manage.service';
 
 @Component({
   selector: 'app-product-single',
@@ -10,32 +11,35 @@ import { productEntity } from '../../productEntity/productEntity';
 })
 export class ProductSingleComponent implements OnInit {
 
-  detailedProduct: productEntity = {
-    ProID: 1,
-    ProName: 'Product2',
-    ProDes: 'Product1 Description',
-    ProPrice: 12,
-    ProColor: 'red',
-    ProImage: '',
-    Status: true,
-    cateEntity: {
-                  CateID: 1,
-                  CateName: 'CateGory1'
-                }
-  };
+  logClass = '--Product Single UI: ';
+
+  currentID: number;
+  currentProduct: productEntity = new productEntity();
 
   constructor(
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private productService: ProductManageService
   ) { }
 
   ngOnInit() {
     this.getID();
+    this.getProductByID(this.currentID);
+
   }
 
   getID(): void{
-    const id = +this.route.snapshot.paramMap.get('id');
+    this.currentID = +this.route.snapshot.paramMap.get('id');
+  }
+
+  getProductByID(id: number): void{
     console.log('---Fetch Pet Detail: ' + id);
+    this.productService.getProductByID(id).subscribe(
+      result => {
+                  console.log(this.logClass + ' Product load:' + result.ProName);
+                  this.currentProduct = result;
+                }
+    );
   }
 
 }

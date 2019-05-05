@@ -32,9 +32,9 @@
 						<div class="single-shop">
 
 							<p class="title-heading text-secondary mb-1">
-								{{detailedProduct.ProName}}
+								{{currentProduct.proName}}
 							</p>
-							<div class="price">${{detailedProduct.ProPrice}}</div>
+							<div class="price">${{currentProduct.proPrice}}</div>
 							<div class="rating">
 								<span></span>
 								<span></span>
@@ -43,11 +43,11 @@
 								<span></span>
 							</div>
 
-							<p class="mt-4">{{detailedProduct.ProDes}}</p>
+							<p class="mt-4">{{currentProduct.proDes}}</p>
 
 							<a href="#" class="btn btn-primary mt-4 mb-4">Buy Now</a>
 
-							<p>SKU : N/A <br>Categories : {{detailedProduct.cateEntity.CateName}} <br>Product ID : 01254</p>
+							<p>SKU : N/A <br>Categories : {{currentProduct.cateEntity.cateName}} <br>Product ID : {{currentProduct.proID}}</p>
 							<div class="spacer-50"></div>
 
 

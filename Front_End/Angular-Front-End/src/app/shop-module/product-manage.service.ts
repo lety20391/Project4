@@ -19,7 +19,9 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class ProductManageService {
 
+  logClass = '--Product Manage Service:';
   urlAPI: UrlAPIEntity;
+
   constructor(
     private http: HttpClient,
     private jwtService: JWTHeaderService
@@ -33,6 +35,19 @@ export class ProductManageService {
     //change your url name here
     this.urlAPI = listUrlAPI.find(url => url.name === 'productResource');
     return this.http.get<productEntity[]>(this.urlAPI.path );
+  }
+
+  getProductByID(id: number): Observable<productEntity>{
+    console.log(this.logClass + 'getProductByID ' + id);
+    this.urlAPI = listUrlAPI.find(url => url.name === 'productDetailResource');
+
+    return this.http.get<productEntity>(this.urlAPI.path + '/' + id);
+    // .subscribe(
+    //   response => {
+    //     console.log(this.logClass + " Status:" + response.status);
+    //     return response;
+    //   }
+    // );
   }
 
 //Login and Authentication success

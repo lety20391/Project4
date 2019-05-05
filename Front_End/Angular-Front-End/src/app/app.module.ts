@@ -31,7 +31,6 @@ import { HomecontentComponent } from './UIComponent/homecontent/homecontent.comp
 import { RegisterComponent } from './UIComponent/register/register.component';
 import { LoginComponent } from './UIComponent/login/login.component';
 import { GalleryComponent } from './UIComponent/gallery/gallery.component';
-import { ProductSingleComponent } from './UIComponent/product-single/product-single.component';
 import { TopsellerComponent } from './UIComponent/topseller/topseller.component';
 import { SearchComponent } from './UIComponent/search/search.component';
 import { ServiceMockupComponent } from './UIComponent/service-mockup/service-mockup/service-mockup.component';
@@ -50,7 +49,6 @@ import { AboutusComponent } from './UIComponent/aboutus/aboutus.component';
     RegisterComponent,
     LoginComponent,
     GalleryComponent,
-    ProductSingleComponent,
     TopsellerComponent,
     SearchComponent,
     SerComponent,
