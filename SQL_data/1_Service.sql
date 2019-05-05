@@ -10,7 +10,7 @@ Insert into dbo.tbUser([DOB], [UserMail], [UserName], [UserStatus], [UserTel]) V
 
 
 
-Insert into dbo.tbService values
+Insert into dbo.tbService ([SerDes], [SerImage],[SerName], [Status]) values
 ('Des1','Image1','ser1',1),
 ('Des2','Image2','ser2',1),
 ('Des3','Image3','ser3',1),
@@ -35,7 +35,7 @@ Insert into dbo.tbBookingDetail values
 (2018-5-22,1,3,3),
 (2018-5-23,1,5,1)
 
-Insert into dbo.petEntity (breed, dob, [image], [name], price, [status], UserOwner) values
+Insert into dbo.pet (breed, dob, [image], [name], price, [status], UserOwner) values
 ('Coggy', 2017-1-1, 'null', 'MinMin', 100, 1, 1),
 ('Coggy', 2017-1-1, 'null', 'Milk', 100, 1, 1),
 ('Coggy', 2017-1-1, 'null', 'Mi', 100, 1, 2),

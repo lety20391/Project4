@@ -6,6 +6,8 @@
 package com.sam.ejb.UserSessionBean;
 
 import com.sam.ejb.entity.userEntity;
+import java.util.List;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -25,11 +27,26 @@ public class UserManageSessionBean implements UserManageSessionBeanLocal {
     private EntityManager em;
 
     @Override
-    public userEntity addUser(userEntity newUser) {
+    public String addUser(userEntity newUser) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         em = entityManagerFactory.createEntityManager();
-        em.persist(newUser);
-        return newUser;
+        String msgStatus = "";
+        try{
+            em.persist(newUser);
+        }catch(javax.persistence.PersistenceException ex){
+            msgStatus = "-EXCEPTION CLASS NAME: " + ex.getClass().getName().toString();
+            System.out.println(msgStatus);
+            
+            msgStatus += "-THROWABLE CLASS NAME: " + ex.getCause().getClass().getName().toString();
+            System.out.println(msgStatus);
+            
+            Throwable th = ex.getCause();
+            msgStatus += "-THROWABLE INFO: " + th.getCause().toString();
+            System.out.println(msgStatus);
+            
+            
+        }
+        return msgStatus;
     }
 
     @Override
@@ -39,10 +56,18 @@ public class UserManageSessionBean implements UserManageSessionBeanLocal {
         return (userEntity) em.createNamedQuery("u.searchByPhone").setParameter("str", userPhone).getSingleResult();
     }
 
+    public int setCodeByPhone(String userPhone, String userCode) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        em = entityManagerFactory.createEntityManager();
+        return em.createNamedQuery("u.setCodeByPhone").setParameter("code", userCode).setParameter("phone", userPhone).getFirstResult();
+       
+    }
+
     @Override
-    public boolean setCodeByPhone(String userPhone, String userCode) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    
+    public List<userEntity> listAll() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        em = entityManagerFactory.createEntityManager();
+        return em.createNamedQuery("u.findAll").getResultList();
     }
     
     

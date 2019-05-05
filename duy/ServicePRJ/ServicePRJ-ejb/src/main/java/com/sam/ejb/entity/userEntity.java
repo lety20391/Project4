@@ -30,8 +30,8 @@ import javax.persistence.Table;
         ({
             @NamedQuery(name="u.findAll",query = "SELECT u FROM userEntity u"),
             @NamedQuery(name="u.searchByName", query ="SELECT u FROM userEntity u WHERE u.UserName LIKE :str "),
-            @NamedQuery(name="u.searchByPhone", query ="SELECT u FROM userEntity u WHERE u.UserTel = :str ")
-//            @NamedQuery(name="u.setCodeByPhone", query ="UPDATE userEntity u SET u.KeyCode = :code WHERE u.UserTel = :phone ")
+            @NamedQuery(name="u.searchByPhone", query ="SELECT u FROM userEntity u WHERE u.UserTel = :str "),
+            @NamedQuery(name="u.setCodeByPhone", query ="UPDATE userEntity u SET u.KeyCode = :code WHERE u.UserTel = :phone ")
         })
 public class userEntity {
     @Id
