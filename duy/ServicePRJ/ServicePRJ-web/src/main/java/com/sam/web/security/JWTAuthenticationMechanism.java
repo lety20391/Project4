@@ -29,7 +29,9 @@ public class JWTAuthenticationMechanism implements HttpAuthenticationMechanism {
                                                             "/tokens",
                                                             "/BookingDetail/getAll",
                                                             "/User/add",
-                                                            "/User/list"
+                                                            "/User/list",
+                                                            "/Product/list",
+                                                            "/Product/getDetail"
                                                         };
     private static final List<String> WHITELISTED = Arrays.asList(whitelistURL);
     private final Logger logger = Logger.getLogger(getClass().getName());
@@ -78,7 +80,9 @@ public class JWTAuthenticationMechanism implements HttpAuthenticationMechanism {
             return context.notifyContainerAboutLogin(this.jwtIdentityStore.validate(credential));
         } else {
             System.out.println(logClass + "InValid credential----");
-            if (WHITELISTED.contains(req.getPathInfo())) {
+            if (req.getPathInfo() == null)
+                return context.responseUnauthorized();
+            if (WHITELISTED.contains(req.getPathInfo()) || req.getPathInfo().contains("findID")) {
                 System.out.println(logClass + "This is whitelist URL---");
             	return context.doNothing();
             } else {

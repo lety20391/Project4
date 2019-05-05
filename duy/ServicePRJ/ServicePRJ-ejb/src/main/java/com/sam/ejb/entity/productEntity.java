@@ -31,7 +31,7 @@ import javax.persistence.Table;
 //            @NamedQuery(name="ser.search", query ="SELECT s FROM serviceEntity s WHERE s.name LIKE :str ")
         })
 public class productEntity {
-     @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ProID;    
     @Column(name="ProName",columnDefinition = "VARCHAR(255) NOT NULL")

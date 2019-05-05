@@ -31,7 +31,7 @@ public class ProductSessionBean implements ProductSessionBeanLocal {
     }
 
     @Override
-    public productEntity addProduct(productEntity product) {
+    public productEntity addProduct(productEntity product) {        
         em = entityManagerFactory.createEntityManager();
         em.persist(product);
         return product;
@@ -51,6 +51,7 @@ public class ProductSessionBean implements ProductSessionBeanLocal {
 
     @Override
     public productEntity findOne(Long id) {
+        System.out.println("--EJB: Product Sessionbean: findOne()--");
         em = entityManagerFactory.createEntityManager();
         return em.find(productEntity.class, id);
     }
