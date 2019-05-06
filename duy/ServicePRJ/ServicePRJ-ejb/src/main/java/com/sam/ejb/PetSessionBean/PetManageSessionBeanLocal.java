@@ -16,4 +16,5 @@ import javax.ejb.Local;
 @Local
 public interface PetManageSessionBeanLocal {
     public List<PetEntity> listAll();
+    public PetEntity addNew(PetEntity newPet);
 }

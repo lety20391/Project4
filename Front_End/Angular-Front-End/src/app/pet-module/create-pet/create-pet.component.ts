@@ -26,11 +26,16 @@ export class CreatePetComponent implements OnInit {
 
     //change your url name here
     this.UrlEntity = listUrlAPI.find(url => url.name === 'uploadResource');
-    this.uploadUrl = this.UrlEntity.path + "/file/" + "Product/" + code;
+    this.uploadUrl = this.UrlEntity.path + "/file/" + "Pet/" + code;
     console.log(this.uploadUrl);
   }
 
   sendID(){
     this.getUrl(this.inputID);
+  }
+
+  createPet(): void{
+    let urlAPI = listUrlAPI.find(url => url.name === 'petResource');
+    console.log(urlAPI.path);
   }
 }

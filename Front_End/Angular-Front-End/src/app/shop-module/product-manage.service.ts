@@ -50,10 +50,10 @@ export class ProductManageService {
     // );
   }
 
-  getAllProductImage(id: number): Observable<String[]>{
+  getAllProductImage(id: number): Observable<string[]>{
     console.log(this.logClass + ' get All Image for product' + id);
     this.urlAPI = listUrlAPI.find(url => url.name === 'getAllImageResource');
-    return this.http.get<String[]>(this.urlAPI.path + '/Product/' + id);
+    return this.http.get<string[]>(this.urlAPI.path + '/Product/' + id);
   }
 
 //Login and Authentication success

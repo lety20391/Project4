@@ -1,9 +1,9 @@
 export class PetEntity {
-  PetID: number;
-  PetName: string;
-  PetBreed: string;
-  PetImage: string;
-  PetStatus: boolean;
-  PetPrice: number;
-  PetDOB: string;
+  petID: number;
+  petName: string;
+  petBreed: string;
+  petImage: string;
+  petStatus: boolean;
+  petPrice: number;
+  petDOB: string;
 }
