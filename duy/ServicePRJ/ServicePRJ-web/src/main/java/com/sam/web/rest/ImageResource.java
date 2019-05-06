@@ -37,6 +37,9 @@ public class ImageResource {
     @Context
     SecurityContext sc;
     
+    @Context
+    ServletContext servletContext;
+    
     private static final String logClass ="---Image Resource: ";
 
     /**
