@@ -110,6 +110,6 @@ export class OrderProductService {
     let url = listUrlAPI.find(url => url.name === 'orderMasterResource');
     console.log(this.logClass + url.path);
     console.log(this.logClass + ' post OrderMaster ' + newOrderMaster.creDate);
-    return this.http.post<OrderMaster>(url.path, newOrderMaster, {})
+    return this.http.post<OrderMaster>(url.path, newOrderMaster);
   }
 }

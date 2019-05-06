@@ -4,6 +4,10 @@ import { OrderDetail } from '../OrderDetail';
 import { OrderMaster } from '../OrderMaster';
 import {OrderProductService} from '../../order-product.service';
 import {UserEntity} from '../../UserEntity/UserEntity';
+import {UrlAPIEntity} from '../../UrlAPIEntity';
+import {listUrlAPI} from '../../listUrlAPI';
+import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-shoping-cart',
   templateUrl: './shoping-cart.component.html',
@@ -62,9 +66,11 @@ export class ShopingCartComponent implements OnInit {
     logClass = '--Shoping cart: ';
     subTotal = 0;
     vat = 0.1;
+    urlAPI: UrlAPIEntity;
 
   constructor(
-    public orderProduct: OrderProductService
+    public orderProduct: OrderProductService,
+    private http: HttpClient
   ) { }
 
   ngOnInit() {
@@ -91,21 +97,34 @@ export class ShopingCartComponent implements OnInit {
     let newOrderMaster = new OrderMaster();
     newOrderMaster.creDate = '2019-05-24T05:00:00.000Z';
     newOrderMaster.shipDate = '2019-06-24T05:00:00.000Z';
+    newOrderMaster.orderID = 2;
     newOrderMaster.userEntity = new UserEntity();
     newOrderMaster.userEntity.userID = 1;
 
-    this.orderProduct.postOrderMaster(newOrderMaster).subscribe(
-      response => {
-                    console.log('--New Order Master: ' + response.orderID);
-                    //sau khi tao xong thi OrderMaster se co ID, lay ID gan vao
-                    //de lam foreign key cho OrderDetail
-                    newOrderMaster.orderID = response.orderID;
-                    //cap nhap lai Quantity lan cuoi truoc khi Send len server
-                    this.getListOrder();
-                    this.saveOrderDetail(newOrderMaster);
-                  }
-    );
 
+    let url = listUrlAPI.find(url => url.name === 'orderMasterResource');
+    console.log(this.logClass + url.path);
+    console.log(this.logClass + ' post OrderMaster ' + newOrderMaster.creDate);
+    this.http.post<OrderMaster>(url.path, newOrderMaster, {observe: 'response'})
+      .subscribe(
+        response => {
+          console.log(this.logClass + response);
+          console.log(this.logClass + ' Response status:'  + response.status );
+          console.log(this.logClass + ' Response data:' +response.body.creDate);
+          if(response.status == 200){
+            console.log(this.logClass + " OrderMaster return OK -> COntitnue")
+            //You can call Dialog here to show Message
+
+
+            //get full Object from response
+            //in this situation, server return OrderMaster object which include ID
+            let reponseOrderMaster: OrderMaster = response.body;
+
+            //tiep tuc save OrderDetail
+            //this.saveOrderDetail(reponseOrderMaster);
+          }
+        }
+      );
 
 
 
@@ -113,18 +132,27 @@ export class ShopingCartComponent implements OnInit {
   }
 
   saveOrderDetail(orderMaster: OrderMaster): void{
+    //prepare Url to post data
+    this.urlAPI = listUrlAPI.find(url => url.name === 'orderDetailResource');
+    console.log(this.logClass + "post Order Detail: " + this.urlAPI.path);
+
     this.listOrderDetail.forEach(
       item => {
                 console.log('---Check Quantity: ' + item.qty);
                 item.orderDate = '2019-05-24T05:00:00.000Z';
                 item.orderMasterEntity = orderMaster;
                 item.orderMasterEntity.userEntity = new UserEntity();
+
                 this.orderProduct.postOrderDetail(item).subscribe(
                   response => {
                     console.log('---New Order Detail: ' + response.oDetailID);
                     console.log('---Them message vao day--');
                   }
                 );
+
+
+
+                // return this.http.post<OrderDetail>(this.urlAPI.path, newOrderDetail);
               }
     );
   }
