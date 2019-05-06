@@ -26,7 +26,7 @@ export class CreatePetComponent implements OnInit {
 
     //change your url name here
     this.UrlEntity = listUrlAPI.find(url => url.name === 'uploadResource');
-    this.uploadUrl = this.UrlEntity.path + "/file/" + code;
+    this.uploadUrl = this.UrlEntity.path + "/file/" + "Product/" + code;
     console.log(this.uploadUrl);
   }
 

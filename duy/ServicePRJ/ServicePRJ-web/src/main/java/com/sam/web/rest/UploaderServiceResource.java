@@ -38,23 +38,24 @@ import org.glassfish.jersey.media.multipart.FormDataParam;
 public class UploaderServiceResource {
     @Context
     private UriInfo context;
-    private String UPLOAD_FOLDER = "e:/uploadedFiles/";
+    private String UPLOAD_FOLDER = "e:/WebResources/uploadedFiles/";
     public UploaderServiceResource() {
     }  
     
-    @OPTIONS
-    @Path("/file/{code}")
-    public Response justResponse(@PathParam("code") String code){
-        return Response.status(200).entity("OK Go").build();
-    }
+//    @OPTIONS
+//    @Path("/file/{code}")
+//    public Response justResponse(@PathParam("code") String code){
+//        return Response.status(200).entity("OK Go").build();
+//    }
     
     @POST
-    @Path("/file/{code}")
+    @Path("/file/{cate}/{code}")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response uploadFile(
                     @FormDataParam("file") InputStream uploadedInputStream,
                     @FormDataParam("file") FormDataContentDisposition fileDetail,
-                    @PathParam("code") String code) {
+                    @PathParam("code") String code,
+                    @PathParam("cate") String cate) {
             System.out.println("---uploadFile: processing-----" + code);
             // check if all form parameters are provided
             if (uploadedInputStream == null || fileDetail == null){        
@@ -64,7 +65,7 @@ public class UploaderServiceResource {
             // create our destination folder, if it not exists
             try {
                     System.out.println("----Create folder uploadedFiles------");
-                    UPLOAD_FOLDER += code + "/";
+                    UPLOAD_FOLDER += "/"+ cate + "/" + code + "/";
                     createFolderIfNotExists(UPLOAD_FOLDER);
             } catch (SecurityException se) {
                     System.out.println("----Cannot create folder on server----");

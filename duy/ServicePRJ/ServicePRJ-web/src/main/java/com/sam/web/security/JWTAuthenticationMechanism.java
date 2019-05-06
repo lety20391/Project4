@@ -34,8 +34,7 @@ public class JWTAuthenticationMechanism implements HttpAuthenticationMechanism {
                                                             "/Product/getDetail",
                                                             "/BookingDetail/Post",
                                                             "/BookingMaster/Post",
-                                                            "/OrderDetail/Post",
-                                                            "/OrderMaster/Post"
+                                                            "/OrderDetail/Post"
                                                         };
     private static final List<String> WHITELISTED = Arrays.asList(whitelistURL);
     private final Logger logger = Logger.getLogger(getClass().getName());
