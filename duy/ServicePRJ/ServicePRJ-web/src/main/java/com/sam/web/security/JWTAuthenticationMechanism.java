@@ -57,6 +57,9 @@ public class JWTAuthenticationMechanism implements HttpAuthenticationMechanism {
         System.out.println(logClass + "Content-Type: " + contentType);
         JWTCredential credential = null;
         
+        if(req.getPathInfo() == null)
+            return context.doNothing();
+        
         if(requestMethod.equals("OPTIONS")){
             System.out.println(logClass + "This is pre-light Request: OK----");
             //res.setStatus(200);
@@ -82,7 +85,7 @@ public class JWTAuthenticationMechanism implements HttpAuthenticationMechanism {
             System.out.println(logClass + "InValid credential----");
             if (req.getPathInfo() == null)
                 return context.responseUnauthorized();
-            if (WHITELISTED.contains(req.getPathInfo()) || req.getPathInfo().contains("findID") || req.getPathInfo().contains("GetImage")) {
+            if (WHITELISTED.contains(req.getPathInfo()) || req.getPathInfo().contains("findID") || req.getPathInfo().contains("GetImage") || req.getPathInfo().contains("resources/image/")) {
                 System.out.println(logClass + "This is whitelist URL---");
             	return context.doNothing();
             } else {
