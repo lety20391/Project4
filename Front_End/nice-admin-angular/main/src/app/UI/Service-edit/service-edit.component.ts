@@ -19,6 +19,7 @@ const httpOptions = {
 })
 export class ServiceEditComponent implements OnInit {
   @Input() edit = new serviceEntity();
+  urlAPI: UrlAPIEntity;
   constructor(
     private route: ActivatedRoute,
     private ServiceManageService: ServiceManageService,

@@ -1,0 +1,17 @@
+<!-- <div>
+  <h4>Upload image</h4>
+</div>
+<form #imageForm = ngForm>
+    <img style="width:400px;height=200px">
+    <input type="file" #Image accept="image/*" >
+    <button type="submit"  class="btn btn-info">Upload</button>
+  </form> -->
+<form #imageForm = ngForm>
+  <div class="col-md-3">
+      <label class="control-label">Image Upload</label>
+      <div class="el-element-overlay">
+                  <img [src]="imageUrl"  style="width:400px;height:400px"/>
+          <input type="file" #Image accept="image/*" class="upload" (change)="handleFileInput($event.target.files)"> </div>
+          <button type="submit"  class="btn btn-info" [disabled]="Image.value=='' || !imageForm.valid ">Upload</button>
+  </div>
+  </form>

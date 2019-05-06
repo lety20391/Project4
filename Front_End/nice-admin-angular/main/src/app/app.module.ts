@@ -31,6 +31,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { ConfirmDialogComponent } from './UI/Dialog/confirm-dialog.component';
+// import { UploadFileComponent } from './UI/upload-file/upload-file.component';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -49,7 +50,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NavigationComponent,
     BreadcrumbComponent,
     SidebarComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    // UploadFileComponent
   ],
   imports: [
     CommonModule,
