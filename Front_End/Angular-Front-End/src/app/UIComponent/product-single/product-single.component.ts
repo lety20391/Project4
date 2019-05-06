@@ -5,6 +5,7 @@ import { productEntity } from '../../productEntity/productEntity';
 import { ProductManageService } from '../../shop-module/product-manage.service';
 import {CategoryEntity} from '../../shop-module/CategoryEntity';
 import {OrderProductService} from '../../order-product.service';
+import {OrderDetail} from '../../cart-module/OrderDetail';
 
 @Component({
   selector: 'app-product-single',

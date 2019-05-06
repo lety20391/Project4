@@ -58,6 +58,8 @@ export class ShopingCartComponent implements OnInit {
 
     listOrderDetail: OrderDetail[];
     logClass = '--Shoping cart: ';
+    subTotal = 0;
+    vat = 0.1;
 
   constructor(
     public orderProduct: OrderProductService
@@ -65,11 +67,18 @@ export class ShopingCartComponent implements OnInit {
 
   ngOnInit() {
     this.getListOrder();
+    this.calSubTotal();
   }
 
   getListOrder(): void{
     console.log(this.logClass + "getListOrder()");
     this.listOrderDetail = this.orderProduct.getListOrderDetail();
+  }
+
+  calSubTotal(): void{
+    this.listOrderDetail.forEach(
+      item => this.subTotal += item.Qty * item.productEntity.proPrice
+    );
   }
 
 }

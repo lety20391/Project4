@@ -87,19 +87,19 @@
                                           </tr>
                                           <tr class="active">
                                               <td colspan="5" class="text-right">SUBTOTAL</td>
-                                              <td class="text-right">$ 130</td>
+                                              <td class="text-right">$ {{subTotal}}</td>
                                           </tr>
                                           <tr class="active">
                                               <td colspan="5" class="text-right">VAT RATE</td>
-                                              <td class="text-right">10%</td>
+                                              <td class="text-right">{{vat*100}}%</td>
                                           </tr>
                                           <tr class="active">
                                               <td colspan="5" class="text-right">VAT DUE</td>
-                                              <td class="text-right">$ 13</td>
+                                              <td class="text-right">$ {{vat * subTotal | number: '1.0-2'}}</td>
                                           </tr>
                                           <tr class="success">
                                               <td colspan="5" class="text-right"><strong>TOTAL DUE</strong></td>
-                                              <td class="text-right"><span class="label label-success">$ 143</span></td>
+                                              <td class="text-right"><span class="label label-success">$ {{subTotal * ( 1 + vat ) | number: '1.0-2' }}</span></td>
                                           </tr>
                                       </tbody>
                                   </table>
