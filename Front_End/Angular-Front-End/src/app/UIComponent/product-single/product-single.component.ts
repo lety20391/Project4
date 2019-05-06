@@ -18,6 +18,7 @@ export class ProductSingleComponent implements OnInit {
 
   currentID: number;
   currentProduct: productEntity = new productEntity();
+  listImage: string[];
 
   constructor(
     private route: ActivatedRoute,
@@ -29,6 +30,7 @@ export class ProductSingleComponent implements OnInit {
   ngOnInit() {
     this.getID();
     this.getProductByID(this.currentID);
+    this.getAllProductImage(this.currentID);
 
   }
 
@@ -43,6 +45,16 @@ export class ProductSingleComponent implements OnInit {
       result => {
                   console.log(this.logClass + ' Product load:' + result.proName);
                   this.currentProduct = result;
+                }
+    );
+  }
+
+  getAllProductImage(id: number): void{
+    console.log(this.logClass + " Get All Image");
+    this.productService.getAllProductImage(id).subscribe(
+      result => {
+                  console.log(this.logClass + ' Image Load');
+                  this.listImage = result;
                 }
     );
   }

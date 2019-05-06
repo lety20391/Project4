@@ -12,5 +12,6 @@ export const listUrlAPI: UrlAPIEntity[] = [
   {name: 'serviceDetailResource', path: localhost + '/ServicePRJ-web/rest/Service/:id'},
   {name: 'uploadResource', path: localhost + '/ServicePRJ-web/rest/uploader'},
   {name: 'orderDetailResource', path: localhost + '/ServicePRJ-web/rest/OrderDetail/Post'},
-  {name: 'orderMasterResource', path: localhost + '/ServicePRJ-web/rest/OrderMaster/Post'}
+  {name: 'orderMasterResource', path: localhost + '/ServicePRJ-web/rest/OrderMaster/Post'},
+  {name: 'getAllImageResource', path: localhost + '/ServicePRJ-web/rest/GetImage'}
 ];

@@ -5,8 +5,10 @@
  */
 package com.sam.web.rest;
 
+import com.google.gson.Gson;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletContext;
 import javax.ws.rs.core.Context;
@@ -42,6 +44,7 @@ public class ImageResource {
     
     private static final String logClass ="---Image Resource: ";
 
+    private String IMG_FOLDER = "e:/WebResources/uploadedFiles/";
     /**
      * Creates a new instance of ImageResource
      */
@@ -59,9 +62,20 @@ public class ImageResource {
             @PathParam("id") String id) throws IOException {
         //TODO return proper representation object
         //throw new UnsupportedOperationException();
-        String currentPath = servletContext.getRealPath("/");
-        System.out.println(logClass + " checkPath:" + currentPath);
-        return Response.ok().entity("").build();
+//        String currentPath = servletContext.getRealPath("/");
+//        System.out.println(logClass + " checkPath:" + currentPath);
+        
+        
+        List<String> listFileName = new ArrayList<>();
+        File folder = new File(IMG_FOLDER + cate + "/" + id);
+        File[] listOfFiles = folder.listFiles();
+        for (File item : listOfFiles) {
+            if (item.isFile()){
+                System.out.println(item.getName());
+                listFileName.add(item.getName());
+            }
+        }
+        return Response.ok().entity(new Gson().toJson(listFileName)).build();
     }
 
     /**
