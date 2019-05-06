@@ -6,7 +6,9 @@ import {OrderProductService} from '../../order-product.service';
 import {UserEntity} from '../../UserEntity/UserEntity';
 import {UrlAPIEntity} from '../../UrlAPIEntity';
 import {listUrlAPI} from '../../listUrlAPI';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import {throwError} from 'rxjs';
 
 @Component({
   selector: 'app-shoping-cart',
@@ -107,23 +109,17 @@ export class ShopingCartComponent implements OnInit {
     console.log(this.logClass + ' post OrderMaster ' + newOrderMaster.creDate);
     this.http.post<OrderMaster>(url.path, newOrderMaster, {observe: 'response'})
       .subscribe(
-        response => {
-          console.log(this.logClass + response);
-          console.log(this.logClass + ' Response status:'  + response.status );
-          console.log(this.logClass + ' Response data:' +response.body.creDate);
-          if(response.status == 200){
-            console.log(this.logClass + " OrderMaster return OK -> COntitnue")
-            //You can call Dialog here to show Message
+            //day la doan lay Response tra ve
+            response => console.log('HTTP response', response.status),
 
+            //day la doan bi loi
+            err => {
+              console.log('HTTP Error', err.status);
+              console.log('ABCxyz');
+            },
 
-            //get full Object from response
-            //in this situation, server return OrderMaster object which include ID
-            let reponseOrderMaster: OrderMaster = response.body;
-
-            //tiep tuc save OrderDetail
-            //this.saveOrderDetail(reponseOrderMaster);
-          }
-        }
+            //day la doan mac dinh
+            () => console.log('HTTP request completed.')
       );
 
 
@@ -156,5 +152,21 @@ export class ShopingCartComponent implements OnInit {
               }
     );
   }
+
+    private handleError(error: HttpErrorResponse) {
+      if (error.error instanceof ErrorEvent) {
+        // A client-side or network error occurred. Handle it accordingly.
+        console.error('An error occurred:', error.error.message);
+      } else {
+        // The backend returned an unsuccessful response code.
+        // The response body may contain clues as to what went wrong,
+        console.error(
+          `Backend returned code ${error.status}, ` +
+          `body was: ${error.error}`);
+      }
+      // return an observable with a user-facing error message
+      return throwError(
+        'Something bad happened; please try again later.');
+    };
 
 }
