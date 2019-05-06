@@ -100,9 +100,9 @@ public class OrderDetailEntity implements Serializable {
         this.productEntity = productEntity;
     }
 
-//    public OrderMasterEntity getOrderMasterEntity() {
-//        return OrderMasterEntity;
-//    }
+    public OrderMasterEntity getOrderMasterEntity() {
+        return OrderMasterEntity;
+    }
 
     public void setOrderMasterEntity(OrderMasterEntity OrderMasterEntity) {
         this.OrderMasterEntity = OrderMasterEntity;

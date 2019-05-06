@@ -89,9 +89,9 @@ public class OrderMasterEntity {
         this.Status = Status;
     }
 
-    public List<OrderDetailEntity> getListOrderDetailEntity() {
-        return listOrderDetailEntity;
-    }
+//    public List<OrderDetailEntity> getListOrderDetailEntity() {
+//        return listOrderDetailEntity;
+//    }
 
     public void setListOrderDetailEntity(List<OrderDetailEntity> listOrderDetailEntity) {
         this.listOrderDetailEntity = listOrderDetailEntity;

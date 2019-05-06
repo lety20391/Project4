@@ -6,5 +6,5 @@ export class OrderDetail {
   orderDate: string;
   status: boolean;
   productEntity: productEntity;
-  orderMaster: OrderMaster;
+  orderMasterEntity: OrderMaster;
 }

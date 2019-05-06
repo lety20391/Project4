@@ -102,7 +102,7 @@ export class ShopingCartComponent implements OnInit {
                     newOrderMaster.orderID = response.orderID;
                     //cap nhap lai Quantity lan cuoi truoc khi Send len server
                     this.getListOrder();
-                    this.saveOrderDetail(response.orderID);
+                    this.saveOrderDetail(newOrderMaster);
                   }
     );
 
@@ -112,13 +112,13 @@ export class ShopingCartComponent implements OnInit {
 
   }
 
-  saveOrderDetail(id: number): void{
+  saveOrderDetail(orderMaster: OrderMaster): void{
     this.listOrderDetail.forEach(
       item => {
                 console.log('---Check Quantity: ' + item.qty);
                 item.orderDate = '2019-05-24T05:00:00.000Z';
-                item.orderMaster = new OrderMaster();
-                item.orderMaster.orderID = id;
+                item.orderMasterEntity = orderMaster;
+                item.orderMasterEntity.userEntity = new UserEntity();
                 this.orderProduct.postOrderDetail(item).subscribe(
                   response => {
                     console.log('---New Order Detail: ' + response.oDetailID);

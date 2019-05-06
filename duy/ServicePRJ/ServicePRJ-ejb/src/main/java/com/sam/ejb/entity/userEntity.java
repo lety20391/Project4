@@ -126,25 +126,25 @@ public class userEntity {
         this.UserStatus = UserStatus;
     }
 
-    public List<bookingMasterEntity> getListBookingmasters() {
-        return listBookingmasters;
-    }
+//    public List<bookingMasterEntity> getListBookingmasters() {
+//        return listBookingmasters;
+//    }
 
     public void setListBookingmasters(List<bookingMasterEntity> listBookingmasters) {
         this.listBookingmasters = listBookingmasters;
     }
 
-    public List<DatingMasterEntity> getListDatingMasterEntity() {
-        return listDatingMasterEntity;
-    }
+//    public List<DatingMasterEntity> getListDatingMasterEntity() {
+//        return listDatingMasterEntity;
+//    }
 
     public void setListDatingMasterEntity(List<DatingMasterEntity> listDatingMasterEntity) {
         this.listDatingMasterEntity = listDatingMasterEntity;
     }
 
-    public List<PetEntity> getListPetEntity() {
-        return listPetEntity;
-    }
+//    public List<PetEntity> getListPetEntity() {
+//        return listPetEntity;
+//    }
 
     public void setListPetEntity(List<PetEntity> listPetEntity) {
         this.listPetEntity = listPetEntity;
