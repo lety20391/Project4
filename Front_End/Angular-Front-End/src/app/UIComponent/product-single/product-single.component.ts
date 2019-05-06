@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { productEntity } from '../../productEntity/productEntity';
 import { ProductManageService } from '../../shop-module/product-manage.service';
 import {CategoryEntity} from '../../shop-module/CategoryEntity';
+import {OrderProductService} from '../../order-product.service';
 
 @Component({
   selector: 'app-product-single',
@@ -20,7 +21,8 @@ export class ProductSingleComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private location: Location,
-    private productService: ProductManageService
+    private productService: ProductManageService,
+    private orderProduct: OrderProductService
   ) { }
 
   ngOnInit() {
@@ -42,6 +44,10 @@ export class ProductSingleComponent implements OnInit {
                   this.currentProduct = result;
                 }
     );
+  }
+
+  buyProduct(selectedProduct: productEntity){
+    this.orderProduct.addNewProduct(selectedProduct);
   }
 
 }

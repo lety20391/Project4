@@ -45,7 +45,7 @@
 
 							<p class="mt-4">{{currentProduct.proDes}}</p>
 
-							<a href="#" class="btn btn-primary mt-4 mb-4">Buy Now</a>
+							<p class="btn btn-primary mt-4 mb-4" (click)="buyProduct(currentProduct)" >Buy Now</p>
 
 							<p>SKU : N/A <br>Categories : {{currentProduct.cateEntity.cateName}} <br>Product ID : {{currentProduct.proID}}</p>
 							<div class="spacer-50"></div>

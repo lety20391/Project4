@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { productEntity } from '../../productEntity/productEntity';
 import { OrderDetail } from '../OrderDetail';
+import {OrderProductService} from '../../order-product.service';
 @Component({
   selector: 'app-shoping-cart',
   templateUrl: './shoping-cart.component.html',
@@ -38,7 +39,7 @@ export class ShopingCartComponent implements OnInit {
      }
   ];
 
-    listOrderDetail: OrderDetail [] = [
+    listOrderDetail2: OrderDetail [] = [
     { ODetailID: 1,
       Qty: 2,
       OrderDate: '12-12-2019',
@@ -55,9 +56,20 @@ export class ShopingCartComponent implements OnInit {
     }
     ];
 
-  constructor() { }
+    listOrderDetail: OrderDetail[];
+    logClass = '--Shoping cart: ';
+
+  constructor(
+    public orderProduct: OrderProductService
+  ) { }
 
   ngOnInit() {
+    this.getListOrder();
+  }
+
+  getListOrder(): void{
+    console.log(this.logClass + "getListOrder()");
+    this.listOrderDetail = this.orderProduct.getListOrderDetail();
   }
 
 }
