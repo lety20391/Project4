@@ -11,8 +11,12 @@
 							<img src="http://localhost:9090/uploadedFiles/Product/{{currentID}}/{{listImage[0]}}" alt="" class="img-fluid">
 						</div>
 						<div class="row mt-3">
-							<div class="col" *ngFor='let image of listImage' >
-								<a href="#"><img src="http://localhost:9090/uploadedFiles/Product/{{currentID}}/{{image}}" alt="" class="border-img img-fluid"></a>
+							<div class="row popup-gallery gutter-5">
+								<div class="col" *ngFor='let image of listImage' >
+									<a href="http://localhost:9090/uploadedFiles/Product/{{currentID}}/{{image}}" title='{{currentProduct.proName}}'>
+										<img src="http://localhost:9090/uploadedFiles/Product/{{currentID}}/{{image}}" alt="" class="border-img img-fluid">
+									</a>
+								</div>
 							</div>
 
 						</div>
