@@ -2,7 +2,16 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { serviceEntity } from '../../serviceEntity/serviceEntity';
 import { ServiceManageService } from '../Service/service-manage.service';
-
+import { listUrlAPI } from '../../listUrlAPI';
+import { UrlAPIEntity } from '../../UrlAPIEntity';
+import {Observable, of} from 'rxjs';
+import { HttpClient, HttpResponse,  HttpHeaders } from '@angular/common/http';
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    'Authorization': 'my-auth-token'
+  })
+};
 @Component({
   selector: 'app-service-edit',
   templateUrl: './service-edit.component.html',
@@ -10,10 +19,10 @@ import { ServiceManageService } from '../Service/service-manage.service';
 })
 export class ServiceEditComponent implements OnInit {
   @Input() edit = new serviceEntity();
-  s = new serviceEntity();
   constructor(
     private route: ActivatedRoute,
-    private ServiceManageService: ServiceManageService
+    private ServiceManageService: ServiceManageService,
+    private http: HttpClient
   ) { }
 
   ngOnInit() {
@@ -23,5 +32,9 @@ export class ServiceEditComponent implements OnInit {
       const id = +this.route.snapshot.paramMap.get('id');
       this.ServiceManageService.getServiceDetail(id)
         .subscribe(detail => this.edit = detail);
+    }
+    editService(): void {
+      this.urlAPI = listUrlAPI.find(url => url.name === 'serviceResource' );
+    this.http.put<serviceEntity>(this.urlAPI.path, this.edit, httpOptions).subscribe(result => {console.log(result)});
     }
 }

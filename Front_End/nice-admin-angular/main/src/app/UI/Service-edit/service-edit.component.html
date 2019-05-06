@@ -11,7 +11,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Service Name</label>
-                                    <input type="text" id="firstName" class="form-control" placeholder="{{edit.serName}}"> </div>
+                                    <input type="text" id="firstName" class="form-control" [(ngModel)]="edit.serName" name="name" > </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group" >
@@ -32,7 +32,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="control-label">Short Description</label>
-                                    <textarea class="form-control" rows="2">{{edit.serShortDes}}</textarea> </div>
+                                    <textarea class="form-control" rows="2" [(ngModel)]="edit.serShortDes" name="shortdes" value="{{edit.serShortDes}}"></textarea> </div>
                             </div>
                             </div>
                         <!--/row-->
@@ -40,7 +40,7 @@
                         <div class="row">
                             <div class="col-md-12 ">
                                 <div class="form-group">
-                                    <textarea class="form-control" rows="7">{{edit.serDes}}</textarea>
+                                    <textarea class="form-control" rows="7" [(ngModel)]="edit.serDes" name="sdes" ></textarea>
                                 </div>
                             </div>
                         </div>
@@ -67,8 +67,8 @@
                     <div class="form-actions m-t-40">
                       <div class="row">
                       <div class="col-md-2">
-                        <button type="submit" class="btn btn-success btn-rounded btn-lg btn-block">
-                            <i class="fa fa-check"></i> Save </button>
+                        <button type="submit" (click)="editService()" class="btn btn-success btn-rounded btn-lg btn-block">
+                            <i class="fa fa-check" ></i> Save </button>
                             </div>
                             <div class="col-md-2">
                         <button type="button" class="btn btn-dark btn-rounded btn-lg btn-block">Cancel</button>

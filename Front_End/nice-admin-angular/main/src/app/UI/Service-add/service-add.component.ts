@@ -17,19 +17,13 @@ const httpOptions = {
   styleUrls: ['./service-add.component.css']
 })
 export class ServiceAddComponent implements OnInit {
-
-
-  //
   ID: number;
   Name: string;
   Des: string;
   ShortDes: string;
   Status: boolean;
   Image: 'aaaaa';
-
-  // Status= false;
   urlAPI : UrlAPIEntity;
-  // service : serviceEntity = {};
   service = new serviceEntity();
   constructor(
     private http:HttpClient
