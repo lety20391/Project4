@@ -88,6 +88,7 @@ public class ManageBookingDetail {
     
     //Add new booking detail
     @POST
+    @Path("/Post")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response addNewBookingDetail(bookingDetailEntity service){

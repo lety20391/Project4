@@ -41,7 +41,7 @@ export class ProductSingleComponent implements OnInit {
     console.log('---Fetch Pet Detail: ' + id);
     this.productService.getProductByID(id).subscribe(
       result => {
-                  console.log(this.logClass + ' Product load:' + result.ProName);
+                  console.log(this.logClass + ' Product load:' + result.proName);
                   this.currentProduct = result;
                 }
     );

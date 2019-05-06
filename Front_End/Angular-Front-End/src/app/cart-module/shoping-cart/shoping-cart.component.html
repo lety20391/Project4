@@ -80,9 +80,9 @@
                                                   <!-- <span class="label label-info"><i class="fa fa-clock-o"></i> 2 weeks</span>
                                                   <span class="label label-success"><i class="fa fa-angle-right"></i> Revisions Available</span> -->
                                               </td>
-                                              <td class="text-center"><span class="badge">{{item.Qty}}</span></td>
+                                              <td class="text-center"><span class="badge">{{item.qty}}</span></td>
                                               <td class="text-center"><span class="label label-default">$ {{item.productEntity.proPrice}}</span></td>
-                                              <td class="text-right"><span class="label label-primary">$ {{item.productEntity.proPrice * item.Qty}}</span></td>
+                                              <td class="text-right"><span class="label label-primary">$ {{item.productEntity.proPrice * item.qty}}</span></td>
 
                                           </tr>
                                           <tr class="active">
@@ -107,7 +107,7 @@
                               <!-- END Table -->
 
                               <div class="clearfix">
-                                  <a href="javascript:void(0)" class="btn btn-lg btn-primary pull-right"><i class="fa fa-check"></i>CheckOut</a>
+                                  <a (click)="checkout()" class="btn btn-lg btn-primary pull-right"><i class="fa fa-check"></i>CheckOut</a>
                               </div>
                               <!-- END Invoice Content -->
                           </div>

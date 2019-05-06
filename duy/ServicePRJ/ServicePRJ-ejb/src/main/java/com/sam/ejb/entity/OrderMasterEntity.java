@@ -28,19 +28,21 @@ import javax.persistence.Table;
 @Table(name="tbOrderMaster")
 @NamedQueries
         ({
-            @NamedQuery(name="om.findAll",query = "SELECT om FROM OrderDetailEntity om")
+            @NamedQuery(name="om.findAll",query = "SELECT om FROM OrderMasterEntity om")
 //            @NamedQuery(name="ser.search", query ="SELECT s FROM serviceEntity s WHERE s.name LIKE :str ")
         })
 public class OrderMasterEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long OrderID;
-    @Column(name="ShipDate", columnDefinition= "DATETIME NOT NULL")
+    @Column(name="ShipDate")
     private Date ShipDate;
-    @Column(name="CreDate", columnDefinition= "DATETIME NOT NULL")
+    @Column(name="CreDate")
     private Date CreDate;
     @Column(name="Status")
     private boolean Status;
+    
+    
     
     
     @OneToMany(mappedBy = "OrderMasterEntity", fetch = FetchType.EAGER)
@@ -50,13 +52,7 @@ public class OrderMasterEntity {
     @JoinColumn(name = "User_ID")
     private userEntity userEntity;
 
-    public OrderMasterEntity(Date ShipDate, Date CreDate, boolean Status, List<OrderDetailEntity> listOrderDetailEntity, userEntity userEntity) {
-        this.ShipDate = ShipDate;
-        this.CreDate = CreDate;
-        this.Status = Status;
-        this.listOrderDetailEntity = listOrderDetailEntity;
-        this.userEntity = userEntity;
-    }
+    
 
     public OrderMasterEntity() {
     }
