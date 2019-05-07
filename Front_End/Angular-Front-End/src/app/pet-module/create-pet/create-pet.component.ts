@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { PetManageService} from '../pet-manage.service';
 import { PetEntity } from '../PetEntity';
 import {UserEntity} from '../../UserEntity/UserEntity';
+import { DatePipe, formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-create-pet',
@@ -49,7 +50,13 @@ export class CreatePetComponent implements OnInit {
   createPetInfo(): void{
     console.log(this.logClass + " creatPet()");
     console.log(this.logClass + this.newPet.petGender);
-    this.newPet.petDOB = '2019-05-05T01:00:00.000Z';
+    //getCurrent DateTime - test
+    let currentDate = new Date();
+    let stringDate = '';
+    stringDate = formatDate(currentDate, 'yyyy-MM-dd', 'en-US') + 'T' + formatDate(currentDate, 'hh:mm:ss', 'en-US');
+
+    console.log(this.logClass + "date: " + stringDate);
+    this.newPet.petDOB = stringDate;
     this.newPet.userEntity = new UserEntity();
     this.newPet.userEntity.userID = 1;
     this.petService.createNewPetInfo(this.newPet).subscribe(
