@@ -35,7 +35,7 @@ Insert into dbo.tbBookingDetail ([BookingDate], [Status],[BookingID], [SerID]) v
 ('2018-5-22',1,3,3),
 ('2018-5-23',1,5,1)
 
-Insert into dbo.tbPet (breed, dob, [image], [name], price, [status], UserOwner_ID) values
+Insert into dbo.tbPet ([petBreed], [petDOB], [petImage], [petName], [petPrice], [petStatus], [userID]) values
 ('Coggy', '2017-1-1', 'null', 'MinMin', 100, 1, 1),
 ('Coggy', '2017-1-1', 'null', 'Milk', 100, 1, 1),
 ('Coggy', '2017-1-1', 'null', 'Mi', 100, 1, 2),

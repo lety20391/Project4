@@ -3,6 +3,9 @@ import { UploadComponent } from '../../UIComponent/upload/upload.component';
 import { listUrlAPI } from '../../listUrlAPI';
 import { UrlAPIEntity } from '../../UrlAPIEntity';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { PetManageService} from '../pet-manage.service';
+import { PetEntity } from '../PetEntity';
+import {UserEntity} from '../../UserEntity/UserEntity';
 
 @Component({
   selector: 'app-create-pet',
@@ -10,17 +13,26 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./create-pet.component.css']
 })
 export class CreatePetComponent implements OnInit {
-  uploadUrl = 'http://localhost:34828/ServicePRJ-web/';
+
+  logClass = '--CreatePetComponent: ';
+  uploadUrl = '';
   UrlEntity: UrlAPIEntity;
-  inputID = '';
-  jwtHeader = new HttpHeaders().set("Authorization", "multipart/form-data");
-  constructor() { }
+  inputID: number;
+  genderList = ['Male', 'Female'];
+  //jwtHeader = new HttpHeaders().set("Authorization", "multipart/form-data");
+  newPet: PetEntity = new PetEntity();
+  isReadyToUploadImage = false;
+  buttonTitle = 'Upload Pet Info';
+
+  constructor(
+    private petService: PetManageService
+  ) { }
 
   ngOnInit() {
-    this.getUrl('5');
+    //this.getUrl('5');
   }
 
-  getUrl(code: string): void{
+  getUrl(code: number): void{
     //code will be use to create image Folder on server
     console.log("------Create Pet: getUrl() ------");
 
@@ -34,8 +46,31 @@ export class CreatePetComponent implements OnInit {
     this.getUrl(this.inputID);
   }
 
-  createPet(): void{
-    let urlAPI = listUrlAPI.find(url => url.name === 'petResource');
-    console.log(urlAPI.path);
+  createPetInfo(): void{
+    console.log(this.logClass + " creatPet()");
+    console.log(this.logClass + this.newPet.petGender);
+    this.newPet.petDOB = '2019-05-05T01:00:00.000Z';
+    this.newPet.userEntity = new UserEntity();
+    this.newPet.userEntity.userID = 1;
+    this.petService.createNewPetInfo(this.newPet).subscribe(
+      //day la doan lay Response tra ve
+      response => {
+                    console.log('HTTP response', response);
+                    let returnPet = response;
+                    if (returnPet.petID != null){
+                      this.getUrl(returnPet.petID);
+                      this.isReadyToUploadImage = true;
+                    }
+                  },
+
+      //day la doan bi loi
+      err => {
+        console.log('HTTP Error', err.status);
+        console.log('ABCxyz');
+      },
+
+      //day la doan mac dinh
+      () => console.log('HTTP request completed.')
+    );
   }
 }

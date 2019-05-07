@@ -1,3 +1,4 @@
+import {UserEntity} from '../UserEntity/UserEntity';
 export class PetEntity {
   petID: number;
   petName: string;
@@ -6,4 +7,8 @@ export class PetEntity {
   petStatus: boolean;
   petPrice: number;
   petDOB: string;
+  petDating: boolean;
+  petStory: string;
+  petGender: string;
+  userEntity: UserEntity;
 }

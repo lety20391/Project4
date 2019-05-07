@@ -34,25 +34,34 @@ import javax.persistence.Table;
 public class PetEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long petID;
         
-    @Column(name="name", length = 50)
+    @Column(name="petName", length = 50)
     private String PetName;
     
-    @Column(name="breed", length = 20)
+    @Column(name="petBreed", length = 20)
     private String PetBreed;
     
-    @Column(name="image", length = 50)
+    @Column(name="petImage", length = 50)
     private String PetImage;
     
-    @Column(name="status")
+    @Column(name="petStatus")
     private boolean PetStatus;
     
-    @Column(name="price")
+    @Column(name="petPrice")
     private int PetPrice;
     
-    @Column(name="dob")
+    @Column(name="petDOB")
     private Date PetDOB;
+    
+    @Column(name="petDating")
+    private boolean PetDating;
+    
+    @Column(name="PetStory")
+    private String PetStory;
+    
+    @Column(name="petGender")
+    private String PetGender;
 //    
 //    @Column(name="UserOwner")
 //    private Long UserID;
@@ -62,7 +71,7 @@ public class PetEntity {
     
     
     @ManyToOne
-    @JoinColumn(name = "UserOwner_ID")
+    @JoinColumn(name = "userID")
     private userEntity userEntity;
 
 
@@ -78,13 +87,15 @@ public class PetEntity {
         this.PetDOB = PetDOB;
     }
 
-    public Long getId() {
-        return id;
+    public Long getPetID() {
+        return petID;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setPetID(Long petID) {
+        this.petID = petID;
     }
+
+ 
 
     
 
@@ -158,6 +169,30 @@ public class PetEntity {
 
     public void setUserEntity(userEntity userEntity) {
         this.userEntity = userEntity;
+    }
+
+    public boolean isPetDating() {
+        return PetDating;
+    }
+
+    public void setPetDating(boolean PetDating) {
+        this.PetDating = PetDating;
+    }
+
+    public String getPetStory() {
+        return PetStory;
+    }
+
+    public void setPetStory(String PetStory) {
+        this.PetStory = PetStory;
+    }
+
+    public String getPetGender() {
+        return PetGender;
+    }
+
+    public void setPetGender(String PetGender) {
+        this.PetGender = PetGender;
     }
     
     
