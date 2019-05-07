@@ -5,7 +5,7 @@
  */
 package com.sam.ejb.UserSessionBean;
 
-import com.sam.ejb.entity.userEntity;
+import com.sam.ejb.entity.UserEntity;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -27,7 +27,7 @@ public class UserManageSessionBean implements UserManageSessionBeanLocal {
     private EntityManager em;
 
     @Override
-    public String addUser(userEntity newUser) {
+    public String addUser(UserEntity newUser) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         em = entityManagerFactory.createEntityManager();
         String msgStatus = "";
@@ -50,10 +50,10 @@ public class UserManageSessionBean implements UserManageSessionBeanLocal {
     }
 
     @Override
-    public userEntity getUserByPhone(String userPhone) {
+    public UserEntity getUserByPhone(String userPhone) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         em = entityManagerFactory.createEntityManager();
-        return (userEntity) em.createNamedQuery("u.searchByPhone").setParameter("str", userPhone).getSingleResult();
+        return (UserEntity) em.createNamedQuery("u.searchByPhone").setParameter("str", userPhone).getSingleResult();
     }
 
     public int setCodeByPhone(String userPhone, String userCode) {
@@ -64,7 +64,7 @@ public class UserManageSessionBean implements UserManageSessionBeanLocal {
     }
 
     @Override
-    public List<userEntity> listAll() {
+    public List<UserEntity> listAll() {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         em = entityManagerFactory.createEntityManager();
         return em.createNamedQuery("u.findAll").getResultList();

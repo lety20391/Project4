@@ -1,7 +1,7 @@
 
 Use Prj4
 
-Insert into dbo.tbUser([DOB], [UserMail], [UserName], [UserStatus], [UserTel]) Values 
+Insert into dbo.tbUser([userDOB], [userMail], [userName], [userStatus], [userTel]) Values 
 (1996-10-20,'mail2@gmail.com','name2',1,'0909090909'),
 (1995-10-20,'mail3@gmail.com','name3',1,'0909090909'),
 (1994-10-20,'mail4@gmail.com','name4',1,'0909090909'),
@@ -35,11 +35,11 @@ Insert into dbo.tbBookingDetail ([BookingDate], [Status],[BookingID], [SerID]) v
 ('2018-5-22',1,3,3),
 ('2018-5-23',1,5,1)
 
-Insert into dbo.tbPet ([petBreed], [petDOB], [petImage], [petName], [petPrice], [petStatus], [userID]) values
-('Coggy', '2017-1-1', 'null', 'MinMin', 100, 1, 1),
-('Coggy', '2017-1-1', 'null', 'Milk', 100, 1, 1),
-('Coggy', '2017-1-1', 'null', 'Mi', 100, 1, 2),
-('Coggy', '2017-1-1', 'null', 'Coggy', 100, 1, 3)
+Insert into dbo.tbPet ( [petDating] ,[petBreed], [petDOB], [petImage], [petName], [petPrice], [petStatus], [userID]) values
+(1,'Coggy', '2017-1-1', 'null', 'MinMin', 100, 1, 1),
+(0,'Coggy', '2017-1-1', 'null', 'Milk', 100, 1, 1),
+(1,'Coggy', '2017-1-1', 'null', 'Mi', 100, 1, 2),
+(1,'Coggy', '2017-1-1', 'null', 'Coggy', 100, 1, 3)
 
 Insert into dbo.datingMasterEntity  ( creDate, locat, [status], userID ) values
 ('2018-1-1', 'hcm', 1, 1),

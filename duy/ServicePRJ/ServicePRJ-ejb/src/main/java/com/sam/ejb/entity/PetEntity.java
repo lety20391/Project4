@@ -57,7 +57,7 @@ public class PetEntity {
     @Column(name="petDating")
     private boolean PetDating;
     
-    @Column(name="PetStory")
+    @Column(name="petStory")
     private String PetStory;
     
     @Column(name="petGender")
@@ -72,7 +72,7 @@ public class PetEntity {
     
     @ManyToOne
     @JoinColumn(name = "userID")
-    private userEntity userEntity;
+    private UserEntity userEntity;
 
 
     public PetEntity() {
@@ -163,13 +163,16 @@ public class PetEntity {
 //        this.UserID = UserID;
 //    }
 
-//    public userEntity getUserEntity() {
-//        return userEntity;
-//    }
+    public UserEntity getUserEntity() {
+        return userEntity;
+    }
 
-    public void setUserEntity(userEntity userEntity) {
+    public void setUserEntity(UserEntity userEntity) {
         this.userEntity = userEntity;
     }
+
+ 
+
 
     public boolean isPetDating() {
         return PetDating;

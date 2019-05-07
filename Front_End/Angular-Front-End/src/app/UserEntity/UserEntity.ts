@@ -3,6 +3,6 @@ export class UserEntity{
   userName: string;
   userTel: string;
   userMail: string;
-  dOB: string;
+  userDOB: string;
   userStatus: boolean;
 }

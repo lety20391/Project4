@@ -53,12 +53,12 @@ public class DatingMasterEntity {
 
     @ManyToOne
     @JoinColumn(name = "UserR_ID")
-    private userEntity userEntity;
+    private UserEntity userEntity;
 
     public DatingMasterEntity() {
     }
 
-    public DatingMasterEntity(Long UserID, Date CreDate, String Locat, boolean Status, List<DatingDetailEntity> listDatingDetail, userEntity userEntity) {
+    public DatingMasterEntity(Long UserID, Date CreDate, String Locat, boolean Status, List<DatingDetailEntity> listDatingDetail, UserEntity userEntity) {
         this.UserID = UserID;
         this.CreDate = CreDate;
         this.Locat = Locat;
@@ -119,7 +119,7 @@ public class DatingMasterEntity {
 //        return userEntity;
 //    }
 
-    public void setUserEntity(userEntity userEntity) {
+    public void setUserEntity(UserEntity userEntity) {
         this.userEntity = userEntity;
     }
     

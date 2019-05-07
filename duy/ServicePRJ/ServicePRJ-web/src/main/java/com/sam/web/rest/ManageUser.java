@@ -6,7 +6,7 @@
 package com.sam.web.rest;
 
 import com.sam.ejb.UserSessionBean.UserManageSessionBeanLocal;
-import com.sam.ejb.entity.userEntity;
+import com.sam.ejb.entity.UserEntity;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.core.Context;
@@ -49,7 +49,7 @@ public class ManageUser {
     @GET
     @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<userEntity> getListUser() {
+    public List<UserEntity> getListUser() {
         //TODO return proper representation object
         return userManageSessionBeanLocal.listAll();
     }
@@ -60,7 +60,7 @@ public class ManageUser {
     @Path("/add")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addNewUser(userEntity newUser){
+    public Response addNewUser(UserEntity newUser){
         String returnMsg = userManageSessionBeanLocal.addUser(newUser);
         System.out.println(returnMsg);
         return Response.status(200).entity(returnMsg).build();
@@ -78,7 +78,7 @@ public class ManageUser {
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateUser(userEntity service) {
+    public Response updateUser(UserEntity service) {
         //userSessionBeanLocal.editUser(service);
         return Response.status(200).entity(service).build();
     }
@@ -89,6 +89,6 @@ public class ManageUser {
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteById(@PathParam("userId") Long userId){
         //userSessionBeanLocal.deleteUser(userId);
-        return Response.status(200).entity(new userEntity()).build();
+        return Response.status(200).entity(new UserEntity()).build();
     }
 }

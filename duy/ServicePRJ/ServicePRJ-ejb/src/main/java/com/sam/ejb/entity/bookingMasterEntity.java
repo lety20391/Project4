@@ -45,7 +45,7 @@ public class bookingMasterEntity {
 
     @ManyToOne
     @JoinColumn(name = "User_ID")
-    private userEntity userEntity;
+    private UserEntity userEntity;
 
     @OneToMany(mappedBy = "bookingMasterEntity", fetch = FetchType.EAGER)
     private List<bookingDetailEntity> bookingdetails;
@@ -88,7 +88,7 @@ public class bookingMasterEntity {
 //        return userEntity;
 //    }
 
-    public void setUserEntity(userEntity userEntity) {
+    public void setUserEntity(UserEntity userEntity) {
         this.userEntity = userEntity;
     }
 

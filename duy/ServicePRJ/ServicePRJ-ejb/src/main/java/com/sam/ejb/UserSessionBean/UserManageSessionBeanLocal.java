@@ -5,7 +5,7 @@
  */
 package com.sam.ejb.UserSessionBean;
 
-import com.sam.ejb.entity.userEntity;
+import com.sam.ejb.entity.UserEntity;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -15,8 +15,8 @@ import javax.ejb.Local;
  */
 @Local
 public interface UserManageSessionBeanLocal {
-    public List<userEntity> listAll();
-    public String addUser(userEntity newUser);
-    public userEntity getUserByPhone(String userPhone);
+    public List<UserEntity> listAll();
+    public String addUser(UserEntity newUser);
+    public UserEntity getUserByPhone(String userPhone);
     public int setCodeByPhone(String userPhone, String userCode);
 }

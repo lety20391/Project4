@@ -50,7 +50,7 @@ public class OrderMasterEntity {
     
     @ManyToOne
     @JoinColumn(name = "User_ID")
-    private userEntity userEntity;
+    private UserEntity userEntity;
 
     
 
@@ -97,11 +97,11 @@ public class OrderMasterEntity {
         this.listOrderDetailEntity = listOrderDetailEntity;
     }
 
-    public userEntity getUserEntity() {
+    public UserEntity getUserEntity() {
         return userEntity;
     }
 
-    public void setUserEntity(userEntity userEntity) {
+    public void setUserEntity(UserEntity userEntity) {
         this.userEntity = userEntity;
     }
     
