@@ -2,7 +2,7 @@
 Use Prj4
 
 Insert into dbo.tbUser([userDOB], [userMail], [userName], [userStatus], [userTel]) Values 
-(1996-10-20,'mail2@gmail.com','name2',1,'0909090909'),
+(1996-10-20,'mail2@gmail.com','DatLe',1,'0394641271'),
 (1995-10-20,'mail3@gmail.com','name3',1,'0909090909'),
 (1994-10-20,'mail4@gmail.com','name4',1,'0909090909'),
 (1993-10-20,'mail5@gmail.com','name5',1,'0909090909'),

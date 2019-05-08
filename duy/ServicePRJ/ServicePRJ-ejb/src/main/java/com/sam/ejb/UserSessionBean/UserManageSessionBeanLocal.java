@@ -19,4 +19,5 @@ public interface UserManageSessionBeanLocal {
     public String addUser(UserEntity newUser);
     public UserEntity getUserByPhone(String userPhone);
     public int setCodeByPhone(String userPhone, String userCode);
+    public UserEntity updateUser(UserEntity updatedUser);
 }

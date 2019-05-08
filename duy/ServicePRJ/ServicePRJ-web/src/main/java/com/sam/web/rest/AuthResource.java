@@ -5,9 +5,13 @@
  */
 package com.sam.web.rest;
 
+import com.sam.ejb.UserSessionBean.UserManageSessionBeanLocal;
+import com.sam.ejb.entity.UserEntity;
 import com.sam.web.security.JWTStore;
+import com.sam.web.security.MobileService;
 import com.sam.web.security.User;
 import java.util.Arrays;
+import javax.ejb.EJB;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -33,8 +37,13 @@ public class AuthResource {
 
     @Context
     private UriInfo context;
+    
+    @EJB
+    UserManageSessionBeanLocal userManageSessionBeanLocal;
 
     private JWTStore jwtStore;
+    private MobileService mobileService = new MobileService();
+    private String logClass= "--AuthResource: ";
     /**
      * Creates a new instance of AuthResource
      */
@@ -73,17 +82,56 @@ public class AuthResource {
     public Response authenticate(User credential) {
         System.out.println("---------API Authenticate---------");
         // TODO: Should compare user credentials on the database.
-        String username = credential.getUsername();
+        String phone = credential.getUsername();
         String password = credential.getPassword();
         
         jwtStore = new JWTStore();
-        // TODO: Groups should retrieve from database based on authenticate user.
-        //String token = this.jwtStore.generateToken(username, Arrays.asList("ADMIN", "MEMBER"));
-        String token = this.jwtStore.generateToken(username, Arrays.asList("ADMIN"));
-        //logger.info( () -> MessageFormat.format("Token={0}", token));
-        System.out.println(token);
-        if ("dat".equals(username) && "abc".equals(password))
+        
+        //default account
+        if ("dat".equals(phone) && "abc".equals(password)){
+            
+            // TODO: Groups should retrieve from database based on authenticate user.
+            //String token = this.jwtStore.generateToken(username, Arrays.asList("ADMIN", "MEMBER"));
+            String token = this.jwtStore.generateToken(phone, Arrays.asList("ADMIN"));
+            //logger.info( () -> MessageFormat.format("Token={0}", token));
+            System.out.println(token);
             return Response.ok().header(AUTHORIZATION, token).build();
+        }else if(!phone.isEmpty() && !password.isEmpty()){
+            //check account neu co ca phone va pass
+            UserEntity returnUser = userManageSessionBeanLocal.getUserByPhone(phone);
+            if (returnUser.getKeyCode().equals(password)){
+                //login success
+                //xoa keyCode trong database
+                returnUser.setKeyCode("");
+                userManageSessionBeanLocal.updateUser(returnUser);
+                
+                // TODO: Groups should retrieve from database based on authenticate user.
+                //String token = this.jwtStore.generateToken(username, Arrays.asList("ADMIN", "MEMBER"));
+                String token = this.jwtStore.generateToken(returnUser.getUserName(), Arrays.asList("MEMBER"));
+                //logger.info( () -> MessageFormat.format("Token={0}", token));
+                System.out.println(token);
+                return Response.ok().header(AUTHORIZATION, token).build();
+            }
+        }
+        else if(!phone.isEmpty() && password.isEmpty()){
+            //neu chi co phone chua co pass thi gui pass ve dien thoai
+            
+            //lay user dang su dung so phone
+            UserEntity returnUser = userManageSessionBeanLocal.getUserByPhone(phone);
+            
+            //tao code random
+            String sampleCode = "a12B34";
+            
+            //set code vao user nay roi update user
+            returnUser.setKeyCode(sampleCode);
+            //update user nay len database de luu code vao database
+            UserEntity userAfterCodeSaved = userManageSessionBeanLocal.updateUser(returnUser);
+            
+            System.out.println(logClass + " code update: " + userAfterCodeSaved.getKeyCode() );
+            
+            mobileService.getMobileCode(sampleCode, phone);
+            return Response.ok().entity(returnUser.getUserID()).build();            
+        }
         return Response.noContent().build();
     }
 }

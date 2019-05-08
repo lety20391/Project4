@@ -25,6 +25,8 @@ public class UserManageSessionBean implements UserManageSessionBeanLocal {
     @PersistenceUnit(unitName = "ServiceDB")
     private EntityManagerFactory entityManagerFactory;
     private EntityManager em;
+    
+    private String logClass = "--UserManageSessionBean: ";
 
     @Override
     public String addUser(UserEntity newUser) {
@@ -52,12 +54,16 @@ public class UserManageSessionBean implements UserManageSessionBeanLocal {
     @Override
     public UserEntity getUserByPhone(String userPhone) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println(logClass + " getUserByPhone");
         em = entityManagerFactory.createEntityManager();
         return (UserEntity) em.createNamedQuery("u.searchByPhone").setParameter("str", userPhone).getSingleResult();
     }
 
     public int setCodeByPhone(String userPhone, String userCode) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println(logClass + " setCodeByePhone");
+        System.out.println(logClass + " phone:" + userPhone);
+        System.out.println(logClass + " userCode:" + userCode);
         em = entityManagerFactory.createEntityManager();
         return em.createNamedQuery("u.setCodeByPhone").setParameter("code", userCode).setParameter("phone", userPhone).getFirstResult();
        
@@ -68,6 +74,19 @@ public class UserManageSessionBean implements UserManageSessionBeanLocal {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         em = entityManagerFactory.createEntityManager();
         return em.createNamedQuery("u.findAll").getResultList();
+    }
+
+//    @Override
+//    public Boolean checkLogin(String userPhone, String userCode) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+
+    @Override
+    public UserEntity updateUser(UserEntity updatedUser) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println(logClass + " UpdateUser: " + updatedUser.getUserName());
+        em = entityManagerFactory.createEntityManager();
+        return em.merge(updatedUser);
     }
     
     
