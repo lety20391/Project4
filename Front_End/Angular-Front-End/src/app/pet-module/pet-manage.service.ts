@@ -23,4 +23,6 @@ export class PetManageService {
     console.log(this.logClass + this.urlAPI.path)
     return this.http.post<PetEntity>(this.urlAPI.path, newPet);
   }
+
+  
 }

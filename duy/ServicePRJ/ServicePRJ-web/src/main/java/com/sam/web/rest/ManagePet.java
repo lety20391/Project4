@@ -56,6 +56,7 @@ public class ManagePet {
     }
     
     @POST
+    @Path("/Post")
     @Produces(MediaType.APPLICATION_JSON)
     public Response addNewPet(PetEntity newPet) {
         //TODO return proper representation object

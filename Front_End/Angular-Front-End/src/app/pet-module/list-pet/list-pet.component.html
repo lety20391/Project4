@@ -98,101 +98,34 @@
 
         					<div class="col-12 col-sm-9 col-md-9">
 
-        						<div class="row">
-        							<!-- Item 1 -->
-        							<div class="col-sm-4 col-md-4" *ngFor='let pet of listPet'>
-        								<div class="rs-shop-box mb-5">
-        									<div class="box-gallery">
-        										<a href="shop-single.html">
-        										<img src="{{pet.PetImage}}" alt="" class="img-fluid">
+										<div class="row">
+					            <!-- Item 1 -->
+					            <div class="col-sm-4 col-md-4" *ngFor='let item of listPet'>
+					              <div class="rs-shop-box mb-5">
+					                <div class="media">
+					                  <!-- nho sua cho nay do style thay doi heigh cua img -->
+					                  <a href="/petDetail/{{item.petID}}"><img src="http://localhost:9090/uploadedFiles/Pet/{{item.petID}}/{{item.petListImage[0]}}" alt="" class="img-fluid" style="height:250px"></a>
+					                </div>
+					                <div class="body-text">
+					                  <h4 class="title"><a href="shop-single.html">{{item.petName}}</a></h4>
+					                  <div class="meta">
+					                    <div class="price">${{item.petPrice}}</div>
+					                    <div class="rating">
+					                      <span></span>
+					                      <span></span>
+					                      <span></span>
+					                      <span></span>
+					                      <span></span>
+					                    </div>
+					                  </div>
+					                </div>
+					              </div>
+					            </div>
 
-        										<div class="project-info">
-        											<div class="project-icon">
-        												<h3><span>Pet Detail</span></h3>
-        											</div>
-        										</div>
-                            </a>
-
-        									</div>
-
-        									<div class="body-text">
-        										<h4 class="title"><a href="shop-single.html">{{pet.PetName}}</a></h4>
-        										<div class="meta">
-        											<div class="price">${{pet.PetPrice}}
-                              </div>
-        											<div class="rating">
-        												<div class="price">{{pet.PetBreed}}</div>
-        											</div>
-        										</div>
-        									</div>
-
-        								</div>
-        							</div>
-
-                      <!-- duplicate  -->
-                      <div class="col-sm-4 col-md-4" *ngFor='let pet of listPet'>
-        								<div class="rs-shop-box mb-5">
-        									<div class="box-gallery">
-        										<a href="shop-single.html">
-        										<img src="{{pet.PetImage}}" alt="" class="img-fluid">
-
-        										<div class="project-info">
-        											<div class="project-icon">
-        												<h3><span>Pet Detail</span></h3>
-        											</div>
-        										</div>
-                            </a>
-
-        									</div>
-
-        									<div class="body-text">
-        										<h4 class="title"><a href="shop-single.html">{{pet.PetName}}</a></h4>
-        										<div class="meta">
-        											<div class="price">${{pet.PetPrice}}
-                              </div>
-        											<div class="rating">
-        												<div class="price">{{pet.PetBreed}}</div>
-        											</div>
-        										</div>
-        									</div>
-
-        								</div>
-        							</div>
-
-                      <!-- duplicate  -->
-                      <div class="col-sm-4 col-md-4" *ngFor='let pet of listPet'>
-        								<div class="rs-shop-box mb-5">
-        									<div class="box-gallery">
-        										<a href="shop-single.html">
-        										<img src="{{pet.PetImage}}" alt="" class="img-fluid">
-
-        										<div class="project-info">
-        											<div class="project-icon">
-        												<h3><span>Pet Detail</span></h3>
-        											</div>
-        										</div>
-                            </a>
-
-        									</div>
-
-        									<div class="body-text">
-        										<h4 class="title"><a href="shop-single.html">{{pet.PetName}}</a></h4>
-        										<div class="meta">
-        											<div class="price">${{pet.PetPrice}}
-                              </div>
-        											<div class="rating">
-        												<div class="price">{{pet.PetBreed}}</div>
-        											</div>
-        										</div>
-        									</div>
-
-        								</div>
-        							</div>
+					          <!-- end shop -->
 
 
-
-
-        						</div>
+					        	</div>
 
                     <div class="row">
           						<div class="col-sm-12 col-md-12">

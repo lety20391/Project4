@@ -11,4 +11,5 @@ export class PetEntity {
   petStory: string;
   petGender: string;
   userEntity: UserEntity;
+  petListImage: string[];
 }
