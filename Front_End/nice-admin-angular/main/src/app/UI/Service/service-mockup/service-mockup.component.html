@@ -1,0 +1,31 @@
+
+    <div class="card">
+        <div class="el-card-item">
+            <div class="el-card-avatar el-overlay-1">
+                <img src="{{inputService.serImage}}" alt="user" />
+                <div class="el-overlay">
+                    <ul class="list-style-none el-info">
+                        <li class="el-item">
+                            <a class="btn default btn-outline image-popup-vertical-fit el-link" routerLink="/service/detail/{{inputService.serID}}" >
+                                <i class="icon-list"></i>
+                            </a>
+                        </li>
+                        <li class="el-item">
+                            <a class="btn default btn-outline el-link" routerLink="/service/edit/{{inputService.serID}}">
+                                <i class="ti-pencil"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="d-flex no-block align-items-center">
+                <div class="m-l-15">
+                    <h4 class="m-b-0">{{inputService.serName}}</h4>
+                    <span class="text-muted">{{inputService.serShortDes}}</span>
+                </div>
+                <!-- <div class="ml-auto m-r-15">
+                    <button type="button" class="btn btn-dark btn-circle">$15</button>
+                </div> -->
+            </div>
+        </div>
+    </div>

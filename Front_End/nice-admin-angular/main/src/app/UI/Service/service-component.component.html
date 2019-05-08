@@ -1,0 +1,16 @@
+
+<div>
+  <button class="btn btn-warning btn-rounded btn-lg" routerLink="/service/addnew">
+    Add new service
+  </button>
+  </div>
+  <div class="row">
+    <p></p>
+    </div>
+  <div>
+<div class="row el-element-overlay">
+  <div  *ngFor='let item of listService' class="col-lg-3 col-md-6">
+    <app-service-mockup [inputService]='item'></app-service-mockup>
+  </div>
+</div>
+</div>

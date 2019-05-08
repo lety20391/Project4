@@ -5,14 +5,31 @@ import { FullComponent } from './layouts/full/full.component';
 import { BlankComponent } from './layouts/blank/blank.component';
 
 export const Approutes: Routes = [
-  {
-    path: '',
+    {path: '',
     component: FullComponent,
     children: [
+
       { path: '', redirectTo: '/dashboard/classic', pathMatch: 'full' },
+
       {
         path: 'dashboard',
         loadChildren: './dashboards/dashboard.module#DashboardModule'
+      },
+      {
+        path: 'service',
+        loadChildren: './UI/Service/service-module.module#ServiceModuleModule'
+      },
+      {
+        path:'',
+        loadChildren: './UI/Service-add/service-add.module#ServiceAddModule'
+      },
+      {
+        path:'',
+        loadChildren: './UI/Service-edit/service-edit.module#ServiceEditModule'
+      },
+      {
+        path: '',
+        loadChildren: './UI/Service-detail/service-detail.module#ServiceDetailModule'
       },
       {
         path: 'starter',

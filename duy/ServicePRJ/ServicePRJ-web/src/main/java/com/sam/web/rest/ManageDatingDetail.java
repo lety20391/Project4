@@ -18,6 +18,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.core.MediaType;
+import javax.xml.ws.spi.http.HttpContext;
 
 /**
  * REST Web Service
@@ -49,6 +50,7 @@ public class ManageDatingDetail {
     public List<DatingDetailEntity> getJSON() {
         //TODO return proper representation object
         //throw new UnsupportedOperationException();
+        
         return datingDetailSessionBeanLocal.listAll();
     }
 
