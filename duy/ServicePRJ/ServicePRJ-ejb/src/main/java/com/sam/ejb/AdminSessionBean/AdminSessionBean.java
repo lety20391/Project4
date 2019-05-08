@@ -6,7 +6,7 @@
 package com.sam.ejb.AdminSessionBean;
 
 import com.sam.ejb.entity.adminEntity;
-import com.sam.ejb.entity.userEntity;
+import com.sam.ejb.entity.UserEntity;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
