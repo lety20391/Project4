@@ -31,8 +31,8 @@
 								</div>
                 <div class="col-sm-6 col-md-6">
 									<div class="form-group">
-										<input type="datetime" class="form-control" placeholder="Pet DOB" required="" [(ngModel)]="newPet.petDOB">
-										<div class="help-block with-errors"></div>
+										<input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date of Birth" class="form-control" [(ngModel)]="newPet.petDOB">
+										<owl-date-time #dt1></owl-date-time>
 									</div>
 								</div>
                 <div class="col-sm-6 col-md-6">

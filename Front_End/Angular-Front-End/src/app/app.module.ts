@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 // import { LoadPageComponent } from './UIComponent/load-page/load-page.component';
@@ -84,7 +85,8 @@ import {OrderProductService} from './order-product.service';
     AppRoutingModule,
     HttpClientModule,
     MainlayoutModuleModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }

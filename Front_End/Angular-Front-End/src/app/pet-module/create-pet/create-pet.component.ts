@@ -51,12 +51,19 @@ export class CreatePetComponent implements OnInit {
     console.log(this.logClass + " creatPet()");
     console.log(this.logClass + this.newPet.petGender);
     //getCurrent DateTime - test
-    let currentDate = new Date();
-    let stringDate = '';
-    stringDate = formatDate(currentDate, 'yyyy-MM-dd', 'en-US') + 'T' + formatDate(currentDate, 'hh:mm:ss', 'en-US');
+    // let currentDate = new Date();
+    // let stringDate = '';
+    // stringDate = formatDate(currentDate, 'yyyy-MM-dd', 'en-US') + 'T' + formatDate(currentDate, 'hh:mm:ss', 'en-US');
+    //
+    // console.log(this.logClass + "date: " + stringDate);
+    // this.newPet.petDOB = stringDate;
 
-    console.log(this.logClass + "date: " + stringDate);
-    this.newPet.petDOB = stringDate;
+    //reformat DOB DateTime again
+    let pickedDOB = this.newPet.petDOB;
+    pickedDOB = formatDate(pickedDOB, 'yyyy-MM-dd', 'en-US') + 'T' + formatDate(pickedDOB, 'hh:mm:ss', 'en-US');
+    console.log(this.logClass + ' DOB:' + pickedDOB);
+    this.newPet.petDOB = pickedDOB;
+
     this.newPet.userEntity = new UserEntity();
     this.newPet.userEntity.userID = 1;
     this.petService.createNewPetInfo(this.newPet).subscribe(

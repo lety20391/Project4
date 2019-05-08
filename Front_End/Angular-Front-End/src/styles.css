@@ -8,3 +8,6 @@
 @import url("assets/css/style.css");
 /* Angular Material */
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+/* Datetime picker */
+@import "~ng-pick-datetime/assets/style/picker.min.css";
