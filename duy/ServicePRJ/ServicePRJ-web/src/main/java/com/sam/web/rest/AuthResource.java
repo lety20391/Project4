@@ -25,6 +25,9 @@ import javax.ws.rs.POST;
 import static javax.ws.rs.core.HttpHeaders.AUTHORIZATION;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import static org.apache.commons.text.CharacterPredicates.DIGITS;
+import static org.apache.commons.text.CharacterPredicates.LETTERS;
+import org.apache.commons.text.RandomStringGenerator;
 
 /**
  * REST Web Service
@@ -111,6 +114,9 @@ public class AuthResource {
                 //logger.info( () -> MessageFormat.format("Token={0}", token));
                 System.out.println(token);
                 return Response.ok().header(AUTHORIZATION, token).build();
+            }else{
+                //sai password
+                return Response.noContent().build();
             }
         }
         else if(!phone.isEmpty() && password.isEmpty()){
@@ -120,16 +126,18 @@ public class AuthResource {
             UserEntity returnUser = userManageSessionBeanLocal.getUserByPhone(phone);
             
             //tao code random
-            String sampleCode = "a12B34";
+            RandomStringGenerator generator = new RandomStringGenerator.Builder()
+                    .withinRange('0', 'z').filteredBy(LETTERS, DIGITS).build();
+            String smsCode = generator.generate(6);
             
             //set code vao user nay roi update user
-            returnUser.setKeyCode(sampleCode);
+            returnUser.setKeyCode(smsCode);
             //update user nay len database de luu code vao database
             UserEntity userAfterCodeSaved = userManageSessionBeanLocal.updateUser(returnUser);
             
             System.out.println(logClass + " code update: " + userAfterCodeSaved.getKeyCode() );
             
-            mobileService.getMobileCode(sampleCode, phone);
+            mobileService.getMobileCode(smsCode, phone);
             return Response.ok().entity(returnUser.getUserID()).build();            
         }
         return Response.noContent().build();

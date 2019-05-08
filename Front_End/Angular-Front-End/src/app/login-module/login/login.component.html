@@ -18,6 +18,8 @@
 				<div class="row">
 					<div class="col-sm-12 col-md-8">
 
+
+
 						<!-- <form action="#" class="form-contact" id="contactForm" data-toggle="validator" novalidate="true"> -->
 							<div class="row">
 								<div class="col-sm-6 col-md-6">
@@ -52,9 +54,11 @@
 						<!-- </form> -->
 
 					</div>
-					<div class="col-sm-4 col-md-4">
-						<img src="http://localhost:9090/uploadedFiles/User/{{currentID}}" alt="" class="img-fluid">
+					<!-- Hinh anh cua user -->
+					<div class="col-sm-4 col-md-4" [class.hideElement]="!isRecievedCode">
+						<img src="http://localhost:9090/uploadedFiles/User/{{currentID}}/{{listImage[0]}}" alt="" class="img-fluid">
 					</div>
+
 				</div>
 
 				<!-- this is Temporal Login Form for Developer -->

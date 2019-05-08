@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
   logClass = '--Login Component:';
   isRecievedCode = false;
   isLogined = false;
+  listImage: string[] = [];
 
   constructor(
     private http: HttpClient,
@@ -65,6 +66,9 @@ export class LoginComponent implements OnInit {
          console.log( response);
          if ( response.status == 200){
            this.isRecievedCode = true;
+           console.log('login: ID:' + response.body);
+           this.currentID = +response.body;
+           this.getUserImage(this.currentID);
          }
          // console.log( response.status );
          // console.log( response.headers.get('Authorization') );
@@ -97,16 +101,28 @@ export class LoginComponent implements OnInit {
          console.log( response.status );
          if (response.status == 200){
            this.isLogined = true;
+           console.log( response.headers.get('Authorization') );
+           let auth = response.headers.get('Authorization');
+           this.jwtService.addJWT(auth);
+           console.log('Get jwt: ' + this.jwtService.getJWT());
+         }else{
+           this.pass = 'Please Enter Code Again';
          }
-         console.log( response.headers.get('Authorization') );
-         let auth = response.headers.get('Authorization');
-         this.jwtService.addJWT(auth);
-         console.log('Get jwt: ' + this.jwtService.getJWT());
+
        }
      );
   }
 
-  getUserImage():void {
-    console.log(this.logClass + ' GetUserImage()');
+  getUserImage(id: number): void{
+    console.log(this.logClass + " Get All Image");
+    console.log(this.logClass + ' get All Image for user' + id);
+    this.urlAPI = listUrlAPI.find(url => url.name === 'getAllImageResource');
+    this.http.get<string[]>(this.urlAPI.path + '/User/' + id)
+    .subscribe(
+      result => {
+                  console.log(this.logClass + ' Image Load');
+                  this.listImage = result;
+                }
+    );
   }
 }
