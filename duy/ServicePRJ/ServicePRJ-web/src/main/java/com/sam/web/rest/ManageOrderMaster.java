@@ -57,9 +57,11 @@ public class ManageOrderMaster {
     
     //Add new booking detail
     @POST
+    @Path("Post")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response addNewBookingDetail(OrderMasterEntity ordermaster){
+        System.out.println("--Manage Order Master: " + ordermaster.getCreDate() + " / " + ordermaster.getShipDate());
         orderMasterSessionBeanLocal.addOrderMaster(ordermaster);
         return Response.status(200).entity(ordermaster).build();
     }

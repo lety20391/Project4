@@ -8,21 +8,17 @@
 					<div class="col-12 col-sm-6 col-md-6">
 
 						<div class="media-detail">
-							<img src="assets/images/productSingle.jpg" alt="" class="img-fluid">
+							<img src="http://localhost:9090/uploadedFiles/Product/{{currentID}}/{{listImage[0]}}" alt="" class="img-fluid">
 						</div>
 						<div class="row mt-3">
-							<div class="col">
-								<a href="#"><img src="assets/images/productSingle1.jpg" alt="" class="border-img img-fluid"></a>
+							<div class="row popup-gallery gutter-5">
+								<div class="col" *ngFor='let image of listImage' >
+									<a href="http://localhost:9090/uploadedFiles/Product/{{currentID}}/{{image}}" title='{{currentProduct.proName}}'>
+										<img src="http://localhost:9090/uploadedFiles/Product/{{currentID}}/{{image}}" alt="" class="border-img img-fluid">
+									</a>
+								</div>
 							</div>
-							<div class="col">
-								<a href="#"><img src="assets/images/productSingle2.jpg" alt="" class="border-img img-fluid"></a>
-							</div>
-							<div class="col">
-								<a href="#"><img src="assets/images/productSingle3.jpg" alt="" class="border-img img-fluid"></a>
-							</div>
-							<div class="col">
-								<a href="#"><img src="assets/images/productSingle4.jpg" alt="" class="border-img img-fluid"></a>
-							</div>
+
 						</div>
 
 					</div>
@@ -32,9 +28,9 @@
 						<div class="single-shop">
 
 							<p class="title-heading text-secondary mb-1">
-								{{detailedProduct.ProName}}
+								{{currentProduct.proName}}
 							</p>
-							<div class="price">${{detailedProduct.ProPrice}}</div>
+							<div class="price">${{currentProduct.proPrice}}</div>
 							<div class="rating">
 								<span></span>
 								<span></span>
@@ -43,11 +39,11 @@
 								<span></span>
 							</div>
 
-							<p class="mt-4">{{detailedProduct.ProDes}}</p>
+							<p class="mt-4">{{currentProduct.proDes}}</p>
 
-							<a href="#" class="btn btn-primary mt-4 mb-4">Buy Now</a>
+							<p class="btn btn-primary mt-4 mb-4" (click)="buyProduct(currentProduct)" >Buy Now</p>
 
-							<p>SKU : N/A <br>Categories : {{detailedProduct.cateEntity.CateName}} <br>Product ID : 01254</p>
+							<p>SKU : N/A <br>Categories : {{currentProduct.cateEntity.cateName}} <br>Product ID : {{currentProduct.proID}}</p>
 							<div class="spacer-50"></div>
 
 

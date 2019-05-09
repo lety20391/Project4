@@ -75,31 +75,31 @@
                                               <td class="text-center">1</td>
                                               <td class="text-center"><img src="assets/images/productSingle.jpg" style="width:30px;"/></td>
                                               <td>
-                                                  <h4>{{item.productEntity.ProName}}</h4>
-                                                  <p>{{item.productEntity.ProDes}}</p>
+                                                  <h4>{{item.productEntity.proName}}</h4>
+                                                  <p>{{item.productEntity.proDes}}</p>
                                                   <!-- <span class="label label-info"><i class="fa fa-clock-o"></i> 2 weeks</span>
                                                   <span class="label label-success"><i class="fa fa-angle-right"></i> Revisions Available</span> -->
                                               </td>
-                                              <td class="text-center"><span class="badge">{{item.Qty}}</span></td>
-                                              <td class="text-center"><span class="label label-default">$ {{item.productEntity.ProPrice}}</span></td>
-                                              <td class="text-right"><span class="label label-primary">$ {{item.productEntity.ProPrice * item.Qty}}</span></td>
+                                              <td class="text-center"><span class="badge">{{item.qty}}</span></td>
+                                              <td class="text-center"><span class="label label-default">$ {{item.productEntity.proPrice}}</span></td>
+                                              <td class="text-right"><span class="label label-primary">$ {{item.productEntity.proPrice * item.qty}}</span></td>
 
                                           </tr>
                                           <tr class="active">
                                               <td colspan="5" class="text-right">SUBTOTAL</td>
-                                              <td class="text-right">$ 130</td>
+                                              <td class="text-right">$ {{subTotal}}</td>
                                           </tr>
                                           <tr class="active">
                                               <td colspan="5" class="text-right">VAT RATE</td>
-                                              <td class="text-right">10%</td>
+                                              <td class="text-right">{{vat*100}}%</td>
                                           </tr>
                                           <tr class="active">
                                               <td colspan="5" class="text-right">VAT DUE</td>
-                                              <td class="text-right">$ 13</td>
+                                              <td class="text-right">$ {{vat * subTotal | number: '1.0-2'}}</td>
                                           </tr>
                                           <tr class="success">
                                               <td colspan="5" class="text-right"><strong>TOTAL DUE</strong></td>
-                                              <td class="text-right"><span class="label label-success">$ 143</span></td>
+                                              <td class="text-right"><span class="label label-success">$ {{subTotal * ( 1 + vat ) | number: '1.0-2' }}</span></td>
                                           </tr>
                                       </tbody>
                                   </table>
@@ -107,7 +107,7 @@
                               <!-- END Table -->
 
                               <div class="clearfix">
-                                  <a href="javascript:void(0)" class="btn btn-lg btn-primary pull-right"><i class="fa fa-check"></i>CheckOut</a>
+                                  <a (click)="checkout()" class="btn btn-lg btn-primary pull-right"><i class="fa fa-check"></i>CheckOut</a>
                               </div>
                               <!-- END Invoice Content -->
                           </div>

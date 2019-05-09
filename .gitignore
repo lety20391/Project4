@@ -2,6 +2,14 @@
 # Project specific excludes
 #
 
+#
+#ignore image
+#
+*.jpg
+*.png
+*.tif
+*.gif
+
 tomcat
 
 #

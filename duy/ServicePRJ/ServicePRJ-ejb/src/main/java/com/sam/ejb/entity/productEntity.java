@@ -31,7 +31,7 @@ import javax.persistence.Table;
 //            @NamedQuery(name="ser.search", query ="SELECT s FROM serviceEntity s WHERE s.name LIKE :str ")
         })
 public class productEntity {
-     @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ProID;    
     @Column(name="ProName",columnDefinition = "VARCHAR(255) NOT NULL")
@@ -132,9 +132,9 @@ public class productEntity {
         this.cateEntity = cateEntity;
     }
 
-    public List<OrderDetailEntity> getListOrderDetailEntity() {
-        return listOrderDetailEntity;
-    }
+//    public List<OrderDetailEntity> getListOrderDetailEntity() {
+//        return listOrderDetailEntity;
+//    }
 
     public void setListOrderDetailEntity(List<OrderDetailEntity> listOrderDetailEntity) {
         this.listOrderDetailEntity = listOrderDetailEntity;

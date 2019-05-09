@@ -1,11 +1,11 @@
 import { CategoryEntity  } from '../shop-module/CategoryEntity';
 export class productEntity{
-  ProID: number;
-  ProName: string;
-  ProDes: string;
-  ProPrice: number;
-  ProColor: string;
-  ProImage: string;
-  Status: boolean;
+  proID: number;
+  proName: string;
+  proDes: string;
+  proPrice: number;
+  proColor: string;
+  proImage: string;
+  status: boolean;
   cateEntity: CategoryEntity;
 }

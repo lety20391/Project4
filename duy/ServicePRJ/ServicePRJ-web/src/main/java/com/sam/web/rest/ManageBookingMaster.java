@@ -58,6 +58,7 @@ public class ManageBookingMaster {
     
     //Add new booking master
     @POST
+    @Path("/Post")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response addNewBookingMaster(bookingMasterEntity service){

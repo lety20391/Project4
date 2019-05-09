@@ -28,23 +28,24 @@ import javax.persistence.Table;
 @Table(name="tbUser")
 @NamedQueries
         ({
-            @NamedQuery(name="u.findAll",query = "SELECT u FROM userEntity u"),
-            @NamedQuery(name="u.searchByName", query ="SELECT u FROM userEntity u WHERE u.UserName LIKE :str "),
-            @NamedQuery(name="u.searchByPhone", query ="SELECT u FROM userEntity u WHERE u.UserTel LIKE :str ")
+            @NamedQuery(name="u.findAll",query = "SELECT u FROM UserEntity u"),
+            @NamedQuery(name="u.searchByName", query ="SELECT u FROM UserEntity u WHERE u.UserName LIKE :str "),
+            @NamedQuery(name="u.searchByPhone", query ="SELECT u FROM UserEntity u WHERE u.UserTel = :str "),
+            @NamedQuery(name="u.setCodeByPhone", query ="UPDATE UserEntity u SET u.KeyCode = :code WHERE u.UserTel = :phone ")
         })
-public class userEntity {
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long UserID;
-    @Column(name="UserName")
+    private Long userID;
+    @Column(name="userName")
     private String UserName;
-    @Column(name="UserTel")
+    @Column(name="userTel")
     private String UserTel;
-    @Column(name="UserMail")
+    @Column(name="userMail")
     private String UserMail;
-    @Column(name="DOB")
-    private Date DOB;
-    @Column(name="UserStatus")
+    @Column(name="userDOB")
+    private Date UserDOB;
+    @Column(name="userStatus")
     private boolean UserStatus;
     @Column(name="keyCode")
     private String KeyCode;
@@ -63,25 +64,27 @@ public class userEntity {
 
     @OneToMany(mappedBy="userEntity", fetch = FetchType.EAGER)
     private List<OrderMasterEntity> listOrderMaster;
-    public userEntity() {
+    
+    public UserEntity() {
     }
 
-    public userEntity( String UserName, String UserTel, String UserMail, Date DOB, boolean UserStatus, List<bookingMasterEntity> listBookingmasters) {
-
+    public UserEntity(Long userID, String UserName, String UserTel, String UserMail, Date UserDOB, boolean UserStatus, String KeyCode, Date Key_dateCreated) {
+        this.userID = userID;
         this.UserName = UserName;
         this.UserTel = UserTel;
         this.UserMail = UserMail;
-        this.DOB = DOB;
+        this.UserDOB = UserDOB;
         this.UserStatus = UserStatus;
-        this.listBookingmasters = listBookingmasters;
+        this.KeyCode = KeyCode;
+        this.Key_dateCreated = Key_dateCreated;
     }
 
     public Long getUserID() {
-        return UserID;
+        return userID;
     }
 
-    public void setUserID(Long UserID) {
-        this.UserID = UserID;
+    public void setUserID(Long userID) {
+        this.userID = userID;
     }
 
     public String getUserName() {
@@ -108,12 +111,12 @@ public class userEntity {
         this.UserMail = UserMail;
     }
 
-    public Date getDOB() {
-        return DOB;
+    public Date getUserDOB() {
+        return UserDOB;
     }
 
-    public void setDOB(Date DOB) {
-        this.DOB = DOB;
+    public void setUserDOB(Date UserDOB) {
+        this.UserDOB = UserDOB;
     }
 
     public boolean isUserStatus() {
@@ -122,30 +125,6 @@ public class userEntity {
 
     public void setUserStatus(boolean UserStatus) {
         this.UserStatus = UserStatus;
-    }
-
-    public List<bookingMasterEntity> getListBookingmasters() {
-        return listBookingmasters;
-    }
-
-    public void setListBookingmasters(List<bookingMasterEntity> listBookingmasters) {
-        this.listBookingmasters = listBookingmasters;
-    }
-
-    public List<DatingMasterEntity> getListDatingMasterEntity() {
-        return listDatingMasterEntity;
-    }
-
-    public void setListDatingMasterEntity(List<DatingMasterEntity> listDatingMasterEntity) {
-        this.listDatingMasterEntity = listDatingMasterEntity;
-    }
-
-    public List<PetEntity> getListPetEntity() {
-        return listPetEntity;
-    }
-
-    public void setListPetEntity(List<PetEntity> listPetEntity) {
-        this.listPetEntity = listPetEntity;
     }
 
     public String getKeyCode() {
@@ -163,6 +142,40 @@ public class userEntity {
     public void setKey_dateCreated(Date Key_dateCreated) {
         this.Key_dateCreated = Key_dateCreated;
     }
+
+//    public List<bookingMasterEntity> getListBookingmasters() {
+//        return listBookingmasters;
+//    }
+
+    public void setListBookingmasters(List<bookingMasterEntity> listBookingmasters) {
+        this.listBookingmasters = listBookingmasters;
+    }
+
+//    public List<DatingMasterEntity> getListDatingMasterEntity() {
+//        return listDatingMasterEntity;
+//    }
+
+    public void setListDatingMasterEntity(List<DatingMasterEntity> listDatingMasterEntity) {
+        this.listDatingMasterEntity = listDatingMasterEntity;
+    }
+
+//    public List<PetEntity> getListPetEntity() {
+//        return listPetEntity;
+//    }
+
+    public void setListPetEntity(List<PetEntity> listPetEntity) {
+        this.listPetEntity = listPetEntity;
+    }
+
+//    public List<OrderMasterEntity> getListOrderMaster() {
+//        return listOrderMaster;
+//    }
+
+    public void setListOrderMaster(List<OrderMasterEntity> listOrderMaster) {
+        this.listOrderMaster = listOrderMaster;
+    }
+
+    
 
     
 

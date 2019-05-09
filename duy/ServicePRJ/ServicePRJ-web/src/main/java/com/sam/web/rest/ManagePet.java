@@ -5,6 +5,7 @@
  */
 package com.sam.web.rest;
 
+import com.google.gson.Gson;
 import com.sam.ejb.PetSessionBean.PetManageSessionBeanLocal;
 import com.sam.ejb.entity.PetEntity;
 import java.util.List;
@@ -17,14 +18,16 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.enterprise.context.RequestScoped;
+import javax.ws.rs.POST;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  * REST Web Service
  *
  * @author Dat Le
  */
-@Path("pet")
+@Path("Pet")
 @RequestScoped
 public class ManagePet {
 
@@ -50,6 +53,16 @@ public class ManagePet {
         //TODO return proper representation object
         //throw new UnsupportedOperationException();
         return petManageSessionBeanLocal.listAll();
+    }
+    
+    @POST
+    @Path("/Post")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addNewPet(PetEntity newPet) {
+        //TODO return proper representation object
+        //throw new UnsupportedOperationException();
+        PetEntity returnPet = petManageSessionBeanLocal.addNew(newPet);
+        return Response.ok().entity(new Gson().toJson(returnPet)).build();
     }
 
     /**

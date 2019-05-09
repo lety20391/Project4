@@ -1,8 +1,8 @@
+import {UserEntity} from '../UserEntity/UserEntity';
 export class OrderMaster{
-  OrderID: number;
-  ODetailID: number;
-  UserID: number;
-  CreDate: string;
-  ShipDate: string;
-  Status: boolean;
+  orderID: number;
+  creDate: string;
+  shipDate: string;
+  status: boolean;
+  userEntity: UserEntity;
 }

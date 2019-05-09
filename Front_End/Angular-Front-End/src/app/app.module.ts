@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 // import { LoadPageComponent } from './UIComponent/load-page/load-page.component';
@@ -31,7 +32,6 @@ import { HomecontentComponent } from './UIComponent/homecontent/homecontent.comp
 import { RegisterComponent } from './UIComponent/register/register.component';
 import { LoginComponent } from './UIComponent/login/login.component';
 import { GalleryComponent } from './UIComponent/gallery/gallery.component';
-import { ProductSingleComponent } from './UIComponent/product-single/product-single.component';
 import { TopsellerComponent } from './UIComponent/topseller/topseller.component';
 import { SearchComponent } from './UIComponent/search/search.component';
 import { ServiceMockupComponent } from './UIComponent/service-mockup/service-mockup/service-mockup.component';
@@ -40,6 +40,7 @@ import { ServiceDetailComponent } from './service-detail-module/service-detail/s
 import { ServiceCateComponent } from './UIComponent/service-cate-mockup/service-cate/service-cate.component';
 import { AppointmentComponent } from './UIComponent/appointment/appointment.component';
 import { AboutusComponent } from './UIComponent/aboutus/aboutus.component';
+import {OrderProductService} from './order-product.service';
 // import { ServiceDetailModule } from './service-detail-module/service-detail.module';
 
 @NgModule({
@@ -50,7 +51,6 @@ import { AboutusComponent } from './UIComponent/aboutus/aboutus.component';
     RegisterComponent,
     LoginComponent,
     GalleryComponent,
-    ProductSingleComponent,
     TopsellerComponent,
     SearchComponent,
     SerComponent,
@@ -85,7 +85,8 @@ import { AboutusComponent } from './UIComponent/aboutus/aboutus.component';
     AppRoutingModule,
     HttpClientModule,
     MainlayoutModuleModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }

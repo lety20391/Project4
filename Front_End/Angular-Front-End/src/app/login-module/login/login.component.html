@@ -5,7 +5,10 @@
 
 				<div class="row">
 					<div class="col-sm-12 col-md-12">
-						<p class="title-heading text-primary mb-5">
+						<p class="title-heading text-primary mb-5" [class.hideElement]="!isLogined" >
+							Login Success
+						</p>
+						<p class="title-heading text-primary mb-5" [class.hideElement]="isLogined">
 							Login Form
 						</p>
 						<p class="subheading">Login Guide</p>
@@ -15,50 +18,91 @@
 				<div class="row">
 					<div class="col-sm-12 col-md-8">
 
+
+
 						<!-- <form action="#" class="form-contact" id="contactForm" data-toggle="validator" novalidate="true"> -->
 							<div class="row">
 								<div class="col-sm-6 col-md-6">
-									<div class="form-group">
+									<div class="form-group" [class.disableFunction]="isRecievedCode">
 										<input type="text" class="form-control" placeholder="Enter Phone" required="" [(ngModel)]="phone">
 										<div class="help-block with-errors"></div>
 									</div>
 								</div>
-								<div class="col-sm-6 col-md-6">
+								<div class="col-sm-6 col-md-6" [class.disableFunction]="!isRecievedCode">
 									<div class="form-group">
-										<input type="email" class="form-control" placeholder="Enter pass" required="" [(ngModel)]="pass">
-										<div class="help-block with-errors"></div>
-									</div>
-								</div>
-								<div class="col-sm-6 col-md-6">
-									<div class="form-group">
-										<input type="text" class="form-control" id="p_subject" placeholder="Subject">
-										<div class="help-block with-errors"></div>
-									</div>
-								</div>
-								<div class="col-sm-6 col-md-6">
-									<div class="form-group">
-										<input type="text" class="form-control" id="p_phone" placeholder="Enter Phone Number">
+										<input type="email" class="form-control" placeholder="Enter Your SMS code" required="" [(ngModel)]="pass">
 										<div class="help-block with-errors"></div>
 									</div>
 								</div>
 							</div>
-							<div class="form-group">
-								 <textarea id="p_message" class="form-control" rows="6" placeholder="Enter Your Message"></textarea>
-								<div class="help-block with-errors"></div>
-							</div>
-							<div class="form-group">
-								<div id="success"></div>
-								<button type="button" (click)="login()" class="btn btn-primary">Login</button>
+
+							<div class="row">
+								<div class="col-sm-6 col-md-6" [class.disableFunction]="isRecievedCode">
+									<div class="form-group" >
+										<div id="success"></div>
+										<button type="button" (click)="getCode()" class="btn btn-primary" >GetCode</button>
+									</div>
+								</div>
+
+								<div class="col-sm-6 col-md-6" [class.disableFunction]="!isRecievedCode">
+									<div class="form-group">
+										<div id="success"></div>
+										<button type="button" (click)="login()" class="btn btn-primary" >Login</button>
+									</div>
+								</div>
 							</div>
 						<!-- </form> -->
-						<div class="margin-bottom-50"></div>
-						<p><em>We will call you back to confirm your appointment, after you've request an appointment.</em></p>
 
 					</div>
-					<div class="col-sm-4 col-md-4">
-						<img src="assets/images/dummy-img-600x700.jpg" alt="" class="img-fluid">
+					<!-- Hinh anh cua user -->
+					<div class="col-sm-4 col-md-4" [class.hideElement]="!isRecievedCode">
+						<img src="http://localhost:9090/uploadedFiles/User/{{currentID}}/{{listImage[0]}}" alt="" class="img-fluid">
+					</div>
+
+				</div>
+
+				<!-- this is Temporal Login Form for Developer -->
+				<hr>
+				<div class="row">
+					<div class="col-sm-12 col-md-8">
+						<p class="title-heading text-primary mb-5" >
+							Temporal Login for Dev
+						</p>
+						<!-- <form action="#" class="form-contact" id="contactForm" data-toggle="validator" novalidate="true"> -->
+							<div class="row">
+								<div class="col-sm-6 col-md-6">
+									<div class="form-group" >
+										<input type="text" class="form-control" placeholder="Enter Phone" required="" [(ngModel)]="phone">
+										<div class="help-block with-errors"></div>
+									</div>
+								</div>
+								<div class="col-sm-6 col-md-6" >
+									<div class="form-group">
+										<input type="email" class="form-control" placeholder="Enter Your SMS code" required="" [(ngModel)]="pass">
+										<div class="help-block with-errors"></div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-sm-6 col-md-6" >
+									<div class="form-group" >
+										<div id="success"></div>
+										<button type="button" (click)="getCode()" class="btn btn-primary" >GetCode</button>
+									</div>
+								</div>
+
+								<div class="col-sm-6 col-md-6" >
+									<div class="form-group">
+										<div id="success"></div>
+										<button type="button" (click)="login()" class="btn btn-primary" >Login</button>
+									</div>
+								</div>
+							</div>
+						<!-- </form> -->
 					</div>
 				</div>
+
 
 			</div>
 		</div>

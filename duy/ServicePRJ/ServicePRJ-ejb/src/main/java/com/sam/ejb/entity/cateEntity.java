@@ -62,9 +62,9 @@ public class cateEntity {
         this.CateName = CateName;
     }
 
-    public List<productEntity> getProductList() {
-        return productList;
-    }
+//    public List<productEntity> getProductList() {
+//        return productList;
+//    }
 
     public void setProductList(List<productEntity> productList) {
         this.productList = productList;

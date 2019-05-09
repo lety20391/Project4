@@ -47,6 +47,7 @@ public class ManageProduct {
      * @return an instance of java.lang.String
      */
     @GET
+    @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
     public List<productEntity> getJson() {
         //TODO return proper representation object
@@ -65,10 +66,14 @@ public class ManageProduct {
     
     //Find one by Id
     @GET
-    @Path("{productId}")
+    @Path("/getDetail/findID/{productId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getById(@PathParam("productId") Long productId){
-        return Response.status(200).entity(productSessionBeanLocal.findOne(productId)).build();
+        productEntity searchProduct = productSessionBeanLocal.findOne(productId);
+        if (searchProduct == null)
+            return Response.status(404).entity("Product Not Found").build();
+        System.out.println("--ManageProduct: " + searchProduct.getProName());
+        return Response.status(200).entity(searchProduct).build();
     }
     
     //Modify product

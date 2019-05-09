@@ -33,4 +33,13 @@ public class PetManageSessionBean implements PetManageSessionBeanLocal {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+
+    @Override
+    public PetEntity addNew(PetEntity newPet) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("----Pet Manage Session Bean: addNew()------");
+        em = entityManagerFactory.createEntityManager();
+        em.persist(newPet);
+        return newPet;
+    }
 }

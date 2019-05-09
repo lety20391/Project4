@@ -5,8 +5,8 @@
  */
 package com.sam.web.rest;
 
-import com.sam.ejb.entity.userEntity;
-import com.sam.ejb.sessionbean.UserSessionBeanLocal;
+import com.sam.ejb.UserSessionBean.UserManageSessionBeanLocal;
+import com.sam.ejb.entity.UserEntity;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.core.Context;
@@ -35,7 +35,7 @@ public class ManageUser {
     @Context
     private UriInfo context;
     @EJB
-    UserSessionBeanLocal userSessionBeanLocal;
+    UserManageSessionBeanLocal userManageSessionBeanLocal;
     /**
      * Creates a new instance of ManageUser
      */
@@ -47,20 +47,23 @@ public class ManageUser {
      * @return an instance of java.lang.String
      */
     @GET
+    @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<userEntity> getJson() {
+    public List<UserEntity> getListUser() {
         //TODO return proper representation object
-        return userSessionBeanLocal.listAll();
+        return userManageSessionBeanLocal.listAll();
     }
 
     
     //Add new Service
     @POST
+    @Path("/add")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addNewUser(userEntity user){
-        userSessionBeanLocal.addUser(user);
-        return Response.status(200).entity(user).build();
+    public Response addNewUser(UserEntity newUser){
+        String returnMsg = userManageSessionBeanLocal.addUser(newUser);
+        System.out.println(returnMsg);
+        return Response.status(200).entity(returnMsg).build();
     }
     
     //Find one by Id
@@ -68,15 +71,15 @@ public class ManageUser {
     @Path("{userId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getById(@PathParam("userId") Long userId){
-        return Response.status(200).entity(userSessionBeanLocal.findOne(userId)).build();
+        return Response.status(200).entity("").build();
     }
     
     //Modify service
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateUser(userEntity service) {
-        userSessionBeanLocal.editUser(service);
+    public Response updateUser(UserEntity service) {
+        //userSessionBeanLocal.editUser(service);
         return Response.status(200).entity(service).build();
     }
     
@@ -85,7 +88,7 @@ public class ManageUser {
     @Path("{userId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteById(@PathParam("userId") Long userId){
-        userSessionBeanLocal.deleteUser(userId);
-        return Response.status(200).entity(new userEntity()).build();
+        //userSessionBeanLocal.deleteUser(userId);
+        return Response.status(200).entity(new UserEntity()).build();
     }
 }

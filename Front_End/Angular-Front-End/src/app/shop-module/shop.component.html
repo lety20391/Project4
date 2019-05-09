@@ -98,12 +98,13 @@
             <div class="col-sm-4 col-md-4" *ngFor='let item of listProduct'>
               <div class="rs-shop-box mb-5">
                 <div class="media">
-                  <a href="/productsingle/{{item.ProID}}"><img src="assets/images/shop1.jpg" alt="" class="img-fluid"></a>
+                  <!-- nho sua cho nay do style thay doi heigh cua img -->
+                  <a href="/productsingle/{{item.proID}}"><img src="http://localhost:9090/uploadedFiles/Product/{{item.proID}}/1.jpg" alt="" class="img-fluid" style="height:250px"></a>
                 </div>
                 <div class="body-text">
-                  <h4 class="title"><a href="shop-single.html">{{item.ProName}}</a></h4>
+                  <h4 class="title"><a href="shop-single.html">{{item.proName}}</a></h4>
                   <div class="meta">
-                    <div class="price">${{item.ProPrice}}</div>
+                    <div class="price">${{item.proPrice}}</div>
                     <div class="rating">
                       <span></span>
                       <span></span>

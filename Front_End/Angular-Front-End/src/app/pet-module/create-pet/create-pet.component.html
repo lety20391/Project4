@@ -4,7 +4,7 @@
 			<div class="container">
 
 				<div class="row">
-					<div class="col-sm-12 col-md-12">
+					<div class="col-sm-12 col-md-12" [class.disableFunction]="isReadyToUploadImage">
 						<p class="title-heading text-primary mb-5">
 							Add New Pet
 						</p>
@@ -13,31 +13,31 @@
 				</div>
 
 				<div class="row">
-					<div class="col-sm-12 col-md-6">
+					<div class="col-sm-12 col-md-6" [class.disableFunction]="isReadyToUploadImage">
 
 						<!-- <form action="#" class="form-contact" id="contactForm" data-toggle="validator" novalidate="true"> -->
 							<div class="row">
 								<div class="col-sm-6 col-md-6">
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Enter Name" required="" [(ngModel)]="name">
+										<input type="text" class="form-control" placeholder="Pet Name" required="" [(ngModel)]="newPet.petName">
 										<div class="help-block with-errors"></div>
 									</div>
 								</div>
                 <div class="col-sm-6 col-md-6">
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Enter Breed" required="" [(ngModel)]="breed">
+										<input type="text" class="form-control" placeholder="Pet Breed" required="" [(ngModel)]="newPet.petBreed">
 										<div class="help-block with-errors"></div>
 									</div>
 								</div>
                 <div class="col-sm-6 col-md-6">
 									<div class="form-group">
-										<input type="datetime" class="form-control" placeholder="Enter DOB" required="" [(ngModel)]="dob">
-										<div class="help-block with-errors"></div>
+										<input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date of Birth" class="form-control" [(ngModel)]="newPet.petDOB">
+										<owl-date-time #dt1></owl-date-time>
 									</div>
 								</div>
                 <div class="col-sm-6 col-md-6">
                   <div class="form-group">
-                    <input type="number" class="form-control" placeholder="Dating price" required="" [(ngModel)]="price">
+                    <input type="number" class="form-control" placeholder="Dating price" required="" [(ngModel)]="newPet.petPrice">
                     <div class="help-block with-errors"></div>
                   </div>
                 </div>
@@ -45,17 +45,22 @@
                 <div class="col-sm-6 col-md-6">
 									<div class="form-group">
                     <label>Ready for Dating: </label>
-                    <input type="radio" value="Yes" name="ready" checked>Yes
-										<input type="radio" value="No" name="ready">No
+                    <input type="checkbox" value="Yes" name="ready" checked [(ngModel)]="newPet.petDating" style="margin-left:10px">
+										<!-- CSS lable nam trong create-pet.component.css -->
+										<span class="label label-ready" *ngIf="newPet.petDating">Ready</span>
+										<span class="label label-notReady" *ngIf="!newPet.petDating">Not Yet</span>
+
 									</div>
 								</div>
                 <hr>
                 <div class="col-sm-6 col-md-6">
 									<div class="form-group">
                     <label>Gender: </label>
-                    <label class="radio-inline"><input type="radio" name="optradio" checked>Male</label>
-                    <label class="radio-inline"><input type="radio" name="optradio">Female</label>
-										<div class="help-block with-errors"></div>
+										<select [(ngModel)]="newPet.petGender" style="margin-left:5px" [value]="'Male'">
+									      <option *ngFor="let gender of genderList" [value]="gender" >
+														{{gender}}
+												</option>
+										</select>
 									</div>
 								</div>
 
@@ -69,12 +74,13 @@
 							</div>
 							<div class="form-group">
 								<div id="success"></div>
-								<button type="button" (click)="createPetInfo()" class="btn btn-primary">Add Info</button>
+								<button type="button" (click)="createPetInfo()" class="btn btn-primary">{{buttonTitle}}</button>
 							</div>
 						<!-- </form> -->
 
 			</div>
-      <div class="col-sm-4 col-md-6">
+      <div class="col-sm-4 col-md-6 " [class.disableFunction]="!isReadyToUploadImage">
+					<p class="title-heading text-primary mb-5">Now Upload Your Pet Image</p>
 
           <!-- upload Image Section here -->
           <app-upload [finalUrl]='uploadUrl' [requestHeader]='jwtHeader'></app-upload>

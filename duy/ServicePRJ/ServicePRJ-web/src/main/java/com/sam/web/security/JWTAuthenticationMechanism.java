@@ -27,7 +27,16 @@ public class JWTAuthenticationMechanism implements HttpAuthenticationMechanism {
     private static final String BEARER = "Bearer ";
     private static String whitelistURL[] = new String [] {
                                                             "/tokens",
-                                                            "/BookingDetail/getAll"    
+                                                            "/BookingDetail/getAll",
+                                                            "/User/add",
+                                                            "/User/list",
+                                                            "/Product/list",
+                                                            "/Product/getDetail",
+                                                            "/BookingDetail/Post",
+                                                            "/BookingMaster/Post",
+                                                            "/OrderDetail/Post",
+                                                            "/OrderMaster/Post",
+                                                            "/Pet"
                                                         };
     private static final List<String> WHITELISTED = Arrays.asList(whitelistURL);
     private final Logger logger = Logger.getLogger(getClass().getName());
@@ -53,6 +62,9 @@ public class JWTAuthenticationMechanism implements HttpAuthenticationMechanism {
         System.out.println(logClass + "Content-Type: " + contentType);
         JWTCredential credential = null;
         
+        if(req.getPathInfo() == null)
+            return context.doNothing();
+        
         if(requestMethod.equals("OPTIONS")){
             System.out.println(logClass + "This is pre-light Request: OK----");
             //res.setStatus(200);
@@ -76,7 +88,9 @@ public class JWTAuthenticationMechanism implements HttpAuthenticationMechanism {
             return context.notifyContainerAboutLogin(this.jwtIdentityStore.validate(credential));
         } else {
             System.out.println(logClass + "InValid credential----");
-            if (WHITELISTED.contains(req.getPathInfo())) {
+            if (req.getPathInfo() == null)
+                return context.responseUnauthorized();
+            if (WHITELISTED.contains(req.getPathInfo()) || req.getPathInfo().contains("findID") || req.getPathInfo().contains("/GetImage/")) {
                 System.out.println(logClass + "This is whitelist URL---");
             	return context.doNothing();
             } else {

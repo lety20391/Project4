@@ -1,10 +1,10 @@
 import { productEntity } from '../productEntity/productEntity';
+import {OrderMaster} from './OrderMaster';
 export class OrderDetail {
-  ODetailID: number;
-  Qty: number;
-  OrderDate: string;
-  Status: boolean;
-  OrderID: number;
+  oDetailID: number;
+  qty: number;
+  orderDate: string;
+  status: boolean;
   productEntity: productEntity;
-
+  orderMasterEntity: OrderMaster;
 }

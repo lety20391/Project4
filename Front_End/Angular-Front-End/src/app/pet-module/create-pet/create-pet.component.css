@@ -1,0 +1,19 @@
+.label {
+  padding: 5px;
+  border-radius: 2px;
+  margin-left: 5px;
+}
+.label-ready {
+  background-color: #F7941D;
+  color: #007bff;
+}
+
+.label-notReady {
+  background-color: #999999 ;
+  color: white;
+}
+
+.disableFunction {
+  pointer-events: none;
+  opacity: 0.2;
+}
