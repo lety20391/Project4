@@ -38,7 +38,7 @@ import org.glassfish.jersey.media.multipart.FormDataParam;
 public class UploaderServiceResource {
     @Context
     private UriInfo context;
-    private String UPLOAD_FOLDER = "e:/WebResources/uploadedFiles/";
+    private String UPLOAD_FOLDER = "d:/WebResources/uploadedFiles/";
     public UploaderServiceResource() {
     }  
     

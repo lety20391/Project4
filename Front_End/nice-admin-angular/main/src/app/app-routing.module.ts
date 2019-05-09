@@ -7,12 +7,41 @@ import { BlankComponent } from './layouts/blank/blank.component';
 export const Approutes: Routes = [
   {
     path: '',
+    component: BlankComponent,
+    children: [
+      {path: '', redirectTo: '/authentication/login', pathMatch: 'full'},
+      {
+        path: 'authentication',
+        loadChildren:
+          './authentication/authentication.module#AuthenticationModule'
+      }
+    ]
+  },
+    {path: '',
     component: FullComponent,
     children: [
+
       { path: '', redirectTo: '/dashboard/classic', pathMatch: 'full' },
+
       {
         path: 'dashboard',
         loadChildren: './dashboards/dashboard.module#DashboardModule'
+      },
+      {
+        path: 'service',
+        loadChildren: './UI/Service/service-module.module#ServiceModuleModule'
+      },
+      {
+        path:'',
+        loadChildren: './UI/Service-add/service-add.module#ServiceAddModule'
+      },
+      {
+        path:'',
+        loadChildren: './UI/Service-edit/service-edit.module#ServiceEditModule'
+      },
+      {
+        path: '',
+        loadChildren: './UI/Service-detail/service-detail.module#ServiceDetailModule'
       },
       {
         path: 'starter',
@@ -53,17 +82,7 @@ export const Approutes: Routes = [
       }
     ]
   },
-  {
-    path: '',
-    component: BlankComponent,
-    children: [
-      {
-        path: 'authentication',
-        loadChildren:
-          './authentication/authentication.module#AuthenticationModule'
-      }
-    ]
-  },
+
   {
     path: '**',
     redirectTo: '/authentication/404'

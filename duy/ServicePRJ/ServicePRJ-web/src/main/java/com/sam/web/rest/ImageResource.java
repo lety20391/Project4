@@ -44,7 +44,7 @@ public class ImageResource {
     
     private static final String logClass ="---Image Resource: ";
 
-    private String IMG_FOLDER = "e:/WebResources/uploadedFiles/";
+    private String IMG_FOLDER = "d:/WebResources/uploadedFiles/";
     /**
      * Creates a new instance of ImageResource
      */

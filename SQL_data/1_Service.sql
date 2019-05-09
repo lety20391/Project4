@@ -10,12 +10,12 @@ Insert into dbo.tbUser([userDOB], [userMail], [userName], [userStatus], [userTel
 
 
 
-Insert into dbo.tbService ([SerDes], [SerImage],[SerName], [Status] ,[SerShortDes]) values
-('Des1','Image1','ser1',1, 'Short Des'),
-('Des2','Image2','ser2',1, 'Short Des'),
-('Des3','Image3','ser3',1, 'Short Des'),
-('Des4','Image4','ser4',1, 'Short Des'),
-('Des5','Image5','ser5',1, 'Short Des')
+Insert into dbo.tbService ([SerDes],[SerName], [Status] ,[SerShortDes]) values
+('Des1', 'ser1',1, 'Short Des'),
+('Des2', 'ser2',1, 'Short Des'),
+('Des3', 'ser3',1, 'Short Des'),
+('Des4', 'ser4',1, 'Short Des'),
+('Des5', 'ser5',1, 'Short Des')
 
 Insert into dbo.tbBookingMaster values
 (2019-10-21,1,1),

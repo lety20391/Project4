@@ -27,6 +27,9 @@ import { FormsModule } from '@angular/forms';
 import { CartModuleModule } from '../cart-module/cart-module.module';
 import { PetModuleModule } from '../pet-module/pet-module.module';
 import { ProductSingleComponent } from '../UIComponent/product-single/product-single.component';
+import { RegisterModule} from '../register-module/register.module';
+import { Error404Component } from '../UIComponent/error404/error404.component';
+// import { MainlayoutRoutingModule } from './mainlayout-routing.module';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,8 @@ import { ProductSingleComponent } from '../UIComponent/product-single/product-si
     TopSellerComponent,
     MainLayoutComponent,
     LoginComponent,
-    ProductSingleComponent
+    ProductSingleComponent,
+    Error404Component
   ],
   imports: [
     CommonModule,
@@ -59,7 +63,8 @@ import { ProductSingleComponent } from '../UIComponent/product-single/product-si
     HttpClientModule,
     FormsModule,
     CartModuleModule,
-    PetModuleModule
+    PetModuleModule,
+    RegisterModule
   ],
   exports: [
     MainLayoutComponent

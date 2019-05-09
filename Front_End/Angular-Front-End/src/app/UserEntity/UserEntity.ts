@@ -5,4 +5,6 @@ export class UserEntity{
   userMail: string;
   userDOB: string;
   userStatus: boolean;
+  keyCode: string;
+  key_dateCreated: datetime;
 }

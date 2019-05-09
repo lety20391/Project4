@@ -41,25 +41,26 @@ public class serviceEntity {
     private String SerDes;
     @Column(name="SerShortDes", columnDefinition="VARCHAR(max) NOT NULL")
     private String SerShortDes;
-    @Column(name="SerImage" ,columnDefinition = "VARCHAR(max) NOT NULL")
-    private String SerImage;
+//    @Column(name="SerImage" ,columnDefinition = "VARCHAR(max)")
+//    private String SerImage;
     @Column(name="Status")
     private boolean Status;
-    
     @OneToMany(mappedBy = "serviceEntity", fetch = FetchType.LAZY)
-//   @JsonIgnore
     private List<bookingDetailEntity> bookingDetailEntitys;
-
+    
+    
+     @OneToMany(mappedBy = "serviceEntity", fetch = FetchType.LAZY)
+    private List<UploadEntity> ListUploadImage;
     public serviceEntity() {
     }
 
-    public serviceEntity(String SerName, String SerDes, String SerShortDes, String SerImage, boolean Status, List<bookingDetailEntity> bookingDetailEntitys) {
+    public serviceEntity(String SerName, String SerDes, String SerShortDes, boolean Status, List<bookingDetailEntity> bookingDetailEntitys, List<UploadEntity> ListUploadImage) {
         this.SerName = SerName;
         this.SerDes = SerDes;
         this.SerShortDes = SerShortDes;
-        this.SerImage = SerImage;
         this.Status = Status;
         this.bookingDetailEntitys = bookingDetailEntitys;
+        this.ListUploadImage = ListUploadImage;
     }
 
     public Long getSerID() {
@@ -94,14 +95,6 @@ public class serviceEntity {
         this.SerShortDes = SerShortDes;
     }
 
-    public String getSerImage() {
-        return SerImage;
-    }
-
-    public void setSerImage(String SerImage) {
-        this.SerImage = SerImage;
-    }
-
     public boolean isStatus() {
         return Status;
     }
@@ -118,4 +111,13 @@ public class serviceEntity {
         this.bookingDetailEntitys = bookingDetailEntitys;
     }
 
+    public List<UploadEntity> getListUploadImage() {
+        return ListUploadImage;
+    }
+
+    public void setListUploadImage(List<UploadEntity> ListUploadImage) {
+        this.ListUploadImage = ListUploadImage;
+    }
+
+ 
 }
