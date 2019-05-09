@@ -6,7 +6,7 @@ import { IndexComponent } from './index-module/index.component';
 // import { LoginComponent } from './login-module/login/login.component';
 import {FormComponent} from './UIComponent/form/form.component';
 import { HomecontentComponent } from './UIComponent/homecontent/homecontent.component';
-import { RegisterComponent } from './UIComponent/register/register.component';
+// import { RegisterComponent } from './UIComponent/register/register.component';
 import { LoginComponent } from './login-module/login/login.component';
 import { GalleryComponent } from './UIComponent/gallery/gallery.component';
 import { ProductSingleComponent } from './UIComponent/product-single/product-single.component';
@@ -22,14 +22,14 @@ import { ListDatingComponent } from './pet-module/list-dating/list-dating.compon
 import { PetDetailComponent } from './pet-module/pet-detail/pet-detail.component';
 import { UploaderComponent } from './upload-module/uploader/uploader.component';
 import { CreatePetComponent } from './pet-module/create-pet/create-pet.component';
-
+import { RegisterComponent} from './register-module/register.component';
 const routes: Routes = [
   {path: '', redirectTo: "/home", pathMatch: 'full'},
   {path: 'shops', component: ShopComponent},
   {path: 'index', component: IndexComponent},
   {path: 'form', component: FormComponent},
   {path: 'home', component: HomecontentComponent},
-  {path: 'register', component: RegisterComponent},
+//  {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'gallery', component: GalleryComponent},
   {path: 'productsingle/:id', component: ProductSingleComponent},
@@ -44,8 +44,8 @@ const routes: Routes = [
   {path: 'listDating', component: ListDatingComponent},
   {path: 'petDetail/:id', component: PetDetailComponent},
   {path: 'form', component: FormComponent},
-  {path: 'createPet', component: CreatePetComponent}
-
+  {path: 'createPet', component: CreatePetComponent},
+  {path: 'register', component: RegisterComponent}
 ];
 
 @NgModule({
