@@ -6,5 +6,5 @@ export class UserEntity{
   userDOB: string;
   userStatus: boolean;
   keyCode: string;
-  key_dateCreated: datetime;
+  key_dateCreated: string;
 }

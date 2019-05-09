@@ -24,6 +24,7 @@ import { UploaderComponent } from './upload-module/uploader/uploader.component';
 import { CreatePetComponent } from './pet-module/create-pet/create-pet.component';
 import { MainLayoutComponent} from './mainlayout-module/main-layout/main-layout.component';
 import { Error404Component } from './UIComponent/error404/error404.component';
+import {RegisterComponent} from './register-module/register.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'mainlayout', pathMatch:'full'},
