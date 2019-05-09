@@ -5,7 +5,7 @@
  */
 package com.sam.ejb.AdminSessionBean;
 
-import com.sam.ejb.entity.adminEntity;
+import com.sam.ejb.entity.AdminEntity;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -15,9 +15,12 @@ import javax.ejb.Local;
  */
 @Local
 public interface AdminSessionBeanLocal {
-    public List<adminEntity> listAll();
-    public adminEntity addAdmin(adminEntity admin);
-    public adminEntity editAdmin(adminEntity admin);
+    public List<AdminEntity> listAll();
+    public AdminEntity addAdmin(AdminEntity admin);
+    public AdminEntity editAdmin(AdminEntity admin);
     public void deleteAdmin(Long id);
-    public adminEntity findOne(Long id);
+    public AdminEntity findOne(Long id);
+    public AdminEntity getAdminByPhone(String adminPhone);
+    public int setCodeByPhone(String adminPhone, String adminCode);
+    public AdminEntity updateAdmin(AdminEntity updatedAdmin);
 }

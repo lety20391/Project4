@@ -5,7 +5,8 @@
  */
 package com.sam.web.rest;
 
-import com.sam.ejb.UserSessionBean.UserManageSessionBeanLocal;
+import com.sam.ejb.AdminSessionBean.AdminSessionBeanLocal;
+import com.sam.ejb.entity.AdminEntity;
 import com.sam.ejb.entity.UserEntity;
 import com.sam.web.security.JWTStore;
 import com.sam.web.security.MobileService;
@@ -14,13 +15,12 @@ import java.util.Arrays;
 import javax.ejb.EJB;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.enterprise.context.RequestScoped;
-import javax.ws.rs.OPTIONS;
 import javax.ws.rs.POST;
 import static javax.ws.rs.core.HttpHeaders.AUTHORIZATION;
 import javax.ws.rs.core.MediaType;
@@ -34,45 +34,39 @@ import org.apache.commons.text.RandomStringGenerator;
  *
  * @author Dat Le
  */
-@Path("tokens")
+@Path("AdminAuth")
 @RequestScoped
-public class AuthResource {
+public class AdminAuthResource {
 
     @Context
     private UriInfo context;
     
     @EJB
-    UserManageSessionBeanLocal userManageSessionBeanLocal;
-
+    AdminSessionBeanLocal adminSessionBeanLocal;
+    
     private JWTStore jwtStore;
     private MobileService mobileService = new MobileService();
-    private String logClass= "--AuthResource: ";
+    private String logClass= "--AdminAuthResource: ";
+
     /**
-     * Creates a new instance of AuthResource
+     * Creates a new instance of AdminAuthResource
      */
-    public AuthResource() {
-    }
-    
-    @OPTIONS
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response resToRequest(){
-        return Response.ok().build();
+    public AdminAuthResource() {
     }
 
     /**
-     * Retrieves representation of an instance of com.sam.web.rest.AuthResource
+     * Retrieves representation of an instance of com.sam.web.rest.AdminAuthResource
      * @return an instance of java.lang.String
      */
     @GET
     @Produces(MediaType.APPLICATION_XML)
     public String getXml() {
         //TODO return proper representation object
-        //throw new UnsupportedOperationException();
-        return "Auth Resource";
+        throw new UnsupportedOperationException();
     }
 
     /**
-     * PUT method for updating or creating an instance of AuthResource
+     * PUT method for updating or creating an instance of AdminAuthResource
      * @param content representation for the resource
      */
     @PUT
@@ -101,16 +95,16 @@ public class AuthResource {
             return Response.ok().header(AUTHORIZATION, token).build();
         }else if(!phone.isEmpty() && !password.isEmpty()){
             //check account neu co ca phone va pass
-            UserEntity returnUser = userManageSessionBeanLocal.getUserByPhone(phone);
-            if (returnUser.getKeyCode().equals(password)){
+            AdminEntity returnAdmin = adminSessionBeanLocal.getAdminByPhone(phone);
+            if (returnAdmin.getKeyCode().equals(password)){
                 //login success
                 //xoa keyCode trong database
-                returnUser.setKeyCode("");
-                userManageSessionBeanLocal.updateUser(returnUser);
+                returnAdmin.setKeyCode("");
+                adminSessionBeanLocal.updateAdmin(returnAdmin);
                 
                 // TODO: Groups should retrieve from database based on authenticate user.
                 //String token = this.jwtStore.generateToken(username, Arrays.asList("ADMIN", "MEMBER"));
-                String token = this.jwtStore.generateToken(returnUser.getUserName(), Arrays.asList("MEMBER"));
+                String token = this.jwtStore.generateToken(returnAdmin.getUsername(), Arrays.asList("MEMBER"));
                 //logger.info( () -> MessageFormat.format("Token={0}", token));
                 System.out.println(token);
                 return Response.ok().header(AUTHORIZATION, token).build();
@@ -123,7 +117,7 @@ public class AuthResource {
             //neu chi co phone chua co pass thi gui pass ve dien thoai
             
             //lay user dang su dung so phone
-            UserEntity returnUser = userManageSessionBeanLocal.getUserByPhone(phone);
+            AdminEntity returnAdmin = adminSessionBeanLocal.getAdminByPhone(phone);
             
             //tao code random
             RandomStringGenerator generator = new RandomStringGenerator.Builder()
@@ -131,16 +125,15 @@ public class AuthResource {
             String smsCode = generator.generate(6);
             
             //set code vao user nay roi update user
-            returnUser.setKeyCode(smsCode);
+            returnAdmin.setKeyCode(smsCode);
             //update user nay len database de luu code vao database
-            UserEntity userAfterCodeSaved = userManageSessionBeanLocal.updateUser(returnUser);
+            AdminEntity adminAfterCodeSaved = adminSessionBeanLocal.updateAdmin(returnAdmin);
             
-            System.out.println(logClass + " code update: " + userAfterCodeSaved.getKeyCode() );
+            System.out.println(logClass + " code update: " + adminAfterCodeSaved.getKeyCode() );
             
             mobileService.getMobileCode(smsCode, phone);
-            return Response.ok().entity(returnUser.getUserID()).build();            
+            return Response.ok().entity(returnAdmin.getAdminID()).build();            
         }
         return Response.noContent().build();
     }
-    
 }

@@ -6,7 +6,7 @@
 package com.sam.web.rest;
 
 import com.sam.ejb.AdminSessionBean.AdminSessionBeanLocal;
-import com.sam.ejb.entity.adminEntity;
+import com.sam.ejb.entity.AdminEntity;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.core.Context;
@@ -48,7 +48,7 @@ public class ManageAdmin {
      */
    @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<adminEntity> getJson() {
+    public List<AdminEntity> getJson() {
         //TODO return proper representation object
         return adminSessionBeanLocal.listAll();
     }
@@ -58,7 +58,7 @@ public class ManageAdmin {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addNewAdmin(adminEntity user){
+    public Response addNewAdmin(AdminEntity user){
         adminSessionBeanLocal.addAdmin(user);
         return Response.status(200).entity(user).build();
     }
@@ -75,7 +75,7 @@ public class ManageAdmin {
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateAdmin(adminEntity admin) {
+    public Response updateAdmin(AdminEntity admin) {
         adminSessionBeanLocal.editAdmin(admin);
         return Response.status(200).entity(admin).build();
     }
@@ -86,6 +86,6 @@ public class ManageAdmin {
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteById(@PathParam("AdminId") Long AdminId){
         adminSessionBeanLocal.deleteAdmin(AdminId);
-        return Response.status(200).entity(new adminEntity()).build();
+        return Response.status(200).entity(new AdminEntity()).build();
     }
 }
