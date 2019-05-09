@@ -26,7 +26,13 @@ import { MainLayoutComponent} from './mainlayout-module/main-layout/main-layout.
 
 const routes: Routes = [
   {path:'', redirectTo:'mainlayout', pathMatch:'full'},
-  {path:'mainlayout', component: MainLayoutComponent}
+  {path:'mainlayout', component: MainLayoutComponent,
+      children: [
+        {path: '', redirectTo:'home', pathMatch:'full'},
+        { path: 'home', component: HomecontentComponent },
+        { path: 'shops', component: ShopComponent }
+      ]
+  }
   // {path: '', redirectTo: "/home", pathMatch: 'full'},
   // {path: 'shops', component: ShopComponent},
   // {path: 'index', component: IndexComponent},
