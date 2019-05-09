@@ -23,6 +23,7 @@ import { PetDetailComponent } from './pet-module/pet-detail/pet-detail.component
 import { UploaderComponent } from './upload-module/uploader/uploader.component';
 import { CreatePetComponent } from './pet-module/create-pet/create-pet.component';
 import { MainLayoutComponent} from './mainlayout-module/main-layout/main-layout.component';
+import { Error404Component } from './UIComponent/error404/error404.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'mainlayout', pathMatch:'full'},
@@ -48,8 +49,14 @@ const routes: Routes = [
         {path: 'listDating', component: ListDatingComponent},
         {path: 'petDetail/:id', component: PetDetailComponent},
         {path: 'form', component: FormComponent},
-        {path: 'createPet', component: CreatePetComponent}
+        {path: 'createPet', component: CreatePetComponent},
+        {path: '404', component: Error404Component}
       ]
+  },
+  // link nao bi loi thi hien thi trang nay
+  {
+    path: '**',
+    redirectTo: '/mainlayout/404'
   }
   // {path: '', redirectTo: "/home", pathMatch: 'full'},
 

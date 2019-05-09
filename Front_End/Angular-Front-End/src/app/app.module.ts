@@ -41,6 +41,7 @@ import { ServiceCateComponent } from './UIComponent/service-cate-mockup/service-
 import { AppointmentComponent } from './UIComponent/appointment/appointment.component';
 import { AboutusComponent } from './UIComponent/aboutus/aboutus.component';
 import {OrderProductService} from './order-product.service';
+
 // import { ServiceDetailModule } from './service-detail-module/service-detail.module';
 
 @NgModule({
