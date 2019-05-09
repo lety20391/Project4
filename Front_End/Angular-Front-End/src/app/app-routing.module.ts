@@ -22,29 +22,32 @@ import { ListDatingComponent } from './pet-module/list-dating/list-dating.compon
 import { PetDetailComponent } from './pet-module/pet-detail/pet-detail.component';
 import { UploaderComponent } from './upload-module/uploader/uploader.component';
 import { CreatePetComponent } from './pet-module/create-pet/create-pet.component';
+import { MainLayoutComponent} from './mainlayout-module/main-layout/main-layout.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: "/home", pathMatch: 'full'},
-  {path: 'shops', component: ShopComponent},
-  {path: 'index', component: IndexComponent},
-  {path: 'form', component: FormComponent},
-  {path: 'home', component: HomecontentComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'gallery', component: GalleryComponent},
-  {path: 'productsingle/:id', component: ProductSingleComponent},
-  {path: 'topseller', component: TopsellerComponent},
-  {path: 'search', component: SearchComponent},
-  {path: 'services', component: SerComponent},
-  {path: 'services/:id', component: ServiceDetailComponent},
-  {path: 'cart', component: ShopingCartComponent},
-  {path: 'appointment', component: AppointmentComponent},
-  {path: 'aboutus', component: AboutusComponent},
-  {path: 'listPet', component: ListPetComponent},
-  {path: 'listDating', component: ListDatingComponent},
-  {path: 'petDetail/:id', component: PetDetailComponent},
-  {path: 'form', component: FormComponent},
-  {path: 'createPet', component: CreatePetComponent}
+  {path:'', redirectTo:'mainlayout', pathMatch:'full'},
+  {path:'mainlayout', component: MainLayoutComponent}
+  // {path: '', redirectTo: "/home", pathMatch: 'full'},
+  // {path: 'shops', component: ShopComponent},
+  // {path: 'index', component: IndexComponent},
+  // {path: 'form', component: FormComponent},
+  // {path: 'home', component: HomecontentComponent},
+  // {path: 'register', component: RegisterComponent},
+  // {path: 'login', component: LoginComponent},
+  // {path: 'gallery', component: GalleryComponent},
+  // {path: 'productsingle/:id', component: ProductSingleComponent},
+  // {path: 'topseller', component: TopsellerComponent},
+  // {path: 'search', component: SearchComponent},
+  // {path: 'services', component: SerComponent},
+  // {path: 'services/:id', component: ServiceDetailComponent},
+  // {path: 'cart', component: ShopingCartComponent},
+  // {path: 'appointment', component: AppointmentComponent},
+  // {path: 'aboutus', component: AboutusComponent},
+  // {path: 'listPet', component: ListPetComponent},
+  // {path: 'listDating', component: ListDatingComponent},
+  // {path: 'petDetail/:id', component: PetDetailComponent},
+  // {path: 'form', component: FormComponent},
+  // {path: 'createPet', component: CreatePetComponent}
 
 ];
 
@@ -53,7 +56,7 @@ const routes: Routes = [
   imports: [
 
     CommonModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, { enableTracing: true })
   ],
   exports: [RouterModule]
 })

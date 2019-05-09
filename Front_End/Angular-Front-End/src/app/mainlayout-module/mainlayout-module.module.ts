@@ -27,6 +27,7 @@ import { FormsModule } from '@angular/forms';
 import { CartModuleModule } from '../cart-module/cart-module.module';
 import { PetModuleModule } from '../pet-module/pet-module.module';
 import { ProductSingleComponent } from '../UIComponent/product-single/product-single.component';
+import { MainlayoutRoutingModule } from './mainlayout-routing.module';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { ProductSingleComponent } from '../UIComponent/product-single/product-si
     HttpClientModule,
     FormsModule,
     CartModuleModule,
-    PetModuleModule
+    PetModuleModule,
+    MainlayoutRoutingModule
   ],
   exports: [
     MainLayoutComponent
