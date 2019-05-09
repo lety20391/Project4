@@ -6,7 +6,7 @@ import { UrlAPIEntity } from '../UrlAPIEntity';
 import {Observable, of} from 'rxjs';
 import { HttpClient, HttpResponse,  HttpHeaders } from '@angular/common/http';
 import { DatePipe, formatDate } from '@angular/common';
-
+import { Router } from '@angular/router';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
@@ -24,10 +24,10 @@ export class RegisterComponent implements OnInit {
   Telephone: string;
   Mail: string;
   DOB: string;
-  Status: boolean;
+  Status: boolean = true;
   keyCode = "";
   key_dateCreated = "";
-
+  pickedDOB : string;
 
   UrlEntity : UrlAPIEntity;
   uploadUrl = '';
@@ -37,7 +37,8 @@ export class RegisterComponent implements OnInit {
   isReadyToUploadImage = false;
   inputID: number;
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -61,32 +62,21 @@ export class RegisterComponent implements OnInit {
     this.user.userStatus = this.Status;
     this.user.keyCode = this.keyCode;
     this.user.key_dateCreated = this.key_dateCreated;
-          //format lai date time
-          // let pickedDOB = this.user.userDOB;
-          // pickedDOB = formatDate(pickedDOB, 'yyyy-MM-dd', 'en-US') + 'T' + formatDate(pickedDOB, 'hh:mm:ss', 'en-US');
-          // console.log(this.logClass + ' DOB:' + pickedDOB);
-          // this.user.userDOB = pickedDOB;
+      //    format lai date time
+    let pickedDOB = this.user.userDOB;
+    pickedDOB = formatDate(pickedDOB, 'yyyy-MM-dd', 'en-US') + 'T' + formatDate(pickedDOB, 'hh:mm:ss', 'en-US');
+    console.log(this.logClass + ' DOB:' + pickedDOB);
+    this.user.userDOB = pickedDOB;
           //
           // this.user.userID = 1;
-          this.http.post<UserEntity>(this.UrlEntity.path, this.user, httpOptions).subscribe(
-            //day la doan lay Response tra ve
-            // response => {
-            //               console.log('HTTP response', response);
-            //               let returnUser = response;
-            //               if (returnUser.userID != null){
-            //                 this.getUrl(returnUser.userID);
-            //                 this.isReadyToUploadImage = true;
-            //               }
-            //             },
-            //
-            // //day la doan bi loi
-            // err => {
-            //   console.log('HTTP Error', err.status);
-            //   console.log('ABCxyz');
-            // },
-            //
-            // //day la doan mac dinh
-            // () => console.log('HTTP request completed.')
+    this.http.post<UserEntity>(this.UrlEntity.path, this.user, httpOptions).subscribe(
+            response => {
+                if(response == null)
+                {
+                  
+                  this.router.navigateByUrl('/mainlayout/login');
+                }
+            }
           );
         }
 }
