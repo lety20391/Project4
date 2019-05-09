@@ -63,7 +63,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     HttpClientModule,
     NgbModule.forRoot(),
     NgMultiSelectDropDownModule.forRoot(),
-    RouterModule.forRoot(Approutes),
+    RouterModule.forRoot(Approutes, { enableTracing: true }),
     PerfectScrollbarModule,
     AgmCoreModule.forRoot({ apiKey: 'AIzaSyBUb3jDWJQ28vDJhuQZxkC0NXr_zycm8D0' })
     // ServiceModuleModule,
