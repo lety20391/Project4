@@ -7,6 +7,7 @@ import {Observable, of} from 'rxjs';
 import { HttpClient, HttpResponse,  HttpHeaders } from '@angular/common/http';
 import { DatePipe, formatDate } from '@angular/common';
 import { Router } from '@angular/router';
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
@@ -36,6 +37,7 @@ export class RegisterComponent implements OnInit {
   logClass: "Log create user";
   isReadyToUploadImage = false;
   inputID: number;
+  showSpinner = false;
   constructor(
     private http: HttpClient,
     private router: Router
@@ -52,7 +54,13 @@ export class RegisterComponent implements OnInit {
     this.uploadUrl = this.UrlEntity.path + "/file/" + "User/" + code;
     console.log(this.uploadUrl);
   }
-  registerNewUser(): void {
+
+
+
+
+
+    registerNewUser(): void {
+
     this.UrlEntity = listUrlAPI.find(url=> url.name === 'registerResource');
     this.user.userID = this.ID;
     this.user.userName = this.Name;
@@ -73,8 +81,14 @@ export class RegisterComponent implements OnInit {
             response => {
                 if(response == null)
                 {
-                  
-                  this.router.navigateByUrl('/mainlayout/login');
+                  this.showSpinner = true;
+                  setTimeout(() =>{
+                    this.showSpinner = false,
+                    this.router.navigateByUrl('/mainlayout/login')
+                  }, 5000);
+                }
+                else{
+                  console.log("error: " + response);
                 }
             }
           );
