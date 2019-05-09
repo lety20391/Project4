@@ -29,31 +29,30 @@ const routes: Routes = [
   {path:'mainlayout', component: MainLayoutComponent,
       children: [
         {path: '', redirectTo:'home', pathMatch:'full'},
-        { path: 'home', component: HomecontentComponent },
-        { path: 'shops', component: ShopComponent }
+        {path: 'shops', component: ShopComponent},
+        {path: 'index', component: IndexComponent},
+        {path: 'form', component: FormComponent},
+        {path: 'home', component: HomecontentComponent},
+        {path: 'register', component: RegisterComponent},
+        {path: 'login', component: LoginComponent},
+        {path: 'gallery', component: GalleryComponent},
+        {path: 'productsingle/:id', component: ProductSingleComponent},
+        {path: 'topseller', component: TopsellerComponent},
+        {path: 'search', component: SearchComponent},
+        {path: 'services', component: SerComponent},
+        {path: 'services/:id', component: ServiceDetailComponent},
+        {path: 'cart', component: ShopingCartComponent},
+        {path: 'appointment', component: AppointmentComponent},
+        {path: 'aboutus', component: AboutusComponent},
+        {path: 'listPet', component: ListPetComponent},
+        {path: 'listDating', component: ListDatingComponent},
+        {path: 'petDetail/:id', component: PetDetailComponent},
+        {path: 'form', component: FormComponent},
+        {path: 'createPet', component: CreatePetComponent}
       ]
   }
   // {path: '', redirectTo: "/home", pathMatch: 'full'},
-  // {path: 'shops', component: ShopComponent},
-  // {path: 'index', component: IndexComponent},
-  // {path: 'form', component: FormComponent},
-  // {path: 'home', component: HomecontentComponent},
-  // {path: 'register', component: RegisterComponent},
-  // {path: 'login', component: LoginComponent},
-  // {path: 'gallery', component: GalleryComponent},
-  // {path: 'productsingle/:id', component: ProductSingleComponent},
-  // {path: 'topseller', component: TopsellerComponent},
-  // {path: 'search', component: SearchComponent},
-  // {path: 'services', component: SerComponent},
-  // {path: 'services/:id', component: ServiceDetailComponent},
-  // {path: 'cart', component: ShopingCartComponent},
-  // {path: 'appointment', component: AppointmentComponent},
-  // {path: 'aboutus', component: AboutusComponent},
-  // {path: 'listPet', component: ListPetComponent},
-  // {path: 'listDating', component: ListDatingComponent},
-  // {path: 'petDetail/:id', component: PetDetailComponent},
-  // {path: 'form', component: FormComponent},
-  // {path: 'createPet', component: CreatePetComponent}
+
 
 ];
 

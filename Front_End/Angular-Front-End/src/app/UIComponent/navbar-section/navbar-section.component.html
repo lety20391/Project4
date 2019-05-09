@@ -11,12 +11,12 @@
               <ul class="navbar-nav">
                 <!-- HOME -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">HOME</a>
+                    <a class="nav-link" [routerLink]="['/mainlayout/home']">HOME</a>
                 </li>
 
                 <!-- ABOUT US -->
                 <li class="nav-item">
-                    <a class="nav-link" href="aboutus">ABOUT US</a>
+                    <a class="nav-link" [routerLink]="['/mainlayout/aboutus']">ABOUT US</a>
                 </li>
 
                 <!-- DATING -->
@@ -25,15 +25,15 @@
                         DATING
                       </a>
                       <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/listPet">My Pet list</a>
-                        <a class="dropdown-item" href="/listDating">Dating</a>
+                        <a class="dropdown-item" [routerLink]="['/mainlayout/listPet']">My Pet list</a>
+                        <a class="dropdown-item" [routerLink]="['/mainlayout/listDating']">Dating</a>
                       </div>
               </li>
 
               <!-- SERVICES -->
               <li class="nav-item dropdown dmenu">
 
-                      <a class="nav-link" href="/services" role="button"  aria-haspopup="true" aria-expanded="false">
+                      <a class="nav-link" [routerLink]="['/mainlayout/services']" role="button"  aria-haspopup="true" aria-expanded="false">
                         SERVICES
                       </a>
                       <!-- <div class="dropdown-menu">
@@ -46,7 +46,7 @@
 
               <!-- GALLERY -->
               <li class="nav-item">
-                      <a class="nav-link" href="gallery">GALLERY</a>
+                      <a class="nav-link" [routerLink]="['/mainlayout/gallery']">GALLERY</a>
               </li>
 
               <!-- SHOP -->
@@ -55,8 +55,8 @@
                         SHOP
                       </a>
                       <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/shops">Go to shop</a>
-                        <a class="dropdown-item" href="topseller">Top Seller</a>
+                        <a class="dropdown-item" [routerLink]="['/mainlayout/shops']">Go to shop</a>
+                        <a class="dropdown-item" [routerLink]="['/mainlayout/topseller']">Top Seller</a>
                       </div>
               </li>
 
@@ -66,8 +66,8 @@
                         REGISTER/LOGIN
                       </a>
                       <div class="dropdown-menu">
-                        <a class="dropdown-item" href="register">REGISTER</a>
-                        <a class="dropdown-item" href="login">LOGIN</a>
+                        <a class="dropdown-item" [routerLink]="['/mainlayout/register']">REGISTER</a>
+                        <a class="dropdown-item" [routerLink]="['/mainlayout/login']">LOGIN</a>
                       </div>
               </li>
 
