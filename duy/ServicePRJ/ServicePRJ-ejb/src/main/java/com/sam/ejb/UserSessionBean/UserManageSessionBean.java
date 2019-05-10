@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceUnit;
 
 /**
@@ -56,7 +57,18 @@ public class UserManageSessionBean implements UserManageSessionBeanLocal {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         System.out.println(logClass + " getUserByPhone");
         em = entityManagerFactory.createEntityManager();
-        return (UserEntity) em.createNamedQuery("u.searchByPhone").setParameter("str", userPhone).getSingleResult();
+        UserEntity searchUser = null;
+        try {
+            searchUser = (UserEntity)em.createNamedQuery("u.searchByPhone").setParameter("str", userPhone).getSingleResult();
+        } catch (NoResultException nre) {
+            //bug neu khong tim thay ket qua
+        }
+        
+        if (searchUser != null)
+            return searchUser;
+        searchUser = new UserEntity();
+        searchUser.setUserTel("0000000000");
+        return searchUser;
     }
 
     public int setCodeByPhone(String userPhone, String userCode) {
