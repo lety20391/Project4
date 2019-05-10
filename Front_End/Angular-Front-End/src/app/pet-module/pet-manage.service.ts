@@ -20,8 +20,8 @@ export class PetManageService {
   createNewPetInfo(newPet: PetEntity): Observable<PetEntity>{
     console.log(this.logClass + " init");
     this.urlAPI = listUrlAPI.find(url => url.name === 'petResource');
-    console.log(this.logClass + this.urlAPI.path)
-    return this.http.post<PetEntity>(this.urlAPI.path, newPet);
+    console.log(this.logClass + this.urlAPI.path);
+    return this.http.post<PetEntity>(this.urlAPI.path + '/Post', newPet);
   }
 
   getPetByID(id: number): Observable<PetEntity>{
