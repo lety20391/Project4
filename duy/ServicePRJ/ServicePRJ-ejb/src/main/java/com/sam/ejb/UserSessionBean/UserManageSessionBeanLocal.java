@@ -6,6 +6,7 @@
 package com.sam.ejb.UserSessionBean;
 
 import com.sam.ejb.entity.UserEntity;
+
 import java.util.List;
 import javax.ejb.Local;
 
@@ -20,4 +21,5 @@ public interface UserManageSessionBeanLocal {
     public UserEntity getUserByPhone(String userPhone);
     public int setCodeByPhone(String userPhone, String userCode);
     public UserEntity updateUser(UserEntity updatedUser);
+    public UserEntity findOne(Long id);
 }

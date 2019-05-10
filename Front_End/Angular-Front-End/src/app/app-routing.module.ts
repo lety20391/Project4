@@ -26,7 +26,7 @@ import { MainLayoutComponent} from './mainlayout-module/main-layout/main-layout.
 import { Error404Component } from './UIComponent/error404/error404.component';
 import {RegisterComponent} from './register-module/register.component';
 import {DetailDatingComponent} from './pet-module/detail-dating/detail-dating.component';
-
+import {BookingComponent} from './booking-module/booking.component';
 const routes: Routes = [
   {path:'', redirectTo:'mainlayout', pathMatch:'full'},
   {path:'mainlayout', component: MainLayoutComponent,
@@ -53,7 +53,8 @@ const routes: Routes = [
         {path: 'datingDetail/:id', component: DetailDatingComponent},
         {path: 'form', component: FormComponent},
         {path: 'createPet', component: CreatePetComponent},
-        {path: '404', component: Error404Component}
+        {path: '404', component: Error404Component},
+        {path: 'servicebook', component: BookingComponent}
       ]
   },
   // link nao bi loi thi hien thi trang nay

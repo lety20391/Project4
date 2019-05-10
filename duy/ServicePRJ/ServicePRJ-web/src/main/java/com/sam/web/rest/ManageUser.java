@@ -68,10 +68,10 @@ public class ManageUser {
     
     //Find one by Id
     @GET
-    @Path("{userId}")
+    @Path("getDetail/findID/{userId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getById(@PathParam("userId") Long userId){
-        return Response.status(200).entity("").build();
+        return Response.status(200).entity(userManageSessionBeanLocal.findOne(userId)).build();
     }
     
     //Modify service

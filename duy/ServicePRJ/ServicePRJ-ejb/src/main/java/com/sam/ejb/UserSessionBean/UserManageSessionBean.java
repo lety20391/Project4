@@ -100,6 +100,12 @@ public class UserManageSessionBean implements UserManageSessionBeanLocal {
         em = entityManagerFactory.createEntityManager();
         return em.merge(updatedUser);
     }
+
+    @Override
+    public UserEntity findOne(Long id) {
+          em = entityManagerFactory.createEntityManager();
+        return em.find(UserEntity.class, id); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

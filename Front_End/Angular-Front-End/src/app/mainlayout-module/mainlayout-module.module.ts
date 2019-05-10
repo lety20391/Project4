@@ -30,7 +30,8 @@ import { ProductSingleComponent } from '../UIComponent/product-single/product-si
 import { RegisterModule} from '../register-module/register.module';
 import { Error404Component } from '../UIComponent/error404/error404.component';
 // import { MainlayoutRoutingModule } from './mainlayout-routing.module';
-
+import { BookingModule} from '../booking-module/booking.module';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     LoadPageComponent,
@@ -64,7 +65,9 @@ import { Error404Component } from '../UIComponent/error404/error404.component';
     FormsModule,
     CartModuleModule,
     PetModuleModule,
-    RegisterModule
+    RegisterModule,
+    BookingModule,
+    NgbModule
   ],
   exports: [
     MainLayoutComponent

@@ -32,18 +32,18 @@ import javax.persistence.Table;
 public class bookingDetailEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long BDetailID;    
-    @Column(name="BookingDate")
+    private Long bDetailID;    
+    @Column(name="bookingDate")
     private Date BookingDate;
-    @Column(name="Status")
+    @Column(name="bdstatus")
     private boolean Status;
        
     @ManyToOne
-    @JoinColumn(name = "BookingID")
+    @JoinColumn(name = "service_bookingID")
     private bookingMasterEntity bookingMasterEntity;
     
     @ManyToOne
-    @JoinColumn(name = "SerID")
+    @JoinColumn(name = "service_serID")
     private serviceEntity serviceEntity;
 
     public bookingDetailEntity() {
@@ -56,12 +56,12 @@ public class bookingDetailEntity {
         this.serviceEntity = serviceEntity;
     }
 
-    public Long getBDetailID() {
-        return BDetailID;
+    public Long getbDetailID() {
+        return bDetailID;
     }
 
-    public void setBDetailID(Long BDetailID) {
-        this.BDetailID = BDetailID;
+    public void setbDetailID(Long bDetailID) {
+        this.bDetailID = bDetailID;
     }
 
     public Date getBookingDate() {
@@ -96,6 +96,7 @@ public class bookingDetailEntity {
         this.serviceEntity = serviceEntity;
     }
 
+    
     
     
 }

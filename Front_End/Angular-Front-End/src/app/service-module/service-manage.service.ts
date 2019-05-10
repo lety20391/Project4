@@ -22,7 +22,7 @@ export class ServiceManageService {
     //change your url name here
     this.urlAPI = listUrlAPI.find(url => url.name === 'serviceResource');
     return this.http.get<serviceEntity[]>(this.urlAPI.path + '/list');
-}
+  }
   getServiceDetail(id: number): Observable<any> {
     console.log("------Get API Service ------");
     this.urlAPI = listUrlAPI.find(url => url.name === 'serviceDetailResource');

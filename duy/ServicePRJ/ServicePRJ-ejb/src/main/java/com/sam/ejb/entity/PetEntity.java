@@ -59,7 +59,7 @@ public class PetEntity {
     @Column(name="petDating")
     private boolean PetDating;
     
-    @Column(name="petStory")
+    @Column(name="petStory", columnDefinition = "varchar(max)")
     private String PetStory;
     
     @Column(name="petGender")

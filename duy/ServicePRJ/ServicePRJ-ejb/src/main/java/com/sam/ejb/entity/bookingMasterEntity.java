@@ -37,14 +37,14 @@ import javax.persistence.Table;
 public class bookingMasterEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long BookingID;
-    @Column(name="CreDate")
+    private Long bookingID;
+    @Column(name="creDate")
     private Date CreDate;
-    @Column(name="Status")
+    @Column(name="bmStatus")
     private boolean Status;
 
     @ManyToOne
-    @JoinColumn(name = "User_ID")
+    @JoinColumn(name = "bm_serID")
     private UserEntity userEntity;
 
     @OneToMany(mappedBy = "bookingMasterEntity", fetch = FetchType.EAGER)
@@ -53,19 +53,19 @@ public class bookingMasterEntity {
     public bookingMasterEntity() {
     }
 
-    public bookingMasterEntity(Long BookingID, Date CreDate, boolean Status, List<bookingDetailEntity> bookingdetails) {
-        this.BookingID = BookingID;
+    public bookingMasterEntity(Date CreDate, boolean Status, UserEntity userEntity, List<bookingDetailEntity> bookingdetails) {
         this.CreDate = CreDate;
         this.Status = Status;
+        this.userEntity = userEntity;
         this.bookingdetails = bookingdetails;
     }
 
     public Long getBookingID() {
-        return BookingID;
+        return bookingID;
     }
 
-    public void setBookingID(Long BookingID) {
-        this.BookingID = BookingID;
+    public void setBookingID(Long bookingID) {
+        this.bookingID = bookingID;
     }
 
     public Date getCreDate() {
@@ -84,7 +84,7 @@ public class bookingMasterEntity {
         this.Status = Status;
     }
 
-//    public userEntity getUserEntity() {
+//    public UserEntity getUserEntity() {
 //        return userEntity;
 //    }
 
@@ -100,6 +100,7 @@ public class bookingMasterEntity {
         this.bookingdetails = bookingdetails;
     }
 
+    
 
 
 
