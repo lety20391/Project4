@@ -1,4 +1,5 @@
 import {UserEntity} from '../UserEntity/UserEntity';
+import {DatingDetailEntity} from './DatingDetailEntity';
 export class PetEntity {
   petID: number;
   petName: string;
@@ -12,4 +13,5 @@ export class PetEntity {
   petGender: string;
   userEntity: UserEntity;
   petListImage: string[];
+  listDatingDetail: DatingDetailEntity[];
 }

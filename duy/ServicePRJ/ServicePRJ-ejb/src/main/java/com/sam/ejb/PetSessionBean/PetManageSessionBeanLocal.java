@@ -21,4 +21,5 @@ public interface PetManageSessionBeanLocal {
     public PetEntity findOne(Long id);
     public PetEntity editPet(PetEntity updatedPet);
     public void deletePet(Long id);
+    public List<PetEntity> listPetOfUser(Long userID);
 }

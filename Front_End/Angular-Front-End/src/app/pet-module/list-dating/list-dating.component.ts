@@ -5,6 +5,7 @@ import { UrlAPIEntity } from '../../UrlAPIEntity';
 import { HttpResponse } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-list-dating',
   templateUrl: './list-dating.component.html',
@@ -36,6 +37,8 @@ export class ListDatingComponent implements OnInit {
     listPet: PetEntity[] = [];
     logClass = '--list-dating: ';
     urlAPI: UrlAPIEntity;
+    myListPet: PetEntity[] = [];
+    currentUserID: number;
 
 
     constructor(
@@ -44,7 +47,9 @@ export class ListDatingComponent implements OnInit {
 
     ngOnInit() {
       this.loadScript('./assets/js/search.js');
+      this.getCurrentUserID();
       this.getListPet();
+      this.getMyListPet();
     }
 
     //load external js file into component
@@ -56,6 +61,68 @@ export class ListDatingComponent implements OnInit {
       script.async = false;
       script.defer = true;
       body.appendChild(script);
+    }
+
+    getCurrentUserID(): void{
+      let tempID = localStorage.getItem('UserID');
+      if (tempID != null && tempID != ''){
+        this.currentUserID = 0;
+        //chuyen tu string ve number
+        this.currentUserID = parseInt(tempID);
+      }
+    }
+
+    getMyListPet(): void{
+      console.log(this.logClass + ' get my list Pet');
+      this.urlAPI = listUrlAPI.find(url => url.name === 'petResource');
+      console.log(this.logClass + this.urlAPI.path);
+      this.http.get<HttpResponse<Object[]>>(this.urlAPI.path + "/list/" + this.currentUserID,  { observe: 'response' })
+        .subscribe(
+            response => {
+              console.log( response);
+              console.log( response.status );
+              if (response.status == 200){
+                console.log(this.logClass + " response: " + response);
+                //chuyen du lieu tu response.body ve lai kieu array
+                //roi gan vao listPet
+                console.log(JSON.stringify(response.body));
+                this.myListPet = JSON.parse(JSON.stringify(response.body));
+
+                //voi moi item trong danh sach Pet minh goi len server lay danh sach Image
+                this.myListPet.forEach(
+                  item => {
+                    //khoi tao thuoc tinh petListImage vi thuoc tinh nay dang null
+                    item.petListImage = [];
+                    console.log(this.logClass + " getImagePath");
+                    this.urlAPI = listUrlAPI.find(url => url.name === 'getAllImageResource');
+                    console.log(this.logClass + this.urlAPI.path);
+
+                    //goi len server de lay danh sach hinh anh ve
+                    this.http.get<string[]>(this.urlAPI.path + '/Pet/' + item.petID)
+                    .subscribe(
+                      result => {
+                                  console.log(this.logClass + ' Image Load:' + result);
+                                  //gan ket qua tra ve vao thuoc tinh petListImage
+                                  item.petListImage = result;
+                                }
+                    );
+                  }
+                );
+
+
+              }
+              // if (response.status == 200){
+              //   this.isLogined = true;
+              //   console.log( response.headers.get('Authorization') );
+              //   let auth = response.headers.get('Authorization');
+              //   this.jwtService.addJWT(auth);
+              //   console.log('Get jwt: ' + this.jwtService.getJWT());
+              // }else{
+              //   this.pass = 'Please Enter Code Again';
+              // }
+
+            }
+      );
     }
 
     getListPet(): void{

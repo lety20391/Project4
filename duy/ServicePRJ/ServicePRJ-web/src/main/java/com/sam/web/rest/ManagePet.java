@@ -58,6 +58,15 @@ public class ManagePet {
         return petManageSessionBeanLocal.listAll();
     }
     
+    @GET
+    @Path("/list/{userID}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<PetEntity> getPetOfUser(@PathParam("userID") Long userID) {
+        //TODO return proper representation object
+        //throw new UnsupportedOperationException();
+        return petManageSessionBeanLocal.listPetOfUser(userID);
+    }
+    
     @POST
     @Path("/Post")
     @Produces(MediaType.APPLICATION_JSON)

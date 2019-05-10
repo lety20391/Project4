@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { DetailDatingComponent } from './detail-dating/detail-dating.component';
+import {SideBarMyPetComponent} from '../UIComponent/side-bar-my-pet/side-bar-my-pet.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DetailDatingComponent } from './detail-dating/detail-dating.component';
     PetDetailComponent,
     CreatePetComponent,
     UploadComponent,
-    DetailDatingComponent
+    DetailDatingComponent,
+    SideBarMyPetComponent
   ],
   imports: [
     CommonModule,
