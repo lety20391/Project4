@@ -10,6 +10,7 @@ import { MatFileUploadModule } from 'angular-material-fileupload';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { DetailDatingComponent } from './detail-dating/detail-dating.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
     ListDatingComponent,
     PetDetailComponent,
     CreatePetComponent,
-    UploadComponent
+    UploadComponent,
+    DetailDatingComponent
   ],
   imports: [
     CommonModule,
