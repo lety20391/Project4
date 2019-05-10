@@ -68,7 +68,12 @@ export class LoginComponent implements OnInit {
            this.isRecievedCode = true;
            console.log('login: ID:' + response.body);
            this.currentID = +response.body;
+
+           //lay hinh anh user tu tren server ve
            this.getUserImage(this.currentID);
+         }else{
+           console.log(this.logClass + 'Cannot Find Your Phone');
+           this.phone = 'Cannot Find Your Phone';
          }
          // console.log( response.status );
          // console.log( response.headers.get('Authorization') );
@@ -100,6 +105,9 @@ export class LoginComponent implements OnInit {
          console.log( response);
          console.log( response.status );
          if (response.status == 200){
+           //luu UserID vao trong localStorage
+           localStorage.setItem('UserID', this.currentID);
+           
            this.isLogined = true;
            console.log( response.headers.get('Authorization') );
            let auth = response.headers.get('Authorization');

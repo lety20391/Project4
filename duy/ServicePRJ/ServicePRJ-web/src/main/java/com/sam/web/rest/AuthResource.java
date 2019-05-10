@@ -124,6 +124,8 @@ public class AuthResource {
             
             //lay user dang su dung so phone
             UserEntity returnUser = userManageSessionBeanLocal.getUserByPhone(phone);
+            if (returnUser.getUserTel().equals("0000000000"))
+                return Response.noContent().build();
             
             //tao code random
             RandomStringGenerator generator = new RandomStringGenerator.Builder()
