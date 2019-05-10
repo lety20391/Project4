@@ -7,22 +7,14 @@
 					<div class="col-12 col-sm-6 col-md-6">
 
 						<div class="media-detail">
-							<img src="assets/images/Pet/3.jpg" alt="" class="img-fluid">
+							<img src="http://localhost:9090/uploadedFiles/Pet/{{currentID}}/{{listImage[0]}}" alt="" class="img-fluid">
 						</div>
 						<div class="row mt-3">
 							<div class="row popup-gallery gutter-5">
-								<div class="col">
-										<a href="assets/images/PET/2.jpg" title="Gallery #1"><img src="assets/images/PET/2.jpg" alt="" class="border-img img-fluid"></a>
-
-								</div>
-								<div class="col">
-									<a href="assets/images/PET/1.jpg" title="Gallery #2"><img src="assets/images/PET/1.jpg" alt="" class="border-img img-fluid"></a>
-								</div>
-								<div class="col">
-									<a href="assets/images/PET/3.jpg" title="Gallery #3"><img src="assets/images/PET/3.jpg" alt="" class="border-img img-fluid"></a>
-								</div>
-								<div class="col">
-									<a href="assets/images/PET/2.jpg" title="Gallery #4"><img src="assets/images/PET/2.jpg" alt="" class="border-img img-fluid"></a>
+								<div class="col" *ngFor='let image of listImage' >
+									<a href="http://localhost:9090/uploadedFiles/Pet/{{currentID}}/{{image}}" title='{{currentPet.petName}}'>
+										<img src="http://localhost:9090/uploadedFiles/Pet/{{currentID}}/{{image}}" alt="" class="border-img img-fluid">
+									</a>
 								</div>
 							</div>
 						</div>
@@ -34,14 +26,14 @@
 						<div class="single-shop">
 
 							<p class="title-heading text-secondary mb-1">
-								Min Min
+								{{currentPet.petName}}
 							</p>
-							<div class="price">$29</div>
+							<div class="price">Dating: ${{currentPet.petPrice}}</div>
 							<div class="price">
-								Foxie
+								{{currentPet.petBreed}}
 							</div>
 
-							<p class="mt-4">Foxes are small-to-medium-sized, omnivorous mammals belonging to several genera of the family Canidae. Foxes have a flattened skull, upright triangular ears, a pointed, slightly upturned snout, and a long bushy tail</p>
+							<p class="mt-4">{{currentPet.petStory}}</p>
 
 							<a href="#requestDating" class="btn btn-primary mt-4 mb-4">Update Information</a>
 							<a href="#requestDating" class="btn btn-primary mt-4 mb-4">Remove Your Pet</a>

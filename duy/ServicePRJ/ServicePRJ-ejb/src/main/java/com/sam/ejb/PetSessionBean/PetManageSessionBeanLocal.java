@@ -6,6 +6,7 @@
 package com.sam.ejb.PetSessionBean;
 
 import com.sam.ejb.entity.PetEntity;
+import com.sam.ejb.entity.productEntity;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -17,4 +18,7 @@ import javax.ejb.Local;
 public interface PetManageSessionBeanLocal {
     public List<PetEntity> listAll();
     public PetEntity addNew(PetEntity newPet);
+    public PetEntity findOne(Long id);
+    public PetEntity editPet(PetEntity updatedPet);
+    public void deletePet(Long id);
 }

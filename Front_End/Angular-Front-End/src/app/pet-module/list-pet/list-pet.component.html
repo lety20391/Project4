@@ -102,20 +102,23 @@
 					            <!-- Item 1 -->
 					            <div class="col-sm-4 col-md-4" *ngFor='let item of listPet'>
 					              <div class="rs-shop-box mb-5">
-					                <div class="media">
+					                <div class="box-gallery">
 					                  <!-- nho sua cho nay do style thay doi heigh cua img -->
-					                  <a href="/petDetail/{{item.petID}}"><img src="http://localhost:9090/uploadedFiles/Pet/{{item.petID}}/{{item.petListImage[0]}}" alt="" class="img-fluid" style="height:250px"></a>
+					                  <a href="/mainlayout/petDetail/{{item.petID}}">
+															<img src="http://localhost:9090/uploadedFiles/Pet/{{item.petID}}/{{item.petListImage[0]}}" alt="" class="img-fluid" style="height:250px; object-fit:cover;margin:auto">
+															<div class="project-info">
+																<div class="project-icon">
+																	<h3><span>Pet Detail</span></h3>
+																</div>
+															</div>
+														</a>
 					                </div>
 					                <div class="body-text">
 					                  <h4 class="title"><a href="shop-single.html">{{item.petName}}</a></h4>
 					                  <div class="meta">
 					                    <div class="price">${{item.petPrice}}</div>
-					                    <div class="rating">
-					                      <span></span>
-					                      <span></span>
-					                      <span></span>
-					                      <span></span>
-					                      <span></span>
+					                    <div class="price">
+					                      {{item.petBreed}}
 					                    </div>
 					                  </div>
 					                </div>

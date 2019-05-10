@@ -64,7 +64,7 @@ export class ListPetComponent implements OnInit {
     this.urlAPI = listUrlAPI.find(url => url.name === 'petResource');
     console.log(this.logClass + this.urlAPI.path)
 
-    this.http.get<HttpResponse<Object[]>>(this.urlAPI.path,  { observe: 'response' })
+    this.http.get<HttpResponse<Object[]>>(this.urlAPI.path + "/list",  { observe: 'response' })
       .subscribe(
           response => {
             console.log( response);

@@ -6,6 +6,7 @@
 package com.sam.ejb.PetSessionBean;
 
 import com.sam.ejb.entity.PetEntity;
+import com.sam.ejb.entity.productEntity;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -22,6 +23,8 @@ public class PetManageSessionBean implements PetManageSessionBeanLocal {
     @PersistenceUnit(unitName = "ServiceDB")
     private EntityManagerFactory entityManagerFactory;
     private EntityManager em;
+    
+    private final String logClass = "--Pet Manage SessionBean: ";
     
     @Override
     public List<PetEntity> listAll() {
@@ -41,5 +44,28 @@ public class PetManageSessionBean implements PetManageSessionBeanLocal {
         em = entityManagerFactory.createEntityManager();
         em.persist(newPet);
         return newPet;
+    }
+
+    @Override
+    public PetEntity findOne(Long id) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println(logClass + " findOne: " + id);
+        em = entityManagerFactory.createEntityManager();
+        return em.find(PetEntity.class, id);
+    }
+
+    @Override
+    public PetEntity editPet(PetEntity updatedPet) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println(logClass + " editPet: " + updatedPet.getPetID());
+        em = entityManagerFactory.createEntityManager();
+        return em.merge(updatedPet);
+    }
+
+    @Override
+    public void deletePet(Long id) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        em = entityManagerFactory.createEntityManager();
+        em.remove(em.find(PetEntity.class, id));
     }
 }

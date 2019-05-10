@@ -24,5 +24,24 @@ export class PetManageService {
     return this.http.post<PetEntity>(this.urlAPI.path, newPet);
   }
 
-  
+  getPetByID(id: number): Observable<PetEntity>{
+    console.log(this.logClass + 'getPetByID ' + id);
+    this.urlAPI = listUrlAPI.find(url => url.name === 'petResource');
+
+    return this.http.get<PetEntity>(this.urlAPI.path + '/getDetail/findID/' + id);
+    // .subscribe(
+    //   response => {
+    //     console.log(this.logClass + " Status:" + response.status);
+    //     return response;
+    //   }
+    // );
+  }
+
+  getAllPetImage(id: number): Observable<string[]>{
+    console.log(this.logClass + ' get All Image for pet' + id);
+    this.urlAPI = listUrlAPI.find(url => url.name === 'getAllImageResource');
+    return this.http.get<string[]>(this.urlAPI.path + '/Pet/' + id);
+  }
+
+
 }

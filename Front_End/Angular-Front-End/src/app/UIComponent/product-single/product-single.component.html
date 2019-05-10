@@ -14,7 +14,7 @@
 							<div class="row popup-gallery gutter-5">
 								<div class="col" *ngFor='let image of listImage' >
 									<a href="http://localhost:9090/uploadedFiles/Product/{{currentID}}/{{image}}" title='{{currentProduct.proName}}'>
-										<img src="http://localhost:9090/uploadedFiles/Product/{{currentID}}/{{image}}" alt="" class="border-img img-fluid">
+										<img src="http://localhost:9090/uploadedFiles/Product/{{currentID}}/{{image}}" alt="" class="border-img img-fluid" style="object-fit:cover">
 									</a>
 								</div>
 							</div>

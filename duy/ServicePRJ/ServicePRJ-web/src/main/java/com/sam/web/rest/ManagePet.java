@@ -8,6 +8,7 @@ package com.sam.web.rest;
 import com.google.gson.Gson;
 import com.sam.ejb.PetSessionBean.PetManageSessionBeanLocal;
 import com.sam.ejb.entity.PetEntity;
+import com.sam.ejb.entity.productEntity;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.core.Context;
@@ -19,6 +20,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.POST;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -48,6 +50,7 @@ public class ManagePet {
      * @return an instance of java.lang.String
      */
     @GET
+    @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
     public List<PetEntity> getJSON() {
         //TODO return proper representation object
@@ -63,6 +66,18 @@ public class ManagePet {
         //throw new UnsupportedOperationException();
         PetEntity returnPet = petManageSessionBeanLocal.addNew(newPet);
         return Response.ok().entity(new Gson().toJson(returnPet)).build();
+    }
+    
+    //Find one by Id
+    @GET
+    @Path("/getDetail/findID/{petId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getById(@PathParam("petId") Long petID){
+        PetEntity searchPet = petManageSessionBeanLocal.findOne(petID);
+        if (searchPet == null)
+            return Response.status(404).entity("Pet Not Found").build();
+        System.out.println("--Managepet : " + searchPet.getPetName());
+        return Response.status(200).entity(searchPet).build();
     }
 
     /**
