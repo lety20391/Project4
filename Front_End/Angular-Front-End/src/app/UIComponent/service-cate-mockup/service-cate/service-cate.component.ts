@@ -6,7 +6,7 @@ import { serviceEntity } from '../../../serviceEntity/serviceEntity';
   styleUrls: ['./service-cate.component.css']
 })
 export class ServiceCateComponent implements OnInit {
-@Input() inputService: serviceEntity;
+@Input() inputService: serviceEntity = new serviceEntity();
   constructor() { }
 
   ngOnInit() {

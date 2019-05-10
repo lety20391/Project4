@@ -49,6 +49,7 @@ public class ManageService {
      */
     //Get list service
     @GET
+    @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     public List<serviceEntity> getJson() {
         //TODO return proper representation object
@@ -67,7 +68,7 @@ public class ManageService {
     
     //Find one by Id
     @GET
-    @Path("{serviceId}")
+    @Path("getDetail/findID/{serviceId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getById(@PathParam("serviceId") Long serviceId){
         return Response.status(200).entity(serviceSessionBeanLocal.findOne(serviceId)).build();

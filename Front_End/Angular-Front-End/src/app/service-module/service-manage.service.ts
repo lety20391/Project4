@@ -9,7 +9,7 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ServiceManageService {
-
+    logClass = '--Service Manage Service: ';
   urlAPI: UrlAPIEntity;
   constructor(
     private http: HttpClient
@@ -21,14 +21,18 @@ export class ServiceManageService {
 
     //change your url name here
     this.urlAPI = listUrlAPI.find(url => url.name === 'serviceResource');
-    return this.http.get<serviceEntity[]>(this.urlAPI.path);
-  }
-
+    return this.http.get<serviceEntity[]>(this.urlAPI.path + '/list');
+}
   getServiceDetail(id: number): Observable<any> {
     console.log("------Get API Service ------");
-    this.urlAPI = listUrlAPI.find(url => url.name === 'serviceResource');
+    this.urlAPI = listUrlAPI.find(url => url.name === 'serviceDetailResource');
     // const url = `${this.urlAPI}/${id}`;
-    return this.http.get(this.urlAPI.path + id);
+    return this.http.get(this.urlAPI.path + '/' + id);
     console.log("------Get API Service Success ------");
+  }
+  getAllServiceImage(id: number): Observable<string[]>{
+    console.log(this.logClass + ' get All Image for service' + id);
+    this.urlAPI = listUrlAPI.find(url => url.name === 'getAllImageResource');
+    return this.http.get<string[]>(this.urlAPI.path + '/Service/' + id);
   }
   }

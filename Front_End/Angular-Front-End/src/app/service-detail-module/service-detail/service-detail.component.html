@@ -51,17 +51,20 @@
                   Sunday :  We Are Closed
                 </li>
               </ul>
+              <div class="body-action">
+              <a href="#" class="btn btn-warning"><font face="verdana" size="4">Book This Service</font></a>
+              </div>
             </div>
           </div>
 
         </div>
         <div class="col-12 col-sm-12 col-md-8">
-          <img src="{{detail.serImage}}" alt="" class="img-fluid">
+          <img src="http://localhost:9090/uploadedFiles/Service/{{detail.serID}}/{{listImage[0]}}" alt="" class="img-fluid" style="height:400px; object-fit:cover;margin:auto">
           <h2 class="section-heading text-primary no-after mb-4">
             {{detail.serName}}
           </h2>
          <p> {{detail.serDes}}
-          <div class="spacer-10"></div>
+          <!-- <div class="spacer-10"></div> -->
           <!-- <h2 class="section-heading text-primary no-after mb-4">
             What We Do
           </h2>

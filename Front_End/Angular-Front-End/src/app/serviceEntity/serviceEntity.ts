@@ -3,6 +3,7 @@ export class serviceEntity{
   serName: string;
   serDes: string;
   serShortDes: string;
-  serImage: string;
+  // serImage: string;
   serStatus: boolean;
+    serviceListImage: string[];
 }

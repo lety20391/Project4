@@ -8,8 +8,10 @@ import { ServiceManageService } from '../../service-module/service-manage.servic
   styleUrls: ['./service-detail.component.css']
 })
 export class ServiceDetailComponent implements OnInit {
-  @Input() detail: serviceEntity;
-  listServiceCate: serviceEntity[];
+  @Input() detail: serviceEntity = new serviceEntity() ;
+  listServiceCate: serviceEntity[] = [];
+  listImage: string[] = [];
+  logClass : "Pet-detail";
   constructor(
      private route: ActivatedRoute,
      private ServiceManageService: ServiceManageService
@@ -18,6 +20,7 @@ export class ServiceDetailComponent implements OnInit {
   ngOnInit() {
      this.getServiceDetail();
      this.fetchServiceCate();
+     this.getAllServiceImage(this.detail.serID);
   }
   getServiceDetail(): void {
       const id = +this.route.snapshot.paramMap.get('id');
@@ -27,6 +30,16 @@ export class ServiceDetailComponent implements OnInit {
     fetchServiceCate(): void{
       this.ServiceManageService.getServiceList().subscribe(
         listResult => this.listServiceCate = listResult
+      );
+    }
+    getAllServiceImage(id: number): void{
+      console.log(this.logClass + " Get All Image");
+      id = +this.route.snapshot.paramMap.get('id');
+      this.ServiceManageService.getAllServiceImage(id).subscribe(
+        result => {
+                    console.log(this.logClass + ' Image Load');
+                    this.listImage = result;
+                  }
       );
     }
 }
