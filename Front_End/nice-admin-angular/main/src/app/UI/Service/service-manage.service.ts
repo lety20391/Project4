@@ -26,7 +26,7 @@ export class ServiceManageService {
   getServiceList(): Observable<serviceEntity[]> {
   console.log("------Get API Product Service ------");
   this.urlAPI = listUrlAPI.find(url => url.name === 'serviceResource');
-  return this.http.get<serviceEntity[]>(this.urlAPI.path);
+  return this.http.get<serviceEntity[]>(this.urlAPI.path  + 'list');
 }
 
   getServiceDetail(id: number): Observable<any> {
