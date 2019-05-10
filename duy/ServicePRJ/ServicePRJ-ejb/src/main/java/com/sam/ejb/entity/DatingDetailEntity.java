@@ -25,62 +25,51 @@ import javax.persistence.Table;
 @Table(name="datingDetailEntity")
 @NamedQueries
         ({
-            @NamedQuery(name="dDetail.findAll",query = "SELECT d FROM DatingDetailEntity d"),
-            @NamedQuery(name="dDetail.searchByPetID", query ="SELECT d FROM DatingDetailEntity d WHERE d.PetID = :id ")
+            @NamedQuery(name="dDetail.findAll",query = "SELECT d FROM DatingDetailEntity d")
+//            @NamedQuery(name="dDetail.searchRequestByPetID", query ="SELECT d FROM DatingDetailEntity d WHERE d.PetID = :id ")
         })
 public class DatingDetailEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-        
-    @Column(name="petID")
-    private Long PetID;
+    private Long datingDetailID;        
     
-    @Column(name="datingMasterID")
-    private Long DatingMasterID;
-    
-    @Column(name="date")
+    @Column(name="datingDate")
     private Date DatingDate;
     
-    @ManyToOne
-    @JoinColumn(name = "Pet_ID")
-    private PetEntity petEntity;
+    @Column(name="datingLocation")
+    private String DatingLocation;
+    
+    @Column(name="isAccepted")
+    private Boolean IsAccepted;
     
     @ManyToOne
-    @JoinColumn(name = "DatingMaster_ID")
-    private DatingMasterEntity datingMasterEntity;
+    @JoinColumn(name = "petRequest_ID")
+    private PetEntity PetRequestEntity;
+    
+    @ManyToOne
+    @JoinColumn(name = "petRecieve_ID")
+    private PetEntity PetRecieveEntity;
+    
+    @ManyToOne
+    @JoinColumn(name = "datingMaster_ID")
+    private DatingMasterEntity DatingMasterEntity;
 
     public DatingDetailEntity() {
     }
 
-    public DatingDetailEntity(Long PetID, Long DatingMasterID, Date DatingDate) {
-        this.PetID = PetID;
-        this.DatingMasterID = DatingMasterID;
+    public DatingDetailEntity(Long datingDetailID, Date DatingDate, String DatingLocation, Boolean IsAccepted) {
+        this.datingDetailID = datingDetailID;
         this.DatingDate = DatingDate;
+        this.DatingLocation = DatingLocation;
+        this.IsAccepted = IsAccepted;
     }
 
-    public Long getId() {
-        return id;
+    public Long getDatingDetailID() {
+        return datingDetailID;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getPetID() {
-        return PetID;
-    }
-
-    public void setPetID(Long PetID) {
-        this.PetID = PetID;
-    }
-
-    public Long getDatingMasterID() {
-        return DatingMasterID;
-    }
-
-    public void setDatingMasterID(Long DatingMasterID) {
-        this.DatingMasterID = DatingMasterID;
+    public void setDatingDetailID(Long datingDetailID) {
+        this.datingDetailID = datingDetailID;
     }
 
     public Date getDatingDate() {
@@ -91,13 +80,52 @@ public class DatingDetailEntity {
         this.DatingDate = DatingDate;
     }
 
-//    public PetEntity getPetEntity() {
-//        return petEntity;
-//    }
-
-    public void setPetEntity(PetEntity petEntity) {
-        this.petEntity = petEntity;
+    public String getDatingLocation() {
+        return DatingLocation;
     }
+
+    public void setDatingLocation(String DatingLocation) {
+        this.DatingLocation = DatingLocation;
+    }
+
+    public Boolean getIsAccepted() {
+        return IsAccepted;
+    }
+
+    public void setIsAccepted(Boolean IsAccepted) {
+        this.IsAccepted = IsAccepted;
+    }
+
+    public PetEntity getPetRequestEntity() {
+        return PetRequestEntity;
+    }
+
+    public void setPetRequestEntity(PetEntity PetRequestEntity) {
+        this.PetRequestEntity = PetRequestEntity;
+    }
+
+    public PetEntity getPetRecieveEntity() {
+        return PetRecieveEntity;
+    }
+
+    public void setPetRecieveEntity(PetEntity PetRecieveEntity) {
+        this.PetRecieveEntity = PetRecieveEntity;
+    }
+
+    public DatingMasterEntity getDatingMasterEntity() {
+        return DatingMasterEntity;
+    }
+
+    public void setDatingMasterEntity(DatingMasterEntity DatingMasterEntity) {
+        this.DatingMasterEntity = DatingMasterEntity;
+    }
+
+    
+    
+
+    
+
+    
     
     
     

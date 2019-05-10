@@ -16,4 +16,5 @@ import javax.ejb.Local;
 @Local
 public interface DatingDetailSessionBeanLocal {
     public List<DatingDetailEntity> listAll();
+    public DatingDetailEntity addDatingDetail(DatingDetailEntity newDatingDetail);
 }

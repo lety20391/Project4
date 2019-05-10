@@ -23,6 +23,8 @@ public class DatingDetailSessionBean implements DatingDetailSessionBeanLocal {
     private EntityManagerFactory entityManagerFactory;
     private EntityManager em;
     
+    private final String logClass = "--Dating Detail SessionBean: ";
+    
     @Override
     public List<DatingDetailEntity> listAll() {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -33,4 +35,13 @@ public class DatingDetailSessionBean implements DatingDetailSessionBeanLocal {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+
+    @Override
+    public DatingDetailEntity addDatingDetail(DatingDetailEntity newDatingDetail) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println(logClass + " add Dating Detail");
+        em = entityManagerFactory.createEntityManager();
+        em.persist(newDatingDetail);
+        return newDatingDetail;
+    }
 }

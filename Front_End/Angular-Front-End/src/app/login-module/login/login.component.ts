@@ -106,8 +106,8 @@ export class LoginComponent implements OnInit {
          console.log( response.status );
          if (response.status == 200){
            //luu UserID vao trong localStorage
-           localStorage.setItem('UserID', this.currentID);
-           
+           localStorage.setItem('UserID', this.currentID.toString());
+
            this.isLogined = true;
            console.log( response.headers.get('Authorization') );
            let auth = response.headers.get('Authorization');

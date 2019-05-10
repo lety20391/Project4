@@ -66,9 +66,11 @@ public class PetEntity {
 //    @Column(name="UserOwner")
 //    private Long UserID;
 //    
-    @OneToMany(mappedBy = "petEntity", fetch = FetchType.EAGER)
-    private List<DatingDetailEntity> listDatingDetail;
+    @OneToMany(mappedBy = "PetRequestEntity", fetch = FetchType.EAGER)
+    private List<DatingDetailEntity> listRequestDatingDetail;
     
+    @OneToMany(mappedBy = "PetRecieveEntity", fetch = FetchType.EAGER)
+    private List<DatingDetailEntity> listReciveDatingDetail;
     
     @ManyToOne
     @JoinColumn(name = "userID")
@@ -147,13 +149,7 @@ public class PetEntity {
         this.PetDOB = PetDOB;
     }
 
-    public List<DatingDetailEntity> getListDatingDetail() {
-        return listDatingDetail;
-    }
-
-    public void setListDatingDetail(List<DatingDetailEntity> listDatingDetail) {
-        this.listDatingDetail = listDatingDetail;
-    }
+    
 //
 //    public Long getUserID() {
 //        return UserID;
@@ -196,6 +192,22 @@ public class PetEntity {
 
     public void setPetGender(String PetGender) {
         this.PetGender = PetGender;
+    }
+
+//    public List<DatingDetailEntity> getListRequestDatingDetail() {
+//        return listRequestDatingDetail;
+//    }
+
+    public void setListRequestDatingDetail(List<DatingDetailEntity> listRequestDatingDetail) {
+        this.listRequestDatingDetail = listRequestDatingDetail;
+    }
+
+//    public List<DatingDetailEntity> getListReciveDatingDetail() {
+//        return listReciveDatingDetail;
+//    }
+
+    public void setListReciveDatingDetail(List<DatingDetailEntity> listReciveDatingDetail) {
+        this.listReciveDatingDetail = listReciveDatingDetail;
     }
     
     

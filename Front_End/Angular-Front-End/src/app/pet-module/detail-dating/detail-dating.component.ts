@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { PetEntity } from '../PetEntity';
 import { PetManageService } from '../pet-manage.service';
+import {DatingDetailEntity} from '../DatingDetailEntity';
+import {DatingManageService} from '../dating-manage.service';
+import { DatePipe, formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-detail-dating',
@@ -16,11 +19,13 @@ export class DetailDatingComponent implements OnInit {
   currentID: number;
   currentPet: PetEntity = new PetEntity();
   listImage: string[] = [];
+  currentDating: DatingDetailEntity = new DatingDetailEntity();
 
   constructor(
     private route: ActivatedRoute,
     private location: Location,
-    private petService: PetManageService
+    private petService: PetManageService,
+    private datingService: DatingManageService
   ) { }
 
   ngOnInit() {
@@ -52,6 +57,11 @@ export class DetailDatingComponent implements OnInit {
                   this.listImage = result;
                 }
     );
+  }
+
+  sendRequestDating(): void{
+    console.log(this.logClass + ' sendRequestDating');
+
   }
 
 }

@@ -5,8 +5,10 @@
  */
 package com.sam.web.rest;
 
+import com.google.gson.Gson;
 import com.sam.ejb.DatingDetailSessionBean.DatingDetailSessionBeanLocal;
 import com.sam.ejb.entity.DatingDetailEntity;
+import com.sam.ejb.entity.PetEntity;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.core.Context;
@@ -17,7 +19,9 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.enterprise.context.RequestScoped;
+import javax.ws.rs.POST;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import javax.xml.ws.spi.http.HttpContext;
 
 /**
@@ -34,6 +38,8 @@ public class ManageDatingDetail {
     
     @EJB
     DatingDetailSessionBeanLocal datingDetailSessionBeanLocal;
+    
+    private final String logClass = "--Manage Dating Detail: ";
 
     /**
      * Creates a new instance of ManageDatingDetail
@@ -52,6 +58,18 @@ public class ManageDatingDetail {
         //throw new UnsupportedOperationException();
         
         return datingDetailSessionBeanLocal.listAll();
+    }
+    
+    @POST
+    @Path("/Post")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addDatingDetail(DatingDetailEntity newDatingDetail) {
+        //TODO return proper representation object
+        //throw new UnsupportedOperationException();
+        System.out.println(logClass + " add Dating Detail");
+        DatingDetailEntity returnDating = datingDetailSessionBeanLocal.addDatingDetail(newDatingDetail);
+        System.out.println(logClass + " new Dating Detail ID: " + returnDating.getDatingDetailID());
+        return Response.ok().entity(new Gson().toJson(returnDating)).build();
     }
 
     /**

@@ -47,11 +47,11 @@ Insert into dbo.datingMasterEntity  ( creDate, locat, [status], userID ) values
 ('2018-3-1', 'hn', 1, 3),
 ('2018-4-1', 'hcm', 1, 1)
 
-Insert into dbo.datingDetailEntity  ([date], datingMasterID, petID)  values
-('2019-1-1', 1, 1),
-('2019-2-1', 2, 3),
-('2019-3-1', 3, 2),
-('2019-4-1', 1, 2)
+Insert into dbo.datingDetailEntity  ([datingDate], [datingMaster_ID], [petRequest_ID] , [petRecieve_ID], [isAccepted] )  values
+('2019-1-1', 1, 1 , 3 , 1),
+('2019-2-1', 2, 3, 2, 0),
+('2019-3-1', 3, 2, 1, 0),
+('2019-4-1', 1, 2, 3, 1)
 
 Insert into dbo.tbCategory ([CateName]) values
 ('Cate1'),

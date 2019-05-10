@@ -80,12 +80,13 @@
 
 											<div class="col-xs-12 col-md-6">
 												<div class="form-group">
-													<input type="text" id="name" name="name" value="" class="inputtext form-control" placeholder="Enter Dating Location">
+													<input type="text" id="name" name="name" value="" class="inputtext form-control" placeholder="Enter Dating Location" [(ngModel)]="currentDating.datingLocation">
 												</div>
 											</div>
 											<div class="col-xs-12 col-md-6">
 												<div class="form-group">
-													<input type="text" id="name" name="name" value="" class="inputtext form-control" placeholder="Enter Dating Date/Time">
+													<input type="text" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" id="name" name="name" value="" class="inputtext form-control" placeholder="Enter Dating Date/Time" [(ngModel)]="currentDating.datingDate">
+													<owl-date-time #dt1></owl-date-time>
 												</div>
 											</div>
 											<div class="col-xs-12 col-md-12">

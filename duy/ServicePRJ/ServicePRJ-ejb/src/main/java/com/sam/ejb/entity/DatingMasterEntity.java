@@ -34,7 +34,7 @@ import javax.persistence.Table;
 public class DatingMasterEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long datingMasterID;
         
     @Column(name="userID")
     private Long UserID;
@@ -48,7 +48,7 @@ public class DatingMasterEntity {
     @Column(name="status")
     private boolean Status;
     
-    @OneToMany(mappedBy = "datingMasterEntity", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "DatingMasterEntity", fetch = FetchType.EAGER)
     private List<DatingDetailEntity> listDatingDetail;
 
     @ManyToOne
@@ -67,13 +67,15 @@ public class DatingMasterEntity {
         this.userEntity = userEntity;
     }
 
-    public Long getId() {
-        return id;
+    public Long getDatingMasterID() {
+        return datingMasterID;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setDatingMasterID(Long datingMasterID) {
+        this.datingMasterID = datingMasterID;
     }
+
+    
 
     public Long getUserID() {
         return UserID;
