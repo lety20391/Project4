@@ -25,6 +25,7 @@ import { CreatePetComponent } from './pet-module/create-pet/create-pet.component
 import { MainLayoutComponent} from './mainlayout-module/main-layout/main-layout.component';
 import { Error404Component } from './UIComponent/error404/error404.component';
 import {RegisterComponent} from './register-module/register.component';
+import {DetailDatingComponent} from './pet-module/detail-dating/detail-dating.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'mainlayout', pathMatch:'full'},
@@ -47,8 +48,9 @@ const routes: Routes = [
         {path: 'appointment', component: AppointmentComponent},
         {path: 'aboutus', component: AboutusComponent},
         {path: 'listPet', component: ListPetComponent},
-        {path: 'listDating', component: ListDatingComponent},
         {path: 'petDetail/:id', component: PetDetailComponent},
+        {path: 'listDating', component: ListDatingComponent},
+        {path: 'datingDetail/:id', component: DetailDatingComponent},
         {path: 'form', component: FormComponent},
         {path: 'createPet', component: CreatePetComponent},
         {path: '404', component: Error404Component}
