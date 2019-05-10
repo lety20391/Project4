@@ -7,7 +7,7 @@ import { serviceEntity } from '../../../serviceEntity/serviceEntity';
   styleUrls: ['./service-mockup.component.css']
 })
 export class ServiceMockupComponent implements OnInit {
-@Input() inputService: serviceEntity;
+@Input() inputService : serviceEntity;
 
 //   service: serviceEntity = {
 //   SerID: 1,

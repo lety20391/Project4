@@ -47,11 +47,13 @@
 								<div id="success"></div>
 								<button type="submit" class="btn btn-primary" (click)="registerNewUser()">Submit</button>
 							</div>
-							<div>
-						<mat-spinner diameter="50" *ngIf="showSpinner" color="accent"> </mat-spinner>
-						<h3 *ngIf="showSpinner" >Register successful - Redirect to Login page!!!</h3>
-							</div>
+
 						</form>
+				<div class="row">
+					<mat-spinner diameter="50" *ngIf="showSpinner" color="accent" > </mat-spinner>
+					<h3 *ngIf="showSpinner">Register successfully - Redirecting to Login page!!!</h3>
+				</div>
+
 						<div class="margin-bottom-50"></div>
 
 					</div>

@@ -26,9 +26,9 @@ export class ServiceManageService {
 
   getServiceDetail(id: number): Observable<any> {
     console.log("------Get API Service ------");
-    this.urlAPI = listUrlAPI.find(url => url.name === 'serviceResource');
+    this.urlAPI = listUrlAPI.find(url => url.name === 'serviceDetailResource');
     // const url = `${this.urlAPI}/${id}`;
-    return this.http.get(this.urlAPI.path + id);
+    return this.http.get(this.urlAPI.path + '/' + id);
     console.log("------Get API Service Success ------");
   }
   }
