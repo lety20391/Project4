@@ -8,4 +8,5 @@ export class productEntity{
   proImage: string;
   status: boolean;
   cateEntity: CategoryEntity;
+  proListImage: string[];
 }

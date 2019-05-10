@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { productEntity } from '../productEntity/productEntity';
 import { ProductManageService } from './product-manage.service';
+import { listUrlAPI } from '../listUrlAPI';
+import { UrlAPIEntity } from '../UrlAPIEntity';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -16,7 +19,8 @@ export class ShopComponent implements OnInit {
   listProduct: productEntity[];
 
   constructor(
-    private productManageService: ProductManageService
+    private productManageService: ProductManageService,
+    private http: HttpClient
 
   ) { }
 
@@ -26,9 +30,29 @@ export class ShopComponent implements OnInit {
   }
 
   fetchProduct(): void{
-
     this.productManageService.getProductList().subscribe(
-      listResult => this.listProduct = listResult
+      listResult => {
+        this.listProduct = listResult;
+        this.listProduct.forEach(
+              item => {
+                //khoi tao thuoc tinh petListImage vi thuoc tinh nay dang null
+                item.proListImage = [];
+                console.log(this.logClass + " getImagePath");
+                this.urlAPI = listUrlAPI.find(url => url.name === 'getAllImageResource');
+                console.log(this.logClass + this.urlAPI.path);
+
+                //goi len server de lay danh sach hinh anh ve
+                this.http.get<string[]>(this.urlAPI.path + '/Product/' + item.proID)
+                .subscribe(
+                  result => {
+                              console.log(this.logClass + ' Image Load:' + result);
+                              //gan ket qua tra ve vao thuoc tinh petListImage
+                              item.proListImage = result;
+                            }
+                );
+              }
+        );
+      }
     );
   }
 
