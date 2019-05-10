@@ -17,6 +17,8 @@ export class ShopComponent implements OnInit {
   shopTitle = 'Shop';
   shopContent = "Your pet's health and well-being are our top priority.";
   listProduct: productEntity[];
+  logClass = '--Shop component: ';
+  urlAPI: UrlAPIEntity;
 
   constructor(
     private productManageService: ProductManageService,
