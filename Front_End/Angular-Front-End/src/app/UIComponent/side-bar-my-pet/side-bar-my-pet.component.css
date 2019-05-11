@@ -1,0 +1,13 @@
+img {
+  width:100px;
+  height:100px;
+  object-fit:cover;
+  border-radius:50%;
+  border-color:#F7941D;
+  border-width: 5px;
+  border-style: solid;
+  padding:2px;
+}
+.shop-item-sidebar: hover{
+  background-color: #999999;
+}

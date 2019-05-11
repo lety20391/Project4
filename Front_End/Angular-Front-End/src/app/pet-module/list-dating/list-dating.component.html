@@ -1,10 +1,41 @@
-
+<!--
 <div id="class" class="">
 		<div class="content-wrap">
-			<div class="container">
-        <div class="row">
+			<div class="container"> -->
+        <div class="row" style="padding:20px">
 
-        					<div class="col-12 col-sm-3 col-md-3">
+									<!-- My list Pet -->
+									<div class="col-12 col-sm2 col-md-2">
+										<div class="widget widget-text">
+        							<div class="widget-title">
+        								My pet
+        							</div>
+											<app-side-bar-my-pet [listPet]="myListPet"></app-side-bar-my-pet>
+											<!-- item -->
+        							<!-- <div class="shop-sidebar">
+        								<div class="shop-item-sidebar">
+        									<div class="media">
+        										<img src="assets/images/Pet/1.jpg" alt="" class="img-fluid">
+        									</div>
+        									<div class="body-text">
+        										<h4 class="title"><a href="shop-single.html">Min</a></h4>
+        										<div class="price">Fox</div>
+        									</div>
+        								</div>
+
+        							</div> -->
+        						</div>
+									</div>
+									<!-- My list Pet -->
+
+									<!-- MainContent -->
+									<div class="col-12 col-sm-8 col-md-8" style="background-color:#999999">
+
+									</div>
+									<!-- MainContent -->
+
+									<!-- Filter pet -->
+        					<div class="col-12 col-sm-2 col-md-2">
 
         						<div class="widget categories">
         							<div class="widget-title">
@@ -55,37 +86,18 @@
         							</ul>
         						</div>
 
-        						<div class="widget widget-text">
-        							<div class="widget-title">
-        								My pet
-        							</div>
-											<app-side-bar-my-pet [listPet]="myListPet"></app-side-bar-my-pet>
-											<!-- item -->
-        							<!-- <div class="shop-sidebar">
-        								<div class="shop-item-sidebar">
-        									<div class="media">
-        										<img src="assets/images/Pet/1.jpg" alt="" class="img-fluid">
-        									</div>
-        									<div class="body-text">
-        										<h4 class="title"><a href="shop-single.html">Min</a></h4>
-        										<div class="price">Fox</div>
-        									</div>
-        								</div>
 
-        							</div> -->
-        						</div>
 
         					</div>
+									<!-- Filter pet -->
         					<!-- end sidebar -->
 
-        					<div class="col-12 col-sm-9 col-md-9">
+        					<!-- <div class="col-12 col-sm-9 col-md-9">
 
 										<div class="row">
-					            <!-- Item 1 -->
 					            <div class="col-sm-4 col-md-4" *ngFor='let item of listPet'>
 					              <div class="rs-shop-box mb-5">
 					                <div class="box-gallery">
-					                  <!-- nho sua cho nay do style thay doi heigh cua img -->
 					                  <a href="/mainlayout/datingDetail/{{item.petID}}">
 															<img src="http://localhost:9090/uploadedFiles/Pet/{{item.petID}}/{{item.petListImage[0]}}" alt="" class="img-fluid" style="height:250px; object-fit:cover;margin:auto">
 															<div class="project-info">
@@ -107,7 +119,6 @@
 					              </div>
 					            </div>
 
-					          <!-- end shop -->
 
 
 					        	</div>
@@ -128,7 +139,8 @@
           						</div>
           					</div>
 
-        					</div>
+        					</div> -->
+
         						<!-- end shop -->
 
 
@@ -136,6 +148,6 @@
 
 
         </div>
-      </div>
+      <!-- </div>
   </div>
-</div>
+</div> -->
