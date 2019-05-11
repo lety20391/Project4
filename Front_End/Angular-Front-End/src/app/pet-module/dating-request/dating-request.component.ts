@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 
 @Component({
   selector: 'app-dating-request',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DatingRequestComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+  ) { }
 
   ngOnInit() {
   }

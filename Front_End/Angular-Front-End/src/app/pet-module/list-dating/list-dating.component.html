@@ -32,7 +32,7 @@
 									<!-- MainContent -->
 									<div class="col-12 col-sm-8 col-md-8 mainContent" >
 											<!-- List Customer Pet -->
-												<div class="row">
+												<div class="row" *ngIf='!isShowDetail'>
 							            <div class="col-sm-4 col-md-4" *ngFor='let item of listPet'>
 							              <div class="rs-shop-box mb-5">
 
@@ -66,6 +66,8 @@
                             </div>
 							            </div>
 							        	</div>
+                        <p class="btn btn-secondary forPetDetail" [class.hideThis]='!isShowDetail' (click)="revertShowDetail()">Back To List</p>
+                        <app-detail-dating class="forPetDetail" *ngIf='isShowDetail' [currentID]="customerPet.petID" (sendBackEvent)="detailPetIsCanceld()"></app-detail-dating>
 
 												<!-- paginaging -->
 

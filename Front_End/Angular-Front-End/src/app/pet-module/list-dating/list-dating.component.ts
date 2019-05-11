@@ -5,6 +5,7 @@ import { UrlAPIEntity } from '../../UrlAPIEntity';
 import { HttpResponse } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import {MatDialog, MatDialogConfig} from '@angular/material';
+
 import {DatingRequestComponent} from '../dating-request/dating-request.component';
 
 @Component({
@@ -42,14 +43,15 @@ export class ListDatingComponent implements OnInit {
     currentUserID: number;
     isCustomerPetSelected = false;
 
-    userPet: PetEntity;
-    customerPet: PetEntity;
+    userPet: PetEntity = new PetEntity();
+    customerPet: PetEntity = new PetEntity();
+    isShowDetail = false;
 
 
     constructor(
       private http: HttpClient,
       private dialog: MatDialog
-    ) { }
+    ) {  }
 
     ngOnInit() {
       this.loadScript('./assets/js/search.js');
@@ -214,7 +216,12 @@ export class ListDatingComponent implements OnInit {
     getCustomerPetDetail(selectedPet: PetEntity): void{
       console.log(this.logClass + ' get Customer Pet: ' + selectedPet.petName);
       this.customerPet = selectedPet;
-      this.openDialog();
+      this.isShowDetail = true;
+      //this.openDialog();
+    }
+
+    revertShowDetail(): void{
+      this.isShowDetail = !this.isShowDetail;
     }
 
     openDialog() {
@@ -223,6 +230,11 @@ export class ListDatingComponent implements OnInit {
 
         dialogConfig.disableClose = false;
         dialogConfig.autoFocus = true;
+
+        dialogConfig.data = {
+            id: 1,
+            title: 'Angular For Beginners'
+        };
 
         this.dialog.open(DatingRequestComponent, dialogConfig);
     }

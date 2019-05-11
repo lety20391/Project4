@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { PetEntity } from '../PetEntity';
@@ -16,7 +16,8 @@ export class DetailDatingComponent implements OnInit {
 
   logClass = '--Dating Detail UI: ';
 
-  currentID: number;
+  @Input() currentID: number;
+
   currentPet: PetEntity = new PetEntity();
   listImage: string[] = [];
   currentDating: DatingDetailEntity = new DatingDetailEntity();
@@ -36,7 +37,8 @@ export class DetailDatingComponent implements OnInit {
   }
 
   getID(): void{
-    this.currentID = +this.route.snapshot.paramMap.get('id');
+    if( this.currentID == null)
+      this.currentID = +this.route.snapshot.paramMap.get('id');
   }
 
   getPetByID(id: number): void{
@@ -64,4 +66,5 @@ export class DetailDatingComponent implements OnInit {
 
   }
 
+  
 }
