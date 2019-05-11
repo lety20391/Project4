@@ -31,6 +31,7 @@ export class ListDatingComponent implements OnInit {
     newRequestDating: DatingDetailEntity = new DatingDetailEntity();
 
 
+
     constructor(
       private http: HttpClient,
       private dialog: MatDialog
@@ -41,6 +42,7 @@ export class ListDatingComponent implements OnInit {
       this.getCurrentUserID();
       this.getListPet();
       this.getMyListPet();
+      //this.openDialog();
     }
 
     //load external js file into component
@@ -219,21 +221,20 @@ export class ListDatingComponent implements OnInit {
       this.newRequestDating.petRecieveEntity = this.customerPet;
       console.log(this.logClass + ' Dating Detail:');
       console.log(JSON.stringify(this.newRequestDating));
+      this.openDialog(this.newRequestDating);
     }
 
-    openDialog() {
+    openDialog(requestDating: DatingDetailEntity) {
 
         const dialogConfig = new MatDialogConfig();
 
         dialogConfig.disableClose = false;
         dialogConfig.autoFocus = true;
 
-        dialogConfig.data = {
-            id: 1,
-            title: 'Angular For Beginners'
-        };
+        dialogConfig.data = requestDating;
 
         this.dialog.open(DatingRequestComponent, dialogConfig);
+        //const dialogRef = this.dialog.open(DatingRequestComponent, dialogConfig);
     }
 
 }

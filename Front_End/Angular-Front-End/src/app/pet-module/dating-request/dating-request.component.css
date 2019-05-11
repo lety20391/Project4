@@ -1,3 +1,14 @@
 .myDiv {
-  background-image: url("http://localhost:9090/assets/requestDating.jpg");
+  background-image: url("http://localhost:9090/assets/Dating.jpg");
+  opacity: 0.8;
+}
+
+.rs-box-testimony .quote-box .media img{
+  width: 200px;
+  height: 200px;
+  margin: 0px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
 }
