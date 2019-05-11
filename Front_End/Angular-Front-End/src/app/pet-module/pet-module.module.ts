@@ -9,9 +9,12 @@ import { UploadComponent } from '../UIComponent/upload/upload.component';
 import { MatFileUploadModule } from 'angular-material-fileupload';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material';
+import {MatDialogModule} from "@angular/material";
+
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { DetailDatingComponent } from './detail-dating/detail-dating.component';
 import {SideBarMyPetComponent} from '../UIComponent/side-bar-my-pet/side-bar-my-pet.component';
+import { DatingRequestComponent } from './dating-request/dating-request.component';
 
 
 @NgModule({
@@ -23,7 +26,8 @@ import {SideBarMyPetComponent} from '../UIComponent/side-bar-my-pet/side-bar-my-
     CreatePetComponent,
     UploadComponent,
     DetailDatingComponent,
-    SideBarMyPetComponent
+    SideBarMyPetComponent,
+    DatingRequestComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +35,8 @@ import {SideBarMyPetComponent} from '../UIComponent/side-bar-my-pet/side-bar-my-
     MatFileUploadModule,
     MatButtonModule,
     OwlDateTimeModule,
-    OwlNativeDateTimeModule
+    OwlNativeDateTimeModule,
+    MatDialogModule
 
   ],
   exports:[
@@ -41,8 +46,10 @@ import {SideBarMyPetComponent} from '../UIComponent/side-bar-my-pet/side-bar-my-
     PetDetailComponent,
     UploadComponent,
     MatFileUploadModule,
-    MatButtonModule
+    MatButtonModule,
+    DatingRequestComponent
 
-  ]
+  ],
+  entryComponents: [DatingRequestComponent]
 })
 export class PetModuleModule { }

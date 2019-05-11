@@ -4,7 +4,8 @@ import { listUrlAPI } from '../../listUrlAPI';
 import { UrlAPIEntity } from '../../UrlAPIEntity';
 import { HttpResponse } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
-
+import {MatDialog, MatDialogConfig} from '@angular/material';
+import {DatingRequestComponent} from '../dating-request/dating-request.component';
 
 @Component({
   selector: 'app-list-dating',
@@ -46,7 +47,8 @@ export class ListDatingComponent implements OnInit {
 
 
     constructor(
-      private http: HttpClient
+      private http: HttpClient,
+      private dialog: MatDialog
     ) { }
 
     ngOnInit() {
@@ -212,6 +214,17 @@ export class ListDatingComponent implements OnInit {
     getCustomerPetDetail(selectedPet: PetEntity): void{
       console.log(this.logClass + ' get Customer Pet: ' + selectedPet.petName);
       this.customerPet = selectedPet;
+      this.openDialog();
+    }
+
+    openDialog() {
+
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = false;
+        dialogConfig.autoFocus = true;
+
+        this.dialog.open(DatingRequestComponent, dialogConfig);
     }
 
 }
