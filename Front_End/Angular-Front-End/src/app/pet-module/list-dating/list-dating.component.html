@@ -66,8 +66,10 @@
                             </div>
 							            </div>
 							        	</div>
+
+
                         <p class="btn btn-secondary forPetDetail" [class.hideThis]='!isShowDetail' (click)="revertShowDetail()">Back To List</p>
-                        <app-detail-dating class="forPetDetail" *ngIf='isShowDetail' [currentID]="customerPet.petID" (sendBackEvent)="detailPetIsCanceld()"></app-detail-dating>
+                        <app-detail-dating class="forPetDetail" *ngIf='isShowDetail' [currentID]="customerPet.petID" (datingDetailWasSend)="getDetailDating($event)"></app-detail-dating>
 
 												<!-- paginaging -->
 

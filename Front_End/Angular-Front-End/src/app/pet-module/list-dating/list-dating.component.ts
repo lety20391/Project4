@@ -5,6 +5,7 @@ import { UrlAPIEntity } from '../../UrlAPIEntity';
 import { HttpResponse } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import {MatDialog, MatDialogConfig} from '@angular/material';
+import {DatingDetailEntity} from '../DatingDetailEntity';
 
 import {DatingRequestComponent} from '../dating-request/dating-request.component';
 
@@ -26,6 +27,8 @@ export class ListDatingComponent implements OnInit {
     userPet: PetEntity = new PetEntity();
     customerPet: PetEntity = new PetEntity();
     isShowDetail = false;
+
+    newRequestDating: DatingDetailEntity = new DatingDetailEntity();
 
 
     constructor(
@@ -202,6 +205,20 @@ export class ListDatingComponent implements OnInit {
 
     revertShowDetail(): void{
       this.isShowDetail = !this.isShowDetail;
+    }
+
+    getDetailDating(event: Event):void{
+      console.log(this.logClass + ' Dating Detail: ');
+      console.log(JSON.stringify(event));
+      this.newRequestDating = JSON.parse(JSON.stringify(event));
+      this.summaryDataAndSend();
+    }
+
+    summaryDataAndSend(): void{
+      this.newRequestDating.petRequestEntity = this.userPet;
+      this.newRequestDating.petRecieveEntity = this.customerPet;
+      console.log(this.logClass + ' Dating Detail:');
+      console.log(JSON.stringify(this.newRequestDating));
     }
 
     openDialog() {

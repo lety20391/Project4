@@ -17,6 +17,7 @@ export class DetailDatingComponent implements OnInit {
   logClass = '--Dating Detail UI: ';
 
   @Input() currentID: number;
+  @Output() datingDetailWasSend = new EventEmitter();
 
   currentPet: PetEntity = new PetEntity();
   listImage: string[] = [];
@@ -73,8 +74,9 @@ export class DetailDatingComponent implements OnInit {
     );
   }
 
-  sendRequestDating(): void{
-    console.log(this.logClass + ' sendRequestDating');
+  sendRequestDating(requestDating: DatingDetailEntity): void{
+    console.log(this.logClass + ' sendRequestDating' + requestDating.datingLocation);
+    this.datingDetailWasSend.emit(requestDating);
 
   }
 
