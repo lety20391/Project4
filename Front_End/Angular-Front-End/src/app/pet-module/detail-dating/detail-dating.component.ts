@@ -30,10 +30,22 @@ export class DetailDatingComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    //this.loadScript('./assets/js/popupImage.js');
     this.getID();
     this.getPetByID(this.currentID);
     this.getAllPetImage(this.currentID);
 
+  }
+
+  //load external js file into component
+  public loadScript(url: string) {
+    const body = <HTMLDivElement> document.body;
+    const script = document.createElement('script');
+    script.innerHTML = '';
+    script.src = url;
+    script.async = false;
+    script.defer = true;
+    body.appendChild(script);
   }
 
   getID(): void{
@@ -66,5 +78,5 @@ export class DetailDatingComponent implements OnInit {
 
   }
 
-  
+
 }
