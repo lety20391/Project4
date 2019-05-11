@@ -199,4 +199,9 @@ export class ListDatingComponent implements OnInit {
 
     }
 
+    getPetDetail(event: Event):void {
+      console.log(this.logClass + ' pet selected: ');
+      console.log(JSON.stringify(event));
+    }
+
 }

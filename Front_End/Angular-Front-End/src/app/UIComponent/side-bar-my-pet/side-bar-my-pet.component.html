@@ -1,12 +1,16 @@
+
 <div class="shop-sidebar">
   <!-- Item 1 -->
   <div class="shop-item-sidebar" *ngFor="let pet of listPet">
 
-      <div class="media" style="border:none;">
-        <img src="http://localhost:9090/uploadedFiles/Pet/{{pet.petID}}/{{pet.petListImage[0]}}"
-                alt=""  >
+      <div class="box-gallery" style="border:none;">
+          <a>
+            <img src="http://localhost:9090/uploadedFiles/Pet/{{pet.petID}}/{{pet.petListImage[0]}}"
+                  alt="" class="petImage" (click)="sendPetDetail(pet)">
+
+          </a>
       </div>
-      <div class="body-text">
+      <div class="body-text" style="margin:0px;">
         <h4 class="title"><a href="shop-single.html">{{pet.petName}}</a></h4>
         <!-- <div class="price">{{pet.petBreed}}</div> -->
         <!-- phan nay de lay request -->

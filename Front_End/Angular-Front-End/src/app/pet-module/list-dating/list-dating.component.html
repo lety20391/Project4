@@ -10,7 +10,7 @@
         							<div class="widget-title">
         								My pet
         							</div>
-											<app-side-bar-my-pet [listPet]="myListPet"></app-side-bar-my-pet>
+											<app-side-bar-my-pet [listPet]="myListPet" (petSelected)="getPetDetail($event)"></app-side-bar-my-pet>
 											<!-- item -->
         							<!-- <div class="shop-sidebar">
         								<div class="shop-item-sidebar">

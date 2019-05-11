@@ -7,7 +7,5 @@ img {
   border-width: 5px;
   border-style: solid;
   padding:2px;
-}
-.shop-item-sidebar: hover{
-  background-color: #999999;
+  margin:10px;
 }
