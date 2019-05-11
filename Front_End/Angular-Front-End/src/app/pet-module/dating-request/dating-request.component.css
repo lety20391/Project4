@@ -11,5 +11,10 @@
   margin-left: auto;
   margin-right: auto;
   object-fit: cover;
+  border-radius: 10px;
   /* opacity: 1; */
+}
+
+.myTitle{
+  color: #6610f2;
 }

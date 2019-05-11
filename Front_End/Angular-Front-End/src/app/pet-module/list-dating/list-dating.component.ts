@@ -228,7 +228,7 @@ export class ListDatingComponent implements OnInit {
 
         const dialogConfig = new MatDialogConfig();
 
-        dialogConfig.disableClose = false;
+        dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
 
         dialogConfig.data = requestDating;
