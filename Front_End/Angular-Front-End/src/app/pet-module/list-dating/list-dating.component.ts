@@ -39,6 +39,10 @@ export class ListDatingComponent implements OnInit {
     urlAPI: UrlAPIEntity;
     myListPet: PetEntity[] = [];
     currentUserID: number;
+    isCustomerPetSelected = false;
+
+    userPet: PetEntity;
+    customerPet: PetEntity;
 
 
     constructor(
@@ -202,6 +206,12 @@ export class ListDatingComponent implements OnInit {
     getPetDetail(event: Event):void {
       console.log(this.logClass + ' pet selected: ');
       console.log(JSON.stringify(event));
+      this.userPet = JSON.parse(JSON.stringify(event));
+    }
+
+    getCustomerPetDetail(selectedPet: PetEntity): void{
+      console.log(this.logClass + ' get Customer Pet: ' + selectedPet.petName);
+      this.customerPet = selectedPet;
     }
 
 }

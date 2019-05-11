@@ -13,6 +13,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { DetailDatingComponent } from './detail-dating/detail-dating.component';
 import {SideBarMyPetComponent} from '../UIComponent/side-bar-my-pet/side-bar-my-pet.component';
 
+
 @NgModule({
   declarations: [
     PetMockupComponent,

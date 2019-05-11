@@ -86,3 +86,14 @@
 			.dropdown a:hover {background-color: #ddd;}
 
 			.show {display: block;}
+
+.mainContent {
+	/* border-left: 2px groove  #999999;
+	border-right: 2px groove  #999999; */
+	padding-left:50px;
+	padding-right:50px;
+}
+
+.mySideBar{
+
+}
