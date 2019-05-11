@@ -13,7 +13,7 @@ export class DatingRequestComponent implements OnInit {
   @Input() ID_urlImg1 = 'http://localhost:9090/assets/dummy-img-400x400.jpg';
   @Input() ID_urlImg2 = 'http://localhost:9090/assets/dummy-img-400x400.jpg';
 
-  receivedDate: DatingDetailEntity = new DatingDetailEntity();
+  receivedData: DatingDetailEntity = new DatingDetailEntity();
 
   constructor(
     private dialogRef: MatDialogRef<DatingRequestComponent>,
