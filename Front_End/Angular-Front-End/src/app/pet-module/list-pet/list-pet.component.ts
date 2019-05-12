@@ -19,6 +19,7 @@ export class ListPetComponent implements OnInit {
   urlAPI: UrlAPIEntity;
   currentUserID: number;
   currentPet: PetEntity = new PetEntity();
+  petImageUrl: string;
 
 
   constructor(
@@ -125,11 +126,13 @@ export class ListPetComponent implements OnInit {
   getPetSelected(event: Event): void{
     this.currentPet = JSON.parse(JSON.stringify(event));
     console.log(this.logClass + ' getPetSelected: ' + this.currentPet.petName);
+    this.urlAPI = listUrlAPI.find(url => url.name === 'uploadResource');
+    this.petImageUrl = this.urlAPI.path + '/file/Pet/' + this.currentPet.petID;
 
   }
 
   updateCurrentPet(): void{
-    
+
   }
 
   // getListPet(): void{

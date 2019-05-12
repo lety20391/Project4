@@ -9,7 +9,7 @@
 
 
 <label for="singleFile">Upload file</label>
-<input id="singleFile" type="file" [fileUploadInputFor]= "fileUploadQueue"/>
+<input id="singleFile" type="file" [fileUploadInputFor]= "fileUploadQueue" accept=".jpg, .png, .bmp, .gif"/>
 <br>
 
 <mat-file-upload-queue #fileUploadQueue
@@ -18,6 +18,8 @@
     [httpRequestHeaders] = 'requestHeader'
     >
 
-    <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+    <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index">
+      
+    </mat-file-upload>
 </mat-file-upload-queue>
 </div>

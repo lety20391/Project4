@@ -16,7 +16,7 @@ import { DatePipe, formatDate } from '@angular/common';
 export class CreatePetComponent implements OnInit {
 
   logClass = '--CreatePetComponent: ';
-  uploadUrl = '';
+  @Input() uploadUrl = '';
   UrlEntity: UrlAPIEntity;
   inputID: number;
   genderList = ['Male', 'Female'];

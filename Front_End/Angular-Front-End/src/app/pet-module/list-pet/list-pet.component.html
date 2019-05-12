@@ -131,13 +131,14 @@
           							</ul>
           							<div class="tab-content" id="myTabContent">
           								<!-- Tabs 1 -->
-          								<div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+          								<div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab" [class.disableFunction]="currentPet.petID == null">
           									<!-- <p class="uk18 text-black mb-1">
           										<strong>Pet Information</strong>
           									</p> -->
-          									<app-create-pet [isInUpdateMode]="true" [buttonTitle]="'Update Information'" [newPet]="currentPet"></app-create-pet>
+          									<app-create-pet [isInUpdateMode]="true" [buttonTitle]="'Update Information'" [newPet]="currentPet" [uploadUrl]="petImageUrl"></app-create-pet>
 
                             <p class="btn btn-primary" (click)="updateCurrentPet()">Update Pet</p>
+                            <p class="btn btn-secondary" (click)="deletePet()" >Delete Pet</p>
 
                             <div class="col-12 col-sm-12 col-md-12">
                       						<div class="row popup-gallery gutter-5">
