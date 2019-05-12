@@ -86,3 +86,8 @@
 			.dropdown a:hover {background-color: #ddd;}
 
 			.show {display: block;}
+
+			.disableFunction {
+			  pointer-events: none;
+			  opacity: 0.2;
+			}

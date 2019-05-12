@@ -38,6 +38,8 @@ public class ManagePet {
     
     @EJB
     PetManageSessionBeanLocal petManageSessionBeanLocal;
+    
+    private final String logClass = "--Manage Pet: ";
 
     /**
      * Creates a new instance of ManagePet
@@ -94,7 +96,10 @@ public class ManagePet {
      * @param content representation for the resource
      */
     @PUT
-    @Consumes(MediaType.APPLICATION_XML)
-    public void putXml(String content) {
+    @Path("/update")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public PetEntity updatePet(PetEntity updatedPet) {
+        System.out.println(logClass + " update Pet: " + updatedPet.getPetName());
+        return petManageSessionBeanLocal.editPet(updatedPet);
     }
 }

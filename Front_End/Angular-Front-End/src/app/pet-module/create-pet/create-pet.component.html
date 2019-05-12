@@ -1,14 +1,14 @@
 <!-- CONTENT -->
 	<div id="class" class="">
-		<div class="content-wrap">
+		<div class="content-wrap" [class.forUpdateMode]="isInUpdateMode">
 			<div class="container">
 
 				<div class="row">
 					<div class="col-sm-12 col-md-12" [class.disableFunction]="isReadyToUploadImage">
-						<p class="title-heading text-primary mb-5">
+						<p class="title-heading text-primary mb-5" *ngIf="!isInUpdateMode">
 							Add New Pet
 						</p>
-						<p class="subheading">Please fill information in this form then upload your pet's image</p>
+						<p class="subheading" *ngIf="!isInUpdateMode">Please fill information in this form then upload your pet's image</p>
 					</div>
 				</div>
 
@@ -69,18 +69,19 @@
 
 							</div>
 							<div class="form-group">
-								 <textarea id="p_message" class="form-control" rows="6" placeholder="Enter Your Pet's Story"></textarea>
+								 <textarea id="p_message" class="form-control" rows="6" placeholder="Enter Your Pet's Story" [(ngModel)]="newPet.petStory"></textarea>
 								<div class="help-block with-errors"></div>
 							</div>
 							<div class="form-group">
 								<div id="success"></div>
-								<button type="button" (click)="createPetInfo()" class="btn btn-primary">{{buttonTitle}}</button>
+								<button type="button" (click)="createPetInfo()" class="btn btn-primary" *ngIf="!isInUpdateMode">{{buttonTitle}}</button>
 							</div>
 						<!-- </form> -->
 
 			</div>
-      <div class="col-sm-4 col-md-6 " [class.disableFunction]="!isReadyToUploadImage">
-					<p class="title-heading text-primary mb-5">Now Upload Your Pet Image</p>
+      <div class="col-sm-4 col-md-6 " [class.disableFunction]="!isReadyToUploadImage && !isInUpdateMode">
+					<p class="title-heading text-primary mb-5" *ngIf="!isInUpdateMode">Now Upload Your Pet Image</p>
+						<p class="title-heading text-primary mb-5" *ngIf="isInUpdateMode">Upload More Image</p>
 
           <!-- upload Image Section here -->
           <app-upload [finalUrl]='uploadUrl' [requestHeader]='jwtHeader'></app-upload>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UploadComponent } from '../../UIComponent/upload/upload.component';
 import { listUrlAPI } from '../../listUrlAPI';
 import { UrlAPIEntity } from '../../UrlAPIEntity';
@@ -16,14 +16,15 @@ import { DatePipe, formatDate } from '@angular/common';
 export class CreatePetComponent implements OnInit {
 
   logClass = '--CreatePetComponent: ';
-  uploadUrl = '';
+  @Input() uploadUrl = '';
   UrlEntity: UrlAPIEntity;
   inputID: number;
   genderList = ['Male', 'Female'];
   //jwtHeader = new HttpHeaders().set("Authorization", "multipart/form-data");
-  newPet: PetEntity = new PetEntity();
+  @Input() newPet: PetEntity = new PetEntity();
   isReadyToUploadImage = false;
-  buttonTitle = 'Upload Pet Info';
+  @Input() buttonTitle = 'Upload Pet Info';
+  @Input() isInUpdateMode = false;
 
   constructor(
     private petService: PetManageService

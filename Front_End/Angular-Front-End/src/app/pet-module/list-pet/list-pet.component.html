@@ -59,20 +59,20 @@
         							<div class="widget-title">
         								My Pet Dating
         							</div>
-        							<app-side-bar-my-pet [listPet]="myListPet" (petSelected)="getDatingDetail($event)"></app-side-bar-my-pet>
+        							<app-side-bar-my-pet [listPet]="myListPet" (petSelected)="getPetSelected($event)"></app-side-bar-my-pet>
         						</div>
 
         					</div>
         					<!-- end sidebar -->
 
+                  <!-- main content -->
         					<div class="col-12 col-sm-9 col-md-9">
 
-										<div class="row">
-					            <!-- Item 1 -->
+                    <!-- list Pet -->
+										<!-- <div class="row">
 					            <div class="col-sm-4 col-md-4" *ngFor='let item of myListPet'>
 					              <div class="rs-shop-box mb-5">
 					                <div class="box-gallery">
-					                  <!-- nho sua cho nay do style thay doi heigh cua img -->
 					                  <a href="/mainlayout/petDetail/{{item.petID}}">
 															<img src="http://localhost:9090/uploadedFiles/Pet/{{item.petID}}/{{item.petListImage[0]}}" alt="" class="img-fluid" style="height:250px; object-fit:cover;margin:auto">
 															<div class="project-info">
@@ -94,7 +94,7 @@
 					              </div>
 					            </div>
 
-					          <!-- end shop -->
+
 
 
 					        	</div>
@@ -113,10 +113,111 @@
           							</nav>
 
           						</div>
-          					</div>
+          					</div> -->
+
+                    <!-- list Pet -->
+
+                    <div class="rs-tabs">
+          							<ul class="nav nav-tabs" id="myTab" role="tablist">
+          							  <li class="nav-item">
+          							    <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Pet Detail</a>
+          							  </li>
+          							  <li class="nav-item">
+          							    <a class="nav-link" id="information-tab" data-toggle="tab" href="#information" role="tab" aria-controls="information" aria-selected="false">Additional Information</a>
+          							  </li>
+          							  <li class="nav-item">
+          							    <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Review (3)</a>
+          							  </li>
+          							</ul>
+          							<div class="tab-content" id="myTabContent">
+          								<!-- Tabs 1 -->
+          								<div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab" [class.disableFunction]="currentPet.petID == null">
+          									<!-- <p class="uk18 text-black mb-1">
+          										<strong>Pet Information</strong>
+          									</p> -->
+          									<app-create-pet [isInUpdateMode]="true" [buttonTitle]="'Update Information'" [newPet]="currentPet" [uploadUrl]="petImageUrl"></app-create-pet>
+
+                            <p class="btn btn-primary" (click)="updateCurrentPet()">Update Pet</p>
+                            <p class="btn btn-secondary" (click)="deletePet()" >Delete Pet</p>
+
+                            <div class="col-12 col-sm-12 col-md-12">
+                      						<div class="row popup-gallery gutter-5">
+                      							<!-- ITEM 1 -->
+                      							<div class="col-sm-6 col-md-4" *ngFor="let image of currentPet.petListImage; let i = index">
+                      								<div class="box-gallery">
+                      									<a href="http://localhost:9090/uploadedFiles/Pet/{{currentPet.petID}}/{{image}}" title="#{{i + 1}}_{{currentPet.petName}} ">
+                      										<img src="http://localhost:9090/uploadedFiles/Pet/{{currentPet.petID}}/{{image}}" alt="" class="img-fluid">
+                      										<div class="project-info">
+                      											<div class="project-icon">
+                      												<span class="fa fa-search"></span>
+                      											</div>
+                      										</div>
+                      									</a>
+                      								</div>
+                      							</div>
+                                </div>
+                              </div>
+          								</div>
+          								<!-- Tabs 2 -->
+          								<div class="tab-pane fade" id="information" role="tabpanel" aria-labelledby="information-tab">
+          									<p class="uk18 text-black mb-1">
+          										<strong>Product details  :</strong>
+          									</p>
+
+          									<ul>
+          										<li>Product Dimensions: 24 x 16.8 x 14.5 inches.</li>
+          										<li>Shipping Weight: 5.8 pounds.</li>
+          										<li>Domestic Shipping: Item can be shipped within U.S.</li>
+          										<li>International Shipping: This item can be shipped to select countries outside of the U.S.</li>
+          										<li>Shipping Advisory: This item must be shipped separately from other items in your order. Additional shipping charges will not apply.</li>
+          										<li>Item model number: 294144.</li>
+          									</ul>
+          								</div>
+          								<!-- Tabs 3 -->
+          							  <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+          								<div class="reviews">
+
+          									<!-- Item 1 -->
+          									<div class="media media-review">
+          									  <img src="images/dummy-img-400x400.jpg" alt="" class="img-fluid mr-3">
+          									  <div class="media-body">
+          									    <div class="rating d-inline">
+          												<span></span>
+          												<span></span>
+          												<span></span>
+          												<span></span>
+          												<span></span>
+          											</div>
+          											<div class="rating-for d-inline ml-1">for <strong>Flexibility</strong></div>
+          											<div class="rating-by mb-3">by <span class="text-primary">Ernest Doel</span></div>
+          											<p>Vivamus urna elit, rhoncus vel fringilla ac, vestibulum non arcu. Sed quis vulputate enim. Nunc a erat sollicitudin, finibus augue vitae, facilisis turpis. Vivamus quam ex, ultricies et blandit sed, accumsan a augue. Mauris nibh leo, euismod eu vulputate et, sagittis ut nunc. Vivamus eu ultricies sapien.</p>
+          									  </div>
+          									</div>
+
+          									<!-- Item 2 -->
+          									<div class="media media-review">
+          									  <img src="images/dummy-img-400x400.jpg" alt="" class="img-fluid mr-3">
+          									  <div class="media-body">
+          									    <div class="rating d-inline">
+          												<span></span>
+          												<span></span>
+          												<span></span>
+          												<span></span>
+          												<span></span>
+          											</div>
+          											<div class="rating-for d-inline ml-1">for <strong>Flexibility</strong></div>
+          											<div class="rating-by mb-3">by <span class="text-primary">Mellisa Doel</span></div>
+          											<p>Vivamus urna elit, rhoncus vel fringilla ac, vestibulum non arcu. Sed quis vulputate enim. Nunc a erat sollicitudin, finibus augue vitae, facilisis turpis. Vivamus quam ex, ultricies et blandit sed, accumsan a augue. Mauris nibh leo, euismod eu vulputate et, sagittis ut nunc. Vivamus eu ultricies sapien.</p>
+          									  </div>
+          									</div>
+          								</div>
+          							  </div>
+          							</div>
+          						</div>
+          						<!-- end tabs -->
 
         					</div>
-        						<!-- end shop -->
+        					<!-- main content -->
 
 
 
