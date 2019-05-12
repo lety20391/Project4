@@ -1,9 +1,11 @@
 import {serviceEntity} from '../serviceEntity/serviceEntity';
 import {BookingMasterEntity} from './BookingMasterEntity';
+import {UserEntity} from '../UserEntity/UserEntity'
 export class BookingDetailEntity {
   bDetailID: number;
   bookingDate: string;
   bdstatus : boolean;
-  service_bookingID: BookingMasterEntity;
-  service_serID: serviceEntity;
+  message: string;
+  bookingMasterEntity: BookingMasterEntity;
+  serviceEntity: serviceEntity;
 }
