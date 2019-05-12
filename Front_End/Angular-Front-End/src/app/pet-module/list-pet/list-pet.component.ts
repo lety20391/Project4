@@ -37,6 +37,7 @@ export class ListPetComponent implements OnInit {
     this.loadScript('./assets/js/search.js');
     this.getCurrentUserID();
     this.getMyListPet();
+    this.currentPet.listDatingDetail = [];
   }
 
   //load external js file into component

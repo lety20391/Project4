@@ -4,7 +4,7 @@
 			<div class="container"> -->
         <div class="row" style="padding:20px;">
 
-        					<div class="col-12 col-sm-3 col-md-3">
+        					<div class="col-12 col-sm-2 col-md-2">
 
         						<!-- <div class="widget categories">
         							<div class="widget-title">
@@ -66,7 +66,7 @@
         					<!-- end sidebar -->
 
                   <!-- main content -->
-        					<div class="col-12 col-sm-9 col-md-9">
+        					<div class="col-12 col-sm-10 col-md-10">
 
                     <!-- list Pet -->
 										<!-- <div class="row">
@@ -123,10 +123,10 @@
           							    <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Pet Detail</a>
           							  </li>
           							  <li class="nav-item">
-          							    <a class="nav-link" id="information-tab" data-toggle="tab" href="#information" role="tab" aria-controls="information" aria-selected="false">Additional Information</a>
+          							    <a class="nav-link" id="information-tab" data-toggle="tab" href="#information" role="tab" aria-controls="information" aria-selected="false">Dating Request</a>
           							  </li>
           							  <li class="nav-item">
-          							    <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Review (3)</a>
+          							    <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Calendar</a>
           							  </li>
           							</ul>
           							<div class="tab-content" id="myTabContent">
@@ -160,18 +160,22 @@
           								</div>
           								<!-- Tabs 2 -->
           								<div class="tab-pane fade" id="information" role="tabpanel" aria-labelledby="information-tab">
-          									<p class="uk18 text-black mb-1">
+          									<!-- <p class="uk18 text-black mb-1">
           										<strong>Product details  :</strong>
-          									</p>
+          									</p> -->
 
-          									<ul>
-          										<li>Product Dimensions: 24 x 16.8 x 14.5 inches.</li>
-          										<li>Shipping Weight: 5.8 pounds.</li>
-          										<li>Domestic Shipping: Item can be shipped within U.S.</li>
-          										<li>International Shipping: This item can be shipped to select countries outside of the U.S.</li>
-          										<li>Shipping Advisory: This item must be shipped separately from other items in your order. Additional shipping charges will not apply.</li>
-          										<li>Item model number: 294144.</li>
-          									</ul>
+                            <!-- Dating List -->
+                            <div class="col-12 col-sm-8 col-md-8">
+
+                            </div>
+                            <div class="col-12 col-sm-4 col-md-4">
+                              <app-confirm-dating [listDating]='currentPet.listDatingDetail' ></app-confirm-dating>
+                            </div>
+
+
+                            <!-- Dating List -->
+
+
           								</div>
           								<!-- Tabs 3 -->
           							  <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
@@ -218,6 +222,10 @@
 
         					</div>
         					<!-- main content -->
+
+                  <!-- right bar -->
+
+                  <!-- right bar -->
 
 
 

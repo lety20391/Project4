@@ -16,6 +16,7 @@ import { DetailDatingComponent } from './detail-dating/detail-dating.component';
 import {SideBarMyPetComponent} from '../UIComponent/side-bar-my-pet/side-bar-my-pet.component';
 import { DatingRequestComponent } from './dating-request/dating-request.component';
 import {SimpleDialogComponent} from '../UIComponent/simple-dialog/simple-dialog.component';
+import { ConfirmDatingComponent } from './confirm-dating/confirm-dating.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {SimpleDialogComponent} from '../UIComponent/simple-dialog/simple-dialog.
     DetailDatingComponent,
     SideBarMyPetComponent,
     DatingRequestComponent,
-    SimpleDialogComponent
+    SimpleDialogComponent,
+    ConfirmDatingComponent
   ],
   imports: [
     CommonModule,
