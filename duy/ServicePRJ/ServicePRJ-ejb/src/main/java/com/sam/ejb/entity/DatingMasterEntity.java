@@ -109,9 +109,9 @@ public class DatingMasterEntity {
         this.Status = Status;
     }
 
-    public List<DatingDetailEntity> getListDatingDetail() {
-        return listDatingDetail;
-    }
+//    public List<DatingDetailEntity> getListDatingDetail() {
+//        return listDatingDetail;
+//    }
 
     public void setListDatingDetail(List<DatingDetailEntity> listDatingDetail) {
         this.listDatingDetail = listDatingDetail;

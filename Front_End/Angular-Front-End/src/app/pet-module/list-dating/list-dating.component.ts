@@ -92,13 +92,33 @@ export class ListDatingComponent implements OnInit {
 
                     //goi len server de lay danh sach hinh anh ve
                     this.http.get<string[]>(this.urlAPI.path + '/Pet/' + item.petID)
-                    .subscribe(
-                      result => {
-                                  console.log(this.logClass + ' Image Load:' + result);
-                                  //gan ket qua tra ve vao thuoc tinh petListImage
-                                  item.petListImage = result;
-                                }
+                      .subscribe(
+                        result => {
+                                    console.log(this.logClass + ' Image Load:' + result);
+                                    //gan ket qua tra ve vao thuoc tinh petListImage
+                                    item.petListImage = result;
+                                  }
                     );
+
+                    //goi len server de lay danh sach Dating Detail tra ve
+                    this.urlAPI = listUrlAPI.find(url => url.name === 'datingDetailResource');
+                    this.http.get<DatingDetailEntity[]>(this.urlAPI.path + '/list/' + item.petID)
+                      .subscribe(
+                        result => {
+                                    console.log(this.logClass + ' Dating Load:' + result.length);
+                                    //gan ket qua tra ve vao thuoc tinh petListImage
+                                    item.listDatingDetail = result;
+                                    item.totalDatingRequestNeedAccept = 0;
+                                    item.listDatingDetail.forEach(
+                                      datingDetail => {
+                                        if(datingDetail.isAccepted == false)
+                                          item.totalDatingRequestNeedAccept += 1;
+                                      }
+                                    );
+                                  }
+                    );
+
+
                   }
                 );
 

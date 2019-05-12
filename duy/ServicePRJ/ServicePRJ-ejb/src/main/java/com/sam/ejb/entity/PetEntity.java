@@ -152,14 +152,8 @@ public class PetEntity {
     }
 
     
-//
-//    public Long getUserID() {
-//        return UserID;
-//    }
-//
-//    public void setUserID(Long UserID) {
-//        this.UserID = UserID;
-//    }
+
+   
 
     public UserEntity getUserEntity() {
         return userEntity;

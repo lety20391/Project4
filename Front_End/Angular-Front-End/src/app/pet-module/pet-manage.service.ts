@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import { listUrlAPI } from '../listUrlAPI';
 import { UrlAPIEntity } from '../UrlAPIEntity';
@@ -42,6 +42,8 @@ export class PetManageService {
     this.urlAPI = listUrlAPI.find(url => url.name === 'getAllImageResource');
     return this.http.get<string[]>(this.urlAPI.path + '/Pet/' + id);
   }
+
+
 
 
 }

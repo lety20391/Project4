@@ -44,4 +44,14 @@ public class DatingDetailSessionBean implements DatingDetailSessionBeanLocal {
         em.persist(newDatingDetail);
         return newDatingDetail;
     }
+
+    @Override
+    public List<DatingDetailEntity> getListDatingReceivedByPetID(Long petID) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println(logClass + " getListDatingReceivedByPetID: " + petID);
+        em = entityManagerFactory.createEntityManager();
+        List datingDetailList = em.createNamedQuery("dDetail.findByRecieved").setParameter("id", petID).getResultList();
+        System.out.println(logClass + " return Dating List: " + datingDetailList.size());
+        return datingDetailList;
+    }
 }

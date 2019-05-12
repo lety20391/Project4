@@ -25,7 +25,8 @@ import javax.persistence.Table;
 @Table(name="datingDetailEntity")
 @NamedQueries
         ({
-            @NamedQuery(name="dDetail.findAll",query = "SELECT d FROM DatingDetailEntity d")
+            @NamedQuery(name="dDetail.findAll",query = "SELECT d FROM DatingDetailEntity d"),
+            @NamedQuery(name="dDetail.findByRecieved",query = "SELECT d FROM DatingDetailEntity d WHERE d.PetRecieveEntity.petID = :id")
 //            @NamedQuery(name="dDetail.searchRequestByPetID", query ="SELECT d FROM DatingDetailEntity d WHERE d.PetID = :id ")
         })
 public class DatingDetailEntity {

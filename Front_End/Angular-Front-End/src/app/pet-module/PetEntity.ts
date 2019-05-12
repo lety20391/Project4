@@ -12,6 +12,7 @@ export class PetEntity {
   petStory: string;
   petGender: string;
   userEntity: UserEntity;
-  petListImage: string[];
-  listDatingDetail: DatingDetailEntity[];
+  petListImage: string[] = [];
+  listDatingDetail: DatingDetailEntity[] = [];
+  totalDatingRequestNeedAccept: number;
 }

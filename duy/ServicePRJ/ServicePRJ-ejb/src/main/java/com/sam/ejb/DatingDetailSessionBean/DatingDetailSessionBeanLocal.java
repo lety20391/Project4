@@ -17,4 +17,5 @@ import javax.ejb.Local;
 public interface DatingDetailSessionBeanLocal {
     public List<DatingDetailEntity> listAll();
     public DatingDetailEntity addDatingDetail(DatingDetailEntity newDatingDetail);
+    public List<DatingDetailEntity> getListDatingReceivedByPetID(Long petID );
 }
