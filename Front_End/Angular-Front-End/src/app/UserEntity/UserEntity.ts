@@ -7,4 +7,5 @@ export class UserEntity{
   userStatus: boolean;
   keyCode: string;
   key_dateCreated: string;
+  listUserImage: string[];
 }

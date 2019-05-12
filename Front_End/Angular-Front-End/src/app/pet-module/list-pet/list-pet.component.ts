@@ -24,6 +24,7 @@ export class ListPetComponent implements OnInit {
   currentUserID: number;
   currentPet: PetEntity = new PetEntity();
   petImageUrl: string;
+  currentDating: DatingDetailEntity = new DatingDetailEntity();
 
 
   constructor(
@@ -132,10 +133,29 @@ export class ListPetComponent implements OnInit {
   }
 
   getPetSelected(event: Event): void{
+    console.log(this.logClass + JSON.stringify(event));
     this.currentPet = JSON.parse(JSON.stringify(event));
     console.log(this.logClass + ' getPetSelected: ' + this.currentPet.petName);
     this.urlAPI = listUrlAPI.find(url => url.name === 'uploadResource');
     this.petImageUrl = this.urlAPI.path + '/file/Pet/' + this.currentPet.petID;
+    //this.currentDating = new DatingDetailEntity();
+    //get all User Image for pet Request Dating
+    this.currentPet.listDatingDetail.forEach(
+      dating => {
+
+        let id = dating.petRequestEntity.userEntity.userID;
+        console.log(this.logClass + ' get All Image for user' + id);
+        this.urlAPI = listUrlAPI.find(url => url.name === 'getAllImageResource');
+        this.http.get<string[]>(this.urlAPI.path + '/User/' + id)
+        .subscribe(
+          result => {
+                      console.log(this.logClass + ' Image Load');
+                      dating.petRequestEntity.userEntity.listUserImage = result;
+                    }
+        );
+      }
+    );
+
 
   }
 
@@ -170,6 +190,11 @@ export class ListPetComponent implements OnInit {
           }
         }
       );
+  }
+
+  getDatingSelected(event: Event): void{
+    this.currentDating = JSON.parse(JSON.stringify(event));
+    console.log(this.logClass + ' get Selected Dating from: '+ this.currentDating.petRequestEntity.petName);
   }
 
   openDeleteDialog(): void {

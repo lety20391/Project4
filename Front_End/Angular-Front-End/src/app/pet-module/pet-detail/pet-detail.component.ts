@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { PetEntity } from '../PetEntity';
@@ -14,7 +14,7 @@ export class PetDetailComponent implements OnInit {
   logClass = '--Pet Detail UI: ';
 
   @Output() currentID: number;
-  currentPet: PetEntity = new PetEntity();
+  @Input() currentPet: PetEntity = new PetEntity();
   listImage: string[] = [];
 
   constructor(

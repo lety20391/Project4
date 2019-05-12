@@ -6,55 +6,6 @@
 
         					<div class="col-12 col-sm-2 col-md-2">
 
-        						<!-- <div class="widget categories">
-        							<div class="widget-title">
-        									Search
-        									<span class="fa fa-search"></span>
-        							</div>
-        							<div class="category-nav">
-        								<form class="form-contact">
-        									<input class="form-control" type="text" placeholder="Search Name or Breed"/>
-        								</form>
-        							</div>
-        							<div class="widget-title">
-        								Filter
-        							</div>
-        							<ul class="category-nav">
-        								<li>
-        									  <a  onclick="myFunction()" style="color: #222222">Breed <span class="fa fa-caret-down" style="color:#F7941D"></span></a>
-        									  <div id="myDropdown" class="dropdown-content">
-        										<input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-        										<a href="#coggy">Coggy</a>
-        										<a href="#chihuahua">Chihuahua</a>
-        										<a href="#husky">Husky</a>
-        									  </div>
-
-
-        								</li>
-
-        								<li>
-        									<a  onclick="myFunction2()" style="color: #222222">Gender <span class="fa fa-caret-down" style="color:#F7941D"></span></a>
-        									  <div id="myDropdown2" class="dropdown-content">
-        										<input type="text" placeholder="Search.." id="myInput2" onkeyup="filterFunction2()">
-        										<a href="#coggy">Male</a>
-        										<a href="#chihuahua">Female</a>
-        									  </div>
-        								</li>
-
-        								<li>
-        									<hr>
-        								</li>
-
-        								<li>
-        									<a href="#">Age <span id="demo" style="color: #F7941D"></span></a>
-        									<div class="slidecontainer">
-        									  <input type="range" min="1" max="10" value="5" step="1" class="slider" id="myRange">
-        									</div>
-        								</li>
-
-        							</ul>
-        						</div> -->
-
         						<div class="widget widget-text">
         							<div class="widget-title">
         								My Pet Dating
@@ -66,63 +17,14 @@
         					<!-- end sidebar -->
 
                   <!-- main content -->
-        					<div class="col-12 col-sm-10 col-md-10">
-
-                    <!-- list Pet -->
-										<!-- <div class="row">
-					            <div class="col-sm-4 col-md-4" *ngFor='let item of myListPet'>
-					              <div class="rs-shop-box mb-5">
-					                <div class="box-gallery">
-					                  <a href="/mainlayout/petDetail/{{item.petID}}">
-															<img src="http://localhost:9090/uploadedFiles/Pet/{{item.petID}}/{{item.petListImage[0]}}" alt="" class="img-fluid" style="height:250px; object-fit:cover;margin:auto">
-															<div class="project-info">
-																<div class="project-icon">
-																	<h3><span>Pet Detail</span></h3>
-																</div>
-															</div>
-														</a>
-					                </div>
-					                <div class="body-text">
-					                  <h4 class="title"><a href="shop-single.html">{{item.petName}}</a></h4>
-					                  <div class="meta">
-					                    <div class="price">${{item.petPrice}}</div>
-					                    <div class="price">
-					                      {{item.petBreed}}
-					                    </div>
-					                  </div>
-					                </div>
-					              </div>
-					            </div>
-
-
-
-
-					        	</div>
-
-                    <div class="row">
-          						<div class="col-sm-12 col-md-12">
-
-          							<nav aria-label="Page navigation">
-          							  <ul class="pagination">
-          							    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-          							    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-          							    <li class="page-item"><a class="page-link" href="#">2</a></li>
-          							    <li class="page-item"><a class="page-link" href="#">3</a></li>
-          							    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-          							  </ul>
-          							</nav>
-
-          						</div>
-          					</div> -->
-
-                    <!-- list Pet -->
+        					<div class="col-12" [class.col-sm-10]="!(currentPet.petID >= 0)" [class.col-md-10]="!(currentPet.petID >= 0)" [class.col-sm-7]="currentPet.petID >= 0" [class.col-md-7]="currentPet.petID >= 0">
 
                     <div class="rs-tabs">
           							<ul class="nav nav-tabs" id="myTab" role="tablist">
           							  <li class="nav-item">
           							    <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Pet Detail</a>
           							  </li>
-          							  <li class="nav-item">
+          							  <li class="nav-item" >
           							    <a class="nav-link" id="information-tab" data-toggle="tab" href="#information" role="tab" aria-controls="information" aria-selected="false">Dating Request</a>
           							  </li>
           							  <li class="nav-item">
@@ -159,21 +61,12 @@
                               </div>
           								</div>
           								<!-- Tabs 2 -->
-          								<div class="tab-pane fade" id="information" role="tabpanel" aria-labelledby="information-tab">
+          								<div class="tab-pane fade" id="information" role="tabpanel" aria-labelledby="information-tab" >
           									<!-- <p class="uk18 text-black mb-1">
           										<strong>Product details  :</strong>
           									</p> -->
+                            <!-- <app-pet-detail [currentPet]="currentDating.petRequestEntity"></app-pet-detail> -->
 
-                            <!-- Dating List -->
-                            <div class="col-12 col-sm-8 col-md-8">
-
-                            </div>
-                            <div class="col-12 col-sm-4 col-md-4">
-                              <app-confirm-dating [listDating]='currentPet.listDatingDetail' ></app-confirm-dating>
-                            </div>
-
-
-                            <!-- Dating List -->
 
 
           								</div>
@@ -224,7 +117,12 @@
         					<!-- main content -->
 
                   <!-- right bar -->
-
+                  <div class="col-12 col-sm-3 col-md-3" *ngIf="currentPet.petID >= 0">
+                    <h2 class="section-heading text-primary no-after mb-4">
+    									Dating request
+    								</h2>
+                    <app-confirm-dating [listDating]='currentPet.listDatingDetail' (selectedDating)="getDatingSelected($event)" ></app-confirm-dating>
+                  </div>
                   <!-- right bar -->
 
 
