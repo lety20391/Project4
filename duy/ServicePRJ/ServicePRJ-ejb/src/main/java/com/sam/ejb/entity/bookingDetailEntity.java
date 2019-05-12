@@ -37,23 +37,30 @@ public class bookingDetailEntity {
     private Date BookingDate;
     @Column(name="bdstatus")
     private boolean Status;
+    @Column(name="message", columnDefinition = "VARCHAR(MAX)")
+    private String Message;
        
     @ManyToOne
-    @JoinColumn(name = "service_bookingID")
+    @JoinColumn(name = "bookingID")
     private bookingMasterEntity bookingMasterEntity;
-    
-    @ManyToOne
-    @JoinColumn(name = "service_serID")
-    private serviceEntity serviceEntity;
 
+    @ManyToOne
+    @JoinColumn(name = "serID")
+    private serviceEntity serviceEntity;
+    @ManyToOne
+    @JoinColumn(name="petID")
+    private PetEntity PetEntity;
+    
     public bookingDetailEntity() {
     }
 
-    public bookingDetailEntity(Date BookingDate, boolean Status, bookingMasterEntity bookingMasterEntity, serviceEntity serviceEntity) {
+    public bookingDetailEntity(Date BookingDate, boolean Status, String Message, bookingMasterEntity bookingMasterEntity, serviceEntity serviceEntity, PetEntity PetEntity) {
         this.BookingDate = BookingDate;
         this.Status = Status;
+        this.Message = Message;
         this.bookingMasterEntity = bookingMasterEntity;
         this.serviceEntity = serviceEntity;
+        this.PetEntity = PetEntity;
     }
 
     public Long getbDetailID() {
@@ -80,23 +87,36 @@ public class bookingDetailEntity {
         this.Status = Status;
     }
 
-//    public bookingMasterEntity getBookingMasterEntity() {
-//        return bookingMasterEntity;
-//    }
+    public String getMessage() {
+        return Message;
+    }
+
+    public void setMessage(String Message) {
+        this.Message = Message;
+    }
+
+    public bookingMasterEntity getBookingMasterEntity() {
+        return bookingMasterEntity;
+    }
 
     public void setBookingMasterEntity(bookingMasterEntity bookingMasterEntity) {
         this.bookingMasterEntity = bookingMasterEntity;
     }
 
-//    public serviceEntity getServiceEntity() {
-//        return serviceEntity;
-//    }
+    public serviceEntity getServiceEntity() {
+        return serviceEntity;
+    }
 
     public void setServiceEntity(serviceEntity serviceEntity) {
         this.serviceEntity = serviceEntity;
     }
 
-    
-    
+    public PetEntity getPetEntity() {
+        return PetEntity;
+    }
+
+    public void setPetEntity(PetEntity PetEntity) {
+        this.PetEntity = PetEntity;
+    }
     
 }

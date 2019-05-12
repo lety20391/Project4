@@ -7,11 +7,14 @@ import { serviceEntity } from '../serviceEntity/serviceEntity';
 import { UserEntity } from '../UserEntity/UserEntity';
 import { DatePipe, formatDate } from '@angular/common';
 import { BookingDetailEntity } from './BookingDetailEntity';
+import { ServiceManageService} from '../service-module/service-manage.service';
 import { PetEntity} from '../pet-module/PetEntity';
 import { HttpResponse } from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { ListPetComponent } from '../pet-module/list-pet/list-pet.component' //de get list
+import { ListPetComponent } from '../pet-module/list-pet/list-pet.component'; //de get list;
+import { BookingMasterEntity} from './BookingMasterEntity';
+
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
@@ -19,24 +22,70 @@ import { ListPetComponent } from '../pet-module/list-pet/list-pet.component' //d
 })
 export class BookingComponent implements OnInit {
   @Input() userdetail = new UserEntity();
-
+@Input() myListPet: PetEntity[] = [];
+@Input() listservice: serviceEntity[] = [];
   listPet: PetEntity[] = [];
   logClass = '--booking--service: ';
   urlAPI: UrlAPIEntity;
-  myListPet: PetEntity[] = [];
+  tempID : number ;
   currentUserID: number;
-
+  newBm: BookingMasterEntity = new BookingMasterEntity() ;
+  selectedPet : PetEntity = new PetEntity();
+  booknewService: BookingDetailEntity = new BookingDetailEntity();
+  selectedService: serviceEntity = new serviceEntity();
+  currentbmID: number;
+  currentStatus = true;
   constructor(
     private http: HttpClient,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private serviceManageService: ServiceManageService
   ) { }
 
   ngOnInit() {
-
+    this.getServiceList();
     this.getCurrentUserID();
     this.UserDetail();
+    // this.createBookingMaster();
     this.getListPet();
     this.getMyListPet();
+    }
+
+    setPet(event: Event): void {
+      console.log(JSON.stringify(event));
+      this.selectedPet = this.myListPet.find(pet => JSON.stringify(pet.petID) == JSON.stringify(event));
+    }
+    createBooking(): void {
+      this.newBm.userEntity = new UserEntity();
+      this.newBm.userEntity.userID = this.currentUserID;
+      this.addNewBookingMaster(this.newBm).subscribe(
+        response => {
+          console.log("this booking ID: " + response.bookingID);
+          this.currentbmID = response.bookingID;
+          this.createNew();
+        }
+      );
+    }
+    bookservice(newBd: BookingDetailEntity): Observable<BookingDetailEntity>{
+      this.urlAPI = listUrlAPI.find(url => url.name === 'bookingDetailResource');
+      return this.http.post<BookingDetailEntity>(this.urlAPI.path + '/Post', newBd);
+    }
+    createNew(): void {
+      this.booknewService.bookingMasterEntity = new BookingMasterEntity();
+      this.booknewService.bookingMasterEntity.bookingID = this.currentbmID;
+      this.booknewService.bdstatus = this.currentStatus;
+      this.booknewService.serviceEntity = new serviceEntity();
+      this.booknewService.serviceEntity.serID = this.selectedService.serID;
+      console.log("this is service ID: " + this.booknewService.serviceEntity.serID);
+      this.bookservice(this.booknewService).subscribe();
+    }
+
+    getServiceList(): void{
+        this.serviceManageService.getServiceList().subscribe(
+        result => {this.listservice = result} );
+    }
+    addNewBookingMaster(newBm: BookingMasterEntity): Observable<BookingMasterEntity> {
+      this.urlAPI = listUrlAPI.find(url => url.name === 'bookingMasterResource');
+      return this.http.post<BookingMasterEntity>(this.urlAPI.path + '/Post', newBm);
     }
     getUserDetail(id: number): Observable<any> {
       console.log("------Get API user detail Service ------");
@@ -51,6 +100,7 @@ export class BookingComponent implements OnInit {
         this.getUserDetail(id)
           .subscribe(detail => this.userdetail = detail);
       }
+
   getCurrentUserID(): void{
     let tempID = localStorage.getItem('UserID');
     if (tempID != null && tempID != ''){

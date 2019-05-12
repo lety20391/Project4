@@ -38,13 +38,13 @@ public class bookingMasterEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long bookingID;
-    @Column(name="creDate")
+    @Column(name="creDate", columnDefinition = "GETDATE()")
     private Date CreDate;
     @Column(name="bmStatus")
     private boolean Status;
-
+    
     @ManyToOne
-    @JoinColumn(name = "bm_serID")
+    @JoinColumn(name = "userID")
     private UserEntity userEntity;
 
     @OneToMany(mappedBy = "bookingMasterEntity", fetch = FetchType.EAGER)
@@ -84,17 +84,17 @@ public class bookingMasterEntity {
         this.Status = Status;
     }
 
-//    public UserEntity getUserEntity() {
-//        return userEntity;
-//    }
+    public UserEntity getUserEntity() {
+        return userEntity;
+    }
 
     public void setUserEntity(UserEntity userEntity) {
         this.userEntity = userEntity;
     }
 
-    public List<bookingDetailEntity> getBookingdetails() {
-        return bookingdetails;
-    }
+//    public List<bookingDetailEntity> getBookingdetails() {
+//        return bookingdetails;
+//    }
 
     public void setBookingdetails(List<bookingDetailEntity> bookingdetails) {
         this.bookingdetails = bookingdetails;

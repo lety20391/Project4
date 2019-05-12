@@ -22,19 +22,18 @@
 						<form action="#" class="form-contact" id="contactForm" data-toggle="validator" novalidate="true">
 							<div class="row">
 
-								<div class="col-sm-6 col-md-6">
+								<div class="col-sm-6 col-md-12">
 									<div class="form-group">
 										<input type="text" class="form-control" [(ngModel)]='userdetail.userName' disabled="true" name="ownername" id="p_name"  required="">
 										<div class="help-block with-errors"></div>
 									</div>
 								</div>
-								<div class="form-group">
-									<label>Name: </label>
-									<select name ="listPet" value="name" style="margin-left:5px" >
-											<option *ngFor="let pet of myListPet" [value]="petName" >
-													{{pet.petName}}
-											</option>
-									</select>
+								<div class="col-sm-6 col-md-12">
+									<div class="form-group">
+										<!-- <input type="text" class="form-control" id="p_phone" [(ngModel)]="selectedPet.petDOB" name="petAge"  placeholder="pet Age"> -->
+													<input type="number" class="form-control" name="phone" [(ngModel)]="userdetail.userTel" disabled="true" id="p_phone" placeholder="Enter Phone Number">
+										<div class="help-block with-errors"></div>
+									</div>
 								</div>
 								<!-- <div class="col-sm-6 col-md-6">
 									<div class="form-group">
@@ -43,30 +42,37 @@
 									</div>
 								</div> -->
 
-                <div class="col-sm-6 col-md-6">
-                  <div class="form-group">
-                    <input type="number" class="form-control" id="p_phone" placeholder="pet Age">
-                    <div class="help-block with-errors"></div>
-                  </div>
+                <div class="col-sm-6 col-md-12">
+									<div class="form-group">
+										<select name ="listPet" [(ngModel)]="tempID" (ngModelChange)="setPet($event)" value="name" style="border:1px solid" >
+												<option *ngFor="let pet of myListPet" [ngValue]="pet.petID" >
+														{{pet.petName}}
+												</option>
+										</select>
+									</div>
                 </div>
 
-								<div class="col-sm-6 col-md-6">
+								<div class="col-sm-6 col-md-12">
 									<div class="form-group">
-										<input type="text" class="form-control" id="p_subject" placeholder="Pet Breed">
+										<input type="text" class="form-control" id="p_subject" [(ngModel)]="selectedPet.petBreed" name="petBreed" placeholder="Pet Breed">
 										<div class="help-block with-errors"></div>
 									</div>
 								</div>
-
-								<div class="col-sm-6 col-md-6">
+								<div class="col-sm-6 col-md-12">
 									<div class="form-group">
-										<input type="number" class="form-control" id="p_phone" placeholder="Enter Phone Number">
-										<div class="help-block with-errors"></div>
+										<select name ="listService" [(ngModel)]="selectedService.serID"  value="name" style="border:1px solid" >
+												<option *ngFor="let ser of listservice" [value]="ser.serID" >
+														{{ser.serName}}
+												</option>
+										</select>
 									</div>
-								</div>
+                </div>
 
-                <div class="col-sm-6 col-md-6">
+
+                <div class="col-sm-6 col-md-12">
                   <div class="form-group">
-                    <input type="date" class="form-control" id="p_subject" placeholder="required date">
+										<input type="text" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" id="name" name="name" value="" class="inputtext form-control" placeholder="Enter Dating Date/Time" [(ngModel)]="booknewService.bookingDate">
+										<owl-date-time #dt1></owl-date-time>
                     <div class="help-block with-errors"></div>
                   </div>
                 </div>
@@ -75,12 +81,12 @@
 
 							</div>
 							<div class="form-group">
-								 <textarea id="p_message" class="form-control" rows="6" placeholder="Enter Your Message"></textarea>
+								 <textarea id="p_message" class="form-control" rows="6" id="message" name="nessage" [(ngModel)]="booknewService.message" placeholder="Enter Your Message"></textarea>
 								<div class="help-block with-errors"></div>
 							</div>
 							<div class="form-group">
 								<div id="success"></div>
-								<button type="submit" class="btn btn-primary">Request Appointment</button>
+								<button type="submit" class="btn btn-primary" (click)="createBooking()">Request Appointment</button>
 							</div>
 						</form>
 						<div class="margin-bottom-50"></div>

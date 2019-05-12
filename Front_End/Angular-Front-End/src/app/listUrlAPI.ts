@@ -17,5 +17,7 @@ export const listUrlAPI: UrlAPIEntity[] = [
   {name: 'petResource', path: localhost + '/ServicePRJ-web/rest/Pet'},
   {name: 'registerResource', path: localhost + '/ServicePRJ-web/rest/User/add'},
   {name: 'datingDetailResource', path: localhost + '/ServicePRJ-web/rest/DatingDetail'},
-  {name: 'userDetailResource', path: localhost + '/ServicePRJ-web/rest/User/getDetail/findID'}
+  {name: 'userDetailResource', path: localhost + '/ServicePRJ-web/rest/User/getDetail/findID'},
+  {name: 'bookingMasterResource', path: localhost + '/ServicePRJ-web/rest/BookingMaster'},
+  {name: 'bookingDetailResource', path: localhost + '/ServicePRJ-web/rest/BookingDetail'}
 ];

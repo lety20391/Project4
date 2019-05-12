@@ -48,6 +48,7 @@ public class ManageBookingMaster {
      */
     //list all booking master
     @GET
+    @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
     public List<bookingMasterEntity> getJson() {
         //TODO return proper representation object
