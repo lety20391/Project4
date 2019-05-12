@@ -15,7 +15,7 @@
         <!-- <div class="price">{{pet.petBreed}}</div> -->
         <!-- phan nay de lay request -->
         <div class="price" *ngIf="pet.totalDatingRequestNeedAccept > 0">{{pet.totalDatingRequestNeedAccept}} Request</div>
-        <div class="price" *ngIf="!pet.totalDatingRequestNeedAccept > 0">No Request</div>
+        <div class="price" *ngIf="pet.totalDatingRequestNeedAccept = 0">No Request</div>
       </div>
 
   </div>
