@@ -18,6 +18,7 @@ export class ListPetComponent implements OnInit {
   logClass = '--list-pet: ';
   urlAPI: UrlAPIEntity;
   currentUserID: number;
+  currentPet: PetEntity = new PetEntity();
 
 
   constructor(
@@ -121,9 +122,14 @@ export class ListPetComponent implements OnInit {
     );
   }
 
-  getDatingDetail(event: Event): void{
-    console.log(this.logClass + ' getDatingDetail');
+  getPetSelected(event: Event): void{
+    this.currentPet = JSON.parse(JSON.stringify(event));
+    console.log(this.logClass + ' getPetSelected: ' + this.currentPet.petName);
 
+  }
+
+  updateCurrentPet(): void{
+    
   }
 
   // getListPet(): void{
