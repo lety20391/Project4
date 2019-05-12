@@ -4,7 +4,11 @@ import { listUrlAPI } from '../../listUrlAPI';
 import { UrlAPIEntity } from '../../UrlAPIEntity';
 import { HttpResponse } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
-import { DatingDetailEntity } from '../DatingDetailEntity';
+import { SimpleDialogComponent } from '../../UIComponent/simple-dialog/simple-dialog.component';
+import {DatingDetailEntity} from '../DatingDetailEntity';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-list-pet',
@@ -23,7 +27,10 @@ export class ListPetComponent implements OnInit {
 
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private dialog: MatDialog,
+    private router: Router,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -132,8 +139,55 @@ export class ListPetComponent implements OnInit {
   }
 
   updateCurrentPet(): void{
-
+    this.urlAPI = listUrlAPI.find(url => url.name === 'petResource');
+    this.http.put<HttpResponse<PetEntity>>(this.urlAPI.path + '/update', this.currentPet, { observe: 'response' })
+      .subscribe (
+        response => {
+          console.log( response);
+          console.log( response.status );
+          if (response.status == 200){
+            console.log(this.logClass + ' update Successfully');
+            //this.openDeleteDialog();
+            this.getMyListPet();
+          }
+        }
+      );
   }
+
+  deletePet(): void{
+    this.urlAPI = listUrlAPI.find(url => url.name === 'petResource');
+    this.currentPet.petStatus = false;
+    this.http.put<HttpResponse<PetEntity>>(this.urlAPI.path + '/update', this.currentPet, { observe: 'response' })
+      .subscribe (
+        response => {
+          console.log( response);
+          console.log( response.status );
+          if (response.status == 200){
+            console.log(this.logClass + ' update Successfully');
+            //this.openDeleteDialog();
+            this.getMyListPet();
+          }
+        }
+      );
+  }
+
+  openDeleteDialog(): void {
+        const dialogRef = this.dialog.open(SimpleDialogComponent, {
+          width: '350px',
+          data: "Successfully Update Your Pet "
+        });
+
+        dialogRef.afterClosed()
+        .subscribe(result => {
+          if(result) {
+            console.log('Yes clicked');
+            //this.deleteServiceDetail();
+            // DO SOMETHING
+            // this.location.back();
+            this.getMyListPet();
+          }
+        });
+      }
 
   // getListPet(): void{
   //   console.log(this.logClass + " init");

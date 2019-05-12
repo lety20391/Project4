@@ -15,6 +15,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { DetailDatingComponent } from './detail-dating/detail-dating.component';
 import {SideBarMyPetComponent} from '../UIComponent/side-bar-my-pet/side-bar-my-pet.component';
 import { DatingRequestComponent } from './dating-request/dating-request.component';
+import {SimpleDialogComponent} from '../UIComponent/simple-dialog/simple-dialog.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { DatingRequestComponent } from './dating-request/dating-request.componen
     UploadComponent,
     DetailDatingComponent,
     SideBarMyPetComponent,
-    DatingRequestComponent
+    DatingRequestComponent,
+    SimpleDialogComponent
   ],
   imports: [
     CommonModule,
