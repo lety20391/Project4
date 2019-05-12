@@ -4,6 +4,7 @@ import { listUrlAPI } from '../../listUrlAPI';
 import { UrlAPIEntity } from '../../UrlAPIEntity';
 import { HttpResponse } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
+import { DatingDetailEntity } from '../DatingDetailEntity';
 
 @Component({
   selector: 'app-list-pet',
@@ -82,6 +83,25 @@ export class ListPetComponent implements OnInit {
                                 item.petListImage = result;
                               }
                   );
+
+                  //goi len server de lay danh sach Dating Detail tra ve
+                  this.urlAPI = listUrlAPI.find(url => url.name === 'datingDetailResource');
+                  this.http.get<DatingDetailEntity[]>(this.urlAPI.path + '/list/' + item.petID)
+                    .subscribe(
+                      result => {
+                                  console.log(this.logClass + ' Dating Load:' + result.length);
+                                  //gan ket qua tra ve vao thuoc tinh petListImage
+                                  item.listDatingDetail = result;
+                                  item.totalDatingRequestNeedAccept = 0;
+                                  item.listDatingDetail.forEach(
+                                    datingDetail => {
+                                      if(datingDetail.isAccepted == false)
+                                        item.totalDatingRequestNeedAccept += 1;
+                                    }
+                                  );
+                                }
+                  );
+
                 }
               );
 
@@ -99,6 +119,11 @@ export class ListPetComponent implements OnInit {
 
           }
     );
+  }
+
+  getDatingDetail(event: Event): void{
+    console.log(this.logClass + ' getDatingDetail');
+
   }
 
   // getListPet(): void{

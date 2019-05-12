@@ -1,12 +1,12 @@
-
+<!--
 <div id="class" class="">
 		<div class="content-wrap">
-			<div class="container">
-        <div class="row">
+			<div class="container"> -->
+        <div class="row" style="padding:20px;">
 
         					<div class="col-12 col-sm-3 col-md-3">
 
-        						<div class="widget categories">
+        						<!-- <div class="widget categories">
         							<div class="widget-title">
         									Search
         									<span class="fa fa-search"></span>
@@ -53,36 +53,13 @@
         								</li>
 
         							</ul>
-        						</div>
+        						</div> -->
 
         						<div class="widget widget-text">
         							<div class="widget-title">
-        								Dating Announce
+        								My Pet Dating
         							</div>
-        							<div class="shop-sidebar">
-        								<!-- Item 1 -->
-        								<div class="shop-item-sidebar">
-        									<div class="media">
-        										<img src="assets/images/Pet/1.jpg" alt="" class="img-fluid">
-        									</div>
-        									<div class="body-text">
-        										<h4 class="title"><a href="shop-single.html">Min</a></h4>
-        										<div class="price">1 Request</div>
-        									</div>
-        								</div>
-        								<!-- Item 2 -->
-        								<div class="shop-item-sidebar">
-        									<div class="media">
-        										<img src="assets/images/Pet/2.jpg" alt="" class="img-fluid">
-        									</div>
-        									<div class="body-text">
-        										<h4 class="title"><a href="shop-single.html">Milk</a></h4>
-        										<div class="price">2 Request</div>
-        									</div>
-        								</div>
-
-
-        							</div>
+        							<app-side-bar-my-pet [listPet]="myListPet" (petSelected)="getDatingDetail($event)"></app-side-bar-my-pet>
         						</div>
 
         					</div>
@@ -146,6 +123,6 @@
 
 
         </div>
-      </div>
+      <!-- </div>
   </div>
-</div>
+</div> -->
