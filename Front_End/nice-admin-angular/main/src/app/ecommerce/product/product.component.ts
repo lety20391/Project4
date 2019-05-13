@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { listUrlAPI } from '../../listUrlAPI';
 import { UrlAPIEntity } from '../../UrlAPIEntity';
 import {ProductEntity} from './ProductEntity';
-import { HttpResponse } from '@angular/common/http';
+import { HttpResponse, HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 // import * as tableData from '../../table/smart-table/smart-data-table';
 // import { LocalDataSource } from 'ng2-smart-table';
 // import { Ng2SmartTableModule } from 'ng2-smart-table';
 import {ProductServiceService} from '../product-service.service'
+import {JWTHeaderService} from '../../jwtheader.service';
 
 @Component({
   templateUrl: 'product.component.html'
@@ -79,7 +80,8 @@ export class ProductComponent {
 
   constructor(
     private productService: ProductServiceService,
-    private http: HttpClient
+    private http: HttpClient,
+    private jwtService: JWTHeaderService
   ) { }
 
   ngOnInit() {
@@ -129,8 +131,11 @@ export class ProductComponent {
     //update Local listProduct
     event.confirm.resolve(event.newData);
 
+    //prepare headers
+    let headers = this.createHeader();
+
     //update Database
-    this.http.put<HttpResponse<ProductEntity[]>>(this.urlAPI.path , event.newData ,{ observe: 'response' })
+    this.http.put<HttpResponse<ProductEntity[]>>(this.urlAPI.path , event.newData ,{ headers: headers, observe: 'response' })
       .subscribe(
           response => {
             console.log( response);
@@ -155,6 +160,13 @@ export class ProductComponent {
           }
     );
 
+  }
+
+  createHeader():HttpHeaders {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+    headers = headers.set('Authorization', 'Bearer ' + this.jwtService.getJWT());
+    return headers;
   }
 
 }
