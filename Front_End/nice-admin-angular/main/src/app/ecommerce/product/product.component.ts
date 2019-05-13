@@ -58,7 +58,8 @@ export class ProductComponent {
   settings = {
               columns: {
                     proID: {
-                      title: 'ID'
+                      title: 'ID',
+                      editable: false
                     },
                     proName: {
                       title: 'Pro Name'
@@ -68,10 +69,17 @@ export class ProductComponent {
                     },
                     proPrice: {
                       title: 'Pro Price'
+                    },
+                    proColor:{
+                      title: 'Color'
+                    },
+                    proImage:{
+                      title: 'Image'
                     }
                   },
                   edit: {confirmSave: true,},
                   delete: {confirmDelete: true},
+                  add: {confirmCreate: true},
                   mode: 'inline'
             };
   listProduct: ProductEntity[] = [];
@@ -136,7 +144,7 @@ export class ProductComponent {
     let headers = this.createHeader();
 
     //update Database
-    this.http.put<HttpResponse<ProductEntity[]>>(this.urlAPI.path , event.newData ,{ headers: headers, observe: 'response' })
+    this.http.put<HttpResponse<ProductEntity>>(this.urlAPI.path , event.newData ,{ headers: headers, observe: 'response' })
       .subscribe(
           response => {
             console.log( response);
@@ -176,7 +184,7 @@ export class ProductComponent {
     //update Database
     //delete is just update status form True to False
     this.tempProduct.status = false;
-    this.http.put<HttpResponse<ProductEntity[]>>(this.urlAPI.path , this.tempProduct , { headers: headers, observe: 'response' })
+    this.http.put<HttpResponse<ProductEntity>>(this.urlAPI.path , this.tempProduct , { headers: headers, observe: 'response' })
       .subscribe(
           response => {
             console.log( response);
@@ -186,6 +194,52 @@ export class ProductComponent {
               //chuyen du lieu tu response.body ve lai kieu array
               //roi gan vao listPet
               console.log(JSON.stringify(response.body));
+
+            }
+            // if (response.status == 200){
+            //   this.isLogined = true;
+            //   console.log( response.headers.get('Authorization') );
+            //   let auth = response.headers.get('Authorization');
+            //   this.jwtService.addJWT(auth);
+            //   console.log('Get jwt: ' + this.jwtService.getJWT());
+            // }else{
+            //   this.pass = 'Please Enter Code Again';
+            // }
+
+          }
+    );
+  }
+
+  createRow(event: any): void{
+    this.tempProduct = JSON.parse(JSON.stringify(event.newData));
+    console.log(this.logClass + ' add Product' + JSON.stringify(this.tempProduct));
+    //convert proPrice ve lai thanh integer
+    this.tempProduct.proPrice = Number(this.tempProduct.proPrice);
+
+    //delete ID de cho Backend tu dong tao
+    delete this.tempProduct.proID;
+
+    //update Local listProduct
+    //waiting for Backend return newID
+    //event.confirm.resolve();
+
+    //prepare headers
+    let headers = this.createHeader();
+
+    //update Database
+
+    this.http.post<HttpResponse<ProductEntity>>(this.urlAPI.path , this.tempProduct , { headers: headers, observe: 'response' })
+      .subscribe(
+          response => {
+            console.log( response);
+            console.log( response.status );
+            if (response.status == 200){
+              console.log(this.logClass + " response: " + response);
+              //chuyen du lieu tu response.body ve lai kieu array
+              //roi gan vao listPet
+              //console.log(JSON.stringify(response.body));
+              let newProduct = JSON.parse(JSON.stringify(response.body));
+              event.confirm.resolve(newProduct);
 
             }
             // if (response.status == 200){

@@ -37,7 +37,7 @@ public class productEntity {
     @Column(name="ProName",columnDefinition = "VARCHAR(255) NOT NULL")
     private String ProName;
     @Column(name="ProDes", columnDefinition = "VARCHAR(max) NOT NULL")
-    private String SerDes;
+    private String ProDes;
     @Column(name="ProPrice", columnDefinition= "INT NOT NULL")
     private Integer ProPrice;
     @Column(name="ProColor", columnDefinition="VARCHAR(255) NOT NULL")
@@ -57,16 +57,18 @@ public class productEntity {
     public productEntity() {
     }
 
-    public productEntity(String ProName, String SerDes, Integer ProPrice, String ProColor, String ProImage, boolean Status, cateEntity cateEntity, List<OrderDetailEntity> listOrderDetailEntity) {
+    public productEntity(Long ProID, String ProName, String ProDes, Integer ProPrice, String ProColor, String ProImage, boolean Status, cateEntity cateEntity) {
+        this.ProID = ProID;
         this.ProName = ProName;
-        this.SerDes = SerDes;
+        this.ProDes = ProDes;
         this.ProPrice = ProPrice;
         this.ProColor = ProColor;
         this.ProImage = ProImage;
         this.Status = Status;
         this.cateEntity = cateEntity;
-        this.listOrderDetailEntity = listOrderDetailEntity;
     }
+
+    
 
     public Long getProID() {
         return ProID;
@@ -84,13 +86,15 @@ public class productEntity {
         this.ProName = ProName;
     }
 
-    public String getSerDes() {
-        return SerDes;
+    public String getProDes() {
+        return ProDes;
     }
 
-    public void setSerDes(String SerDes) {
-        this.SerDes = SerDes;
+    public void setProDes(String ProDes) {
+        this.ProDes = ProDes;
     }
+
+    
 
     public Integer getProPrice() {
         return ProPrice;
