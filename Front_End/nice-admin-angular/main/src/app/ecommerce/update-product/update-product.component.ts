@@ -14,19 +14,19 @@ export class UpdateProductComponent implements OnInit {
     powers = ['Really Smart', 'Super Flexible', 'Weather Changer'];
 
     hero = { name: 'Dr.', alterEgo: 'Dr. What', power: this.powers[0] };
-  detailedProduct: ProductEntity = {
-        ProID: 1,
-        ProName: 'Product2',
-        ProDes: 'Product1 Description',
-        ProPrice: 12,
-        ProColor: 'red',
-        ProImage: '',
-        Status: true,
-        cateEntity: {
-                    CateID: 1,
-                    CateName: 'CateGory1'
-                  }
-    };
+  // detailedProduct: ProductEntity = {
+  //       ProID: 1,
+  //       ProName: 'Product2',
+  //       ProDes: 'Product1 Description',
+  //       ProPrice: 12,
+  //       ProColor: 'red',
+  //       ProImage: '',
+  //       Status: true,
+  //       cateEntity: {
+  //                   CateID: 1,
+  //                   CateName: 'CateGory1'
+  //                 }
+  //   };
 
   constructor(
               private route: ActivatedRoute,

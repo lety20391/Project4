@@ -9,19 +9,19 @@ import { ProductEntity } from '../product/ProductEntity';
 
 export class DetailsComponent {
 
-      detailedProduct: ProductEntity = {
-            ProID: 1,
-            ProName: 'Pink leather',
-            ProDes: 'real leather',
-            ProPrice: 12,
-            ProColor: 'pink',
-            ProImage: '',
-            Status: true,
-            cateEntity: {
-                        CateID: 1,
-                        CateName: 'CateGory1'
-                      }
-        };
+      // detailedProduct: ProductEntity = {
+      //       ProID: 1,
+      //       ProName: 'Pink leather',
+      //       ProDes: 'real leather',
+      //       ProPrice: 12,
+      //       ProColor: 'pink',
+      //       ProImage: '',
+      //       Status: true,
+      //       cateEntity: {
+      //                   CateID: 1,
+      //                   CateName: 'CateGory1'
+      //                 }
+      //   };
 
       constructor(
                   private route: ActivatedRoute,
