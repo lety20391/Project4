@@ -71,6 +71,7 @@ export class ProductComponent {
                     }
                   },
                   edit: {confirmSave: true,},
+                  delete: {confirmDelete: true},
                   mode: 'inline'
             };
   listProduct: ProductEntity[] = [];
@@ -160,6 +161,45 @@ export class ProductComponent {
           }
     );
 
+  }
+
+  deleteRow(event: any): void {
+    this.tempProduct = JSON.parse(JSON.stringify(event.data));
+    console.log(this.logClass + ' delete Product' + JSON.stringify(this.tempProduct));
+
+    //update Local listProduct
+    event.confirm.resolve();
+
+    //prepare headers
+    let headers = this.createHeader();
+
+    //update Database
+    //delete is just update status form True to False
+    this.tempProduct.status = false;
+    this.http.put<HttpResponse<ProductEntity[]>>(this.urlAPI.path , this.tempProduct , { headers: headers, observe: 'response' })
+      .subscribe(
+          response => {
+            console.log( response);
+            console.log( response.status );
+            if (response.status == 200){
+              console.log(this.logClass + " response: " + response);
+              //chuyen du lieu tu response.body ve lai kieu array
+              //roi gan vao listPet
+              console.log(JSON.stringify(response.body));
+
+            }
+            // if (response.status == 200){
+            //   this.isLogined = true;
+            //   console.log( response.headers.get('Authorization') );
+            //   let auth = response.headers.get('Authorization');
+            //   this.jwtService.addJWT(auth);
+            //   console.log('Get jwt: ' + this.jwtService.getJWT());
+            // }else{
+            //   this.pass = 'Please Enter Code Again';
+            // }
+
+          }
+    );
   }
 
   createHeader():HttpHeaders {

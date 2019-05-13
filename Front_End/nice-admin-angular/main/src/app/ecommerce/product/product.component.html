@@ -8,7 +8,7 @@
                 <div class="table table-responsive smart-table">
                     <ng2-smart-table [settings]="settings" [source]="listProduct"
                             class="" (rowSelect)="selectedRow($event)"
-                                  (editConfirm)="updateRow($event)"
+                                  (editConfirm)="updateRow($event)" (deleteConfirm)="deleteRow($event)"
                             >
 
                     </ng2-smart-table>
