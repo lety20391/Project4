@@ -1,11 +1,12 @@
 import { CategoryEntity  } from '../category/CategoryEntity';
 export class ProductEntity{
-  ProID: number;
-  ProName: string;
-  ProDes: string;
-  ProPrice: number;
-  ProColor: string;
-  ProImage: string;
-  Status: boolean;
+  proID: number;
+  proName: string;
+  proDes: string;
+  proPrice: number;
+  proColor: string;
+  proImage: string;
+  status: boolean;
   cateEntity: CategoryEntity;
+  proListImage: string[];
 }

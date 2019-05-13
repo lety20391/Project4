@@ -1,5 +1,18 @@
-<a href="/ecom/addProduct" class="btn btn-info btn-rounded">Create New Product</a>
-<div class="row el-element-overlay">
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Edit Delete and update Table</h4>
+                <h6 class="card-subtitle">Smart data table library with sorting, filtering, pagination & add/edit/delete functions.</h6>
+                <div class="table table-responsive smart-table">
+                    <ng2-smart-table [settings]="settings" [source]="listProduct" class=""></ng2-smart-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="row el-element-overlay">
     <div class="col-lg-3 col-md-6" *ngFor='let item of listProduct'>
         <div class="card">
             <div class="el-card-item">
@@ -384,4 +397,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -24,7 +25,13 @@ import { UpdatePetComponent } from './update-pet/update-pet.component';
 import { DetailPetComponent } from './detail-pet/detail-pet.component';
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(EcomRoutes), FormsModule, NgbModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(EcomRoutes),
+    FormsModule,
+    NgbModule,
+    Ng2SmartTableModule
+  ],
   declarations: [
     CartComponent,
     CheckoutComponent,
