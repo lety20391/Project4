@@ -25,11 +25,14 @@
           							    <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Pet Detail</a>
           							  </li>
           							  <li class="nav-item" >
-          							    <a class="nav-link" id="information-tab" data-toggle="tab" href="#information" role="tab" aria-controls="information" aria-selected="false">Dating Request</a>
+          							    <a class="nav-link" id="information-tab" data-toggle="tab" href="#information" role="tab" aria-controls="information" aria-selected="false">Dating: Pet</a>
           							  </li>
           							  <li class="nav-item">
-          							    <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Calendar</a>
+          							    <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Location & Time</a>
           							  </li>
+                          <!-- <li class="nav-item" *ngIf="currentDating.petRequestEntity.petID >= 0">
+          							    <a class="nav-link" [class.waitingAccept]="!currentDating.isAccepted" id="button-tab" data-toggle="tab" href="" role="tab" aria-controls="none" aria-selected="false">Accept</a>
+          							  </li> -->
           							</ul>
           							<div class="tab-content" id="myTabContent">
           								<!-- Tabs 1 -->
@@ -66,9 +69,13 @@
           										<strong>Product details  :</strong>
           									</p> -->
                             <!-- <app-pet-detail [currentPet]="currentDating.petRequestEntity"></app-pet-detail> -->
-                            <div class="col-12 col-sm-12 col-md-12">
-                      						<div class="row popup-gallery gutter-5" *ngIf="currentDating.petRequestEntity.petListImage ">
+
+                            <div class="col-12 col-sm-12 col-md-12" *ngIf="currentDating.petRequestEntity.petListImage ">
+
+
+                      						<div class="row popup-gallery gutter-5" >
                       							<!-- ITEM 1 -->
+
                       							<div class="col-sm-6 col-md-4" *ngFor="let image of currentDating.petRequestEntity.petListImage; let i = index">
                       								<div class="box-gallery">
                       									<a href="http://localhost:9090/uploadedFiles/Pet/{{currentDating.petRequestEntity.petID}}/{{image}}" title="#{{i + 1}}_{{currentPet.petName}} ">
@@ -88,42 +95,16 @@
           								</div>
           								<!-- Tabs 3 -->
           							  <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
-          								<div class="reviews">
+            								<div class="reviews">
+                              <h3 class="section-heading text-primary no-after mb-4">
+              									Location: {{currentDating.datingLocation}}
+              								</h3>
+                              <h3 class="section-heading text-primary no-after mb-4">
+              									Time: {{currentDating.datingDate}}
+              								</h3>
 
-          									<!-- Item 1 -->
-          									<div class="media media-review">
-          									  <img src="images/dummy-img-400x400.jpg" alt="" class="img-fluid mr-3">
-          									  <div class="media-body">
-          									    <div class="rating d-inline">
-          												<span></span>
-          												<span></span>
-          												<span></span>
-          												<span></span>
-          												<span></span>
-          											</div>
-          											<div class="rating-for d-inline ml-1">for <strong>Flexibility</strong></div>
-          											<div class="rating-by mb-3">by <span class="text-primary">Ernest Doel</span></div>
-          											<p>Vivamus urna elit, rhoncus vel fringilla ac, vestibulum non arcu. Sed quis vulputate enim. Nunc a erat sollicitudin, finibus augue vitae, facilisis turpis. Vivamus quam ex, ultricies et blandit sed, accumsan a augue. Mauris nibh leo, euismod eu vulputate et, sagittis ut nunc. Vivamus eu ultricies sapien.</p>
-          									  </div>
-          									</div>
 
-          									<!-- Item 2 -->
-          									<div class="media media-review">
-          									  <img src="images/dummy-img-400x400.jpg" alt="" class="img-fluid mr-3">
-          									  <div class="media-body">
-          									    <div class="rating d-inline">
-          												<span></span>
-          												<span></span>
-          												<span></span>
-          												<span></span>
-          												<span></span>
-          											</div>
-          											<div class="rating-for d-inline ml-1">for <strong>Flexibility</strong></div>
-          											<div class="rating-by mb-3">by <span class="text-primary">Mellisa Doel</span></div>
-          											<p>Vivamus urna elit, rhoncus vel fringilla ac, vestibulum non arcu. Sed quis vulputate enim. Nunc a erat sollicitudin, finibus augue vitae, facilisis turpis. Vivamus quam ex, ultricies et blandit sed, accumsan a augue. Mauris nibh leo, euismod eu vulputate et, sagittis ut nunc. Vivamus eu ultricies sapien.</p>
-          									  </div>
-          									</div>
-          								</div>
+            								</div>
           							  </div>
           							</div>
           						</div>

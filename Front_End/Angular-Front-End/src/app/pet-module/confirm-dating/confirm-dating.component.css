@@ -4,6 +4,43 @@
   object-fit: cover;
 }
 
+
+.datingLabel {
+  padding: 5px;
+  border-radius: 2px;
+  margin-left: 5px;
+  float:right;
+}
+.label-accepted {
+  /* background-color: #F7941D;
+  color: #007bff; */
+  border-color: white;
+}
+
+.label-notAccepted {
+  /* background-color: #999999 ;
+  color: white; */
+}
+
+
+
+.acceptedDating {
+  background-color: green;
+}
+
+.rs-accordion .card .btn.collapsed.acceptedDating {
+  background-color: green;
+}
+.rs-accordion .card .btn.acceptedDating {
+  background-color: green;
+}
+.rs-accordion .card .btn {
+  background-color: #F7941D;
+}
+
+
+
+
 .heart {
   cursor: pointer;
   height: 50px;

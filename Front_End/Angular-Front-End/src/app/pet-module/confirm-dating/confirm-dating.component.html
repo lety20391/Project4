@@ -11,8 +11,10 @@
 								         <h3 class="title">
 								            <button class="btn btn-link" [class.collapsed]="$i != 0 " type="button"
 																	data-toggle="collapse" [attr.data-target]="'#collapse' + $i" aria-expanded="true"
-																				[attr.aria-controls]="'collapse' + $i" (click)="sendCurrentDating(dating)">
+																				[attr.aria-controls]="'collapse' + $i" (click)="sendCurrentDating(dating)" [class.acceptedDating]="dating.isAccepted">
 								                  #{{$i + 1}} - {{dating.petRequestEntity.petName}}
+																	<span *ngIf="dating.isAccepted"  class="datingLabel label-accepted"><strong>Accepted</strong></span>
+																	<span *ngIf="!dating.isAccepted" class="datingLabel label-notAccepted"><strong>Waiting</strong></span>
 								            </button>
 
 								         </h3>

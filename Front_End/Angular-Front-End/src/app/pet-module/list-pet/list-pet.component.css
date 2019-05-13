@@ -91,3 +91,12 @@
 			  pointer-events: none;
 			  opacity: 0.2;
 			}
+
+			.waitingAccept{
+				
+			}
+
+			.rs-tabs .nav-tabs .nav-link.waitingAccept {
+				background-color: green;
+				color: white;
+			}
