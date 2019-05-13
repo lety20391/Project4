@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {OrderProductService} from '../../order-product.service';
 
 @Component({
   selector: 'app-main-layout',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainLayoutComponent implements OnInit {
 
-  constructor() { }
+  totalFromOrderService: number;
+
+  constructor(
+    private orderService: OrderProductService
+  ) { }
 
   ngOnInit() {
     this.loadScript('./assets/js/vendor/jquery.min.js');
@@ -18,6 +23,7 @@ export class MainLayoutComponent implements OnInit {
     this.loadScript('./assets/js/vendor/validator.min.js');
     this.loadScript('./assets/js/vendor/form-scripts.js');
     this.loadScript('./assets/js/script.js');
+    this.getTotalQuantityFromOrder();
   }
 
   //load external js file into component
@@ -29,6 +35,10 @@ export class MainLayoutComponent implements OnInit {
     script.async = false;
     script.defer = true;
     body.appendChild(script);
+  }
+
+  getTotalQuantityFromOrder(): void{
+    this.totalFromOrderService = this.orderService.getTotalQuantity();
   }
 
 }

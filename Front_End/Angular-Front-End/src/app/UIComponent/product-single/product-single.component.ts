@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { productEntity } from '../../productEntity/productEntity';
@@ -19,6 +19,8 @@ export class ProductSingleComponent implements OnInit {
   currentID: number;
   currentProduct: productEntity = new productEntity();
   listImage: string[];
+
+  @Output() buyNewProduct = new EventEmitter();
 
   constructor(
     private route: ActivatedRoute,
@@ -61,6 +63,7 @@ export class ProductSingleComponent implements OnInit {
 
   buyProduct(selectedProduct: productEntity){
     this.orderProduct.addNewProduct(selectedProduct);
+    this.buyNewProduct.emit(selectedProduct);
   }
 
 }

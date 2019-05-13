@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-navbar-section',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar-section.component.css']
 })
 export class NavbarSectionComponent implements OnInit {
+
+  @Input() amountOfOrderDetail: number;
 
   constructor() { }
 

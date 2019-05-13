@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {NgModule} from '@angular/core';
 import {NavbarSectionComponent} from '../navbar-section/navbar-section.component';
 
@@ -15,6 +15,7 @@ import {NavbarSectionComponent} from '../navbar-section/navbar-section.component
 })
 export class HeaderComponent implements OnInit {
 
+  @Input() totalOrder: number;
   constructor() { }
 
   ngOnInit() {

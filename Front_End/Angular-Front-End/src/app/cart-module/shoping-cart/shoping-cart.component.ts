@@ -9,6 +9,7 @@ import {listUrlAPI} from '../../listUrlAPI';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import {throwError} from 'rxjs';
+import { DatePipe, formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-shoping-cart',
@@ -97,9 +98,11 @@ export class ShopingCartComponent implements OnInit {
 
   checkout(): void{
     let newOrderMaster = new OrderMaster();
-    newOrderMaster.creDate = '2019-05-24T05:00:00.000Z';
+
+
+    newOrderMaster.creDate = this.getCurrentDateTime();
     newOrderMaster.shipDate = '2019-06-24T05:00:00.000Z';
-    newOrderMaster.orderID = 2;
+    //newOrderMaster.orderID = 2;
     newOrderMaster.userEntity = new UserEntity();
     newOrderMaster.userEntity.userID = 1;
 
@@ -110,7 +113,14 @@ export class ShopingCartComponent implements OnInit {
     this.http.post<OrderMaster>(url.path, newOrderMaster, {observe: 'response'})
       .subscribe(
             //day la doan lay Response tra ve
-            response => console.log('HTTP response', response.status),
+            response => {
+                          console.log('HTTP response', response.status);
+                          console.log('checkout OrderMaster: ' + response.body.orderID);
+                          newOrderMaster.orderID = response.body.orderID;
+                          this.saveOrderDetail(newOrderMaster);
+
+
+                        },
 
             //day la doan bi loi
             err => {
@@ -132,10 +142,12 @@ export class ShopingCartComponent implements OnInit {
     this.urlAPI = listUrlAPI.find(url => url.name === 'orderDetailResource');
     console.log(this.logClass + "post Order Detail: " + this.urlAPI.path);
 
+
+
     this.listOrderDetail.forEach(
       item => {
                 console.log('---Check Quantity: ' + item.qty);
-                item.orderDate = '2019-05-24T05:00:00.000Z';
+                item.orderDate = this.getCurrentDateTime();
                 item.orderMasterEntity = orderMaster;
                 item.orderMasterEntity.userEntity = new UserEntity();
 
@@ -151,6 +163,16 @@ export class ShopingCartComponent implements OnInit {
                 // return this.http.post<OrderDetail>(this.urlAPI.path, newOrderDetail);
               }
     );
+  }
+
+  getCurrentDateTime(): string{
+    //getCurrent DateTime - test
+    let currentDate = new Date();
+    let stringDate = '';
+    stringDate = formatDate(currentDate, 'yyyy-MM-dd', 'en-US') + 'T' + formatDate(currentDate, 'hh:mm:ss', 'en-US');
+
+    console.log(this.logClass + "date: " + stringDate);
+    return stringDate;
   }
 
     private handleError(error: HttpErrorResponse) {

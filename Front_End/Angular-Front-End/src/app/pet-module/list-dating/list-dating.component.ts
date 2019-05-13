@@ -242,6 +242,7 @@ export class ListDatingComponent implements OnInit {
       console.log(this.logClass + ' Dating Detail:');
       console.log(JSON.stringify(this.newRequestDating));
       this.openDialog(this.newRequestDating);
+      
     }
 
     openDialog(requestDating: DatingDetailEntity) {
