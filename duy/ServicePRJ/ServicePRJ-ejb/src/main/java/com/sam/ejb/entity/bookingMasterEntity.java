@@ -42,7 +42,7 @@ public class bookingMasterEntity {
     private Date CreDate;
     @Column(name="bmStatus")
     private boolean Status;
-    
+
     @ManyToOne
     @JoinColumn(name = "userID")
     private UserEntity userEntity;
@@ -100,7 +100,7 @@ public class bookingMasterEntity {
         this.bookingdetails = bookingdetails;
     }
 
-    
+
 
 
 

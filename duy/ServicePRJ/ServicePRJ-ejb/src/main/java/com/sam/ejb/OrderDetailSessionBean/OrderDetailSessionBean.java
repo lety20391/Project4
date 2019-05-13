@@ -55,4 +55,10 @@ em = entityManagerFactory.createEntityManager();
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+
+    @Override
+    public List<OrderDetailEntity> listTop() {
+        em = entityManagerFactory.createEntityManager();
+        return em.createNamedQuery("od.sort").getResultList();
+    }
 }

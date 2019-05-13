@@ -35,6 +35,7 @@ export class BookingComponent implements OnInit {
   selectedService: serviceEntity = new serviceEntity();
   currentbmID: number;
   currentStatus = true;
+
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
@@ -57,6 +58,12 @@ export class BookingComponent implements OnInit {
     createBooking(): void {
       this.newBm.userEntity = new UserEntity();
       this.newBm.userEntity.userID = this.currentUserID;
+      let currentDate = new Date();
+      let stringDate = '';
+      stringDate = formatDate(currentDate, 'yyyy-MM-dd', 'en-US') + 'T' + formatDate(currentDate, 'hh:mm:ss', 'en-US');
+      console.log(this.logClass + "date: " + stringDate);
+      this.newBm.creDate = stringDate;
+
       this.addNewBookingMaster(this.newBm).subscribe(
         response => {
           console.log("this booking ID: " + response.bookingID);
@@ -71,10 +78,13 @@ export class BookingComponent implements OnInit {
     }
     createNew(): void {
       this.booknewService.bookingMasterEntity = new BookingMasterEntity();
+      this.booknewService.serviceEntity = new serviceEntity();
+      this.booknewService.petEntity = new PetEntity();
       this.booknewService.bookingMasterEntity.bookingID = this.currentbmID;
       this.booknewService.bdstatus = this.currentStatus;
-      this.booknewService.serviceEntity = new serviceEntity();
       this.booknewService.serviceEntity.serID = this.selectedService.serID;
+      this.booknewService.petEntity.petID = this.tempID;
+
       console.log("this is service ID: " + this.booknewService.serviceEntity.serID);
       this.bookservice(this.booknewService).subscribe();
     }

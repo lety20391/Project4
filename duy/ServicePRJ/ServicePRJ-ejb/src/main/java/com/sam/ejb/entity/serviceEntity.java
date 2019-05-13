@@ -103,18 +103,18 @@ public class serviceEntity {
         this.Status = Status;
     }
 
-    public List<bookingDetailEntity> getBookingDetailEntitys() {
-        return bookingDetailEntitys;
-    }
+//    public List<bookingDetailEntity> getBookingDetailEntitys() {
+//        return bookingDetailEntitys;
+//    }
 
     public void setBookingDetailEntitys(List<bookingDetailEntity> bookingDetailEntitys) {
         this.bookingDetailEntitys = bookingDetailEntitys;
     }
 
-    public List<UploadEntity> getListUploadImage() {
-        return ListUploadImage;
-    }
-
+//    public List<UploadEntity> getListUploadImage() {
+//        return ListUploadImage;
+//    }
+//
     public void setListUploadImage(List<UploadEntity> ListUploadImage) {
         this.ListUploadImage = ListUploadImage;
     }

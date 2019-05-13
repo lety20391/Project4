@@ -20,7 +20,7 @@ import { ShopComponent } from '../shop-module/shop.component';
 import { IndexComponent } from '../index-module/index.component';
 import { ProductMockupComponent } from '../UIComponent/product-mockup/product-mockup.component';
 import { HttpClientModule }    from '@angular/common/http';
-import { TopSellerComponent } from '../shop-module/top-seller/top-seller.component';
+import { TopsellerComponent } from '../shop-module/top-seller/top-seller.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { LoginComponent } from '../login-module/login/login.component';
 import { FormsModule } from '@angular/forms';
@@ -52,7 +52,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     ShopComponent,
     IndexComponent,
     ProductMockupComponent,
-    TopSellerComponent,
+    TopsellerComponent,
     MainLayoutComponent,
     LoginComponent,
     ProductSingleComponent,

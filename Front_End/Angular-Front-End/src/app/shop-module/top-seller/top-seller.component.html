@@ -1,11 +1,11 @@
-<div *ngFor='let item of topSellerProduct'>
-  <div class="shop-item-sidebar">
+<div *ngFor='let item of listTop; let index = index'>
+  <div class="shop-item-sidebar" *ngIf="index < 3">
     <div class="media">
-      <img src="{{item.image}}" alt="" class="img-fluid">
+      <img src="http://localhost:9090/uploadedFiles/Product/{{item.productEntity.proID}}/{{item.productEntity.proListImage}}" alt="" class="img-fluid">
     </div>
     <div class="body-text">
-      <h4 class="title"><a href="shop-single.html">{{item.name}}</a></h4>
-      <div class="price">${{item.price}}</div>
+      <h4 class="title"><a href="shop-single.html">{{item.productEntity.proName}}</a></h4>
+      <div class="price">${{item.productEntity.proPrice}}</div>
     </div>
   </div>
 </div>
