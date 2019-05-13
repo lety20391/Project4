@@ -24,7 +24,7 @@ Insert into dbo.tbBookingMaster values
 (2019-10-24,1,4),
 (2019-10-25,1,5)
 
-Insert into dbo.tbBookingDetail ([bookingDate], [bdstatus],[service_bookingID], [service_serID]) values
+Insert into dbo.tbBookingDetail ([bookingDate], [bdstatus],[bookingID], [serID]) values
 ('2018-5-15',1,1,1),
 ('2018-5-16',1,2,2),
 ('2018-5-17',1,3,1),
@@ -39,7 +39,11 @@ Insert into dbo.tbPet ( [petDating] ,[petBreed], [petDOB], [petImage], [petName]
 (1,'Foxie', '2017-1-1', 'null', 'MinMin', 12, 1, 1, 'Foxes are small-to-medium-sized, omnivorous mammals belonging to several genera of the family Canidae. Foxes have a flattened skull, upright triangular ears, a pointed, slightly upturned snout, and a long bushy tail'),
 (0,'Coggy', '2017-1-1', 'null', 'Milk', 20, 1, 1, 'Welsh Corgi, sometimes known as just a Corgi  is a small type of herding dog that originated in Wales, United Kingdom.[6] Two separate breeds are recognized: the Pembroke Welsh Corgi and the Cardigan Welsh Corgi. Historically, the Pembroke has been attributed to the influx of dogs alongside Flemish weavers from around the 10th century, while the Cardigan is attributed to the dogs brought with Norse settlers, in particular a common ancestor of the Swedish Vallhund'),
 (1,'Coggy', '2017-1-1', 'null', 'Mi', 15, 1, 2, 'Welsh Corgi, sometimes known as just a Corgi  is a small type of herding dog that originated in Wales, United Kingdom.[6] Two separate breeds are recognized: the Pembroke Welsh Corgi and the Cardigan Welsh Corgi. Historically, the Pembroke has been attributed to the influx of dogs alongside Flemish weavers from around the 10th century, while the Cardigan is attributed to the dogs brought with Norse settlers, in particular a common ancestor of the Swedish Vallhund'),
-(1,'Coggy', '2017-1-1', 'null', 'Coggy', 19, 1, 3, 'Welsh Corgi, sometimes known as just a Corgi  is a small type of herding dog that originated in Wales, United Kingdom.[6] Two separate breeds are recognized: the Pembroke Welsh Corgi and the Cardigan Welsh Corgi. Historically, the Pembroke has been attributed to the influx of dogs alongside Flemish weavers from around the 10th century, while the Cardigan is attributed to the dogs brought with Norse settlers, in particular a common ancestor of the Swedish Vallhund')
+(1,'Xuc xich', '2017-1-1', 'null', 'Kiki', 19, 1, 3, 'Welsh Corgi, sometimes known as just a Corgi  is a small type of herding dog that originated in Wales, United Kingdom.[6] Two separate breeds are recognized: the Pembroke Welsh Corgi and the Cardigan Welsh Corgi. Historically, the Pembroke has been attributed to the influx of dogs alongside Flemish weavers from around the 10th century, while the Cardigan is attributed to the dogs brought with Norse settlers, in particular a common ancestor of the Swedish Vallhund'),
+(1,'Lai', '2017-1-1', 'null', 'Kuku', 19, 1, 2, 'Welsh Corgi, sometimes known as just a Corgi  is a small type of herding dog that originated in Wales, United Kingdom.[6] Two separate breeds are recognized: the Pembroke Welsh Corgi and the Cardigan Welsh Corgi. Historically, the Pembroke has been attributed to the influx of dogs alongside Flemish weavers from around the 10th century, while the Cardigan is attributed to the dogs brought with Norse settlers, in particular a common ancestor of the Swedish Vallhund'),
+(1,'Poodle', '2017-1-1', 'null', 'Lulu', 19, 1, 2, 'Welsh Corgi, sometimes known as just a Corgi  is a small type of herding dog that originated in Wales, United Kingdom.[6] Two separate breeds are recognized: the Pembroke Welsh Corgi and the Cardigan Welsh Corgi. Historically, the Pembroke has been attributed to the influx of dogs alongside Flemish weavers from around the 10th century, while the Cardigan is attributed to the dogs brought with Norse settlers, in particular a common ancestor of the Swedish Vallhund'),
+(1,'Chihuahua', '2017-1-1', 'null', 'Muc', 19, 1, 3, 'Welsh Corgi, sometimes known as just a Corgi  is a small type of herding dog that originated in Wales, United Kingdom.[6] Two separate breeds are recognized: the Pembroke Welsh Corgi and the Cardigan Welsh Corgi. Historically, the Pembroke has been attributed to the influx of dogs alongside Flemish weavers from around the 10th century, while the Cardigan is attributed to the dogs brought with Norse settlers, in particular a common ancestor of the Swedish Vallhund'),
+(1,'Bac kinh', '2017-1-1', 'null', 'Nini', 19, 1, 3, 'Welsh Corgi, sometimes known as just a Corgi  is a small type of herding dog that originated in Wales, United Kingdom.[6] Two separate breeds are recognized: the Pembroke Welsh Corgi and the Cardigan Welsh Corgi. Historically, the Pembroke has been attributed to the influx of dogs alongside Flemish weavers from around the 10th century, while the Cardigan is attributed to the dogs brought with Norse settlers, in particular a common ancestor of the Swedish Vallhund')
 
 Insert into dbo.datingMasterEntity  ( creDate, locat, [status], userID ) values
 ('2018-1-1', 'hcm', 1, 1),
@@ -47,11 +51,11 @@ Insert into dbo.datingMasterEntity  ( creDate, locat, [status], userID ) values
 ('2018-3-1', 'hn', 1, 3),
 ('2018-4-1', 'hcm', 1, 1)
 
-Insert into dbo.datingDetailEntity  ([datingDate], [datingMaster_ID], [petRequest_ID], [petRecieve_ID], [isAccepted])  values
-('2019-1-1', 1, 1 , 2, 1),
-('2019-2-1', 2, 3, 1, 0),
-('2019-3-1', 3, 2, 3, 0),
-('2019-4-1', 1, 2, 1, 1)
+Insert into dbo.datingDetailEntity  ([datingDate], [datingLocation], [datingMaster_ID], [petRequest_ID], [petRecieve_ID], [isAccepted])  values
+('2019-1-1', 'HCM',  1, 1 , 2, 1),
+('2019-2-1', 'HN', 2, 3, 1, 0),
+('2019-3-1', 'DN', 3, 2, 3, 0),
+('2019-4-1', 'HUE', 1, 2, 1, 1)
 
 Insert into dbo.tbCategory ([CateName]) values
 ('Cate1'),

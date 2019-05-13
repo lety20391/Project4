@@ -18,4 +18,6 @@ public interface DatingDetailSessionBeanLocal {
     public List<DatingDetailEntity> listAll();
     public DatingDetailEntity addDatingDetail(DatingDetailEntity newDatingDetail);
     public List<DatingDetailEntity> getListDatingReceivedByPetID(Long petID );
+    public DatingDetailEntity updateDatingDetail(DatingDetailEntity updatedDating);
+    
 }

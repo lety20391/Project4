@@ -24,6 +24,7 @@ export class ListPetComponent implements OnInit {
   currentUserID: number;
   currentPet: PetEntity = new PetEntity();
   petImageUrl: string;
+  currentDating: DatingDetailEntity = new DatingDetailEntity();
 
 
   constructor(
@@ -37,6 +38,8 @@ export class ListPetComponent implements OnInit {
     this.loadScript('./assets/js/search.js');
     this.getCurrentUserID();
     this.getMyListPet();
+    this.currentPet.listDatingDetail = [];
+    this.currentDating.petRequestEntity = new PetEntity();
   }
 
   //load external js file into component
@@ -131,10 +134,41 @@ export class ListPetComponent implements OnInit {
   }
 
   getPetSelected(event: Event): void{
+    console.log(this.logClass + JSON.stringify(event));
     this.currentPet = JSON.parse(JSON.stringify(event));
     console.log(this.logClass + ' getPetSelected: ' + this.currentPet.petName);
     this.urlAPI = listUrlAPI.find(url => url.name === 'uploadResource');
     this.petImageUrl = this.urlAPI.path + '/file/Pet/' + this.currentPet.petID;
+    //this.currentDating = new DatingDetailEntity();
+    //get all User Image for pet Request Dating
+    this.currentPet.listDatingDetail.forEach(
+      dating => {
+
+        let id = dating.petRequestEntity.userEntity.userID;
+        console.log(this.logClass + ' get All Image for user' + id);
+        //get User Owner Image
+        this.urlAPI = listUrlAPI.find(url => url.name === 'getAllImageResource');
+        this.http.get<string[]>(this.urlAPI.path + '/User/' + id)
+        .subscribe(
+          result => {
+                      console.log(this.logClass + ' Image Load');
+                      dating.petRequestEntity.userEntity.listUserImage = result;
+                    }
+        );
+
+        //get Pet Request image
+        this.http.get<string[]>(this.urlAPI.path + '/Pet/' + dating.petRequestEntity.petID)
+        .subscribe(
+          result => {
+                      console.log(this.logClass + ' Image Load');
+                      dating.petRequestEntity.petListImage = result;
+                    }
+        );
+      }
+    );
+
+    this.currentDating = new DatingDetailEntity();
+    this.currentDating.petRequestEntity = new PetEntity();
 
   }
 
@@ -154,6 +188,22 @@ export class ListPetComponent implements OnInit {
       );
   }
 
+  updateCurrentDating(updatedDating: DatingDetailEntity): void{
+    this.urlAPI = listUrlAPI.find(url => url.name === 'datingDetailResource');
+    this.http.put<HttpResponse<PetEntity>>(this.urlAPI.path + '/update', updatedDating, { observe: 'response' })
+      .subscribe (
+        response => {
+          console.log( response);
+          console.log( response.status );
+          if (response.status == 200){
+            console.log(this.logClass + ' update Dating Successfully');
+            //this.openDeleteDialog();
+            this.getMyListPet();
+          }
+        }
+      );
+  }
+
   deletePet(): void{
     this.urlAPI = listUrlAPI.find(url => url.name === 'petResource');
     this.currentPet.petStatus = false;
@@ -163,12 +213,22 @@ export class ListPetComponent implements OnInit {
           console.log( response);
           console.log( response.status );
           if (response.status == 200){
-            console.log(this.logClass + ' update Successfully');
+            console.log(this.logClass + ' update Pet Successfully');
             //this.openDeleteDialog();
             this.getMyListPet();
           }
         }
       );
+  }
+
+  getDatingSelected(event: Event): void{
+    let tempDating = new DatingDetailEntity();
+    tempDating = JSON.parse(JSON.stringify(event));
+    if( (tempDating.datingDetailID == this.currentDating.datingDetailID) && (tempDating.isAccepted != this.currentDating.isAccepted ))
+      this.updateCurrentDating(tempDating);
+    this.currentDating = tempDating;
+    console.log(this.logClass + 'get Selected Dating isAccepted: ' + this.currentDating.isAccepted);
+    console.log(this.logClass + ' get Selected Dating from: '+ this.currentDating.petRequestEntity.petName);
   }
 
   openDeleteDialog(): void {

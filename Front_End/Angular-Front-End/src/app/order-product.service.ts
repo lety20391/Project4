@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import {productEntity } from './productEntity/productEntity';
 import { HttpClient } from '@angular/common/http';
 import {OrderDetail} from './cart-module/OrderDetail';
@@ -17,6 +17,8 @@ export class OrderProductService {
   newOrderDetail: OrderDetail;
   data: string;
   urlAPI: UrlAPIEntity;
+
+  listOrderChange: EventEmitter<OrderDetail[]> = new EventEmitter();
 
   constructor(
     private http: HttpClient
@@ -54,6 +56,7 @@ export class OrderProductService {
     console.log(this.logClass + 'List Order Detail qty: ' + this.listOrderDetail.length);
 
     this.saveToLocalStorage();
+    this.listOrderChange.emit(this.listOrderDetail);
   }
 
   saveToLocalStorage():void {
@@ -70,6 +73,18 @@ export class OrderProductService {
       console.log(this.logClass + " Get data from Local Storage");
       this.listOrderDetail = JSON.parse(this.data);
     }
+  }
+
+  getTotalQuantity(): number{
+    this.getDataFromLocalStorage();
+    let total: number = 0;
+    this.listOrderDetail.forEach(
+      orderDetail => {
+        total += orderDetail.qty;
+      }
+    );
+    console.log(this.logClass + ' total quantity: ' + total);
+    return total;
   }
 
   getListOrderDetail(): OrderDetail[] {

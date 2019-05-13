@@ -88,7 +88,10 @@ public class ManageDatingDetail {
      * @param content representation for the resource
      */
     @PUT
-    @Consumes(MediaType.APPLICATION_XML)
-    public void putXml(String content) {
+    @Path("/update")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public DatingDetailEntity updateDating(DatingDetailEntity updatedDating) {
+        System.out.println(logClass + " update Dating: " + updatedDating.getDatingDetailID());
+        return datingDetailSessionBeanLocal.updateDatingDetail(updatedDating);
     }
 }
