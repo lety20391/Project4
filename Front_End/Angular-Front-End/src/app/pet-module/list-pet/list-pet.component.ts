@@ -39,6 +39,7 @@ export class ListPetComponent implements OnInit {
     this.getCurrentUserID();
     this.getMyListPet();
     this.currentPet.listDatingDetail = [];
+    this.currentDating.petRequestEntity = new PetEntity();
   }
 
   //load external js file into component
@@ -145,6 +146,7 @@ export class ListPetComponent implements OnInit {
 
         let id = dating.petRequestEntity.userEntity.userID;
         console.log(this.logClass + ' get All Image for user' + id);
+        //get User Owner Image
         this.urlAPI = listUrlAPI.find(url => url.name === 'getAllImageResource');
         this.http.get<string[]>(this.urlAPI.path + '/User/' + id)
         .subscribe(
@@ -153,9 +155,20 @@ export class ListPetComponent implements OnInit {
                       dating.petRequestEntity.userEntity.listUserImage = result;
                     }
         );
+
+        //get Pet Request image
+        this.http.get<string[]>(this.urlAPI.path + '/Pet/' + dating.petRequestEntity.petID)
+        .subscribe(
+          result => {
+                      console.log(this.logClass + ' Image Load');
+                      dating.petRequestEntity.petListImage = result;
+                    }
+        );
       }
     );
 
+    this.currentDating = new DatingDetailEntity();
+    this.currentDating.petRequestEntity = new PetEntity();
 
   }
 

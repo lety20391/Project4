@@ -24,7 +24,7 @@ Insert into dbo.tbBookingMaster values
 (2019-10-24,1,4),
 (2019-10-25,1,5)
 
-Insert into dbo.tbBookingDetail ([bookingDate], [bdstatus],[service_bookingID], [service_serID]) values
+Insert into dbo.tbBookingDetail ([bookingDate], [bdstatus],[bookingID], [serID]) values
 ('2018-5-15',1,1,1),
 ('2018-5-16',1,2,2),
 ('2018-5-17',1,3,1),

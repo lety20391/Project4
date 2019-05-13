@@ -38,6 +38,7 @@ export class ConfirmDatingComponent implements OnInit {
     body.appendChild(script);
   }
 
+  
   // getUserImage():void{
   //   console.log(this.logClass + " Get All Image");
   //   if (this.listDating.length == 0)

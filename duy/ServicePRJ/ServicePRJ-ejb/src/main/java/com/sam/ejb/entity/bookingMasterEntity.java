@@ -38,7 +38,7 @@ public class bookingMasterEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long bookingID;
-    @Column(name="creDate", columnDefinition = "GETDATE()")
+    @Column(name="creDate")
     private Date CreDate;
     @Column(name="bmStatus")
     private boolean Status;
