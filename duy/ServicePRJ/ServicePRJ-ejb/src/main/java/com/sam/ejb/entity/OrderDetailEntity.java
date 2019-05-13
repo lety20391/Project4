@@ -26,8 +26,8 @@ import javax.persistence.Table;
 @Table(name="tbOrderDetail")
 @NamedQueries
         ({
-            @NamedQuery(name="od.findAll",query = "SELECT od FROM OrderDetailEntity od")
-//            @NamedQuery(name="ser.search", query ="SELECT s FROM serviceEntity s WHERE s.name LIKE :str ")
+            @NamedQuery(name="od.findAll",query = "SELECT od FROM OrderDetailEntity od"),
+            @NamedQuery(name="od.sort", query = "SELECT od FROM OrderDetailEntity od ORDER BY od.Qty DESC" )
         })
 public class OrderDetailEntity implements Serializable {
 

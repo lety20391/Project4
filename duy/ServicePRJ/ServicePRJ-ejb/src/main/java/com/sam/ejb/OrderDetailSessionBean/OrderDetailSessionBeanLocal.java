@@ -20,4 +20,5 @@ public interface OrderDetailSessionBeanLocal {
     public OrderDetailEntity editOrderDetail(OrderDetailEntity orderDetail);
     public void deleteOrderDetail(Long id);
     public OrderDetailEntity findOne(Long id);
+    public List <OrderDetailEntity> listTop();
 }

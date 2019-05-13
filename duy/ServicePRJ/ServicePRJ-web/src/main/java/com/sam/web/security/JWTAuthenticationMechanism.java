@@ -37,6 +37,8 @@ public class JWTAuthenticationMechanism implements HttpAuthenticationMechanism {
                                                             "/BookingMaster/list",
                                                             "/OrderDetail/Post",
                                                             "/OrderMaster/Post",
+                                                            "/OrderDetail/list",
+                                                            "/TopSeller/list",
                                                             "/Pet/getDetail",
                                                             "/Pet/list",
                                                             "/DatingDetail",

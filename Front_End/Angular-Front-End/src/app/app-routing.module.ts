@@ -10,7 +10,7 @@ import { HomecontentComponent } from './UIComponent/homecontent/homecontent.comp
 import { LoginComponent } from './login-module/login/login.component';
 import { GalleryComponent } from './UIComponent/gallery/gallery.component';
 import { ProductSingleComponent } from './UIComponent/product-single/product-single.component';
-import { TopsellerComponent } from './UIComponent/topseller/topseller.component';
+import { TopsellerComponent } from './shop-module/top-seller/top-seller.component';
 import { SearchComponent } from './UIComponent/search/search.component';
 import {SerComponent} from './service-module/ser.component';
 import {ServiceDetailComponent} from './service-detail-module/service-detail/service-detail.component';
@@ -28,6 +28,7 @@ import {RegisterComponent} from './register-module/register.component';
 import {DetailDatingComponent} from './pet-module/detail-dating/detail-dating.component';
 import {BookingComponent} from './booking-module/booking.component';
 import {DatingRequestComponent} from './pet-module/dating-request/dating-request.component';
+
 
 const routes: Routes = [
   {path:'', redirectTo:'mainlayout', pathMatch:'full'},
@@ -57,7 +58,8 @@ const routes: Routes = [
         {path: 'createPet', component: CreatePetComponent},
         {path: '404', component: Error404Component},
         {path: 'servicebook', component: BookingComponent},
-        {path: 'datingRequest', component: DatingRequestComponent}
+        {path: 'datingRequest', component: DatingRequestComponent},
+        {path: 'TopSeller', component: TopsellerComponent}
       ]
   },
   // link nao bi loi thi hien thi trang nay

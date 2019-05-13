@@ -4,7 +4,7 @@ import { ProductManageService } from './product-manage.service';
 import { listUrlAPI } from '../listUrlAPI';
 import { UrlAPIEntity } from '../UrlAPIEntity';
 import { HttpClient } from '@angular/common/http';
-
+import { TopsellerComponent} from './top-seller/top-seller.component';
 
 @Component({
   selector: 'app-shop',
