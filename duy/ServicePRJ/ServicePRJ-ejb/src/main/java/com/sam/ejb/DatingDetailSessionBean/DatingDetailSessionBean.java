@@ -54,4 +54,12 @@ public class DatingDetailSessionBean implements DatingDetailSessionBeanLocal {
         System.out.println(logClass + " return Dating List: " + datingDetailList.size());
         return datingDetailList;
     }
+
+    @Override
+    public DatingDetailEntity updateDatingDetail(DatingDetailEntity updatedDating) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println(logClass + " update Dating Detail: " + updatedDating.getDatingDetailID() + " from:" + updatedDating.getPetRequestEntity().getPetImage());
+        em = entityManagerFactory.createEntityManager();
+        return em.merge(updatedDating);
+    }
 }

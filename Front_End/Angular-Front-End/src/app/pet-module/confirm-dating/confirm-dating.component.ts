@@ -38,7 +38,7 @@ export class ConfirmDatingComponent implements OnInit {
     body.appendChild(script);
   }
 
-  
+
   // getUserImage():void{
   //   console.log(this.logClass + " Get All Image");
   //   if (this.listDating.length == 0)
@@ -65,6 +65,7 @@ export class ConfirmDatingComponent implements OnInit {
   heartClicked(index: number): void{
     this.listDating[index].isAccepted = !this.listDating[index].isAccepted;
     console.log(this.logClass + ' heartClicked: ' + this.listDating[index].petRequestEntity.petName);
+    this.sendCurrentDating(this.listDating[index]);
   }
 
   sendCurrentDating(currentDating: DatingDetailEntity): void{

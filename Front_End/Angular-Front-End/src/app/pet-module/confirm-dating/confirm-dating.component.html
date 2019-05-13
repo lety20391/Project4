@@ -15,6 +15,7 @@
 								                  #{{$i + 1}} - {{dating.petRequestEntity.petName}}
 																	<span *ngIf="dating.isAccepted"  class="datingLabel label-accepted"><strong>Accepted</strong></span>
 																	<span *ngIf="!dating.isAccepted" class="datingLabel label-notAccepted"><strong>Waiting</strong></span>
+
 								            </button>
 
 								         </h3>
@@ -30,8 +31,10 @@
 															 <div class="rating-by mb-3">from <span class="text-primary">{{dating.petRequestEntity.userEntity.userName}}</span></div>
 
 														 </div>
+														 <div class="heart" (click)="heartClicked($i)" [class.is_animating]="dating.isAccepted" [class.liked]="dating.isAccepted"></div>
 													 </div>
-														<div class="heart" (click)="heartClicked($i)" [class.is_animating]="dating.isAccepted" [class.liked]="dating.isAccepted"></div>
+
+
 								         </div>
 								      </div>
 								   </div>

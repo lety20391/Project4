@@ -188,6 +188,22 @@ export class ListPetComponent implements OnInit {
       );
   }
 
+  updateCurrentDating(updatedDating: DatingDetailEntity): void{
+    this.urlAPI = listUrlAPI.find(url => url.name === 'datingDetailResource');
+    this.http.put<HttpResponse<PetEntity>>(this.urlAPI.path + '/update', updatedDating, { observe: 'response' })
+      .subscribe (
+        response => {
+          console.log( response);
+          console.log( response.status );
+          if (response.status == 200){
+            console.log(this.logClass + ' update Dating Successfully');
+            //this.openDeleteDialog();
+            this.getMyListPet();
+          }
+        }
+      );
+  }
+
   deletePet(): void{
     this.urlAPI = listUrlAPI.find(url => url.name === 'petResource');
     this.currentPet.petStatus = false;
@@ -197,7 +213,7 @@ export class ListPetComponent implements OnInit {
           console.log( response);
           console.log( response.status );
           if (response.status == 200){
-            console.log(this.logClass + ' update Successfully');
+            console.log(this.logClass + ' update Pet Successfully');
             //this.openDeleteDialog();
             this.getMyListPet();
           }
@@ -206,7 +222,12 @@ export class ListPetComponent implements OnInit {
   }
 
   getDatingSelected(event: Event): void{
-    this.currentDating = JSON.parse(JSON.stringify(event));
+    let tempDating = new DatingDetailEntity();
+    tempDating = JSON.parse(JSON.stringify(event));
+    if( (tempDating.datingDetailID == this.currentDating.datingDetailID) && (tempDating.isAccepted != this.currentDating.isAccepted ))
+      this.updateCurrentDating(tempDating);
+    this.currentDating = tempDating;
+    console.log(this.logClass + 'get Selected Dating isAccepted: ' + this.currentDating.isAccepted);
     console.log(this.logClass + ' get Selected Dating from: '+ this.currentDating.petRequestEntity.petName);
   }
 
