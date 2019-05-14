@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 // import { Ng2SmartTableModule } from 'ng2-smart-table';
 import {ProductServiceService} from '../product-service.service'
 import {JWTHeaderService} from '../../jwtheader.service';
+import {SmartTableLabelComponent} from '../smart-table-label/smart-table-label.component';
 
 @Component({
   templateUrl: 'product.component.html'
@@ -59,26 +60,56 @@ export class ProductComponent {
               columns: {
                     proID: {
                       title: 'ID',
-                      editable: false
+                      editable: false,
+                      width: '20px',
                     },
                     proName: {
-                      title: 'Pro Name'
+                      title: 'Name',
+                      width: '15%',
                     },
                     proDes: {
-                      title: 'Pro Des'
+                      title: 'Description'
                     },
                     proPrice: {
-                      title: 'Pro Price'
+                      title: 'Price',
+                      width: '100px'
                     },
                     proColor:{
                       title: 'Color'
                     },
-                    proImage:{
-                      title: 'Image'
+                    // proImage:{
+                    //   title: 'Image'
+                    // },
+                    status:{
+                      title: 'Status',
+                      width: '100px',
+                      type: 'custom',
+                      renderComponent: SmartTableLabelComponent,
+                      onComponentInitFunction(instance) {
+                                instance.save
+                                  .subscribe(
+                                      row => {
+                                          alert(`${row.proColor} test!`);
+
+                                        }
+                                    );
+
+                              }
                     }
+
                   },
-                  edit: {confirmSave: true,},
-                  delete: {confirmDelete: true},
+                  edit: {
+                    confirmSave: true,
+                    editButtonContent: '<i class="ti-pencil text-info m-r-10"></i>',
+                    saveButtonContent: '<i class="ti-save text-success m-r-10"></i>',
+                    cancelButtonContent: '<i class="ti-close text-danger"></i>'
+                  },
+                  delete: {
+                    confirmDelete: true,
+                    deleteButtonContent: '<i class="ti-trash text-danger m-r-10"></i>',
+                    saveButtonContent: '<i class="ti-save text-success m-r-10"></i>',
+                    cancelButtonContent: '<i class="ti-close text-danger"></i>'
+                  },
                   add: {confirmCreate: true},
                   mode: 'inline'
             };
@@ -255,6 +286,8 @@ export class ProductComponent {
           }
     );
   }
+
+  
 
   createHeader():HttpHeaders {
     let headers = new HttpHeaders();

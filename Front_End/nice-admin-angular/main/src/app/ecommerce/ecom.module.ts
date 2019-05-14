@@ -23,6 +23,7 @@ import { ListPetComponent } from './list-pet/list-pet.component';
 import { AddPetComponent } from './add-pet/add-pet.component';
 import { UpdatePetComponent } from './update-pet/update-pet.component';
 import { DetailPetComponent } from './detail-pet/detail-pet.component';
+import { SmartTableLabelComponent } from './smart-table-label/smart-table-label.component';
 
 @NgModule({
   imports: [
@@ -48,7 +49,14 @@ import { DetailPetComponent } from './detail-pet/detail-pet.component';
     ListPetComponent,
     AddPetComponent,
     UpdatePetComponent,
-    DetailPetComponent
+    DetailPetComponent,
+    SmartTableLabelComponent
+  ],
+  exports: [
+    SmartTableLabelComponent
+  ],
+  entryComponents: [
+    SmartTableLabelComponent
   ]
 })
 export class EcomModule {}

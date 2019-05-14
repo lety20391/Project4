@@ -1,0 +1,13 @@
+.label {
+  padding:10px;
+  border-radius: 5px;
+  text-align: center;  
+}
+
+.label.active {
+  background-color: green;
+}
+
+.label.deactive{
+  background-color: #999999;
+}
