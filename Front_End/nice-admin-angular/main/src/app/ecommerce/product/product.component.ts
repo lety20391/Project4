@@ -82,6 +82,7 @@ export class ProductComponent {
                     // },
                     status:{
                       title: 'Status',
+                      editable: false,
                       width: '100px',
                       type: 'custom',
                       renderComponent: SmartTableLabelComponent,
@@ -89,8 +90,8 @@ export class ProductComponent {
                                 instance.save
                                   .subscribe(
                                       row => {
-                                          alert(`${row.proColor} test!`);
-
+                                          //alert(`${row.proColor} test!`);
+                                          localStorage.setItem('changedProductID', `${row.proID}`);
                                         }
                                     );
 
@@ -162,6 +163,44 @@ export class ProductComponent {
 
   selectedRow(event: any): void{
     console.log(this.logClass + ' selected Row:' + JSON.stringify(event.data));
+    //lay ID tu localStorage de  kiem tra xem co phai day la update status khong
+    let stringID = localStorage.getItem('changedProductID');
+    if(stringID != null && stringID != ''){
+      if(JSON.stringify(event.data.proID) == stringID){
+        //update Status
+        //prepare headers
+        let headers = this.createHeader();
+
+        //update Database
+        this.http.put<HttpResponse<ProductEntity>>(this.urlAPI.path , event.data ,{ headers: headers, observe: 'response' })
+          .subscribe(
+              response => {
+                console.log( response);
+                console.log( response.status );
+                if (response.status == 200){
+                  console.log(this.logClass + " response: " + response);
+                  //chuyen du lieu tu response.body ve lai kieu array
+                  //roi gan vao listPet
+                  console.log(JSON.stringify(response.body));
+
+                }
+                // if (response.status == 200){
+                //   this.isLogined = true;
+                //   console.log( response.headers.get('Authorization') );
+                //   let auth = response.headers.get('Authorization');
+                //   this.jwtService.addJWT(auth);
+                //   console.log('Get jwt: ' + this.jwtService.getJWT());
+                // }else{
+                //   this.pass = 'Please Enter Code Again';
+                // }
+
+              }
+        );
+
+
+      }
+    }
+
   }
 
   updateRow(event: any): void{
@@ -287,7 +326,7 @@ export class ProductComponent {
     );
   }
 
-  
+
 
   createHeader():HttpHeaders {
     let headers = new HttpHeaders();
