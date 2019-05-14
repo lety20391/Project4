@@ -4,7 +4,7 @@
       <img src="http://localhost:9090/uploadedFiles/Product/{{item.productEntity.proID}}/{{item.productEntity.proListImage}}" alt="" class="img-fluid">
     </div>
     <div class="body-text">
-      <h4 class="title"><a href="shop-single.html">{{item.productEntity.proName}}</a></h4>
+      <h4 class="title"><a routerLink="/mainlayout/productsingle/{{item.productEntity.proID}}">{{item.productEntity.proName}}</a></h4>
       <div class="price">${{item.productEntity.proPrice}}</div>
     </div>
   </div>

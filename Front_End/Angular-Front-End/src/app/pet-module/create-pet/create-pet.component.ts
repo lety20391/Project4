@@ -25,7 +25,7 @@ export class CreatePetComponent implements OnInit {
   isReadyToUploadImage = false;
   @Input() buttonTitle = 'Upload Pet Info';
   @Input() isInUpdateMode = false;
-
+  max = new Date();
   constructor(
     private petService: PetManageService
   ) { }

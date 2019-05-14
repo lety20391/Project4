@@ -22,7 +22,7 @@ export class DetailDatingComponent implements OnInit {
   currentPet: PetEntity = new PetEntity();
   listImage: string[] = [];
   currentDating: DatingDetailEntity = new DatingDetailEntity();
-
+  min = new Date();
   constructor(
     private route: ActivatedRoute,
     private location: Location,

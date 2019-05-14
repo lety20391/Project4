@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,Output, EventEmitter } from '@angular/core';
 import { listUrlAPI } from '../listUrlAPI';
 import { UrlAPIEntity } from '../UrlAPIEntity';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -35,7 +35,17 @@ export class BookingComponent implements OnInit {
   selectedService: serviceEntity = new serviceEntity();
   currentbmID: number;
   currentStatus = true;
+  min = new Date();
+  max = new Date();
+//service -cart
+@Output() bookNewDetail = new EventEmitter();
 
+  logClassCart = '--Product Single UI: ';
+
+  currentID: number;
+  currentService: serviceEntity = new serviceEntity();
+
+//servicart-end
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
@@ -50,6 +60,13 @@ export class BookingComponent implements OnInit {
     this.getListPet();
     this.getMyListPet();
     }
+ //service-cart
+
+   getID(): void{
+     this.currentID = this.selectedService.serID;
+   }
+
+//service-cart end
 
     setPet(event: Event): void {
       console.log(JSON.stringify(event));
