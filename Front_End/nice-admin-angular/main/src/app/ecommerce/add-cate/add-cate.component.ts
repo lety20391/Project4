@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CategoryEntity} from '../category/CategoryEntity';
+import {CategoryEntity} from '../cate/CategoryEntity';
 
 @Component({
   selector: 'app-add-cate',
@@ -8,10 +8,10 @@ import {CategoryEntity} from '../category/CategoryEntity';
 })
 export class AddCateComponent implements OnInit {
 
-  detailedCategory: CategoryEntity = {
-        CateID: 1,
-        CateName: 'Food'
-    };
+  // detailedCategory: CategoryEntity = {
+  //       CateID: 1,
+  //       CateName: 'Food'
+  //   };
 
   constructor() { }
 

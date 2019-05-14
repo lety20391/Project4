@@ -16,6 +16,7 @@ import { ListPetComponent } from './list-pet/list-pet.component';
 import { AddPetComponent } from './add-pet/add-pet.component';
 import { UpdatePetComponent } from './update-pet/update-pet.component';
 import { DetailPetComponent } from './detail-pet/detail-pet.component';
+import {CateComponent} from './cate/cate.component';
 
 export const EcomRoutes: Routes = [
   {
@@ -123,10 +124,10 @@ export const EcomRoutes: Routes = [
 
 
       {
-        path: 'listCategory',
-        component: ListCategoryComponent,
+        path: 'category',
+        component: CateComponent,
         data: {
-          title: 'category list',
+          title: 'Category Management',
           urls: [
             { title: 'Dashboard', url: '/dashboard' },
             { title: 'category list' }

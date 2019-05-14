@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CategoryEntity} from '../category/CategoryEntity';
+import {CategoryEntity} from '../cate/CategoryEntity';
 
 @Component({
   selector: 'app-list-category',
@@ -8,24 +8,24 @@ import {CategoryEntity} from '../category/CategoryEntity';
 })
 export class ListCategoryComponent implements OnInit {
 
-  listCategory: CategoryEntity[] = [
-    {
-      CateID: 1,
-      CateName: 'Food',
-
-    },
-    {
-      CateID: 2,
-      CateName: 'Toy',
-
-    },
-    {
-      CateID: 3,
-      CateName: 'Outfit',
-
-    }
-
-  ];
+  // listCategory: CategoryEntity[] = [
+  //   {
+  //     CateID: 1,
+  //     CateName: 'Food',
+  //
+  //   },
+  //   {
+  //     CateID: 2,
+  //     CateName: 'Toy',
+  //
+  //   },
+  //   {
+  //     CateID: 3,
+  //     CateName: 'Outfit',
+  //
+  //   }
+  //
+  // ];
   constructor() { }
 
   ngOnInit() {
