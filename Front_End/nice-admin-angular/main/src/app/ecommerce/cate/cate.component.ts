@@ -17,18 +17,19 @@ export class CateComponent implements OnInit {
 
   settings = {
               columns: {
-                    CateID: {
+                    cateID: {
                       title: 'ID',
                       editable: false,
                       width: '20px',
                     },
-                    CateName: {
-                      title: 'Name'
+                    cateName: {
+                      title: 'Name',
+                      width:'70%'
                     },
                     status:{
                       title: 'Status',
                       editable: false,
-                      width: '100px',
+                      width: '20%',
                       type: 'custom',
                       renderComponent: SmartTableLabelComponent,
                       onComponentInitFunction(instance) {
@@ -36,7 +37,7 @@ export class CateComponent implements OnInit {
                                   .subscribe(
                                       row => {
                                           //alert(`${row.proColor} test!`);
-                                          localStorage.setItem('changedCateID', `${row.CateID}`);
+                                          localStorage.setItem('changedCateID', `${row.cateID}`);
                                         }
                                     );
 
@@ -112,7 +113,7 @@ export class CateComponent implements OnInit {
     //lay ID tu localStorage de  kiem tra xem co phai day la update status khong
     let stringID = localStorage.getItem('changedCateID');
     if(stringID != null && stringID != ''){
-      if(JSON.stringify(event.data.CateID) == stringID){
+      if(JSON.stringify(event.data.cateID) == stringID){
         //update Status
         //prepare headers
         let headers = this.createHeader();

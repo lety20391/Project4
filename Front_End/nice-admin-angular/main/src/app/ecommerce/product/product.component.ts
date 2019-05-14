@@ -179,6 +179,7 @@ export class ProductComponent {
                   //chuyen du lieu tu response.body ve lai kieu array
                   //roi gan vao listPet
                   console.log(JSON.stringify(response.body));
+                  localStorage.setItem('changedProductID', '');
 
                 }
                 // if (response.status == 200){
