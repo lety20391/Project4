@@ -7,6 +7,7 @@ import { User } from '../user';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpResponse } from '@angular/common/http';
 import { JWTHeaderService } from '../../jwtheader.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -29,7 +30,8 @@ export class Login2Component {
 
   constructor(
     private http: HttpClient,
-    private jwtService: JWTHeaderService
+    private jwtService: JWTHeaderService,
+    private route: Router
   ) { }
 
   ngOnInit() {
@@ -56,10 +58,13 @@ export class Login2Component {
        response => {
          console.log( response);
          if ( response.status == 200){
+           console.log('---Login success--');
            this.isRecievedCode = true;
            console.log('login: ID:' + response.body);
            this.currentID = +response.body;
            this.getUserImage(this.currentID);
+
+
          }
          // console.log( response.status );
          // console.log( response.headers.get('Authorization') );
@@ -96,6 +101,7 @@ export class Login2Component {
            let auth = response.headers.get('Authorization');
            this.jwtService.addJWT(auth);
            console.log('Get jwt: ' + this.jwtService.getJWT());
+           this.route.navigate(['/ecom/products']);
          }else{
            this.pass = 'Please Enter Code Again';
          }

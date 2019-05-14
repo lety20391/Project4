@@ -7,6 +7,7 @@ import { User } from '../user';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpResponse } from '@angular/common/http';
 import { JWTHeaderService } from '../../jwtheader.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -29,7 +30,8 @@ export class LoginComponent {
 
   constructor(
     private http: HttpClient,
-    private jwtService: JWTHeaderService
+    private jwtService: JWTHeaderService,
+    private route: Router
   ) { }
 
   ngOnInit() {
@@ -96,6 +98,7 @@ export class LoginComponent {
            let auth = response.headers.get('Authorization');
            this.jwtService.addJWT(auth);
            console.log('Get jwt: ' + this.jwtService.getJWT());
+           this.route.navigate(['/dashboard/classic']);
          }else{
            this.pass = 'Please Enter Code Again';
          }
