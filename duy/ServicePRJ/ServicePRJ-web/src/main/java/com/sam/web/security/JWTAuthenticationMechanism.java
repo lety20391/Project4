@@ -39,8 +39,6 @@ public class JWTAuthenticationMechanism implements HttpAuthenticationMechanism {
                                                             "/OrderMaster/Post",
                                                             "/OrderDetail/list",
                                                             "/TopSeller/list",
-                                                            "/Pet/getDetail",
-                                                            "/Pet/list",
                                                             "/DatingDetail",
                                                             "/DatingDetail/Post",
                                                             "/Service/list",
@@ -76,6 +74,9 @@ public class JWTAuthenticationMechanism implements HttpAuthenticationMechanism {
         if(requestMethod.equals("OPTIONS")){
             System.out.println(logClass + "This is pre-light Request: OK----");
             //res.setStatus(200);
+            //res.setStatus(200);
+            res.addHeader("Access-Control-Allow-Origin", "*");
+            res.addHeader("Access-Control-Allow-Headers", "origin, content-type, accept, authorization, lazyUpdate");
             return context.doNothing();
         }
 
@@ -98,10 +99,15 @@ public class JWTAuthenticationMechanism implements HttpAuthenticationMechanism {
             System.out.println(logClass + "InValid credential----");
             if (req.getPathInfo() == null)
                 return context.responseUnauthorized();
-            if (WHITELISTED.contains(req.getPathInfo()) || req.getPathInfo().contains("findID") || req.getPathInfo().contains("/GetImage/") || req.getPathInfo().contains("/Pet/list/")) {
+            if (WHITELISTED.contains(req.getPathInfo()) || req.getPathInfo().contains("findID") || req.getPathInfo().contains("/GetImage/")) {
                 System.out.println(logClass + "This is whitelist URL---");
             	return context.doNothing();
             } else {
+                res.addHeader("Access-Control-Allow-Origin", "*");
+                res.addHeader("Access-Control-Allow-Headers", "origin, content-type, accept, authorization, lazyUpdate");
+                res.addHeader("Access-Control-Allow-Credentials", "true");
+                res.setStatus(401);
+                context.setResponse(res);
             	return context.responseUnauthorized();
             }
         }

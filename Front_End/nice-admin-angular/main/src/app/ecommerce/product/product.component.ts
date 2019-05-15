@@ -74,6 +74,9 @@ export class ProductComponent {
                     proColor:{
                       title: 'Color'
                     },
+                    proImage:{
+                      title: 'Image'
+                    },
                     // proImage:{
                     //   title: 'Image'
                     // },
@@ -186,7 +189,7 @@ export class ProductComponent {
 
 
                 }
-                
+
 
               }
         );

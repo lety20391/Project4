@@ -10,6 +10,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import {throwError} from 'rxjs';
 import { DatePipe, formatDate } from '@angular/common';
+import { Router } from '@angular/router';
+import {JWTHeaderService} from '../../jwtheader.service';
 
 @Component({
   selector: 'app-shoping-cart',
@@ -73,12 +75,22 @@ export class ShopingCartComponent implements OnInit {
 
   constructor(
     public orderProduct: OrderProductService,
-    private http: HttpClient
+    private http: HttpClient,
+    private route: Router,
+    private jwtService: JWTHeaderService
   ) { }
 
   ngOnInit() {
+    this.checkJWT();
     this.getListOrder();
     this.calSubTotal();
+  }
+
+  //check JWT de kiem tra login so bo
+  checkJWT(): void{
+    let tempJWT = this.jwtService.getJWT();
+    if(tempJWT == null || tempJWT == '')
+      this.route.navigate(['/mainlayout/login']);
   }
 
   getListOrder(): void{

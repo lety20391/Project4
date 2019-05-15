@@ -7,6 +7,8 @@ import { User } from './user';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpResponse } from '@angular/common/http';
 import { JWTHeaderService } from '../../jwtheader.service';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 // const httpOptions = {
 //   headers: new HttpHeaders({
 //     'Content-Type':  'application/json'
@@ -38,7 +40,9 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private jwtService: JWTHeaderService
+    private jwtService: JWTHeaderService,
+    private route: Router,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -115,6 +119,7 @@ export class LoginComponent implements OnInit {
            let auth = response.headers.get('Authorization');
            this.jwtService.addJWT(auth);
            console.log('Get jwt: ' + this.jwtService.getJWT());
+           this.location.back();
          }else{
            this.pass = 'Please Enter Code Again';
          }
