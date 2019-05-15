@@ -181,16 +181,12 @@ export class ProductComponent {
                   console.log(JSON.stringify(response.body));
                   localStorage.setItem('changedProductID', '');
 
+                  //update data source trong bang
+                  event.source.update(event.data);
+
+
                 }
-                // if (response.status == 200){
-                //   this.isLogined = true;
-                //   console.log( response.headers.get('Authorization') );
-                //   let auth = response.headers.get('Authorization');
-                //   this.jwtService.addJWT(auth);
-                //   console.log('Get jwt: ' + this.jwtService.getJWT());
-                // }else{
-                //   this.pass = 'Please Enter Code Again';
-                // }
+                
 
               }
         );
