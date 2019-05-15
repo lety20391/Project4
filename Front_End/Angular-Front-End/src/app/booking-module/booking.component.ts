@@ -2,10 +2,9 @@ import { Component, OnInit, Input,Output, EventEmitter,Injectable } from '@angul
 import { listUrlAPI } from '../listUrlAPI';
 import { UrlAPIEntity } from '../UrlAPIEntity';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-// import { PetManageService} from '../pet-manage.service';
 import { serviceEntity } from '../serviceEntity/serviceEntity';
 import { UserEntity } from '../UserEntity/UserEntity';
-import { DatePipe, formatDate } from '@angular/common';
+import { DatePipe, formatDate, Location } from '@angular/common';
 import { BookingDetailEntity } from './BookingDetailEntity';
 import { ServiceManageService} from '../service-module/service-manage.service';
 import { PetEntity} from '../pet-module/PetEntity';
@@ -27,7 +26,7 @@ export class BookingComponent implements OnInit {
   listPet: PetEntity[] = [];
   logClass = '--booking--service: ';
   urlAPI: UrlAPIEntity;
-  tempID : number ;
+  tempID :number ;
   sertempID: number;
 
   currentUserID: number;
@@ -47,13 +46,16 @@ export class BookingComponent implements OnInit {
   data: string;
   currentID: number;
   currentService: serviceEntity = new serviceEntity();
+  selectedBMDate : string;
+  selectedMessage: string;
   listBookingDetail : BookingDetailEntity[] = [];
     listBookingChange: EventEmitter<BookingDetailEntity[]> = new EventEmitter();
 //servicart-end
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
-    private serviceManageService: ServiceManageService
+    private serviceManageService: ServiceManageService,
+    private location : Location
   ) { }
 
   ngOnInit() {
@@ -70,16 +72,21 @@ export class BookingComponent implements OnInit {
    if (this.data != '' && this.data != null){
      console.log(this.logClass + " Get data from Local Storage");
      this.listBookingDetail = JSON.parse(this.data);
+     console.log(this.listBookingDetail + "bbbb" )
    }
  }
  saveToLocalStorage():void {
    localStorage.setItem('listBookingDetail', JSON.stringify(this.listBookingDetail));
  }
-
- addcart(BDcart: BookingDetailEntity): void {
-   this.createBooking();
-
+ clearLocalStorage():void {
+   localStorage.setItem('listBookingDetail', '');
  }
+
+ // addcart(BDcart: BookingDetailEntity): void {
+ //
+ //   this.createBooking(BDcart);
+ //
+ // }
  getListBookingDetail(): BookingDetailEntity[] {
    this.getDataFromLocalStorage();
    console.log(this.logClass + 'get List Booking: ' + this.listBookingDetail.length);
@@ -108,9 +115,46 @@ export class BookingComponent implements OnInit {
         response => {
           console.log("this booking ID: " + response.bookingID);
           this.currentbmID = response.bookingID;
+          this.newBm.bookingID = this.currentbmID;
+          this.saveBookingDetail(this.newBm);
+          //rối
+
         }
       );
     }
+    saveBookingDetail(bookingMaster : BookingMasterEntity){
+      /// rối chỗ này nè
+      this.urlAPI = listUrlAPI.find(url => url.name === 'bookingDetailResource');
+      console.log(this.logClass + "post Order Detail: " + this.urlAPI.path);
+
+
+      this.listBookingDetail.forEach(
+        item => {
+                    item.bookingMasterEntity = bookingMaster;
+                    item.bookingMasterEntity.bookingID = bookingMaster.bookingID;
+                    console.log("track booking detail add: " + item.bookingMasterEntity.bookingID);
+                    this.postBookingDetail(item);
+                }
+      );
+
+
+    }
+    postBookingDetail(newBookingDetail: BookingDetailEntity):void{
+      this.urlAPI = listUrlAPI.find(url => url.name === 'bookingDetailResource');
+      console.log(this.logClass + "post Booking Detail: " + this.urlAPI.path);
+
+      this.http.post<HttpResponse<BookingDetailEntity>>(this.urlAPI.path + "/Post" , newBookingDetail, {observe: 'response'}).subscribe(
+        response => {
+          if(response.status == 200)
+          {
+                  console.log("booking ok : " + JSON.stringify(response.body));
+                  this.clearLocalStorage();
+                  
+                  window.location.reload();
+          }
+        }
+      );
+        }
     bookservice(newBd = this.booknewService): void {
       this.urlAPI = listUrlAPI.find(url => url.name === 'bookingDetailResource');
       this.http.post<HttpResponse<BookingDetailEntity>>(this.urlAPI.path + '/Post', newBd,{ observe: 'response' }).subscribe(
@@ -118,28 +162,38 @@ export class BookingComponent implements OnInit {
           if(response.status == 200)
           {
            console.log("create booking detail successful");
-               
+           console.log("create successful booking detail: " + JSON.stringify(response.body));
           }
         }
       );
 
     }
+    addtoCart(): void {
+        this.createNew();
+    }
+
     createNew(): void {
-    //  this.getDataFromLocalStorage();
+
+      // this.getDataFromLocalStorage();
+      this.booknewService = new BookingDetailEntity();
+
       this.booknewService.bookingMasterEntity = new BookingMasterEntity();
       this.booknewService.serviceEntity = this.choosenService;
       this.booknewService.petEntity = this.selectedPet;
       this.booknewService.bookingMasterEntity.bookingID = this.currentbmID;
       this.booknewService.bdstatus = this.currentStatus;
-      //this.booknewService.serviceEntity.serID = this.selectedService.serID;
+      // this.booknewService.serviceEntity.serID = this.selectedService.serID;
       // this.booknewService.petEntity.petID = this.tempID;
+      this.booknewService.bookingDate = this.selectedBMDate;
+      this.booknewService.message = this.selectedMessage;
+      this.booknewService.petEntity.petID = this.selectedPet.petID;
       console.log("this is service " + JSON.stringify(this.booknewService));
       this.listBookingDetail.push(this.booknewService);
       this.saveToLocalStorage();
       this.listBookingChange.emit(this.listBookingDetail);
       this.bookNewDetail.emit(this.booknewService);
 
-//dong nay con lenh denh
+
 
     }
 
@@ -160,7 +214,6 @@ export class BookingComponent implements OnInit {
       // const url = `${this.urlAPI}/${id}`;
       console.log("this is user id:" + id)
       return this.http.get(this.urlAPI.path + '/' + id);
-
     }
     UserDetail(): void {
       const id = this.currentUserID;
@@ -216,16 +269,6 @@ export class BookingComponent implements OnInit {
 
 
             }
-            // if (response.status == 200){
-            //   this.isLogined = true;
-            //   console.log( response.headers.get('Authorization') );
-            //   let auth = response.headers.get('Authorization');
-            //   this.jwtService.addJWT(auth);
-            //   console.log('Get jwt: ' + this.jwtService.getJWT());
-            // }else{
-            //   this.pass = 'Please Enter Code Again';
-            // }
-
           }
     );
   }
