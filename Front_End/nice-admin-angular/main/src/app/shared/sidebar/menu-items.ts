@@ -42,7 +42,7 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: [
       {
-        path: '',
+        path: '/ecom/products',
         title: 'Products',
         icon: ' icon-arrow-right-circle',
         class: '',
@@ -50,7 +50,7 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
       {
-        path: '',
+        path: '/ecom/orders',
         title: 'Order',
         icon: ' icon-arrow-right-circle',
         class: '',
@@ -58,7 +58,7 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
       {
-        path: '',
+        path: '/ecom/category',
         title: 'Category',
         icon: ' icon-arrow-right-circle',
         class: '',

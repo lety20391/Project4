@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import {CategoryEntity} from '../category/CategoryEntity';
+import {CategoryEntity} from '../cate/CategoryEntity';
 
 @Component({
   selector: 'app-update-cate',
@@ -11,10 +11,10 @@ import {CategoryEntity} from '../category/CategoryEntity';
 export class UpdateCateComponent implements OnInit {
 
 
-  detailedCategory: CategoryEntity = {
-        CateID: 1,
-        CateName: 'Food'
-    };
+  // detailedCategory: CategoryEntity = {
+  //       CateID: 1,
+  //       CateName: 'Food'
+  //   };
 
 
   constructor() { }

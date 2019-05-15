@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { listUrlAPI } from '../../listUrlAPI';
 import { UrlAPIEntity } from '../../UrlAPIEntity';
-import {ProductEntity} from './ProductEntity';
+import {CategoryEntity} from './CategoryEntity';
 import { HttpResponse, HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import {ProductServiceService} from '../product-service.service'
@@ -9,78 +9,27 @@ import {JWTHeaderService} from '../../jwtheader.service';
 import {SmartTableLabelComponent} from '../smart-table-label/smart-table-label.component';
 
 @Component({
-  templateUrl: 'product.component.html'
+  selector: 'app-cate',
+  templateUrl: './cate.component.html',
+  styleUrls: ['./cate.component.css']
 })
-export class ProductComponent {
+export class CateComponent implements OnInit {
 
-  // listProduct: ProductEntity[] = [
-  //   {
-  //     proID: 1,
-  //     proName: 'pink belt',
-  //     proDes: 'real leather',
-  //     proPrice: 12,
-  //     proColor: 'red',
-  //     proImage: '',
-  //     status: true,
-  //     cateEntity: {
-  //                   CateID: 1,
-  //                   CateName: 'Category1'
-  //                 },
-  //     proListImage: []
-  //
-  //   },
-  //   {
-  //     proID: 2,
-  //     proName: 'def',
-  //     proDes: 'real leather',
-  //     proPrice: 24,
-  //     proColor: 'yellow',
-  //     proImage: '',
-  //     status: true,
-  //     cateEntity: {
-  //                   CateID: 2,
-  //                   CateName: 'Category2'
-  //                 },
-  //     proListImage: []
-  //   }
-  // ];
-
-  // source: LocalDataSource;
-  // source2: LocalDataSource;
-  // constructor() {
-  //   this.source = new LocalDataSource(tableData.data); // create the source
-  //   this.source2 = new LocalDataSource(tableData.data); // create the source
-  // }
-  // settings = tableData.settings;
-  // settings2 = tableData.settings2;
   settings = {
               columns: {
-                    proID: {
+                    cateID: {
                       title: 'ID',
                       editable: false,
                       width: '20px',
                     },
-                    proName: {
+                    cateName: {
                       title: 'Name',
-                      width: '15%',
+                      width:'70%'
                     },
-                    proDes: {
-                      title: 'Description'
-                    },
-                    proPrice: {
-                      title: 'Price',
-                      width: '100px'
-                    },
-                    proColor:{
-                      title: 'Color'
-                    },
-                    // proImage:{
-                    //   title: 'Image'
-                    // },
                     status:{
                       title: 'Status',
                       editable: false,
-                      width: '100px',
+                      width: '20%',
                       type: 'custom',
                       renderComponent: SmartTableLabelComponent,
                       onComponentInitFunction(instance) {
@@ -88,13 +37,12 @@ export class ProductComponent {
                                   .subscribe(
                                       row => {
                                           //alert(`${row.proColor} test!`);
-                                          localStorage.setItem('changedProductID', `${row.proID}`);
+                                          localStorage.setItem('changedCateID', `${row.cateID}`);
                                         }
                                     );
 
                               }
                     }
-
                   },
                   edit: {
                     confirmSave: true,
@@ -111,27 +59,29 @@ export class ProductComponent {
                   add: {confirmCreate: true},
                   mode: 'inline'
             };
-  listProduct: ProductEntity[] = [];
+  listCategory: CategoryEntity[] = [];
   urlAPI: UrlAPIEntity;
-  logClass = '--Product Component: ';
-  tempProduct: ProductEntity = new ProductEntity();
+  logClass = '--Category Component: ';
+  tempCategory: CategoryEntity = new CategoryEntity();
 
   constructor(
-    private productService: ProductServiceService,
     private http: HttpClient,
     private jwtService: JWTHeaderService
   ) { }
 
   ngOnInit() {
-    this.getAllProductList();
+    this.getAllCategoryList();
   }
 
-  getAllProductList(): void{
+  getAllCategoryList(): void{
     console.log(this.logClass + " init");
-      this.urlAPI = listUrlAPI.find(url => url.name === 'productResource');
+      this.urlAPI = listUrlAPI.find(url => url.name === 'categoryResource');
       console.log(this.logClass + this.urlAPI.path)
 
-      this.http.get<HttpResponse<ProductEntity[]>>(this.urlAPI.path + "/list",  { observe: 'response' })
+      //prepare headers
+      let headers = this.createHeader();
+
+      this.http.get<HttpResponse<CategoryEntity[]>>(this.urlAPI.path + "/list",  {headers: headers, observe: 'response' })
         .subscribe(
             response => {
               console.log( response);
@@ -141,7 +91,7 @@ export class ProductComponent {
                 //chuyen du lieu tu response.body ve lai kieu array
                 //roi gan vao listPet
                 console.log(JSON.stringify(response.body));
-                this.listProduct = JSON.parse(JSON.stringify(response.body));
+                this.listCategory = JSON.parse(JSON.stringify(response.body));
 
               }
               // if (response.status == 200){
@@ -161,15 +111,15 @@ export class ProductComponent {
   selectedRow(event: any): void{
     console.log(this.logClass + ' selected Row:' + JSON.stringify(event.data));
     //lay ID tu localStorage de  kiem tra xem co phai day la update status khong
-    let stringID = localStorage.getItem('changedProductID');
+    let stringID = localStorage.getItem('changedCateID');
     if(stringID != null && stringID != ''){
-      if(JSON.stringify(event.data.proID) == stringID){
+      if(JSON.stringify(event.data.cateID) == stringID){
         //update Status
         //prepare headers
         let headers = this.createHeader();
 
         //update Database
-        this.http.put<HttpResponse<ProductEntity>>(this.urlAPI.path , event.data ,{ headers: headers, observe: 'response' })
+        this.http.put<HttpResponse<CategoryEntity>>(this.urlAPI.path , event.data ,{ headers: headers, observe: 'response' })
           .subscribe(
               response => {
                 console.log( response);
@@ -179,14 +129,17 @@ export class ProductComponent {
                   //chuyen du lieu tu response.body ve lai kieu array
                   //roi gan vao listPet
                   console.log(JSON.stringify(response.body));
-                  localStorage.setItem('changedProductID', '');
-
-                  //update data source trong bang
-                  event.source.update(event.data);
-
 
                 }
-                
+                // if (response.status == 200){
+                //   this.isLogined = true;
+                //   console.log( response.headers.get('Authorization') );
+                //   let auth = response.headers.get('Authorization');
+                //   this.jwtService.addJWT(auth);
+                //   console.log('Get jwt: ' + this.jwtService.getJWT());
+                // }else{
+                //   this.pass = 'Please Enter Code Again';
+                // }
 
               }
         );
@@ -198,8 +151,8 @@ export class ProductComponent {
   }
 
   updateRow(event: any): void{
-    this.tempProduct = JSON.parse(JSON.stringify(event.newData));
-    console.log(this.logClass + ' updated Product' + JSON.stringify(this.tempProduct));
+    this.tempCategory = JSON.parse(JSON.stringify(event.newData));
+    console.log(this.logClass + ' updated category' + JSON.stringify(this.tempCategory));
 
     //update Local listProduct
     event.confirm.resolve(event.newData);
@@ -208,7 +161,7 @@ export class ProductComponent {
     let headers = this.createHeader();
 
     //update Database
-    this.http.put<HttpResponse<ProductEntity>>(this.urlAPI.path , event.newData ,{ headers: headers, observe: 'response' })
+    this.http.put<HttpResponse<CategoryEntity>>(this.urlAPI.path , event.newData ,{ headers: headers, observe: 'response' })
       .subscribe(
           response => {
             console.log( response);
@@ -236,8 +189,8 @@ export class ProductComponent {
   }
 
   deleteRow(event: any): void {
-    this.tempProduct = JSON.parse(JSON.stringify(event.data));
-    console.log(this.logClass + ' delete Product' + JSON.stringify(this.tempProduct));
+    this.tempCategory = JSON.parse(JSON.stringify(event.data));
+    console.log(this.logClass + ' delete Product' + JSON.stringify(this.tempCategory));
 
     //update Local listProduct
     event.confirm.resolve();
@@ -247,8 +200,8 @@ export class ProductComponent {
 
     //update Database
     //delete is just update status form True to False
-    this.tempProduct.status = false;
-    this.http.put<HttpResponse<ProductEntity>>(this.urlAPI.path , this.tempProduct , { headers: headers, observe: 'response' })
+    this.tempCategory.Status = false;
+    this.http.put<HttpResponse<CategoryEntity>>(this.urlAPI.path , this.tempCategory , { headers: headers, observe: 'response' })
       .subscribe(
           response => {
             console.log( response);
@@ -275,13 +228,11 @@ export class ProductComponent {
   }
 
   createRow(event: any): void{
-    this.tempProduct = JSON.parse(JSON.stringify(event.newData));
-    console.log(this.logClass + ' add Product' + JSON.stringify(this.tempProduct));
-    //convert proPrice ve lai thanh integer
-    this.tempProduct.proPrice = Number(this.tempProduct.proPrice);
+    this.tempCategory = JSON.parse(JSON.stringify(event.newData));
+    console.log(this.logClass + ' add Product' + JSON.stringify(this.tempCategory));
 
     //delete ID de cho Backend tu dong tao
-    delete this.tempProduct.proID;
+    delete this.tempCategory.CateID;
 
     //update Local listProduct
     //waiting for Backend return newID
@@ -292,7 +243,7 @@ export class ProductComponent {
 
     //update Database
 
-    this.http.post<HttpResponse<ProductEntity>>(this.urlAPI.path , this.tempProduct , { headers: headers, observe: 'response' })
+    this.http.post<HttpResponse<CategoryEntity>>(this.urlAPI.path , this.tempCategory , { headers: headers, observe: 'response' })
       .subscribe(
           response => {
             console.log( response);

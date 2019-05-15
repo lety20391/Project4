@@ -57,13 +57,13 @@ Insert into dbo.datingDetailEntity  ([datingDate], [datingLocation], [datingMast
 ('2019-3-1', 'DN', 3, 2, 3, 0),
 ('2019-4-1', 'HUE', 1, 2, 1, 1)
 
-Insert into dbo.tbCategory ([CateName]) values
-('Cate1'),
-('Cate2'),
-('Cate3'),
-('Cate4'),
-('Cate5'),
-('Cate6')
+Insert into dbo.tbCategory ([CateName], [Status]) values
+('Cate1', 1),
+('Cate2', 1),
+('Cate3', 0),
+('Cate4', 0),
+('Cate5', 1),
+('Cate6', 1)
 
 Insert into dbo.tbProduct ([ProImage], [Status], [Cate_ID] , [ProPrice], [ProColor], [ProName] , [ProDes]) values
 ('image', 1, 1, 10, 'red', 'pro1' , 'des1'),

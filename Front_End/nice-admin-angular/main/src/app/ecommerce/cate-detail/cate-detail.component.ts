@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import {CategoryEntity} from '../category/CategoryEntity';
+import {CategoryEntity} from '../cate/CategoryEntity';
 
 @Component({
   selector: 'app-cate-detail',
@@ -9,10 +9,10 @@ import {CategoryEntity} from '../category/CategoryEntity';
   styleUrls: ['./cate-detail.component.css']
 })
 export class CateDetailComponent implements OnInit {
-  detailedCategory: CategoryEntity = {
-    CateID: 1,
-    CateName: 'Food'
-  };
+  // detailedCategory: CategoryEntity = {
+  //   CateID: 1,
+  //   CateName: 'Food'
+  // };
 
   constructor(
               private route: ActivatedRoute,

@@ -35,16 +35,22 @@ public class cateEntity {
     @Column(name="CateName",columnDefinition = "VARCHAR(255) NOT NULL")
     private String CateName;
     
+    @Column(name="Status")
+    private Boolean Status;
+    
     @OneToMany(mappedBy = "cateEntity", fetch = FetchType.LAZY)
     private List<productEntity> productList;
 
     public cateEntity() {
     }
 
-    public cateEntity(String CateName, List<productEntity> productList) {
+    public cateEntity(Long CateID, String CateName, Boolean Status) {
+        this.CateID = CateID;
         this.CateName = CateName;
-        this.productList = productList;
+        this.Status = Status;
     }
+
+    
 
     public Long getCateID() {
         return CateID;
@@ -69,5 +75,15 @@ public class cateEntity {
     public void setProductList(List<productEntity> productList) {
         this.productList = productList;
     }
+
+    public Boolean getStatus() {
+        return Status;
+    }
+
+    public void setStatus(Boolean Status) {
+        this.Status = Status;
+    }
+    
+    
     
 }
