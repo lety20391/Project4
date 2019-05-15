@@ -7,6 +7,8 @@ import { PetManageService} from '../pet-manage.service';
 import { PetEntity } from '../PetEntity';
 import {UserEntity} from '../../UserEntity/UserEntity';
 import { DatePipe, formatDate } from '@angular/common';
+import { Router } from '@angular/router';
+import {JWTHeaderService} from '../../jwtheader.service';
 
 @Component({
   selector: 'app-create-pet',
@@ -27,11 +29,27 @@ export class CreatePetComponent implements OnInit {
   @Input() isInUpdateMode = false;
   max = new Date();
   constructor(
-    private petService: PetManageService
+    private petService: PetManageService,
+    private route: Router,
+    private jwtService: JWTHeaderService
   ) { }
 
   ngOnInit() {
     //this.getUrl('5');
+    this.checkJWT();
+  }
+
+  // checkLogin(): void{
+  //   let stringID = localStorage.getItem('UserID');
+  //   if( stringID == null || stringID == '')
+  //     this.route.navigate(['/mainlayout/login']);
+  // }
+
+  //check JWT de kiem tra login so bo
+  checkJWT(): void{
+    let tempJWT = this.jwtService.getJWT();
+    if(tempJWT == null || tempJWT == '')
+      this.route.navigate(['/mainlayout/login']);
   }
 
   getUrl(code: number): void{
@@ -66,7 +84,7 @@ export class CreatePetComponent implements OnInit {
     this.newPet.petDOB = pickedDOB;
 
     this.newPet.userEntity = new UserEntity();
-    this.newPet.userEntity.userID = 1;
+    this.newPet.userEntity.userID = Number(localStorage.getItem('UserID'));
     this.petService.createNewPetInfo(this.newPet).subscribe(
       //day la doan lay Response tra ve
       response => {

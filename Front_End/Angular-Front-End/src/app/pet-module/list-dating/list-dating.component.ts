@@ -8,6 +8,8 @@ import {MatDialog, MatDialogConfig} from '@angular/material';
 import {DatingDetailEntity} from '../DatingDetailEntity';
 
 import {DatingRequestComponent} from '../dating-request/dating-request.component';
+import { Router } from '@angular/router';
+import {JWTHeaderService} from '../../jwtheader.service';
 
 @Component({
   selector: 'app-list-dating',
@@ -34,16 +36,33 @@ export class ListDatingComponent implements OnInit {
 
     constructor(
       private http: HttpClient,
-      private dialog: MatDialog
+      private dialog: MatDialog,
+      private route: Router,
+      private jwtService: JWTHeaderService
     ) {  }
 
     ngOnInit() {
+      this.checkJWT();
       this.loadScript('./assets/js/search.js');
+      //this.checkLogin();
+      //this.checkLoginByServer();
       this.getCurrentUserID();
       this.getListPet();
       this.getMyListPet();
       //this.openDialog();
     }
+
+    //check JWT de kiem tra login so bo
+    checkJWT(): void{
+      let tempJWT = this.jwtService.getJWT();
+      if(tempJWT == null || tempJWT == '')
+        this.route.navigate(['/mainlayout/login']);
+    }
+
+    // checkLoginByServer(): void{
+    //   if( !this.chkLoginServer.isLogined())
+    //     this.route.navigate(['/mainlayout/login']);
+    // }
 
     //load external js file into component
     public loadScript(url: string) {
@@ -54,6 +73,12 @@ export class ListDatingComponent implements OnInit {
       script.async = false;
       script.defer = true;
       body.appendChild(script);
+    }
+
+    checkLogin(): void{
+      let stringID = localStorage.getItem('UserID');
+      if( stringID == null || stringID == '')
+        this.route.navigate(['/mainlayout/login']);
     }
 
     getCurrentUserID(): void{
@@ -242,7 +267,7 @@ export class ListDatingComponent implements OnInit {
       console.log(this.logClass + ' Dating Detail:');
       console.log(JSON.stringify(this.newRequestDating));
       this.openDialog(this.newRequestDating);
-      
+
     }
 
     openDialog(requestDating: DatingDetailEntity) {

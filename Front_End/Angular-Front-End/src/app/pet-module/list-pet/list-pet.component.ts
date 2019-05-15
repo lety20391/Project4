@@ -9,6 +9,7 @@ import {DatingDetailEntity} from '../DatingDetailEntity';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { Location } from '@angular/common';
+import {JWTHeaderService} from '../../jwtheader.service';
 
 @Component({
   selector: 'app-list-pet',
@@ -31,15 +32,24 @@ export class ListPetComponent implements OnInit {
     private http: HttpClient,
     private dialog: MatDialog,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private jwtService: JWTHeaderService
   ) { }
 
   ngOnInit() {
+    this.checkJWT();
     this.loadScript('./assets/js/search.js');
     this.getCurrentUserID();
     this.getMyListPet();
     this.currentPet.listDatingDetail = [];
     this.currentDating.petRequestEntity = new PetEntity();
+  }
+
+  //check JWT de kiem tra login so bo
+  checkJWT(): void{
+    let tempJWT = this.jwtService.getJWT();
+    if(tempJWT == null || tempJWT == '')
+      this.router.navigate(['/mainlayout/login']);
   }
 
   //load external js file into component
