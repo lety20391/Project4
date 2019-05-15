@@ -2,45 +2,20 @@
     <table class="table table-bordered table-vcenter">
         <thead>
             <tr>
-                <th></th>
-                <th class="text-center">Image</th>
-                <th style="width: 70%;">Product</th>
-                <th class="text-center">Quantity</th>
-                <th class="text-center">Unit Price</th>
-                <th class="text-right">Amount</th>
+                <th class="text-center">Book Detail No</th>
+                <th class="text-center">Service Name</th>
+                <th style="width: 70%;">Pet Name</th>
+                <th class="text-center">Date</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor='let item of listOrderDetail'>
-                <td class="text-center">1</td>
-                <td class="text-center"><img src="assets/images/productSingle.jpg" style="width:30px;"/></td>
-                <td>
-                    <h4></h4>
-                    <p></p>
-                    <!-- <span class="label label-info"><i class="fa fa-clock-o"></i> 2 weeks</span>
-                    <span class="label label-success"><i class="fa fa-angle-right"></i> Revisions Available</span> -->
-                </td>
-                <td class="text-center"><span class="badge"></span></td>
-                <td class="text-center"><span class="label label-default"></span></td>
-                <td class="text-right"><span class="label label-primary"></span></td>
+            <tr *ngFor='let item of listBookingDetail'>
+                <td class="text-center">{{item.bDetailID}}</td>
+                <td class="text-center">{{item.serviceEntity.serName}}</td>
+                <td class="text-center">{{item.petEntity.petName}}</td>
+                <td class="text-center">{{item.bookingDate}}</td>
+            </tr>
 
-            </tr>
-            <tr class="active">
-                <td colspan="5" class="text-right">SUBTOTAL</td>
-                <td class="text-right"></td>
-            </tr>
-            <tr class="active">
-                <td colspan="5" class="text-right">VAT RATE</td>
-                <td class="text-right"></td>
-            </tr>
-            <tr class="active">
-                <td colspan="5" class="text-right">VAT DUE</td>
-                <td class="text-right"></td>
-            </tr>
-            <tr class="success">
-                <td colspan="5" class="text-right"><strong></strong></td>
-                <td class="text-right"><span class="label label-success"></span></td>
-            </tr>
         </tbody>
     </table>
 </div>

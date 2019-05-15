@@ -13,7 +13,7 @@ import {Observable, of} from 'rxjs';
 export class OrderProductService {
 
   logClass = '--Order-Product service: ';
-  listOrderDetail: OrderDetail[] =[];
+  listOrderDetail: OrderDetail[]=[];
   newOrderDetail: OrderDetail;
   data: string;
   urlAPI: UrlAPIEntity;
