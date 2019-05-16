@@ -66,7 +66,7 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
       {
-        path: '/ecom/updateProduct/:id',
+        path: '/ecom/updateProduct/1',
         title: 'Edit Product',
         icon: ' icon-arrow-right-circle',
         class: '',
@@ -74,7 +74,7 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
       {
-        path: '/ecom/detailProduct/:id',
+        path: '/ecom/detailProduct/1',
         title: 'Detail Product',
         icon: ' icon-arrow-right-circle',
         class: '',

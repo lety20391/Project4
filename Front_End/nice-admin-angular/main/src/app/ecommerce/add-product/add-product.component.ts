@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductEntity} from '../product/ProductEntity';
+import { CategoryEntity } from '../cate/CategoryEntity';
 
 @Component({
   selector: 'app-add-product',
@@ -7,6 +8,8 @@ import {ProductEntity} from '../product/ProductEntity';
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent implements OnInit {
+
+  detailedProduct: ProductEntity = new ProductEntity();
   //
   // detailedProduct: ProductEntity = {
   //       ProID: 1,
@@ -25,6 +28,7 @@ export class AddProductComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.detailedProduct.cateEntity = new CategoryEntity();
   }
 
 }
