@@ -1,0 +1,8 @@
+.el-element-overlay .el-card-item .el-overlay-1 img{
+  object-fit: cover;
+  height: 350px;
+}
+
+.el-element-overlay .el-card-item .el-overlay-1{
+  /* padding-top: 75%; */
+}
