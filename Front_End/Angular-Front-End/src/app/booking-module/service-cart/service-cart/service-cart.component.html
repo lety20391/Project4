@@ -1,8 +1,8 @@
-<div class="table-responsive">
+<div class="table-responsive css-serial">
     <table class="table table-bordered table-vcenter">
         <thead>
             <tr>
-                <th class="text-center">Book Detail No</th>
+                <th class="text-center">Booking No</th>
                 <th class="text-center">Service Name</th>
                 <th style="width: 70%;">Pet Name</th>
                 <th class="text-center">Date</th>
@@ -10,7 +10,7 @@
         </thead>
         <tbody>
             <tr *ngFor='let item of listBookingDetail'>
-                <td class="text-center">{{item.bDetailID}}</td>
+                <td class="text-center" style="counter-increment: tableCount"  ></td>
                 <td class="text-center">{{item.serviceEntity.serName}}</td>
                 <td class="text-center">{{item.petEntity.petName}}</td>
                 <td class="text-center">{{item.bookingDate}}</td>

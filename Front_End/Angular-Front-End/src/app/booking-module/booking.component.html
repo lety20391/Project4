@@ -10,7 +10,7 @@
 						<p class="title-heading text-primary mb-5">
 							Request an Appointment
 						</p>
-						<p class="subheading">Please enter your name, your email address and phone number to get started. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat.</p>
+						<p class="subheading">Please enter your name, your email address and phone number. We will contact you back as soon as possible.</p>
 					</div>
 				</div>
 					<!-- Item 1 -->
@@ -44,8 +44,9 @@
 
                 <div class="col-sm-6 col-md-12">
 									<div class="form-group">
-										<select name ="listPet" [(ngModel)]="tempID" (ngModelChange)="setPet($event)" value="name" style="border:1px solid" >
-												<option *ngFor="let pet of myListPet" [ngValue]="pet.petID" >
+										<select name ="listPet"  [(ngModel)]="tempID" required (ngModelChange)="setPet($event)" class="form-control" >
+												<option value="a" disabled>Please choose a pet</option>
+												<option  *ngFor="let pet of myListPet" [ngValue]="pet.petID" >
 														{{pet.petName}}
 												</option>
 										</select>
@@ -54,13 +55,14 @@
 
 								<div class="col-sm-6 col-md-12">
 									<div class="form-group">
-										<input type="text" class="form-control" id="p_subject" [(ngModel)]="selectedPet.petBreed" name="petBreed" placeholder="Pet Breed">
+										<input type="text" class="form-control" id="p_subject" [(ngModel)]="selectedPet.petBreed" disabled="true"  name="petBreed" placeholder="Pet Breed">
 										<div class="help-block with-errors"></div>
 									</div>
 								</div>
 								<div class="col-sm-6 col-md-12">
 									<div class="form-group">
-										<select name ="listService" [(ngModel)]="sertempID" (ngModelChange)="setSelectedService($event)" value="name" style="border:1px solid" >
+										<select class="form-control" name ="listService" [(ngModel)]="sertempID" (ngModelChange)="setSelectedService($event)" value="name" >
+												<option value="a" disabled>Please choose a service</option>	
 												<option *ngFor="let ser of listservice" [ngValue]="ser.serID" >
 														{{ser.serName}}
 												</option>
@@ -71,7 +73,7 @@
 
                 <div class="col-sm-6 col-md-12">
                   <div class="form-group">
-										<input type="text" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3" [min]="min" id="name" name="name" value="" class="inputtext form-control" placeholder="Enter Service Date/Time" [(ngModel)]="booknewService.bookingDate">
+										<input type="text" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3" [min]="min" id="name" name="name" value="" class="inputtext form-control" placeholder="Enter Service Date/Time" [(ngModel)]="selectedBMDate">
 										<owl-date-time [pickerType]="'calendar'" #dt3	></owl-date-time>
                     <div class="help-block with-errors"></div>
                   </div>
@@ -81,12 +83,16 @@
 
 							</div>
 							<div class="form-group">
-								 <textarea id="p_message" class="form-control" rows="6" id="message" name="nessage" [(ngModel)]="booknewService.message" placeholder="Enter Your Message"></textarea>
+								 <textarea id="p_message" class="form-control" rows="6" id="message" name="nessage" [(ngModel)]="selectedMessage" placeholder="Enter Your Message"></textarea>
 								<div class="help-block with-errors"></div>
 							</div>
 							<div class="form-group">
 								<div id="success"></div>
-								<button type="submit" class="btn btn-primary" (click)="createNew()">Request Appointment</button>
+								<button type="submit" class="btn btn-primary" (click)="addtoCart()">Request Appointment</button>
+							</div>
+							<div class="form-group">
+								<div id="success"></div>
+								<button type="submit" class="btn btn-primary" (click)="createBooking()">Book</button>
 							</div>
 						</form>
 						<div class="margin-bottom-50"></div>

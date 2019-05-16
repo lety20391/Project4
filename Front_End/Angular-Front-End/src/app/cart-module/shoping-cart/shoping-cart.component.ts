@@ -154,8 +154,6 @@ export class ShopingCartComponent implements OnInit {
     this.urlAPI = listUrlAPI.find(url => url.name === 'orderDetailResource');
     console.log(this.logClass + "post Order Detail: " + this.urlAPI.path);
 
-
-
     this.listOrderDetail.forEach(
       item => {
                 console.log('---Check Quantity: ' + item.qty);
