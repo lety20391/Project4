@@ -29,6 +29,7 @@ import {DetailDatingComponent} from './pet-module/detail-dating/detail-dating.co
 import {BookingComponent} from './booking-module/booking.component';
 import {DatingRequestComponent} from './pet-module/dating-request/dating-request.component';
 
+// import {RegisterComponent} from './UIComponent/register/register.component'
 
 const routes: Routes = [
   {path:'', redirectTo:'mainlayout', pathMatch:'full'},
