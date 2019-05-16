@@ -12,8 +12,7 @@
 				</div>
 
 				<div class="row">
-					<div class="col-sm-12 col-md-8">
-
+					<div class="col-sm-6 col-md-6" [class.disableFunction]="isReadyToUploadImage">
 						<form action="#" class="form-contact" id="contactForm" data-toggle="validator" novalidate="true">
 							<div class="row">
 								<div class="col-sm-6 col-md-6">
@@ -30,11 +29,12 @@
 								</div>
 								<div class="col-sm-6 col-md-6">
 									<div class="form-group">
-										<input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" class="form-control" name="dateofbirth" id="p_subject" [(ngModel)]="DOB" placeholder="DoB">
-										<owl-date-time #dt1></owl-date-time>
+										<input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [max]="max" class="form-control" name="dateofbirth" id="p_subject" [(ngModel)]="DOB" placeholder="DoB">
+										<owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
 										<!-- <div class="help-block with-errors"></div> -->
 									</div>
 								</div>
+
 								<div class="col-sm-6 col-md-6">
 									<div class="form-group">
 										<input type="text" class="form-control" id="p_phone" name="phone" [(ngModel)]="Telephone" placeholder="Enter Phone Number">
@@ -42,20 +42,39 @@
 									</div>
 								</div>
 							</div>
-
+								<div class="row">
+							<div class="col-sm-6 col-md-6">
 							<div class="form-group">
 								<div id="success"></div>
-								<button type="submit" class="btn btn-primary" (click)="registerNewUser()">Submit</button>
+								<button type="submit" class="btn btn-primary" (click)="registerNewUser()"  *ngIf="!isInUpdateMode">{{buttonTitle}}</button>
 							</div>
+							</div>
+
+						</div>
 
 						</form>
 				<div class="row">
 					<mat-spinner diameter="50" *ngIf="showSpinner" color="accent" > </mat-spinner>
-					<h3 *ngIf="showSpinner">Register successfully - Redirecting to Login page!!!</h3>
+					<h3 *ngIf="showSpinner">Register successfully!!!</h3>
 				</div>
 
 						<div class="margin-bottom-50"></div>
 
+					</div>
+					<div class="col-sm-6 col-md-6" [class.disableFunction]="!isReadyToUploadImage && !isInUpdateMode">
+							<p class="title-heading text-primary mb-5" *ngIf="!isInUpdateMode">Now Upload Your Avatar</p>
+								<p class="title-heading text-primary mb-5" *ngIf="isInUpdateMode">Upload More Image</p>
+
+							<!-- upload Image Section here -->
+							<app-upload [finalUrl]='uploadUrl' ></app-upload>
+							<div class="row">
+							<button class="btn btn-primary" (click)="turnLoginPage()"  *ngIf="!isInUpdateMode">Login Now</button>
+							<!-- This section use to test ID after Add Info -->
+
+							<!-- <input [(ngModel)]="inputID" placeholder="inputID"/>
+							<div (click)='sendID()'>
+								abc
+							</div> -->
 					</div>
 					<div class="col-sm-4 col-md-4">
 						<!-- <img src="images/dummy-img-600x700.jpg" alt="" class="img-fluid"> -->

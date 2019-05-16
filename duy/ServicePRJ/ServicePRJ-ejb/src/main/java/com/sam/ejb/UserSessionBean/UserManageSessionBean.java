@@ -26,30 +26,15 @@ public class UserManageSessionBean implements UserManageSessionBeanLocal {
     @PersistenceUnit(unitName = "ServiceDB")
     private EntityManagerFactory entityManagerFactory;
     private EntityManager em;
-    
+
     private String logClass = "--UserManageSessionBean: ";
 
     @Override
-    public String addUser(UserEntity newUser) {
+    public UserEntity addUser(UserEntity newUser) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         em = entityManagerFactory.createEntityManager();
-        String msgStatus = "";
-        try{
-            em.persist(newUser);
-        }catch(javax.persistence.PersistenceException ex){
-            msgStatus = "-EXCEPTION CLASS NAME: " + ex.getClass().getName().toString();
-            System.out.println(msgStatus);
-            
-            msgStatus += "-THROWABLE CLASS NAME: " + ex.getCause().getClass().getName().toString();
-            System.out.println(msgStatus);
-            
-            Throwable th = ex.getCause();
-            msgStatus += "-THROWABLE INFO: " + th.getCause().toString();
-            System.out.println(msgStatus);
-            
-            
-        }
-        return msgStatus;
+        em.persist(newUser);
+        return newUser;
     }
 
     @Override
@@ -59,13 +44,14 @@ public class UserManageSessionBean implements UserManageSessionBeanLocal {
         em = entityManagerFactory.createEntityManager();
         UserEntity searchUser = null;
         try {
-            searchUser = (UserEntity)em.createNamedQuery("u.searchByPhone").setParameter("str", userPhone).getSingleResult();
+            searchUser = (UserEntity) em.createNamedQuery("u.searchByPhone").setParameter("str", userPhone).getSingleResult();
         } catch (NoResultException nre) {
             //bug neu khong tim thay ket qua
         }
-        
-        if (searchUser != null)
+
+        if (searchUser != null) {
             return searchUser;
+        }
         searchUser = new UserEntity();
         searchUser.setUserTel("0000000000");
         return searchUser;
@@ -78,7 +64,7 @@ public class UserManageSessionBean implements UserManageSessionBeanLocal {
         System.out.println(logClass + " userCode:" + userCode);
         em = entityManagerFactory.createEntityManager();
         return em.createNamedQuery("u.setCodeByPhone").setParameter("code", userCode).setParameter("phone", userPhone).getFirstResult();
-       
+
     }
 
     @Override
@@ -92,7 +78,6 @@ public class UserManageSessionBean implements UserManageSessionBeanLocal {
 //    public Boolean checkLogin(String userPhone, String userCode) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 //    }
-
     @Override
     public UserEntity updateUser(UserEntity updatedUser) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -103,9 +88,8 @@ public class UserManageSessionBean implements UserManageSessionBeanLocal {
 
     @Override
     public UserEntity findOne(Long id) {
-          em = entityManagerFactory.createEntityManager();
+        em = entityManagerFactory.createEntityManager();
         return em.find(UserEntity.class, id); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
 }

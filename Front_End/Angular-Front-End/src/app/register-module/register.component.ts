@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserEntity } from '../UserEntity/UserEntity';
 import { RegisterService } from './register.service';
 import { listUrlAPI } from '../listUrlAPI';
@@ -7,13 +7,13 @@ import {Observable, of} from 'rxjs';
 import { HttpClient, HttpResponse,  HttpHeaders } from '@angular/common/http';
 import { DatePipe, formatDate } from '@angular/common';
 import { Router } from '@angular/router';
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-    'Authorization': 'my-auth-token'
-  })
-};
+import { UploadComponent } from '../UIComponent/upload/upload.component';
+// const httpOptions = {
+//   headers: new HttpHeaders({
+//     'Content-Type':  'application/json',
+//     'Authorization': 'my-auth-token'
+//   })
+// };
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -29,23 +29,30 @@ export class RegisterComponent implements OnInit {
   keyCode = "";
   key_dateCreated = "";
   pickedDOB : string;
-
+  max = new Date();
   UrlEntity : UrlAPIEntity;
-  uploadUrl = '';
+  // uploadUrl = '';
   user: UserEntity = new UserEntity();
   newUser: UserEntity = new UserEntity();
   logClass: "Log create user";
   isReadyToUploadImage = false;
   inputID: number;
   showSpinner = false;
+    @Input() uploadUrl = '';
+    @Input() buttonTitle = 'Submit';
+  @Input() isInUpdateMode = false;
+
   constructor(
     private http: HttpClient,
     private router: Router
+
   ) { }
 
   ngOnInit() {
   }
-
+  turnLoginPage(): void {
+    this.router.navigateByUrl("/mainlayout/login");
+  }
   getUrl(code: number): void{
     //code will be use to create image Folder on server
     console.log("------Create User: getUrl() ------");
@@ -56,20 +63,22 @@ export class RegisterComponent implements OnInit {
   }
 
 
+    createNewUser(newUser: UserEntity): Observable<UserEntity> {
+      this.UrlEntity = listUrlAPI.find(url=> url.name === 'registerResource');
+      return  this.http.post<UserEntity>(this.UrlEntity.path ,  newUser);
+    }
 
 
-
-    registerNewUser(): void {
-
-    this.UrlEntity = listUrlAPI.find(url=> url.name === 'registerResource');
-    this.user.userID = this.ID;
+    registerNewUser(): void{
+    // this.user.userID = this.ID;
+    this.user = new UserEntity();
     this.user.userName = this.Name;
     this.user.userTel = this.Telephone;
     this.user.userMail = this.Mail;
     this.user.userDOB = this.DOB;
     this.user.userStatus = this.Status;
-    this.user.keyCode = this.keyCode;
-    this.user.key_dateCreated = this.key_dateCreated;
+    // this.user.keyCode = this.keyCode;
+    // this.user.key_dateCreated = this.key_dateCreated;
       //    format lai date time
     let pickedDOB = this.user.userDOB;
     pickedDOB = formatDate(pickedDOB, 'yyyy-MM-dd', 'en-US') + 'T' + formatDate(pickedDOB, 'hh:mm:ss', 'en-US');
@@ -77,19 +86,17 @@ export class RegisterComponent implements OnInit {
     this.user.userDOB = pickedDOB;
           //
           // this.user.userID = 1;
-    this.http.post<UserEntity>(this.UrlEntity.path, this.user, httpOptions).subscribe(
+    this.createNewUser(this.user).subscribe(
             response => {
-                if(response == null)
-                {
+              console.log("response::" + JSON.stringify(response))
                   this.showSpinner = true;
                   setTimeout(() =>{
                     this.showSpinner = false,
-                    this.router.navigateByUrl('/mainlayout/login')
-                  }, 5000);
-                }
-                else{
-                  console.log("error: " + response);
-                }
+                    this.getUrl(response.userID);
+                    this.isReadyToUploadImage = true;
+                  }, 4000);
+                  //end spinner
+
             }
           );
         }
