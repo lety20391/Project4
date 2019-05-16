@@ -119,7 +119,9 @@ export class LoginComponent implements OnInit {
            let auth = response.headers.get('Authorization');
            this.jwtService.addJWT(auth);
            console.log('Get jwt: ' + this.jwtService.getJWT());
-           this.location.back();
+            this.location.back();
+           setTimeout(() => window.location.reload() ,200);
+           // window.location.reload();
          }else{
            this.pass = 'Please Enter Code Again';
          }
@@ -127,6 +129,8 @@ export class LoginComponent implements OnInit {
        }
      );
   }
+
+
 
   getUserImage(id: number): void{
     console.log(this.logClass + " Get All Image");

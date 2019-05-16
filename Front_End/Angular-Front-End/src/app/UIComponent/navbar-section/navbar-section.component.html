@@ -61,9 +61,11 @@
                         <a class="dropdown-item" [routerLink]="['/mainlayout/topseller']">Top Seller</a>
                       </div>
               </li>
-
+              <li class="nav-item">
+                      <a class="nav-link" [routerLink]="['/mainlayout/cart']">YOUR CART {{amountOfOrderDetail}}</a>
+              </li>
               <!-- REGISTER/LOGIN -->
-              <li class="nav-item dropdown dmenu">
+              <li class="nav-item dropdown dmenu" *ngIf="!isLogin">
                       <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         REGISTER/LOGIN
                       </a>
@@ -71,12 +73,14 @@
                         <a class="dropdown-item" [routerLink]="['/mainlayout/register']">REGISTER</a>
                         <a class="dropdown-item" [routerLink]="['/mainlayout/login']">LOGIN</a>
                       </div>
+
               </li>
+
+
 
               <li class="nav-item">
-                      <a class="nav-link" [routerLink]="['/mainlayout/cart']">YOUR CART {{amountOfOrderDetail}}</a>
-              </li>
-
+                <a class="nav-link"  *ngIf="isLogin" (click)="logOut()" [routerLink]="['/mainlayout/login']" >LOG OUT</a>
+                </li>
               </ul>
               <!-- <a href="#" class="btn btn-secondary btn-nav btn-rect ml-auto">GET AN APPOINTMENT</a> -->
           </div>
