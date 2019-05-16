@@ -51,12 +51,15 @@ export class ListProductComponent implements OnInit {
   // ];
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private productService: ProductServiceService
   ) { }
 
   ngOnInit() {
     this.getAllProductList();
   }
+
+  
 
   getAllProductList(): void{
     console.log(this.logClass + " init");
@@ -74,6 +77,19 @@ export class ListProductComponent implements OnInit {
                 //roi gan vao listPet
                 console.log(JSON.stringify(response.body));
                 this.listProduct = JSON.parse(JSON.stringify(response.body));
+
+                //lay du lieu Image tu server
+                this.listProduct.forEach(
+                  item => {
+                    this.productService.getAllProductImage(item.proID)
+                      .subscribe(
+                        result => {
+                          item.proListImage = JSON.parse(JSON.stringify(result));
+                        }
+                      );
+
+                  }
+                );
 
               }
               // if (response.status == 200){

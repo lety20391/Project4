@@ -4,6 +4,7 @@ import { UrlAPIEntity } from '../UrlAPIEntity';
 import {ProductEntity} from './product/ProductEntity';
 import { HttpResponse } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,12 @@ export class ProductServiceService {
   constructor(
     private http: HttpClient
   ) { }
+
+  getAllProductImage(id: number): Observable<string[]>{
+    console.log(this.logClass + ' get All Image for product' + id);
+    this.urlAPI = listUrlAPI.find(url => url.name === 'getAllImageResource');
+    return this.http.get<string[]>(this.urlAPI.path + '/Product/' + id);
+  }
 
   getProductList(): ProductEntity[]{
     this.getProductListFromServer();
