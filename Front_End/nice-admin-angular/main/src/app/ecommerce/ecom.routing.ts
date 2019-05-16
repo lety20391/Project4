@@ -17,6 +17,7 @@ import { AddPetComponent } from './add-pet/add-pet.component';
 import { UpdatePetComponent } from './update-pet/update-pet.component';
 import { DetailPetComponent } from './detail-pet/detail-pet.component';
 import {CateComponent} from './cate/cate.component';
+import { ListProductComponent } from './list-product/list-product.component';
 
 export const EcomRoutes: Routes = [
   {
@@ -42,7 +43,7 @@ export const EcomRoutes: Routes = [
         }
       },
       {
-        path: 'details/:id',
+        path: 'detailProduct/:id',
         component: DetailsComponent,
         data: {
           title: 'Product Details',
@@ -160,7 +161,7 @@ export const EcomRoutes: Routes = [
 
 
       {
-        path: 'edit',
+        path: 'editProduct/:id',
         component: EditComponent,
         data: {
           title: 'Edit Product',
@@ -184,6 +185,14 @@ export const EcomRoutes: Routes = [
         data: {
           title: 'Add New Product',
           urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Orders' }]
+        }
+      },
+      {
+        path: 'listProduct',
+        component: ListProductComponent,
+        data: {
+          title: 'List Product',
+          urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'List Product' }]
         }
       },
       {

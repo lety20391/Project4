@@ -3,8 +3,8 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <h3 class="card-title">{{detailedProduct.ProName}}</h3>
-                <h6 class="card-subtitle">{{detailedProduct.cateEntity.CateName}}</h6>
+                <h3 class="card-title">{{currentProduct.proName}}</h3>
+                <h6 class="card-subtitle">Category </h6>
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-6">
                         <div class="white-box text-center">
@@ -12,14 +12,14 @@
                     </div>
                     <div class="col-lg-9 col-md-9 col-sm-6">
                         <h4 class="box-title m-t-40">Product description</h4>
-                        <p>{{detailedProduct.ProDes}}</p>
-                        <h2 class="m-t-40">${{detailedProduct.ProPrice}}
+                        <p>{{currentProduct.proDes}}</p>
+                        <h2 class="m-t-40">${{currentProduct.proPrice}}
                             <!-- <small class="text-success">(36% off)</small> -->
                         </h2>
                         <button class="btn btn-dark btn-rounded m-r-5" data-toggle="tooltip" title="" data-original-title="Add to cart">
                             Delete Product
                         </button>
-                        <a class="btn btn-primary btn-rounded" style ="color:white;" href="/ecom/updateProduct/{{detailedProduct.ProID}}"> Update </a>
+                        <a class="btn btn-primary btn-rounded" style ="color:white;" href="/#/ecom/updateProduct/{{currentProduct.proID}}"> Update </a>
 
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12">

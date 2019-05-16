@@ -10,13 +10,13 @@
 
                         <div class="form-group">
                             <label for="ID">ID</label>
-                            <input id="ID" name="ID" class="form-control" type ="number" [(ngModel)]="detailedProduct.ProID" disabled>
+                            <input id="ID" name="ID" class="form-control" type ="number" [(ngModel)]="currentProduct.proID" disabled>
 
                         </div>
 
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input id="name" name="name" class="form-control" required minlength="3" maxlength="50" [(ngModel)]="detailedProduct.ProName" #name="ngModel">
+                            <input id="name" name="name" class="form-control" required minlength="3" maxlength="50" [(ngModel)]="currentProduct.proName" #name="ngModel">
                             <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
                                 <div *ngIf="name.errors.required"> Name is required. </div>
                                 <div *ngIf="name.errors.minlength"> Name must be at least 3 characters long. </div>
@@ -27,7 +27,7 @@
 
                         <div class="form-group">
                             <label for="Description">Description</label>
-                            <input id="Description" name="Description" class="form-control" required minlength="10" maxlength="50" [(ngModel)]="detailedProduct.ProDes" #des="ngModel">
+                            <input id="Description" name="Description" class="form-control" required minlength="10" maxlength="50" [(ngModel)]="currentProduct.proDes" #des="ngModel">
                             <div *ngIf="des.invalid && (des.dirty || des.touched)" class="alert alert-danger">
                                 <div *ngIf="des.errors.required"> Description is required. </div>
                                 <div *ngIf="des.errors.minlength"> Description must be at least 10 characters long. </div>
@@ -40,7 +40,7 @@
                             <div class="form-group">
                                 <label for="Price">Price</label>
                                 <div class="form-control">
-                                  <input style="border:none" id="Price" name="Price" class="form-control" required type ="number" min="1" max="10000" [(ngModel)]="detailedProduct.ProPrice" #price ="ngModel">
+                                  <input style="border:none" id="Price" name="Price" class="form-control" required type ="number" min="1" max="10000" [(ngModel)]="currentProduct.proPrice" #price ="ngModel">
                                   <div *ngIf="price.invalid && (price.dirty || price.touched)" class="alert alert-danger">
                                       <div *ngIf="price.errors.required"> Price is required. </div>
                                       <div *ngIf="price.errors.min"> Price must be greater than 0. </div>
@@ -54,7 +54,7 @@
                             <div class="form-group">
                                 <label for="Color">Color</label>
                                 <div class="form-control">
-                                  <input style="border:none" id="Color" name="Color" class="form-control" required minlength="2" maxlength="20" [(ngModel)]="detailedProduct.ProColor" #Color="ngModel">
+                                  <input style="border:none" id="Color" name="Color" class="form-control" required minlength="2" maxlength="20" [(ngModel)]="currentProduct.proColor" #Color="ngModel">
                                   <div *ngIf="Color.invalid && (Color.dirty || Color.touched)" class="alert alert-danger">
                                       <div *ngIf="Color.errors.required"> Color is required. </div>
                                       <div *ngIf="Color.errors.minlength"> Color must be at least 2 characters long. </div>
@@ -70,9 +70,9 @@
 
                                   <label for="status" style="margin-left:10px;">Status</label>
                                   <div class="form-control">
-                                    <input id="status" name="status" type="checkbox" [(ngModel)]="detailedProduct.Status" style="margin-left:10px;">
-                                    <span class="btn btn-success" *ngIf="detailedProduct.Status" style="margin-left:10px;" >Activated</span>
-                                    <span class="btn btn-dark" *ngIf="!detailedProduct.Status" style="margin-left:10px;">Deactivated</span>
+                                    <input id="status" name="status" type="checkbox" [(ngModel)]="currentProduct.status" style="margin-left:10px;">
+                                    <span class="btn btn-success" *ngIf="currentProduct.status" style="margin-left:10px;" >Activated</span>
+                                    <span class="btn btn-dark" *ngIf="!currentProduct.status" style="margin-left:10px;">Deactivated</span>
                                 </div>
                             </div>
                           </div>
@@ -82,7 +82,7 @@
                         <div class="form-group">
                             <label for="cateID">CateID</label>
                             <div class="form-control">
-                              <input style="border:none" id="cateID" name="cateID" class="form-control" required type ="number" min="1" max="10000" [(ngModel)]="detailedProduct.cateEntity.CateID" #cateID ="ngModel">
+                              <input style="border:none" id="cateID" name="cateID" class="form-control" required type ="number" min="1" max="10000" [(ngModel)]="currentProduct.cateEntity.CateID" #cateID ="ngModel">
                               <div *ngIf="cateID.invalid && (cateID.dirty || cateID.touched)" class="alert alert-danger">
                                   <div *ngIf="cateID.errors.required"> CateID is required. </div>
                                   <div *ngIf="cateID.errors.min"> CateID must be greater than 0. </div>

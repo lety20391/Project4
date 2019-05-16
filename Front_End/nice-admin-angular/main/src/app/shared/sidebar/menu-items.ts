@@ -50,6 +50,38 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
       {
+        path: '/ecom/listProduct',
+        title: 'List Product',
+        icon: ' icon-arrow-right-circle',
+        class: '',
+        extralink: false,
+        submenu: []
+      },
+      {
+        path: '/ecom/addProduct',
+        title: 'Add Product',
+        icon: ' icon-arrow-right-circle',
+        class: '',
+        extralink: false,
+        submenu: []
+      },
+      {
+        path: '/ecom/updateProduct/:id',
+        title: 'Edit Product',
+        icon: ' icon-arrow-right-circle',
+        class: '',
+        extralink: false,
+        submenu: []
+      },
+      {
+        path: '/ecom/detailProduct/:id',
+        title: 'Detail Product',
+        icon: ' icon-arrow-right-circle',
+        class: '',
+        extralink: false,
+        submenu: []
+      },
+      {
         path: '/ecom/orders',
         title: 'Order',
         icon: ' icon-arrow-right-circle',
@@ -65,6 +97,7 @@ export const ROUTES: RouteInfo[] = [
         extralink: false,
         submenu: []
       }
+
     ]
   },
   {

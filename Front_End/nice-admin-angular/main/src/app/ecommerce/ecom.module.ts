@@ -25,6 +25,7 @@ import { UpdatePetComponent } from './update-pet/update-pet.component';
 import { DetailPetComponent } from './detail-pet/detail-pet.component';
 import { SmartTableLabelComponent } from './smart-table-label/smart-table-label.component';
 import { CateComponent } from './cate/cate.component';
+import { ListProductComponent } from './list-product/list-product.component';
 
 @NgModule({
   imports: [
@@ -52,7 +53,8 @@ import { CateComponent } from './cate/cate.component';
     UpdatePetComponent,
     DetailPetComponent,
     SmartTableLabelComponent,
-    CateComponent
+    CateComponent,
+    ListProductComponent
   ],
   exports: [
     SmartTableLabelComponent
