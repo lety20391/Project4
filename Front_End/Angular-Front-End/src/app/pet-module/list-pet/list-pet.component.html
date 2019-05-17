@@ -108,7 +108,7 @@
           							  </div>
                           <!-- tab 4: your Request -->
                           <div class="tab-pane fade" id="button" role="tabpanel" aria-labelledby="button-tab">
-            								<app-dating-answer [listAnswer] = "currentPet.listAnswerDetail"></app-dating-answer>
+            								<app-dating-answer [listAnswer] = "currentPet.listAnswerDetail" (changedAnswer)="catchChangedAnswer($event)"></app-dating-answer>
           							  </div>
           							</div>
           						</div>

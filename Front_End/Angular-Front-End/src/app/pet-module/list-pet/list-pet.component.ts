@@ -278,6 +278,12 @@ export class ListPetComponent implements OnInit {
     console.log(this.logClass + ' get Selected Dating from: '+ this.currentDating.petRequestEntity.petName);
   }
 
+  catchChangedAnswer(event: Event): void{
+    let tempDating = new DatingDetailEntity();
+    tempDating = JSON.parse(JSON.stringify(event));
+    this.updateCurrentDating(tempDating);
+  }
+
   openDeleteDialog(): void {
         const dialogRef = this.dialog.open(SimpleDialogComponent, {
           width: '350px',

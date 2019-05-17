@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DatingAnswerComponent implements OnInit {
 
-  @Output() selectedAnswer = new EventEmitter();
+  @Output() changedAnswer = new EventEmitter();
   @Input() listAnswer: DatingDetailEntity[] = [];
 
   logClass='--Dating Answer: ';
@@ -51,9 +51,15 @@ export class DatingAnswerComponent implements OnInit {
   //
   // }
 
-  sendCurrentAnswer(currentAnswer: DatingDetailEntity): void{
-    console.log(this.logClass + ' sendCurrentDating from:' + currentAnswer.petRequestEntity.petName);
-    this.selectedAnswer.emit(currentAnswer);
+  sendChangedAnswer(modifiedAnswer: DatingDetailEntity): void{
+    console.log(this.logClass + ' sendChangedAnswer from:' + modifiedAnswer.petRequestEntity.petName);
+    this.changedAnswer.emit(modifiedAnswer);
+  }
+
+  change2OldMess(index: number): void{
+    console.log(this.logClass + ' change 2 Old Message Dating from: ' + this.listAnswer[index].petRecieveEntity.petName);
+    this.listAnswer[index].isNewNotification = false;
+    this.sendChangedAnswer(this.listAnswer[index]);
   }
 
 }

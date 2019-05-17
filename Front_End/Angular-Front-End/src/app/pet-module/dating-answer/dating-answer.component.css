@@ -3,3 +3,8 @@ img {
   height: 64px;
   object-fit: cover;
 }
+
+.disableFunction{
+  pointer-events: none;
+  opacity: 0.5;
+}

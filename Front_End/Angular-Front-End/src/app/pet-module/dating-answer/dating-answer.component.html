@@ -1,13 +1,23 @@
 <div class="comments-box" >
 							<h4 class="title-heading">From <span>(3)</span></h4>
 
-							<div class="media comment" *ngFor="let answer of listAnswer">
+							<div class="media comment" *ngFor="let answer of listAnswer; let $index = index" (click)="change2OldMess($index)">
   								<img class="mr-3" alt="80x80" src="http://localhost:9090/uploadedFiles/Pet/{{answer.petRecieveEntity.petID}}/{{answer.petRecieveEntity.petListImage[0]}}"
-                          />
+                        [class.disableFunction]="answer.specialStatus == 2 || answer.specialStatus == 3"  />
   								<div class="media-body">
-  									<h5 class="media-heading mt-0 mb-1">{{answer.petRecieveEntity.petName}} - {{answer.petRecieveEntity.petBreed}}<small class="date">{{answer.datingDate}} - {{answer.datingLocation}}</small>
+                    <h5 class="media-heading mt-0 mb-1" *ngIf="answer.isNewNotification && (answer.specialStatus == 1)">New</h5>
+                    <h5 class="media-heading mt-0 mb-1" *ngIf="answer.isNewNotification && (answer.specialStatus == 0)">Waiting</h5>
+                    <h5 class="media-heading mt-0 mb-1" *ngIf="answer.isNewNotification && (answer.specialStatus == 2)">You canceled this</h5>
+                    <h5 class="media-heading mt-0 mb-1" *ngIf="answer.isNewNotification && (answer.specialStatus == 3)">From {{answer.petRecieveEntity.userEntity.userName}}: canceled</h5>
+  									<h5 class="media-heading mt-0 mb-1" [class.disableFunction]="answer.specialStatus == 2 || answer.specialStatus == 3">{{answer.petRecieveEntity.petName}} - {{answer.petRecieveEntity.petBreed}}
+                      <small class="date">
+                        <span class="btn btn-warning">
+                          Cancel
+                        </span>
+
+                      </small>
                     </h5>
-							      <p>
+							      <p [class.disableFunction]="answer.specialStatus == 2 || answer.specialStatus == 3">
                       <span>Location: {{answer.datingLocation}}</span><br>
                       <span>Date: {{answer.datingDate}}</span>
                     </p>
