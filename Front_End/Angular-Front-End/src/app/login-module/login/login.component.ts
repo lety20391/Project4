@@ -120,7 +120,7 @@ export class LoginComponent implements OnInit {
            this.jwtService.addJWT(auth);
            console.log('Get jwt: ' + this.jwtService.getJWT());
             this.location.back();
-           setTimeout(() => window.location.reload() ,200);
+           setTimeout(() => window.location.reload() ,50);
            // window.location.reload();
          }else{
            this.pass = 'Please Enter Code Again';
