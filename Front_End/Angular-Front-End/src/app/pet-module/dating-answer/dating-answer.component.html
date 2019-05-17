@@ -1,7 +1,9 @@
 <div class="comments-box" >
 							<h4 class="title-heading">From <span>(3)</span></h4>
 
-							<div class="media comment" *ngFor="let answer of listAnswer; let $index = index" (click)="change2OldMess($index)">
+							<div class="media comment" *ngFor="let answer of listAnswer; let $index = index"
+                (click)="change2OldMess($index)" [class.isNewNoti]="answer.isNewNotification">
+
   								<img class="mr-3" alt="80x80" src="http://localhost:9090/uploadedFiles/Pet/{{answer.petRecieveEntity.petID}}/{{answer.petRecieveEntity.petListImage[0]}}"
                         [class.disableFunction]="answer.specialStatus == 2 || answer.specialStatus == 3"  />
   								<div class="media-body">
