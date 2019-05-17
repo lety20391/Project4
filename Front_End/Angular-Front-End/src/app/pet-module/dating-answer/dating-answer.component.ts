@@ -57,8 +57,17 @@ export class DatingAnswerComponent implements OnInit {
   }
 
   change2OldMess(index: number): void{
-    console.log(this.logClass + ' change 2 Old Message Dating from: ' + this.listAnswer[index].petRecieveEntity.petName);
-    this.listAnswer[index].isNewNotification = false;
+    console.log(this.logClass + ' change 2 Old Message Dating for: ' + this.listAnswer[index].petRecieveEntity.petName);
+    //neu dang trong trang thai New thi moi doi ve trang thai Old
+    if(this.listAnswer[index].isNewNotification){
+      this.listAnswer[index].isNewNotification = false;
+      this.sendChangedAnswer(this.listAnswer[index]);
+    }
+  }
+
+  cancelMyRequest(index: number): void{
+    console.log(this.logClass + ' Cancel Dating for: ' + this.listAnswer[index].petRecieveEntity.petName);
+    this.listAnswer[index].specialStatus = 2;
     this.sendChangedAnswer(this.listAnswer[index]);
   }
 

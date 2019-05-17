@@ -7,13 +7,17 @@
   								<img class="mr-3" alt="80x80" src="http://localhost:9090/uploadedFiles/Pet/{{answer.petRecieveEntity.petID}}/{{answer.petRecieveEntity.petListImage[0]}}"
                         [class.disableFunction]="answer.specialStatus == 2 || answer.specialStatus == 3"  />
   								<div class="media-body">
-                    <h5 class="media-heading mt-0 mb-1" *ngIf="answer.isNewNotification && (answer.specialStatus == 1)">New</h5>
-                    <h5 class="media-heading mt-0 mb-1" *ngIf="answer.isNewNotification && (answer.specialStatus == 0)">Waiting</h5>
-                    <h5 class="media-heading mt-0 mb-1" *ngIf="answer.isNewNotification && (answer.specialStatus == 2)">You canceled this</h5>
-                    <h5 class="media-heading mt-0 mb-1" *ngIf="answer.isNewNotification && (answer.specialStatus == 3)">From {{answer.petRecieveEntity.userEntity.userName}}: canceled</h5>
+                    <h5 class="media-heading mt-0 mb-1" *ngIf="answer.specialStatus == 1">
+                      From {{answer.petRecieveEntity.userEntity.userName}}:
+                      <span *ngIf="answer.isAccepted">Accepted</span>
+                      <span *ngIf="!answer.isAccepted">Decline</span>
+                    </h5>
+                    <h5 class="media-heading mt-0 mb-1" *ngIf="answer.specialStatus == 0">Waiting</h5>
+                    <h5 class="media-heading mt-0 mb-1" *ngIf="answer.specialStatus == 2">You canceled this</h5>
+                    <h5 class="media-heading mt-0 mb-1" *ngIf="answer.specialStatus == 3">From {{answer.petRecieveEntity.userEntity.userName}}: canceled</h5>
   									<h5 class="media-heading mt-0 mb-1" [class.disableFunction]="answer.specialStatus == 2 || answer.specialStatus == 3">{{answer.petRecieveEntity.petName}} - {{answer.petRecieveEntity.petBreed}}
                       <small class="date">
-                        <span class="btn btn-warning">
+                        <span class="btn btn-warning" (click)="cancelMyRequest($index)">
                           Cancel
                         </span>
 
