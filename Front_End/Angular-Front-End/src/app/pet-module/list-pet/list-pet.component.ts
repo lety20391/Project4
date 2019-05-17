@@ -117,8 +117,26 @@ export class ListPetComponent implements OnInit {
                                   item.totalDatingRequestNeedAccept = 0;
                                   item.listDatingDetail.forEach(
                                     datingDetail => {
-                                      if(datingDetail.isAccepted == false)
+                                      if(datingDetail.specialStatus == 0 && datingDetail.isNewNotification == true)
                                         item.totalDatingRequestNeedAccept += 1;
+                                    }
+                                  );
+                                }
+                  );
+
+                  //goi len server de lay danh sach Answer Detail tra ve
+                  this.http.get<DatingDetailEntity[]>(this.urlAPI.path + '/listRequestFrom/' + item.petID)
+                    .subscribe(
+                      result => {
+                                  console.log(this.logClass + ' Dating Load:' + result.length);
+                                  //gan ket qua tra ve vao thuoc tinh petListImage
+                                  item.listAnswerDetail = result;
+                                  item.totalNewDatingAnswer = 0;
+                                  item.listAnswerDetail.forEach(
+                                    datingDetail => {
+                                      if(datingDetail.isNewNotification == true
+                                            && (datingDetail.specialStatus == 1 || datingDetail.specialStatus == 3))
+                                        item.totalNewDatingAnswer += 1;
                                     }
                                   );
                                 }

@@ -26,7 +26,8 @@ import javax.persistence.Table;
 @NamedQueries
         ({
             @NamedQuery(name="dDetail.findAll",query = "SELECT d FROM DatingDetailEntity d"),
-            @NamedQuery(name="dDetail.findByRecieved",query = "SELECT d FROM DatingDetailEntity d WHERE d.PetRecieveEntity.petID = :id")
+            @NamedQuery(name="dDetail.findByRecieved",query = "SELECT d FROM DatingDetailEntity d WHERE d.PetRecieveEntity.petID = :id"),
+            @NamedQuery(name="dDetail.findByRequest",query = "SELECT d FROM DatingDetailEntity d WHERE d.PetRequestEntity.petID = :id")
 //            @NamedQuery(name="dDetail.searchRequestByPetID", query ="SELECT d FROM DatingDetailEntity d WHERE d.PetID = :id ")
         })
 public class DatingDetailEntity {
@@ -42,6 +43,13 @@ public class DatingDetailEntity {
     
     @Column(name="isAccepted")
     private Boolean IsAccepted;
+    
+    @Column(name="specialStatus", columnDefinition = "INT CHECK (specialStatus <= 3)")
+    private Integer SpecialStatus;
+    
+    @Column(name="isNewNotification" , columnDefinition = "BIT default 0")
+    private Boolean IsNewNotification;
+    
     
     @ManyToOne
     @JoinColumn(name = "petRequest_ID")

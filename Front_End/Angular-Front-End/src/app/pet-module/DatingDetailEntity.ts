@@ -5,6 +5,8 @@ export class DatingDetailEntity {
   datingDate: string;
   datingLocation: string;
   isAccepted: boolean;
+  specialStatus: number;
+  isNewNotification: boolean;
   petRequestEntity: PetEntity;
   petRecieveEntity: PetEntity;
   datingMasterEntity: DatingMasterEntity;

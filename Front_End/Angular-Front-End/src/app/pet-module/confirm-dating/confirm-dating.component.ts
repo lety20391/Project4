@@ -23,6 +23,7 @@ export class ConfirmDatingComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    //heart.js la javascript de chay icon hinh trai tim
     this.loadScript('./assets/js/heart.js');
     //this.getUserImage();
   }

@@ -25,14 +25,14 @@
           							    <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Pet Detail</a>
           							  </li>
           							  <li class="nav-item" >
-          							    <a class="nav-link" id="information-tab" data-toggle="tab" href="#information" role="tab" aria-controls="information" aria-selected="false">Dating: Pet</a>
+          							    <a class="nav-link" id="information-tab" data-toggle="tab" href="#information" role="tab" aria-controls="information" aria-selected="false">Pet Request</a>
           							  </li>
           							  <li class="nav-item">
-          							    <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Location & Time</a>
+          							    <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Request Detail</a>
           							  </li>
-                          <!-- <li class="nav-item" *ngIf="currentDating.petRequestEntity.petID >= 0">
-          							    <a class="nav-link" [class.waitingAccept]="!currentDating.isAccepted" id="button-tab" data-toggle="tab" href="" role="tab" aria-controls="none" aria-selected="false">Accept</a>
-          							  </li> -->
+                          <li class="nav-item">
+          							    <a class="nav-link" id="button-tab" data-toggle="tab" href="#button" role="tab" aria-controls="button" aria-selected="false">Your Request</a>
+          							  </li>
           							</ul>
           							<div class="tab-content" id="myTabContent">
           								<!-- Tabs 1 -->
@@ -106,6 +106,10 @@
 
             								</div>
           							  </div>
+                          <!-- tab 4: your Request -->
+                          <div class="tab-pane fade" id="button" role="tabpanel" aria-labelledby="button-tab">
+            								<app-dating-answer [listAnswer] = "currentPet.listAnswerDetail"></app-dating-answer>
+          							  </div>
           							</div>
           						</div>
           						<!-- end tabs -->
@@ -116,7 +120,7 @@
                   <!-- right bar -->
                   <div class="col-12 col-sm-3 col-md-3" *ngIf="currentPet.petID >= 0">
                     <h2 class="section-heading text-primary no-after mb-4">
-    									Dating request
+    									Recieved Request
     								</h2>
                     <app-confirm-dating [listDating]='currentPet.listDatingDetail' (selectedDating)="getDatingSelected($event)" ></app-confirm-dating>
                   </div>
