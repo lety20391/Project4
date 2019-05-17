@@ -76,6 +76,7 @@ public class ManageService {
     
     //Modify service
     @PUT
+    @Path("edit")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updateService(serviceEntity service) {

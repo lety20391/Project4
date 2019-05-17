@@ -22,7 +22,7 @@ export class ServiceAddComponent implements OnInit {
   Des: string;
   ShortDes: string;
   Status: boolean;
-  Image: 'aaaaa';
+  // Image: 'aaaaa';
   urlAPI : UrlAPIEntity;
   service = new serviceEntity();
   constructor(
@@ -38,7 +38,7 @@ export class ServiceAddComponent implements OnInit {
   this.service.serDes = this.Des;
   this.service.serShortDes = this.ShortDes;
   this.service.status = this.Status;
-  this.service.serImage = this.Image;
+  // this.service.serImage = this.Image;
   this.http.post<serviceEntity>(this.urlAPI.path, this.service, httpOptions).subscribe(result => {console.log(result)});
   }
 }

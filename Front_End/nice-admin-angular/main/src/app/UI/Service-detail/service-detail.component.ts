@@ -13,7 +13,9 @@ import {Observable, of} from 'rxjs';
   styleUrls: ['./service-detail.component.css']
 })
 export class ServiceDetailComponent implements OnInit {
-  @Input() detail = new serviceEntity();
+  @Input() detail: serviceEntity  = new serviceEntity();
+  logClass : "service detail component";
+  serListImage: string[] = [];
   // listServiceCate: serviceEntity[];
   constructor(
      private route: ActivatedRoute,
@@ -26,12 +28,18 @@ export class ServiceDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getServiceDetail();
+
   }
 
   getServiceDetail(): void {
       const id = +this.route.snapshot.paramMap.get('id');
       this.ServiceManageService.getServiceDetail(id)
-        .subscribe(detail => this.detail = detail);
+        .subscribe(result => {
+          console.log("all detail:" + JSON.stringify(result))
+          this.detail = result;
+          console.log("this is ID::" + this.detail.serID);
+          this.getAllServiceImage(this.detail.serID);
+        });
     }
 
   deleteServiceDetail(){
@@ -47,7 +55,17 @@ export class ServiceDetailComponent implements OnInit {
       //   );
       // }
 
-
+      getAllServiceImage(id: number): void{
+            // console.log(this.logClass + " Get All Image");
+            // id = +this.route.snapshot.paramMap.get('id');
+            // console.log("this is id" + id)
+            this.ServiceManageService.getAllServiceImage(id).subscribe(
+              result => {
+                          console.log(this.logClass + ' Image Load');
+                          this.serListImage = result;
+                        }
+            );
+          }
 openDeleteDialog(): void {
         const dialogRef = this.dialog.open(ConfirmDialogComponent, {
           width: '350px',

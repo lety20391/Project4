@@ -59,7 +59,7 @@ export class ListProductComponent implements OnInit {
     this.getAllProductList();
   }
 
-  
+
 
   getAllProductList(): void{
     console.log(this.logClass + " init");
