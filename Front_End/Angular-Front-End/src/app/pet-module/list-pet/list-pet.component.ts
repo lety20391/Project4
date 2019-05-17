@@ -133,10 +133,29 @@ export class ListPetComponent implements OnInit {
                                   item.listAnswerDetail = result;
                                   item.totalNewDatingAnswer = 0;
                                   item.listAnswerDetail.forEach(
-                                    datingDetail => {
-                                      if(datingDetail.isNewNotification == true
-                                            && (datingDetail.specialStatus == 1 || datingDetail.specialStatus == 3))
+                                    ansDetail => {
+
+                                      //tinh so luong new Answer de lam notification
+                                      if(ansDetail.isNewNotification == true
+                                            && (ansDetail.specialStatus == 1 || ansDetail.specialStatus == 3))
                                         item.totalNewDatingAnswer += 1;
+
+                                      //load image cua Pet ve
+                                      console.log(this.logClass + " Answer: getImagePath");
+                                      this.urlAPI = listUrlAPI.find(url => url.name === 'getAllImageResource');
+                                      console.log(this.logClass + this.urlAPI.path);
+
+                                      //goi len server de lay danh sach hinh anh ve
+                                      this.http.get<string[]>(this.urlAPI.path + '/Pet/' + ansDetail.petRecieveEntity.petID)
+                                      .subscribe(
+                                        result => {
+                                                    console.log(this.logClass + ' Image Load:' + result);
+                                                    //gan ket qua tra ve vao thuoc tinh petListImage
+                                                    ansDetail.petRecieveEntity.petListImage = result;
+                                                  }
+                                      );
+
+
                                     }
                                   );
                                 }

@@ -1,8 +1,9 @@
-<div class="comments-box">
+<div class="comments-box" >
 							<h4 class="title-heading">Answer <span>(3)</span></h4>
 
 							<div class="media comment" *ngFor="let answer of listAnswer">
-								<img class="mr-3" alt="80x80" src="images/dummy-img-400x400.jpg" style="width: 64px; height: 64px;">
+								<img class="mr-3" alt="80x80" src="http://localhost:9090/uploadedFiles/Pet/{{answer.petRecieveEntity.petID}}/{{answer.petRecieveEntity.petListImage[0]}}"
+                        style="width: 64px; height: 64px;"/>
 								<div class="media-body">
 									<h5 class="media-heading mt-0 mb-1">{{answer.petRecieveEntity.petName}}<small class="date">{{answer.datingDate}} - {{answer.datingLocation}}</small>
 	                                </h5>
