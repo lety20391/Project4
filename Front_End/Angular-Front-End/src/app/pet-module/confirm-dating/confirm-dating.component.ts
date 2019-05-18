@@ -66,7 +66,12 @@ export class ConfirmDatingComponent implements OnInit {
   //}
 
   heartClicked(index: number): void{
+    //kiem tra neu specialStatus = 1 nghia la Request nay da duoc tra loi 1 lan
+    //khong cho tra loi them lan thu 2
+    if(this.listDating[index].specialStatus == 1 )
+      return;
     this.listDating[index].isAccepted = !this.listDating[index].isAccepted;
+    this.listDating[index].specialStatus = 1;
     console.log(this.logClass + ' heartClicked: ' + this.listDating[index].petRequestEntity.petName);
     this.sendCurrentDating(this.listDating[index]);
   }
