@@ -82,6 +82,21 @@ export class OrderProductService {
     this.listOrderChange.emit(this.listOrderDetail);
   }
 
+  removeProduct(removedProduct: productEntity): void{
+    //lay du lieu tu localStorage
+    this.getDataFromLocalStorage();
+
+    //remove product ra khoi danh sach listOrder
+    const index: number = this.listOrderDetail.findIndex(item => item.productEntity.proID == removedProduct.proID);
+    if (index !== -1) {
+        this.listOrderDetail.splice(index, 1);
+    }
+
+    //luu xuong localStorage lai
+    this.saveToLocalStorage();
+    //this.listOrderChange.emit(this.listOrderDetail);
+  }
+
   saveToLocalStorage():void {
     localStorage.setItem('listOrder', JSON.stringify(this.listOrderDetail));
   }

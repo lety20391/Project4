@@ -199,6 +199,17 @@ export class ShopingCartComponent implements OnInit {
 
   }
 
+  removeProduct(removedOrderDetail: OrderDetail): void{
+    this.orderProduct.removeProduct(removedOrderDetail.productEntity);
+
+    //tinh toan lai table Detail
+    this.getListOrder();
+    this.calSubTotal();
+
+    //send thay doi toi mainlayout de thay doi cart menu
+    this.buyNewProduct.emit();
+  }
+
   getComponentType(): string{
     return 'ShopingCartComponent';
   }

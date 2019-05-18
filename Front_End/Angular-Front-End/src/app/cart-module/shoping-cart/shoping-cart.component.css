@@ -27,11 +27,7 @@
 
 }
 
-.changeQty:active{
+.changeQty:hover{
   color: #999999;
 
-}
-
-.changeQty:hover{
-  font-size: 2rem;
 }
