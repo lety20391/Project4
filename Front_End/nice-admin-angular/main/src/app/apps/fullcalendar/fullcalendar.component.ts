@@ -7,7 +7,17 @@ import {
 } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-
+import { Injectable } from '@angular/core';
+import { listUrlAPI } from '../../listUrlAPI';
+import { UrlAPIEntity } from '../../UrlAPIEntity';
+import {BookingDetailEntity} from '../../Booking/BookingDetailEntity';
+import { HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { PetEntity} from '../../ecommerce/list-pet/PetEntity';
+import {UserEntity} from '../../component/user/UserEntity';
+import {BookingMasterEntity} from '../../Booking/BookingMasterEntity';
+import {serviceEntity} from '../../serviceEntity/serviceEntity';
 import {
   startOfDay,
   endOfDay,
@@ -49,12 +59,23 @@ const colors: any = {
   styleUrls: ['./fullcalendar.component.scss']
 })
 export class FullcalendarComponent {
+  urlAPI : UrlAPIEntity;
+  logClass: "full calendar log";
+  listBM: BookingDetailEntity[] ;
+
   @ViewChild('modalContent') modalContent: TemplateRef<any>;
 
   view = 'month';
-
+  eventToAdd: CalendarEvent[] = [ ];
   viewDate: Date = new Date();
-
+  // --------event data---------
+  startDate: string;
+  caName: string;
+  bookPet: PetEntity = new PetEntity();
+  bookMessage: string;
+  bookOwner: string;
+  myPet: string;
+  // --------end----------------
   modalData: {
     action: string;
     event: CalendarEvent;
@@ -79,43 +100,20 @@ export class FullcalendarComponent {
   refresh: Subject<any> = new Subject();
 
   events: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: colors.red,
-      actions: this.actions
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: colors.yellow,
-      actions: this.actions
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: colors.blue
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: new Date(),
-      title: 'A draggable and resizable event',
-      color: colors.yellow,
-      actions: this.actions,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      },
-      draggable: true
-    }
-  ];
+  ]  ;
 
-  activeDayIsOpen = true;
 
-  constructor(private modal: NgbModal) {}
+  activeDayIsOpen = false;
 
+  constructor(
+    private modal: NgbModal,
+    private http: HttpClient
+  ) {}
+
+  ngOnInit() {
+    this.getBMListFromServer();
+
+  }
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
       if (
@@ -136,7 +134,7 @@ export class FullcalendarComponent {
     newEnd
   }: CalendarEventTimesChangedEvent): void {
     event.start = newStart;
-    event.end = newEnd;
+    // event.end = newEnd;
     this.handleEvent('Dropped or resized', event);
     this.refresh.next();
   }
@@ -146,18 +144,61 @@ export class FullcalendarComponent {
     this.modal.open(this.modalContent, { size: 'lg' });
   }
 
-  addEvent(): void {
-    this.events.push({
-      title: 'New event',
-      start: startOfDay(new Date()),
-      end: endOfDay(new Date()),
-      color: colors.red,
-      draggable: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      }
-    });
+  addEvent(event): void {
+    this.events.push(event)
+      // =
+    //   {title: event.name,
+    //   start: event.start,
+    //   // end: endOfDay(new Date()),
+    //   // color: event.colors.green
+    //   // draggable: true,
+    //   // resizable: {
+    //   //   beforeStart: true,
+    //   //   afterEnd: true
+    //   // }
+    // });
     this.refresh.next();
   }
-}
+  bookingDate : string;
+    getBMListFromServer(): void{
+      // console.log(this.logClass + " init");
+        this.urlAPI = listUrlAPI.find(url => url.name === 'bookingDetailResource');
+        console.log(this.logClass + this.urlAPI.path);
+
+        this.http.get<HttpResponse<BookingDetailEntity[]>>(this.urlAPI.path + "/getAll",  { observe: 'response' })
+          .subscribe(
+            response => {
+              // item.bookingMasterEntity = new BookingMasterEntity();
+              // item.bookingMasterEntity.userEntity = new UserEntity();
+
+              this.listBM = JSON.parse(JSON.stringify(response.body));
+                  this.listBM.forEach( item  =>
+                    {
+
+                  console.log(item);
+
+                  this.startDate =  item.bookingDate;
+                  this.caName = item.serviceEntity.serName;
+                  this.bookMessage = item.message;
+                  // this.bookPet = item.petEntity;
+                  // this.myPet = this.bookPet.PetName
+                  // this.bookOwner = item.bookingMasterEntity.userEntity.UserID;
+                  // console.log(this.bookOwner);
+                  // this.bookPet = item.petEntity.PetBreed;
+                  // console.log("bookowner " + JSON.stringify(this.bookOwner))
+                  // this.bookPet = item.petEntity.PetName;
+                  let event = {
+                    start : startOfDay(this.startDate),
+                    title : this.caName,
+                    Message: this.bookMessage,
+                    // pet: this.myPet
+                  }
+                  console.log(event);
+                this.events.push(event);
+                this.refresh.next();
+                });
+              }
+              );
+
+            }
+        }
