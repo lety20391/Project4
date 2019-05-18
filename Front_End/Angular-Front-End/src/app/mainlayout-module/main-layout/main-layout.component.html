@@ -56,7 +56,7 @@
 
 
 	<!-- Main content here -->
-  <router-outlet></router-outlet>
+  <router-outlet (activate)="componentAddedToOutlet($event)"></router-outlet>
 
   <!-- Main content here -->
 

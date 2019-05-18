@@ -66,4 +66,8 @@ export class ProductSingleComponent implements OnInit {
     this.buyNewProduct.emit(selectedProduct);
   }
 
+  getTest(): number{
+    return 1000;
+  }
+
 }

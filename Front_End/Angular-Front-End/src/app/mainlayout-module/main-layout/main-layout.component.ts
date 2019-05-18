@@ -41,4 +41,15 @@ export class MainLayoutComponent implements OnInit {
     this.totalFromOrderService = this.orderService.getTotalQuantity();
   }
 
+  componentAddedToOutlet(component: any ){
+    console.log(component);
+    console.log('  Test ID: ' + component.getTest());
+    component.buyNewProduct.subscribe(
+      item => {
+        console.log('Item: ' + JSON.stringify(item));
+        console.log('***Buy New***');
+      }
+    );
+  }
+
 }
