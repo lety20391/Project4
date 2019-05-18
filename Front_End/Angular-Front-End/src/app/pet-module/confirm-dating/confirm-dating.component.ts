@@ -72,12 +72,22 @@ export class ConfirmDatingComponent implements OnInit {
   }
 
   cancelThisRequest(index: number): void{
-    console.log(this.logClass + ' Cancel Dating for: ' + this.listDating[index].petRecieveEntity.petName);
+    console.log(this.logClass + ' Cancel Dating for: ' + this.listDating[index].petRequestEntity.petName);
+
     //an Tag dating chuan bi cancle tren giao dien UI
     let needDisableTag = this.elementRef.nativeElement.querySelector('#collapse' + index);
     needDisableTag.classList.remove("show");
 
+    //gan specialStatus = 3 va update len component list-pet
+    //component list-pet se update du lieu len backend
     this.listDating[index].specialStatus = 3;
+    this.listDating[index].isNewNotification = true;
+    this.changeDating.emit(this.listDating[index]);
+  }
+
+  change2OldMess(index: number): void{
+    console.log(this.logClass + ' change 2 Old Dating for: ' + this.listDating[index].petRequestEntity.petName);
+    this.listDating[index].isNewNotification = false;
     this.changeDating.emit(this.listDating[index]);
   }
 
