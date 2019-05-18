@@ -28,6 +28,7 @@ import {RegisterComponent} from './register-module/register.component';
 import {DetailDatingComponent} from './pet-module/detail-dating/detail-dating.component';
 import {BookingComponent} from './booking-module/booking.component';
 import {DatingRequestComponent} from './pet-module/dating-request/dating-request.component';
+import { UserProfileComponent } from './register-module/register.module';
 
 // import {RegisterComponent} from './UIComponent/register/register.component'
 
@@ -60,7 +61,8 @@ const routes: Routes = [
         {path: '404', component: Error404Component},
         {path: 'servicebook', component: BookingComponent},
         {path: 'datingRequest', component: DatingRequestComponent},
-        {path: 'TopSeller', component: TopsellerComponent}
+        {path: 'TopSeller', component: TopsellerComponent},
+        {path: 'userProfile', component: UserProfileComponent}
       ]
   },
   // link nao bi loi thi hien thi trang nay

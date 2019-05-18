@@ -26,3 +26,5 @@ import {UploadModuleModule} from '../upload-module/upload-module.module';
   ]
 })
 export class RegisterModule { }
+
+export {UserProfileComponent}
