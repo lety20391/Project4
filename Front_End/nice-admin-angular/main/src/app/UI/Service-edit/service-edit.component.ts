@@ -18,7 +18,7 @@ const httpOptions = {
   styleUrls: ['./service-edit.component.css']
 })
 export class ServiceEditComponent implements OnInit {
-  @Input() edit = new serviceEntity();
+  @Input() edit : serviceEntity = new serviceEntity();
   urlAPI: UrlAPIEntity;
   constructor(
     private route: ActivatedRoute,
@@ -32,10 +32,14 @@ export class ServiceEditComponent implements OnInit {
   getServiceDetail(): void {
       const id = +this.route.snapshot.paramMap.get('id');
       this.ServiceManageService.getServiceDetail(id)
-        .subscribe(detail => this.edit = detail);
+        .subscribe(result =>{
+          console.log("this is result:" + JSON.stringify(result));
+          this.edit = result;
+          }
+        );
     }
     editService(): void {
       this.urlAPI = listUrlAPI.find(url => url.name === 'serviceResource' );
-    this.http.put<serviceEntity>(this.urlAPI.path, this.edit, httpOptions).subscribe(result => {console.log(result)});
+    this.http.put<serviceEntity>(this.urlAPI.path + "/edit", this.edit, httpOptions).subscribe(result => {console.log(result)});
     }
 }

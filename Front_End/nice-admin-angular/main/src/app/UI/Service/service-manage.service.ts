@@ -26,19 +26,22 @@ export class ServiceManageService {
   getServiceList(): Observable<serviceEntity[]> {
   console.log("------Get API Product Service ------");
   this.urlAPI = listUrlAPI.find(url => url.name === 'serviceResource');
-  return this.http.get<serviceEntity[]>(this.urlAPI.path  + 'list');
+  return this.http.get<serviceEntity[]>(this.urlAPI.path  + '/list');
 }
 
   getServiceDetail(id: number): Observable<any> {
     console.log("------Get API Service ------");
     this.urlAPI = listUrlAPI.find(url => url.name === 'serviceResource');
-    return this.http.get<serviceEntity>(this.urlAPI.path + id);
-    console.log("------Get API Service Success ------");
+    return this.http.get<serviceEntity>(this.urlAPI.path + '/getDetail/findID/' + id);
   }
   deleteServiceDetail(id: number): Observable<any> {
     this.urlAPI = listUrlAPI.find(url => url.name === 'serviceResource');
     return this.http.delete<HttpResponse<Object>>(this.urlAPI.path + id);
 
   }
-
+  getAllServiceImage(id: number): Observable<string[]>{
+    console.log(' get All Image for Service' + id);
+    this.urlAPI = listUrlAPI.find(url => url.name === 'getAllImageResource');
+    return this.http.get<string[]>(this.urlAPI.path + '/Service/' + id);
+  }
 }

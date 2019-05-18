@@ -17,7 +17,7 @@ import javax.ejb.Local;
 @Local
 public interface UserManageSessionBeanLocal {
     public List<UserEntity> listAll();
-    public String addUser(UserEntity newUser);
+    public UserEntity addUser(UserEntity newUser);
     public UserEntity getUserByPhone(String userPhone);
     public int setCodeByPhone(String userPhone, String userCode);
     public UserEntity updateUser(UserEntity updatedUser);

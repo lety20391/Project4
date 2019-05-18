@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-6">
                         <div class="white-box text-center">
-                            <img src="{{detail.serImage}}" class="img-fluid"> </div>
+                            <img src="http://localhost:9090/uploadedFiles/Service/{{detail.serID}}/{{serListImage[0]}}" class="img-fluid"> </div>
                     </div>
                     <div class="col-lg-9 col-md-9 col-sm-6">
                         <h2 class="box-title m-t-40">Service description</h2>
@@ -18,7 +18,7 @@
                         </h2> -->
                         <div class="row">
                         <div class="col-sm-2">
-                        <a href="service/edit/{{detail.serID}}"> <button class="btn btn-info btn-rounded btn-md btn-block" data-toggle="tooltip" title="" data-original-title="Delete" > Edit </button> </a>
+                        <a href="#/service/edit/{{detail.serID}}"> <button class="btn btn-info btn-rounded btn-md btn-block" data-toggle="tooltip" title="" data-original-title="Delete" > Edit </button> </a>
                         </div>
                         <div class="col-sm-2">
                         <button class="btn btn-danger btn-rounded btn-md  btn-block" (click)="openDeleteDialog()"> Delete </button>

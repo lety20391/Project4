@@ -39,7 +39,7 @@ public class UserEntity {
     private Long userID;
     @Column(name="userName")
     private String UserName;
-    @Column(name="userTel")
+    @Column(name="userTel", columnDefinition = "Varchar(15) Unique")
     private String UserTel;
     @Column(name="userMail")
     private String UserMail;
