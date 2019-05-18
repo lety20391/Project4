@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { Location } from '@angular/common';
 import {JWTHeaderService} from '../../jwtheader.service';
+import {UserProfileComponent} from '../../register-module/user-profile/user-profile.component';
 
 @Component({
   selector: 'app-list-pet',
@@ -301,7 +302,7 @@ export class ListPetComponent implements OnInit {
                 }
     );
 
-    
+
   }
 
   changeThisDating(event: Event): void{

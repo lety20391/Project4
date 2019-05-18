@@ -17,8 +17,11 @@ import { MatButtonModule } from '@angular/material';
   exports: [
     UploaderComponent,
     MatFileUploadModule,
-    MatButtonModule
+    MatButtonModule,
+    UploadComponent
 
   ]
 })
 export class UploadModuleModule { }
+
+export {UploadComponent}

@@ -7,7 +7,7 @@ import {Observable, of} from 'rxjs';
 import { HttpClient, HttpResponse,  HttpHeaders } from '@angular/common/http';
 import { DatePipe, formatDate } from '@angular/common';
 import { Router } from '@angular/router';
-import { UploadComponent } from '../UIComponent/upload/upload.component';
+// import { UploadComponent } from '../UIComponent/upload/upload.component';
 // const httpOptions = {
 //   headers: new HttpHeaders({
 //     'Content-Type':  'application/json',

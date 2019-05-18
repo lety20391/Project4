@@ -5,7 +5,7 @@ import { ListPetComponent } from './list-pet/list-pet.component';
 import { ListDatingComponent } from './list-dating/list-dating.component';
 import { PetDetailComponent } from './pet-detail/pet-detail.component';
 import { CreatePetComponent } from './create-pet/create-pet.component';
-import { UploadComponent } from '../UIComponent/upload/upload.component';
+// import { UploadComponent } from '../UIComponent/upload/upload.component';
 import { MatFileUploadModule } from 'angular-material-fileupload';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material';
@@ -19,6 +19,8 @@ import {SimpleDialogComponent} from '../UIComponent/simple-dialog/simple-dialog.
 import { ConfirmDatingComponent } from './confirm-dating/confirm-dating.component';
 import { DatingAnswerComponent } from './dating-answer/dating-answer.component';
 import { DetailRequestComponent } from './detail-request/detail-request.component';
+import {RegisterModule} from '../register-module/register.module';
+import {UploadModuleModule} from '../upload-module/upload-module.module';
 
 
 @NgModule({
@@ -28,7 +30,6 @@ import { DetailRequestComponent } from './detail-request/detail-request.componen
     ListDatingComponent,
     PetDetailComponent,
     CreatePetComponent,
-    UploadComponent,
     DetailDatingComponent,
     SideBarMyPetComponent,
     DatingRequestComponent,
@@ -44,7 +45,9 @@ import { DetailRequestComponent } from './detail-request/detail-request.componen
     MatButtonModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
-    MatDialogModule
+    MatDialogModule,
+    RegisterModule,
+    UploadModuleModule
 
   ],
   exports:[
@@ -52,7 +55,6 @@ import { DetailRequestComponent } from './detail-request/detail-request.componen
     ListPetComponent,
     ListDatingComponent,
     PetDetailComponent,
-    UploadComponent,
     MatFileUploadModule,
     MatButtonModule,
     DatingRequestComponent
