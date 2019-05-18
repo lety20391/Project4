@@ -1,0 +1,30 @@
+.spanBox{
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  display: inline-block;
+  text-align: center;
+}
+
+li.addPadding{
+  padding: 0.2rem 0;
+}
+
+.totalOrder{
+  padding: 0.1rem 0;
+  background-color: black;
+  color:white;
+  /* border-radius: 50%; */
+  border: 2px solid white;
+}
+
+.customNav{
+  /* padding:10px 0; */
+
+}
+li.nav-item{
+  /* height: 100px; */
+}
+ul.navbar-nav{
+  /* padding: 70px 0; */
+}

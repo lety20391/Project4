@@ -9,6 +9,7 @@ import {OrderProductService} from '../../order-product.service';
 export class MainLayoutComponent implements OnInit {
 
   totalFromOrderService: number;
+  totalOrder: number = 0;
 
   constructor(
     private orderService: OrderProductService
@@ -48,6 +49,7 @@ export class MainLayoutComponent implements OnInit {
       item => {
         console.log('Item: ' + JSON.stringify(item));
         console.log('***Buy New***');
+        this.totalOrder += 1;
       }
     );
   }
