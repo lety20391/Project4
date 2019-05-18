@@ -26,14 +26,18 @@ export class OrderProductService {
 
   addNewProduct(orderedProduct: productEntity){
     this.getDataFromLocalStorage();
+    //neu listOrder dang co danh sach Product duoc dat thi se tim kiem trong do
     if(this.listOrderDetail.length > 0){
       console.log(this.logClass + ' Search in List Order');
       console.log(this.logClass + ' OrderedProductID: ' + orderedProduct.proID);
       let index = this.listOrderDetail.findIndex(item => item.productEntity.proID == orderedProduct.proID);
       console.log(this.logClass + " Index:" + index);
+
+      //neu tim thay Product nay da duoc dat roi thi chi viec tang so luong
       if(index >= 0){
         this.listOrderDetail[index].qty += 1;
       }else{
+        //neu khong tim thay Product nay trong danh sach dat hang thi phai tao moi trong listOrder
         console.log(this.logClass + 'add new Order');
         this.newOrderDetail = new OrderDetail();
         this.newOrderDetail.productEntity = orderedProduct;
@@ -44,6 +48,7 @@ export class OrderProductService {
         this.listOrderDetail.push(this.newOrderDetail);
       }
     }else{
+      //neu listOrder chua co Product nao thi tao moi Product nay
       console.log(this.logClass + 'add new Order');
       this.newOrderDetail = new OrderDetail();
       this.newOrderDetail.productEntity = orderedProduct;
@@ -69,6 +74,7 @@ export class OrderProductService {
 
   getDataFromLocalStorage():void {
     this.data = localStorage.getItem('listOrder');
+    //neu localStorage co data thi gan vao listOrderDetail
     if (this.data != '' && this.data != null){
       console.log(this.logClass + " Get data from Local Storage");
       this.listOrderDetail = JSON.parse(this.data);
