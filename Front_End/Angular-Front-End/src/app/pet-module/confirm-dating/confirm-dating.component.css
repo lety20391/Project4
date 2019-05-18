@@ -28,15 +28,38 @@
   background-color: green;
 }
 
+.btn-cancel{
+  background-color: #343a40;
+  color: white;
+}
+
 .rs-accordion .card .btn.collapsed.acceptedDating {
   background-color: green;
 }
 .rs-accordion .card .btn.acceptedDating {
   background-color: green;
 }
+
 .rs-accordion .card .btn {
   background-color: #F7941D;
 }
+
+
+.rs-accordion .card .btn.btn-cancel {
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+  padding-left: 0px;
+  padding-right: 0px;
+
+}
+
+.disableFunction{
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+
 
 
 

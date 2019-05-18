@@ -25,10 +25,10 @@
           							    <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Pet Detail</a>
           							  </li>
           							  <li class="nav-item" >
-          							    <a class="nav-link" id="information-tab" data-toggle="tab" href="#information" role="tab" aria-controls="information" aria-selected="false">Pet Request</a>
+          							    <a class="nav-link" id="information-tab" data-toggle="tab" href="#information" role="tab" aria-controls="information" aria-selected="false">Recieved Request</a>
           							  </li>
           							  <li class="nav-item">
-          							    <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Request Detail</a>
+          							    <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Detail</a>
           							  </li>
                           <li class="nav-item">
           							    <a class="nav-link" id="button-tab" data-toggle="tab" href="#button" role="tab" aria-controls="button" aria-selected="false">Your Request</a>
@@ -70,12 +70,10 @@
           									</p> -->
                             <!-- <app-pet-detail [currentPet]="currentDating.petRequestEntity"></app-pet-detail> -->
 
-                            <div class="col-12 col-sm-12 col-md-12" *ngIf="currentDating.petRequestEntity.petListImage ">
+                            <!-- pet Gallery -->
 
-
-                      						<div class="row popup-gallery gutter-5" >
-                      							<!-- ITEM 1 -->
-
+                            <!-- <div class="col-12 col-sm-12 col-md-12" *ngIf="currentDating.petRequestEntity.petListImage ">
+                    						<div class="row popup-gallery gutter-5" >
                       							<div class="col-sm-6 col-md-4" *ngFor="let image of currentDating.petRequestEntity.petListImage; let i = index">
                       								<div class="box-gallery">
                       									<a href="http://localhost:9090/uploadedFiles/Pet/{{currentDating.petRequestEntity.petID}}/{{image}}" title="#{{i + 1}}_{{currentPet.petName}} ">
@@ -89,7 +87,10 @@
                       								</div>
                       							</div>
                                 </div>
-                              </div>
+                            </div> -->
+                              <!-- pet gallery -->
+
+
 
 
           								</div>
@@ -122,7 +123,8 @@
                     <h2 class="section-heading text-primary no-after mb-4">
     									Recieved Request
     								</h2>
-                    <app-confirm-dating [listDating]='currentPet.listDatingDetail' (selectedDating)="getDatingSelected($event)" ></app-confirm-dating>
+                    <app-confirm-dating [listDating]='currentPet.listDatingDetail' (selectedDating)="getDatingSelected($event)" (changeDating)="changeThisDating($event)" >
+                    </app-confirm-dating>
                   </div>
                   <!-- right bar -->
 

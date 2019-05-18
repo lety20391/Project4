@@ -11,10 +11,14 @@
 								         <h3 class="title">
 								            <button class="btn btn-link" [class.collapsed]="$i != 0 " type="button"
 																	data-toggle="collapse" [attr.data-target]="'#collapse' + $i" aria-expanded="true"
-																				[attr.aria-controls]="'collapse' + $i" (click)="sendCurrentDating(dating)" [class.acceptedDating]="dating.isAccepted">
+																				[attr.aria-controls]="'collapse' + $i" (click)="sendCurrentDating(dating)"
+																						[class.acceptedDating]="dating.isAccepted" [class.disableFunction]="dating.specialStatus == 2 || dating.specialStatus == 3">
 								                  #{{$i + 1}} - {{dating.petRequestEntity.petName}}
+																	<span *ngIf="dating.specialStatus == 0" class="datingLabel"><strong>Waiting</strong></span>
+																	<span *ngIf="dating.specialStatus == 2" class="datingLabel"><strong>From {{dating.petRequestEntity.userEntity.userName}} : canceled</strong></span>
+																	<span *ngIf="dating.specialStatus == 3" class="datingLabel"><strong>You canceled this</strong></span>
 																	<span *ngIf="dating.isAccepted"  class="datingLabel label-accepted"><strong>Accepted</strong></span>
-																	<span *ngIf="!dating.isAccepted" class="datingLabel label-notAccepted"><strong>Waiting</strong></span>
+																	<span *ngIf="!dating.isAccepted" class="datingLabel label-notAccepted"><strong>Decline</strong></span>
 
 								            </button>
 
@@ -29,6 +33,7 @@
 														 <div class="media-body">
 															 <div class="rating-for d-inline ml-1"><strong>{{dating.petRequestEntity.petBreed}}</strong></div>
 															 <div class="rating-by mb-3">from <span class="text-primary">{{dating.petRequestEntity.userEntity.userName}}</span></div>
+															 <p class="btn btn-cancel" (click)="cancelThisRequest($i)" >Cancel</p>
 
 														 </div>
 														 <div class="heart" (click)="heartClicked($i)" [class.is_animating]="dating.isAccepted" [class.liked]="dating.isAccepted"></div>
