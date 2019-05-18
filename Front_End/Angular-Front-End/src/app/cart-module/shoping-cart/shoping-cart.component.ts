@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { productEntity } from '../../productEntity/productEntity';
 import { OrderDetail } from '../OrderDetail';
 import { OrderMaster } from '../OrderMaster';
@@ -72,6 +72,8 @@ export class ShopingCartComponent implements OnInit {
     subTotal = 0;
     vat = 0.1;
     urlAPI: UrlAPIEntity;
+    @Output() buyNewProduct = new EventEmitter();
+
 
   constructor(
     public orderProduct: OrderProductService,
@@ -99,6 +101,7 @@ export class ShopingCartComponent implements OnInit {
   }
 
   calSubTotal(): void{
+    this.subTotal = 0;
     this.listOrderDetail.forEach(
       item => this.subTotal += item.qty * item.productEntity.proPrice
     );
@@ -183,6 +186,21 @@ export class ShopingCartComponent implements OnInit {
 
     console.log(this.logClass + "date: " + stringDate);
     return stringDate;
+  }
+
+  changeProductQty(changedOrderDetail: OrderDetail, isAdded: boolean): void{
+    this.orderProduct.addNewProduct(changedOrderDetail.productEntity, isAdded);
+    //tinh toan lai table Detail
+    this.getListOrder();
+    this.calSubTotal();
+
+    //send thay doi toi mainlayout de thay doi cart menu
+    this.buyNewProduct.emit();
+
+  }
+
+  getComponentType(): string{
+    return 'ShopingCartComponent';
   }
 
     private handleError(error: HttpErrorResponse) {

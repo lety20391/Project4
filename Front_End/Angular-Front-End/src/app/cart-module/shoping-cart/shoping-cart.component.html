@@ -6,7 +6,8 @@
   <div class="content-wrap">
     <div class="container">
 <!-- list bought product -->
-      <div id="page-content" class="block">
+      <h2 class="title" *ngIf="listOrderDetail.length == 0">Sorry You Haven't Bought Any Product</h2>
+      <div id="page-content" class="block" *ngIf="listOrderDetail.length > 0">
 
 
                           <!-- Invoice Block -->
@@ -73,14 +74,20 @@
                                       <tbody>
                                           <tr *ngFor='let item of listOrderDetail'>
                                               <td class="text-center">1</td>
-                                              <td class="text-center"><img src="assets/images/productSingle.jpg" style="width:30px;"/></td>
+                                              <td class="text-center"><img src="http://localhost:9090/uploadedFiles/Product/{{item.productEntity.proID}}/{{item.productEntity.proListImage[0]}}" style="width:30px;"/></td>
                                               <td>
                                                   <h4>{{item.productEntity.proName}}</h4>
                                                   <p>{{item.productEntity.proDes}}</p>
                                                   <!-- <span class="label label-info"><i class="fa fa-clock-o"></i> 2 weeks</span>
                                                   <span class="label label-success"><i class="fa fa-angle-right"></i> Revisions Available</span> -->
                                               </td>
-                                              <td class="text-center"><span class="badge">{{item.qty}}</span></td>
+                                              <td class="text-center">
+                                                <i class="fa fa-plus changeQty" (click)="changeProductQty(item, true)"></i>
+                                                <span class="badge">
+                                                  {{item.qty}}
+                                                </span>
+                                                <i class="fa fa-minus changeQty" (click)="changeProductQty(item, false)"></i>
+                                              </td>
                                               <td class="text-center"><span class="label label-default">$ {{item.productEntity.proPrice}}</span></td>
                                               <td class="text-right"><span class="label label-primary">$ {{item.productEntity.proPrice * item.qty}}</span></td>
 

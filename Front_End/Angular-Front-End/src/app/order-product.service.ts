@@ -24,30 +24,48 @@ export class OrderProductService {
     private http: HttpClient
   ) { }
 
-  addNewProduct(orderedProduct: productEntity){
+  addNewProduct(orderedProduct: productEntity, isAdded: boolean){
     this.getDataFromLocalStorage();
     //neu listOrder dang co danh sach Product duoc dat thi se tim kiem trong do
     if(this.listOrderDetail.length > 0){
-      console.log(this.logClass + ' Search in List Order');
-      console.log(this.logClass + ' OrderedProductID: ' + orderedProduct.proID);
-      let index = this.listOrderDetail.findIndex(item => item.productEntity.proID == orderedProduct.proID);
-      console.log(this.logClass + " Index:" + index);
+            console.log(this.logClass + ' Search in List Order');
+            console.log(this.logClass + ' OrderedProductID: ' + orderedProduct.proID);
+            let index = this.listOrderDetail.findIndex(item => item.productEntity.proID == orderedProduct.proID);
+            console.log(this.logClass + " Index:" + index);
 
-      //neu tim thay Product nay da duoc dat roi thi chi viec tang so luong
-      if(index >= 0){
-        this.listOrderDetail[index].qty += 1;
-      }else{
-        //neu khong tim thay Product nay trong danh sach dat hang thi phai tao moi trong listOrder
-        console.log(this.logClass + 'add new Order');
-        this.newOrderDetail = new OrderDetail();
-        this.newOrderDetail.productEntity = orderedProduct;
-        this.newOrderDetail.qty = 1;
+            //neu tim thay Product nay da duoc dat roi thi chi viec thay doi so luong
+            if(index >= 0){
 
-        console.log(this.logClass + this.newOrderDetail.productEntity.proName);
+                  //neu isAdded = true nghia la cong them san pham vao
+                  if(isAdded){
+                    this.listOrderDetail[index].qty += 1;
+                  }else{
+                    //neu isAdded = false nghia la tru bot san pham ra
+                    //neu so luong con lai >= 2 moi cho phep tru bot
+                    if(this.listOrderDetail[index].qty >= 2)
+                      this.listOrderDetail[index].qty -= 1;
+                  }
+            }else{
 
-        this.listOrderDetail.push(this.newOrderDetail);
-      }
+              //neu la tru bot so luong san pham thi thoat ra luon, vi khong tim thay san pham nao
+              if(!isAdded)
+                return;
+
+              //neu khong tim thay Product nay trong danh sach dat hang thi phai tao moi trong listOrder
+              console.log(this.logClass + 'add new Order');
+              this.newOrderDetail = new OrderDetail();
+              this.newOrderDetail.productEntity = orderedProduct;
+              this.newOrderDetail.qty = 1;
+
+              console.log(this.logClass + this.newOrderDetail.productEntity.proName);
+
+              this.listOrderDetail.push(this.newOrderDetail);
+            }
     }else{
+      //neu la tru bot so luong san pham thi thoat ra luon, vi khong tim thay san pham nao
+      if(!isAdded)
+        return;
+
       //neu listOrder chua co Product nao thi tao moi Product nay
       console.log(this.logClass + 'add new Order');
       this.newOrderDetail = new OrderDetail();

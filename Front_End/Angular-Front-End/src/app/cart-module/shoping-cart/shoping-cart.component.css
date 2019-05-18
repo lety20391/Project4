@@ -19,3 +19,19 @@
 #page-content {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+.changeQty{
+  margin-left: 10px;
+  margin-right: 10px;
+  color:#ffc107;
+
+}
+
+.changeQty:active{
+  color: #999999;
+
+}
+
+.changeQty:hover{
+  font-size: 2rem;
+}

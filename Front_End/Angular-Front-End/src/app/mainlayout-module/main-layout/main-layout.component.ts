@@ -46,7 +46,7 @@ export class MainLayoutComponent implements OnInit {
     console.log(component);
     console.log(' Component Added to Outlet: ' + component.getComponentType());
     //kiem tra ten cua Component truoc khi goi cac method len
-    if( component.getComponentType() == 'ProductSingleComponent'){
+    if( component.getComponentType() == 'ProductSingleComponent' || component.getComponentType() == 'ShopingCartComponent'){
 
         //lay du lieu ve Product dang duoc Buy
         component.buyNewProduct.subscribe(
