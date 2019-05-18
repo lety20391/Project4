@@ -5,8 +5,10 @@ Insert into dbo.tbUser([userDOB], [userMail], [userName], [userStatus], [userTel
 (1996-10-20,'lecongdat@gmail.com','DatLe',1,'0394641271'),
 (1995-10-20,'ElisaMuoi@gmail.com','Elisa',1,'dat'),
 (1994-10-20,'duytantran@gmail.com','Duy',1,'0708886925'),
-(1993-10-20,'catnghiemhieutuan@gmail.com','TuanCat',1,'0909090909'),
-(1993-10-20,'vohuynhnhu@gmail.com','Nichai',1,'0909090908')
+(1993-10-20,'vohuynhnhu@gmail.com','Nichai',1,'0909090909'),
+(1993-10-20,'leminhtruyen@gmail.com','Trennle',1,'0909090908'),
+(1993-10-20,'andrewgoodall@gmail.com','Andy',1,'0909090909'),
+(1993-10-20,'tranphanynhi@gmail.com','SuuNhi',1,'0909090908')
 
 
 
