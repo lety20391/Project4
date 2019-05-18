@@ -73,6 +73,7 @@ export class ShopingCartComponent implements OnInit {
     vat = 0.1;
     urlAPI: UrlAPIEntity;
     @Output() buyNewProduct = new EventEmitter();
+    currentUser: UserEntity = new UserEntity();
 
 
   constructor(
@@ -84,6 +85,7 @@ export class ShopingCartComponent implements OnInit {
 
   ngOnInit() {
     this.checkJWT();
+    this.getCurrentUser();
     this.getListOrder();
     this.calSubTotal();
   }
@@ -94,6 +96,24 @@ export class ShopingCartComponent implements OnInit {
     if(tempJWT == null || tempJWT == '')
       this.route.navigate(['/mainlayout/login']);
   }
+
+  getCurrentUser(): void{
+    let ID = localStorage.getItem('UserID');
+    if (ID != null && ID != ''){
+      console.log(this.logClass + ' get Current User');
+
+      //change your url name here
+      this.urlAPI = listUrlAPI.find(url => url.name === 'userDetailResource');
+      this.http.get<UserEntity[]>(this.urlAPI.path + '/' + ID )
+        .subscribe(
+          result => {
+            this.currentUser = JSON.parse(JSON.stringify(result));
+          }
+        );
+    }
+  }
+
+
 
   getListOrder(): void{
     console.log(this.logClass + "getListOrder()");

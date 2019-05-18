@@ -32,12 +32,11 @@
                                   <div class="col-sm-6">
                                       <h3 class="sub-header"><i class="fa fa-suitcase"></i> Pet Paradise - Your Order</h3>
                                       <address>
-                                          <strong>Name</strong><br>
+                                          <strong>{{currentUser.userName}}</strong><br>
                                           Address<br>
-                                          Town/City<br>
                                           Region, Zip/Postal Code<br><br>
-                                          <i class="fa fa-phone"></i> (000) 000-0000<br>
-                                          <i class="fa fa-envelope"></i> <a href="javascript:void(0)">example@example.com</a>
+                                          <i class="fa fa-phone"></i> {{currentUser.userTel}}<br>
+                                          <i class="fa fa-envelope"></i> <a href="javascript:void(0)">{{currentUser.userMail}}</a>
                                       </address>
                                   </div>
                                   <!-- END Company Info -->
