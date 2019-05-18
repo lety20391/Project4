@@ -115,6 +115,24 @@
                                   </table>
                               </div>
                               <!-- END Table -->
+                              <div class="col-xs-12 col-md-6">
+          											<div class="form-group">
+          												<input type="text" id="name" name="name" value="" class="inputtext form-control" placeholder="Enter Shipping Address" >
+          											</div>
+          										</div>
+          										<div class="col-xs-12 col-md-6">
+          											<div class="form-group">
+          												<input type="text" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [min]="minDate"
+                                        [max]="maxDate" id="name" name="name" value="" class="inputtext form-control"
+                                                placeholder="Enter Shipping Date" [(ngModel)]="newOrderMaster.shipDate"
+                                                     readonly>
+          												<owl-date-time [pickerType]="'calendar'"  #dt1></owl-date-time>
+                                  <!-- <span class="example-error" *ngIf="dateTime1.invalid && dateTime1.errors.owlDateTimeMin">
+                                      Date Time value must after {{minDate | date: 'medium'}}
+                                  </span> -->
+
+          											</div>
+          										</div>
 
                               <div class="clearfix">
                                   <a (click)="checkout()" class="btn btn-lg btn-primary pull-right"><i class="fa fa-check"></i>CheckOut</a>

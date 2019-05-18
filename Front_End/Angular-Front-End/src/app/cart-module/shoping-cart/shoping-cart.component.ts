@@ -74,6 +74,13 @@ export class ShopingCartComponent implements OnInit {
     urlAPI: UrlAPIEntity;
     @Output() buyNewProduct = new EventEmitter();
     currentUser: UserEntity = new UserEntity();
+    newOrderMaster: OrderMaster = new OrderMaster();
+
+    // Min moment: Today + 2 day
+    public minDate : Date;
+
+    // Max moment: Today + 30 day
+    public maxDate : Date;
 
 
   constructor(
@@ -85,6 +92,7 @@ export class ShopingCartComponent implements OnInit {
 
   ngOnInit() {
     this.checkJWT();
+    this.prepareDate();
     this.getCurrentUser();
     this.getListOrder();
     this.calSubTotal();
@@ -95,6 +103,23 @@ export class ShopingCartComponent implements OnInit {
     let tempJWT = this.jwtService.getJWT();
     if(tempJWT == null || tempJWT == '')
       this.route.navigate(['/mainlayout/login']);
+  }
+
+  prepareDate(): void{
+    //ngay min la 2 ngay sau ngay hom nay moi bat dau ship hang
+    //ngay max la 30 ngay sau ngay hom nay
+
+    let tempDateInSecond = new Date().getTime();
+    //cong them 2 ngay ( 2 * 24 * 3600) vao tempDate hien tai
+    tempDateInSecond += 2 * 24 * 3600 * 1000;
+    this.minDate = new Date(tempDateInSecond);
+
+    tempDateInSecond = new Date().getTime();
+    //cong them 30 ngay ( 30 * 24 * 3600) vao tempDate hien tai
+    tempDateInSecond += 30 * 24 * 3600 * 1000;
+    this.maxDate = new Date(tempDateInSecond);
+
+
   }
 
   getCurrentUser(): void{
@@ -132,27 +157,24 @@ export class ShopingCartComponent implements OnInit {
   // }
 
   checkout(): void{
-    let newOrderMaster = new OrderMaster();
+    //this.newOrderMaster = new OrderMaster();
 
-
-    newOrderMaster.creDate = this.getCurrentDateTime();
-    newOrderMaster.shipDate = '2019-06-24T05:00:00.000Z';
+    this.newOrderMaster.creDate = this.getCurrentDateTime();
     //newOrderMaster.orderID = 2;
-    newOrderMaster.userEntity = new UserEntity();
-    newOrderMaster.userEntity.userID = 1;
+    this.newOrderMaster.userEntity = this.currentUser;
 
 
     let url = listUrlAPI.find(url => url.name === 'orderMasterResource');
     console.log(this.logClass + url.path);
-    console.log(this.logClass + ' post OrderMaster ' + newOrderMaster.creDate);
-    this.http.post<OrderMaster>(url.path, newOrderMaster, {observe: 'response'})
+    console.log(this.logClass + ' post OrderMaster ' + this.newOrderMaster.creDate);
+    this.http.post<OrderMaster>(url.path, this.newOrderMaster, {observe: 'response'})
       .subscribe(
             //day la doan lay Response tra ve
             response => {
                           console.log('HTTP response', response.status);
                           console.log('checkout OrderMaster: ' + response.body.orderID);
-                          newOrderMaster.orderID = response.body.orderID;
-                          this.saveOrderDetail(newOrderMaster);
+                          this.newOrderMaster.orderID = response.body.orderID;
+                          this.saveOrderDetail(this.newOrderMaster);
 
 
                         },
