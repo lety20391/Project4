@@ -68,6 +68,7 @@ export class DatingAnswerComponent implements OnInit {
   cancelMyRequest(index: number): void{
     console.log(this.logClass + ' Cancel Dating for: ' + this.listAnswer[index].petRecieveEntity.petName);
     this.listAnswer[index].specialStatus = 2;
+    this.listAnswer[index].isNewNotification = true;
     this.sendChangedAnswer(this.listAnswer[index]);
   }
 
