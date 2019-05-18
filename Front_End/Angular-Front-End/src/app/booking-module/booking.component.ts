@@ -149,7 +149,7 @@ export class BookingComponent implements OnInit {
           {
                   console.log("booking ok : " + JSON.stringify(response.body));
                   this.clearLocalStorage();
-                  
+
                   window.location.reload();
           }
         }
@@ -186,7 +186,7 @@ export class BookingComponent implements OnInit {
       // this.booknewService.petEntity.petID = this.tempID;
       this.booknewService.bookingDate = this.selectedBMDate;
       this.booknewService.message = this.selectedMessage;
-      this.booknewService.petEntity.petID = this.selectedPet.petID;
+      // this.booknewService.petEntity.petID = this.selectedPet.petID;
       console.log("this is service " + JSON.stringify(this.booknewService));
       this.listBookingDetail.push(this.booknewService);
       this.saveToLocalStorage();

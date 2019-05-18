@@ -68,15 +68,18 @@ public class PetEntity {
 //    @Column(name="UserOwner")
 //    private Long UserID;
 //    
+    
     @OneToMany(mappedBy = "PetRequestEntity", fetch = FetchType.EAGER)
     private List<DatingDetailEntity> listRequestDatingDetail;
     
     @OneToMany(mappedBy = "PetRecieveEntity", fetch = FetchType.EAGER)
     private List<DatingDetailEntity> listReciveDatingDetail;
-    
+    @OneToMany(mappedBy = "PetEntity", fetch = FetchType.EAGER)
+    private List<bookingDetailEntity> listBookingDetail;
     @ManyToOne
     @JoinColumn(name = "userID")
-    private UserEntity userEntity;
+    private 
+            UserEntity userEntity;
 
 
     public PetEntity() {
@@ -89,6 +92,14 @@ public class PetEntity {
         this.PetStatus = PetStatus;
         this.PetPrice = PetPrice;
         this.PetDOB = PetDOB;
+    }
+
+//    public List<bookingDetailEntity> getListBookingDetail() {
+//        return listBookingDetail;
+//    }
+
+    public void setListBookingDetail(List<bookingDetailEntity> listBookingDetail) {
+        this.listBookingDetail = listBookingDetail;
     }
 
     public Long getPetID() {
