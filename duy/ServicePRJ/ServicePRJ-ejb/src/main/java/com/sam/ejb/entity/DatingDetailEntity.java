@@ -26,7 +26,8 @@ import javax.persistence.Table;
 @NamedQueries
         ({
             @NamedQuery(name="dDetail.findAll",query = "SELECT d FROM DatingDetailEntity d"),
-            @NamedQuery(name="dDetail.findByRecieved",query = "SELECT d FROM DatingDetailEntity d WHERE d.PetRecieveEntity.petID = :id")
+            @NamedQuery(name="dDetail.findByRecieved",query = "SELECT d FROM DatingDetailEntity d WHERE d.PetRecieveEntity.petID = :id"),
+            @NamedQuery(name="dDetail.findByRequest",query = "SELECT d FROM DatingDetailEntity d WHERE d.PetRequestEntity.petID = :id")
 //            @NamedQuery(name="dDetail.searchRequestByPetID", query ="SELECT d FROM DatingDetailEntity d WHERE d.PetID = :id ")
         })
 public class DatingDetailEntity {
@@ -43,6 +44,13 @@ public class DatingDetailEntity {
     @Column(name="isAccepted")
     private Boolean IsAccepted;
     
+    @Column(name="specialStatus", columnDefinition = "INT CHECK (specialStatus <= 3)")
+    private Integer SpecialStatus;
+    
+    @Column(name="isNewNotification" , columnDefinition = "BIT default 0")
+    private Boolean IsNewNotification;
+    
+    
     @ManyToOne
     @JoinColumn(name = "petRequest_ID")
     private PetEntity PetRequestEntity;
@@ -58,12 +66,19 @@ public class DatingDetailEntity {
     public DatingDetailEntity() {
     }
 
-    public DatingDetailEntity(Long datingDetailID, Date DatingDate, String DatingLocation, Boolean IsAccepted) {
+    public DatingDetailEntity(Long datingDetailID, Date DatingDate, String DatingLocation, Boolean IsAccepted, Integer SpecialStatus, Boolean IsNewNotification, PetEntity PetRequestEntity, PetEntity PetRecieveEntity, DatingMasterEntity DatingMasterEntity) {
         this.datingDetailID = datingDetailID;
         this.DatingDate = DatingDate;
         this.DatingLocation = DatingLocation;
         this.IsAccepted = IsAccepted;
+        this.SpecialStatus = SpecialStatus;
+        this.IsNewNotification = IsNewNotification;
+        this.PetRequestEntity = PetRequestEntity;
+        this.PetRecieveEntity = PetRecieveEntity;
+        this.DatingMasterEntity = DatingMasterEntity;
     }
+
+    
 
     public Long getDatingDetailID() {
         return datingDetailID;
@@ -119,6 +134,22 @@ public class DatingDetailEntity {
 
     public void setDatingMasterEntity(DatingMasterEntity DatingMasterEntity) {
         this.DatingMasterEntity = DatingMasterEntity;
+    }
+
+    public Integer getSpecialStatus() {
+        return SpecialStatus;
+    }
+
+    public void setSpecialStatus(Integer SpecialStatus) {
+        this.SpecialStatus = SpecialStatus;
+    }
+
+    public Boolean getIsNewNotification() {
+        return IsNewNotification;
+    }
+
+    public void setIsNewNotification(Boolean IsNewNotification) {
+        this.IsNewNotification = IsNewNotification;
     }
 
     

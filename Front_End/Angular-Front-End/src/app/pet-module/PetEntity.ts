@@ -15,4 +15,6 @@ export class PetEntity {
   petListImage: string[] = [];
   listDatingDetail: DatingDetailEntity[] = [];
   totalDatingRequestNeedAccept: number;
+  totalNewDatingAnswer: number;
+  listAnswerDetail: DatingDetailEntity[] = [];
 }

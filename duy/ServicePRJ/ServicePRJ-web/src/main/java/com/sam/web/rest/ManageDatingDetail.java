@@ -71,6 +71,16 @@ public class ManageDatingDetail {
         return datingDetailSessionBeanLocal.getListDatingReceivedByPetID(petID);
     }
     
+    @GET
+    @Path("/listRequestFrom/{petID}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<DatingDetailEntity> getDatingRequestFromPet(@PathParam("petID") Long petID) {
+        //TODO return proper representation object
+        //throw new UnsupportedOperationException();
+        System.out.println(logClass + " getDatingRequestFromPet");
+        return datingDetailSessionBeanLocal.getListDatingRequestByPetID(petID);
+    }
+    
     @POST
     @Path("/Post")
     @Produces(MediaType.APPLICATION_JSON)

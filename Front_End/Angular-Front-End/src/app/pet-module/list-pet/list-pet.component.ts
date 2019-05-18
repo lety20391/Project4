@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { Location } from '@angular/common';
 import {JWTHeaderService} from '../../jwtheader.service';
+import {UserProfileComponent} from '../../register-module/user-profile/user-profile.component';
 
 @Component({
   selector: 'app-list-pet',
@@ -26,6 +27,9 @@ export class ListPetComponent implements OnInit {
   currentPet: PetEntity = new PetEntity();
   petImageUrl: string;
   currentDating: DatingDetailEntity = new DatingDetailEntity();
+
+  //setting danh cho detail-dating
+  isShowDetailDating: boolean = false;
 
 
   constructor(
@@ -117,8 +121,45 @@ export class ListPetComponent implements OnInit {
                                   item.totalDatingRequestNeedAccept = 0;
                                   item.listDatingDetail.forEach(
                                     datingDetail => {
-                                      if(datingDetail.isAccepted == false)
+                                      if(datingDetail.specialStatus == 0 && datingDetail.isNewNotification == true)
                                         item.totalDatingRequestNeedAccept += 1;
+                                    }
+                                  );
+                                }
+                  );
+
+                  //goi len server de lay danh sach Answer Detail tra ve
+                  this.http.get<DatingDetailEntity[]>(this.urlAPI.path + '/listRequestFrom/' + item.petID)
+                    .subscribe(
+                      result => {
+                                  console.log(this.logClass + ' Dating Load:' + result.length);
+                                  //gan ket qua tra ve vao thuoc tinh petListImage
+                                  item.listAnswerDetail = result;
+                                  item.totalNewDatingAnswer = 0;
+                                  item.listAnswerDetail.forEach(
+                                    ansDetail => {
+
+                                      //tinh so luong new Answer de lam notification
+                                      if(ansDetail.isNewNotification == true
+                                            && (ansDetail.specialStatus == 1 || ansDetail.specialStatus == 3))
+                                        item.totalNewDatingAnswer += 1;
+
+                                      //load image cua Pet ve
+                                      console.log(this.logClass + " Answer: getImagePath");
+                                      this.urlAPI = listUrlAPI.find(url => url.name === 'getAllImageResource');
+                                      console.log(this.logClass + this.urlAPI.path);
+
+                                      //goi len server de lay danh sach hinh anh ve
+                                      this.http.get<string[]>(this.urlAPI.path + '/Pet/' + ansDetail.petRecieveEntity.petID)
+                                      .subscribe(
+                                        result => {
+                                                    console.log(this.logClass + ' Image Load:' + result);
+                                                    //gan ket qua tra ve vao thuoc tinh petListImage
+                                                    ansDetail.petRecieveEntity.petListImage = result;
+                                                  }
+                                      );
+
+
                                     }
                                   );
                                 }
@@ -234,11 +275,46 @@ export class ListPetComponent implements OnInit {
   getDatingSelected(event: Event): void{
     let tempDating = new DatingDetailEntity();
     tempDating = JSON.parse(JSON.stringify(event));
+
+    //kiem tra neu currentDating va tempDating la 1, chi khac 1 so thuoc tinh
+    //thi update len database
+    //neu khong thi gan currentDating = tempDating
     if( (tempDating.datingDetailID == this.currentDating.datingDetailID) && (tempDating.isAccepted != this.currentDating.isAccepted ))
       this.updateCurrentDating(tempDating);
+
     this.currentDating = tempDating;
     console.log(this.logClass + 'get Selected Dating isAccepted: ' + this.currentDating.isAccepted);
     console.log(this.logClass + ' get Selected Dating from: '+ this.currentDating.petRequestEntity.petName);
+
+    //load image cua Pet ve
+    console.log(this.logClass + " getCurrentDating: getImagePath");
+    this.urlAPI = listUrlAPI.find(url => url.name === 'getAllImageResource');
+    console.log(this.logClass + this.urlAPI.path);
+
+    //goi len server de lay danh sach hinh anh ve
+    this.http.get<string[]>(this.urlAPI.path + '/Pet/' + this.currentDating.petRequestEntity.petID)
+    .subscribe(
+      result => {
+                  console.log(this.logClass + ' Image Load:' + result);
+                  //gan ket qua tra ve vao thuoc tinh petListImage
+                  this.currentDating.petRequestEntity.petListImage = result;
+                  this.isShowDetailDating = true;
+                }
+    );
+
+
+  }
+
+  changeThisDating(event: Event): void{
+    let tempDating = new DatingDetailEntity();
+    tempDating = JSON.parse(JSON.stringify(event));
+    this.updateCurrentDating(tempDating);
+  }
+
+  catchChangedAnswer(event: Event): void{
+    let tempDating = new DatingDetailEntity();
+    tempDating = JSON.parse(JSON.stringify(event));
+    this.updateCurrentDating(tempDating);
   }
 
   openDeleteDialog(): void {

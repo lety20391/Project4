@@ -25,14 +25,14 @@
           							    <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Pet Detail</a>
           							  </li>
           							  <li class="nav-item" >
-          							    <a class="nav-link" id="information-tab" data-toggle="tab" href="#information" role="tab" aria-controls="information" aria-selected="false">Dating: Pet</a>
+          							    <a class="nav-link" id="information-tab" data-toggle="tab" href="#information" role="tab" aria-controls="information" aria-selected="false">Request Detail</a>
           							  </li>
           							  <li class="nav-item">
-          							    <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Location & Time</a>
+          							    <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Owner</a>
           							  </li>
-                          <!-- <li class="nav-item" *ngIf="currentDating.petRequestEntity.petID >= 0">
-          							    <a class="nav-link" [class.waitingAccept]="!currentDating.isAccepted" id="button-tab" data-toggle="tab" href="" role="tab" aria-controls="none" aria-selected="false">Accept</a>
-          							  </li> -->
+                          <li class="nav-item">
+          							    <a class="nav-link" id="button-tab" data-toggle="tab" href="#button" role="tab" aria-controls="button" aria-selected="false">Your Request</a>
+          							  </li>
           							</ul>
           							<div class="tab-content" id="myTabContent">
           								<!-- Tabs 1 -->
@@ -52,11 +52,11 @@
                       								<div class="box-gallery">
                       									<a href="http://localhost:9090/uploadedFiles/Pet/{{currentPet.petID}}/{{image}}" title="#{{i + 1}}_{{currentPet.petName}} ">
                       										<img src="http://localhost:9090/uploadedFiles/Pet/{{currentPet.petID}}/{{image}}" alt="" class="img-fluid">
-                      										<div class="project-info">
+                      										<!-- <div class="project-info">
                       											<div class="project-icon">
                       												<span class="fa fa-search"></span>
                       											</div>
-                      										</div>
+                      										</div> -->
                       									</a>
                       								</div>
                       							</div>
@@ -65,46 +65,107 @@
           								</div>
           								<!-- Tabs 2 -->
           								<div class="tab-pane fade" id="information" role="tabpanel" aria-labelledby="information-tab" >
-          									<!-- <p class="uk18 text-black mb-1">
-          										<strong>Product details  :</strong>
-          									</p> -->
-                            <!-- <app-pet-detail [currentPet]="currentDating.petRequestEntity"></app-pet-detail> -->
-
-                            <div class="col-12 col-sm-12 col-md-12" *ngIf="currentDating.petRequestEntity.petListImage ">
-
-
-                      						<div class="row popup-gallery gutter-5" >
-                      							<!-- ITEM 1 -->
-
-                      							<div class="col-sm-6 col-md-4" *ngFor="let image of currentDating.petRequestEntity.petListImage; let i = index">
-                      								<div class="box-gallery">
-                      									<a href="http://localhost:9090/uploadedFiles/Pet/{{currentDating.petRequestEntity.petID}}/{{image}}" title="#{{i + 1}}_{{currentPet.petName}} ">
-                      										<img src="http://localhost:9090/uploadedFiles/Pet/{{currentDating.petRequestEntity.petID}}/{{image}}" alt="" class="img-fluid">
-                      										<div class="project-info">
-                      											<div class="project-icon">
-                      												<span class="fa fa-search"></span>
-                      											</div>
-                      										</div>
-                      									</a>
-                      								</div>
-                      							</div>
+                                <!-- day la phan Location va DateTime -->
+                                <div class="row mt-5" *ngIf="currentDating.petRequestEntity.petID">
+                                  <!-- Item 1 -->
+                                    <div class="col-sm-6 col-md-6">
+                                      <div class="rs-icon-info-3 mb-5">
+                                        <div class="info-icon">
+                                          <i class="fa fa-home"></i>
+                                        </div>
+                                        <div class="info-text">
+                                          <h3 class="text-secondary">Location</h3>
+                                          {{currentDating.datingLocation}}
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <!-- Item 2 -->
+                                      <div class="col-sm-6 col-md-6">
+                                        <div class="rs-icon-info-3 mb-5">
+                                          <div class="info-icon">
+                                            <i class="fa fa-calendar"></i>
+                                          </div>
+                                          <div class="info-text">
+                                            <h3 class="text-secondary">Date/Time</h3>
+                                            {{currentDating.datingDate}}
+                                          </div>
+                                        </div>
+                                      </div>
                                 </div>
-                              </div>
+
+                                <!-- day la phan Location va DateTime -->
+
+                                <!-- day la phan Pet Detail -->
+                                <div class="row" *ngIf="currentDating.petRequestEntity.petID">
+
+                        					<div class="col-12 col-sm-6 col-md-6">
+                        						<div class="media-detail">
+                        							<img src="http://localhost:9090/uploadedFiles/Pet/{{currentDating.petRequestEntity.petID}}/{{currentDating.petRequestEntity.petListImage[0]}}" alt="" class="img-fluid">
+                        						</div>
+                                    <div class="row mt-3">
+                        							<div class="row popup-gallery gutter-5">
+                        								<div class="col" *ngFor='let image of currentDating.petRequestEntity.petListImage'>
+                        									<a href="http://localhost:9090/uploadedFiles/Pet/{{currentDating.petRequestEntity.petID}}/{{image}}" title='abc'>
+                        										<img src="http://localhost:9090/uploadedFiles/Pet/{{currentDating.petRequestEntity.petID}}/{{image}}" alt="" class="border-img img-fluid">
+                        									</a>
+                        								</div>
+                        							</div>
+                        						</div>
+                        					</div>
+
+
+                        					<div class="col-12 col-sm-6 col-md-6">
+                        						<div class="single-shop">
+                        							<p class="title-heading text-secondary mb-1">
+                        								{{currentDating.petRequestEntity.petName}}
+                        							</p>
+                        							<div class="price">Dating: ${{currentDating.petRequestEntity.petPrice}}</div>
+                        							<div class="price">
+                        								{{currentDating.petRequestEntity.petBreed}}
+                        							</div>
+                        							<p class="mt-4">{{currentDating.petRequestEntity.petStory}}</p>
+                        							<div class="spacer-50"></div>
+                        						</div>
+                        					</div>
+
+                        					<div class="col-12 col-sm-12 col-md-12">
+                        						<div class="spacer-70"></div>
+                        						<div class="rs-tabs">
+                        							<ul class="nav nav-tabs" id="myTab" role="tablist">
+                        							  <li class="nav-item">
+                        							    <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">{{currentDating.petRequestEntity.petName}}</a>
+                        							  </li>
+                        							</ul>
+                        							<div class="tab-content" id="myTabContent">
+                        								<!-- Tabs 1 -->
+                        								<div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                        									<p class="uk18 text-black mb-1">
+                        										<strong>About {{currentDating.petRequestEntity.petName}} :</strong>
+                        									</p>
+                        									<ul >
+                        										<li>{{currentDating.petRequestEntity.petStory}}</li>
+                        									</ul>
+                        								</div>
+
+                        							</div>
+                        						</div>
+                        						<!-- end tabs -->
+
+                        					</div>
+                        				</div>
+                                <!-- day la phan Pet Detail -->
+
 
 
           								</div>
           								<!-- Tabs 3 -->
           							  <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
-            								<div class="reviews">
-                              <h3 class="section-heading text-primary no-after mb-4">
-              									Location: {{currentDating.datingLocation}}
-              								</h3>
-                              <h3 class="section-heading text-primary no-after mb-4">
-              									Time: {{currentDating.datingDate}}
-              								</h3>
+                            <app-user-profile [currentUser]="currentDating.petRequestEntity.userEntity"></app-user-profile>
 
-
-            								</div>
+          							  </div>
+                          <!-- tab 4: your Request -->
+                          <div class="tab-pane fade" id="button" role="tabpanel" aria-labelledby="button-tab">
+            								<app-dating-answer [listAnswer] = "currentPet.listAnswerDetail" (changedAnswer)="catchChangedAnswer($event)"></app-dating-answer>
           							  </div>
           							</div>
           						</div>
@@ -116,9 +177,10 @@
                   <!-- right bar -->
                   <div class="col-12 col-sm-3 col-md-3" *ngIf="currentPet.petID >= 0">
                     <h2 class="section-heading text-primary no-after mb-4">
-    									Dating request
+    									Recieved Request
     								</h2>
-                    <app-confirm-dating [listDating]='currentPet.listDatingDetail' (selectedDating)="getDatingSelected($event)" ></app-confirm-dating>
+                    <app-confirm-dating [listDating]='currentPet.listDatingDetail' (selectedDating)="getDatingSelected($event)" (changeDating)="changeThisDating($event)" >
+                    </app-confirm-dating>
                   </div>
                   <!-- right bar -->
 

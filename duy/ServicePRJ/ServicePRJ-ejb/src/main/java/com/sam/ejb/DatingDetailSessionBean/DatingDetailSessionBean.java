@@ -6,10 +6,12 @@
 package com.sam.ejb.DatingDetailSessionBean;
 
 import com.sam.ejb.entity.DatingDetailEntity;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceUnit;
 
 /**
@@ -61,5 +63,32 @@ public class DatingDetailSessionBean implements DatingDetailSessionBeanLocal {
         System.out.println(logClass + " update Dating Detail: " + updatedDating.getDatingDetailID() + " from:" + updatedDating.getPetRequestEntity().getPetImage());
         em = entityManagerFactory.createEntityManager();
         return em.merge(updatedDating);
+    }
+
+    @Override
+    public List<DatingDetailEntity> getListDatingRequestByPetID(Long petID) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println(logClass + " getListDatingRequestByPetID: " + petID);
+        em = entityManagerFactory.createEntityManager();
+        List datingDetailList = em.createNamedQuery("dDetail.findByRequest").setParameter("id", petID).getResultList();
+        
+        
+        List datingRequestList = null;
+        try {
+            datingRequestList = em.createNamedQuery("dDetail.findByRequest").setParameter("id", petID).getResultList();
+        } catch (NoResultException nre) {
+            //bug neu khong tim thay ket qua
+        }
+        
+        if (datingRequestList != null){
+            //neu danh sach tra ve khac null thi lay danh sach nay return ve
+            System.out.println(logClass + " return Dating List: " + datingDetailList.size());
+            return datingRequestList;
+        
+        }
+        
+        //neu danh sach tra ve bi loi thi se tao 1 empty list de return ve tranh bi loi
+        datingRequestList = new ArrayList();
+        return datingRequestList;
     }
 }

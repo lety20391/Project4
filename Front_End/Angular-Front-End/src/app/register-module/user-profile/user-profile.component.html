@@ -1,0 +1,73 @@
+<div class="row">
+
+					<!-- Item 1 -->
+					<div class="col-12 col-sm-6 col-md-4">
+						<div class="rs-team-1 mb-5">
+							<div class="media">
+								<img src="http://localhost:9090/uploadedFiles/User/{{currentUser.userID}}/{{currentUser.listUserImage[0]}}" alt="" class="img-fluid">
+								<!-- <div class="sosmed-icon">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</div> -->
+							</div>
+							<div class="body">
+								<div class="title">{{currentUser.userName}}</div>
+								<div class="text-primary">{{currentUser.userMail}}</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-12 col-sm-6 col-md-8">
+						<h3 class="text-secondary mb-1">{{currentUser.userName}}</h3>
+						<p class="text-primary">{{currentUser.userMail}}</p>
+
+						<div class="row mt-5" >
+							<!-- Item 1 -->
+								<div class="col-sm-6 col-md-6">
+									<div class="rs-icon-info-3 mb-5">
+										<div class="info-icon">
+											<i class="fa fa-home"></i>
+										</div>
+										<div class="info-text">
+											<h3 class="text-secondary">Mobile</h3>
+											{{currentUser.userTel}}
+										</div>
+									</div>
+								</div>
+								<!-- Item 2 -->
+									<div class="col-sm-6 col-md-6">
+										<div class="rs-icon-info-3 mb-5">
+											<div class="info-icon">
+												<i class="fa fa-calendar"></i>
+											</div>
+											<div class="info-text">
+												<h3 class="text-secondary">DOB</h3>
+												{{currentUser.userDOB}}
+											</div>
+										</div>
+									</div>
+						</div>
+
+					</div>
+
+
+</div>
+
+<div class="col-12 col-sm-12 col-md-12">
+			<div class="row popup-gallery gutter-5">
+				<!-- ITEM 1 -->
+				<div class="col-sm-6 col-md-4" *ngFor="let image of currentUser.listUserImage; let i = index">
+					<div class="box-gallery">
+						<a href="http://localhost:9090/uploadedFiles/User/{{currentUser.userID}}/{{image}}" title="#{{i + 1}}_{{currentUser.userName}} ">
+							<img src="http://localhost:9090/uploadedFiles/User/{{currentUser.userID}}/{{image}}" alt="" class="img-fluid">
+							<div class="project-info">
+								<div class="project-icon">
+									<span class="fa fa-search"></span>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+		</div>
+	</div>

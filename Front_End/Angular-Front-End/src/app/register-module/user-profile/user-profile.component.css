@@ -1,0 +1,4 @@
+.box-gallery a img{
+  height: 250px;
+  object-fit: cover;
+}

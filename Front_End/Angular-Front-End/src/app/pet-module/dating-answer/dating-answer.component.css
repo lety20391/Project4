@@ -1,0 +1,19 @@
+img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+}
+
+.disableFunction{
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.isNewNoti{
+  border-left: 5px solid #F7941D;
+}
+
+.comments-box .media.comment{
+  background-color: #ecf0f1;
+  padding: 10px;
+}
