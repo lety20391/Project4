@@ -18,6 +18,7 @@ import { DatingRequestComponent } from './dating-request/dating-request.componen
 import {SimpleDialogComponent} from '../UIComponent/simple-dialog/simple-dialog.component';
 import { ConfirmDatingComponent } from './confirm-dating/confirm-dating.component';
 import { DatingAnswerComponent } from './dating-answer/dating-answer.component';
+import { DetailRequestComponent } from './detail-request/detail-request.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { DatingAnswerComponent } from './dating-answer/dating-answer.component';
     DatingRequestComponent,
     SimpleDialogComponent,
     ConfirmDatingComponent,
-    DatingAnswerComponent
+    DatingAnswerComponent,
+    DetailRequestComponent
   ],
   imports: [
     CommonModule,
