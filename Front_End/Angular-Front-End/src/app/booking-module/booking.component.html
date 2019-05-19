@@ -62,7 +62,7 @@
 								<div class="col-sm-6 col-md-12">
 									<div class="form-group">
 										<select class="form-control" name ="listService" [(ngModel)]="sertempID" (ngModelChange)="setSelectedService($event)" value="name" >
-												<option value="a" disabled>Please choose a service</option>	
+												<option value="a" disabled>Please choose a service</option>
 												<option *ngFor="let ser of listservice" [ngValue]="ser.serID" >
 														{{ser.serName}}
 												</option>
@@ -74,7 +74,7 @@
                 <div class="col-sm-6 col-md-12">
                   <div class="form-group">
 										<input type="text" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3" [min]="min" id="name" name="name" value="" class="inputtext form-control" placeholder="Enter Service Date/Time" [(ngModel)]="selectedBMDate">
-										<owl-date-time [pickerType]="'calendar'" #dt3	></owl-date-time>
+										<owl-date-time  #dt3	></owl-date-time>
                     <div class="help-block with-errors"></div>
                   </div>
                 </div>

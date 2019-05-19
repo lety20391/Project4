@@ -41,11 +41,11 @@ Lots of heated and air conditioned indoor play space, which opens up into our ou
 
 GO
 Insert into dbo.tbBookingMaster ([creDate] , [bmStatus] , [userID]) values
-('2019-04-21',1,1),
-('2019-04-22',1,2),
-('2019-04-23',1,3),
-('2019-04-24',1,4),
-('2019-04-25',1,5)
+('2019-05-21',1,1),
+('2019-05-22',1,2),
+('2019-05-23',1,3),
+('2019-05-24',1,4),
+('2019-05-25',1,5)
 
 GO
 Insert into dbo.tbPet ( [petDating] ,[petBreed], [petDOB], [petImage], [petName], [petPrice], [petStatus], [userID], [petStory]) values
@@ -60,15 +60,15 @@ Insert into dbo.tbPet ( [petDating] ,[petBreed], [petDOB], [petImage], [petName]
 
 GO
 Insert into dbo.tbBookingDetail ([bookingDate], [bdstatus],[bookingID], [serID],[petID]) values
-('2019-4-15',1,1,1,1),
-('2019-4-16',1,2,2,2),
-('2019-4-17',1,3,1,1),
-('2019-4-18',1,2,3,2),
-('2019-4-19',1,4,1,3),
-('2019-4-20',1,1,5,1),
-('2019-4-21',1,2,4,3),
-('2019-4-22',1,3,3,5),
-('2019-4-23',1,5,1,4)
+('2019-05-22T17:00',1,1,1,1),
+('2019-05-22T10:00',1,2,2,2),
+('2019-05-23T12:00',1,3,1,1),
+('2019-05-23T15:00',1,2,3,2),
+('2019-05-23T18:00',1,4,1,3),
+('2019-05-25T10:00',1,1,5,1),
+('2019-05-26T15:00',1,2,4,3),
+('2019-05-27T18:00',1,3,3,5),
+('2019-05-31T09:00',1,5,1,4)
 
 GO
 Insert into dbo.datingMasterEntity  ( creDate, locat, [status], userID ) values

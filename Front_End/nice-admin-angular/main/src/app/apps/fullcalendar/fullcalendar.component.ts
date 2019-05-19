@@ -36,6 +36,7 @@ import {
   CalendarEventTimesChangedEvent
 } from 'angular-calendar';
 import { PetEntity } from 'src/app/ecommerce/Entity/PetEntity';
+import { formatDate } from '@angular/common';
 
 const colors: any = {
   red: {
@@ -71,10 +72,11 @@ export class FullcalendarComponent {
   // --------event data---------
   startDate: string;
   caName: string;
-  bookPet: PetEntity = new PetEntity();
+  bookPet: string;
   bookMessage: string;
   bookOwner: string;
   myPet: string;
+  bookPhone: string;
   // --------end----------------
   modalData: {
     action: string;
@@ -174,13 +176,22 @@ export class FullcalendarComponent {
               this.listBM = JSON.parse(JSON.stringify(response.body));
                   this.listBM.forEach( item  =>
                     {
-
                   console.log(item);
-
+                  // item = new BookingDetailEntity();
+                  console.log(item.bookingDate);
+                  // let currentDate = item.bookingDate;
+                  // let stringDate = '';
+                  // stringDate = formatDate(currentDate, 'yyyy-MM-dd', 'en-US') + 'T' + formatDate(currentDate, 'hh:mm:ss', 'en-US');
+                  // console.log( "date: " + stringDate);
                   this.startDate =  item.bookingDate;
+                  console.log("time is: " + this.startDate);
                   this.caName = item.serviceEntity.serName;
                   this.bookMessage = item.message;
-                  // this.bookPet = item.petEntity;
+                  this.bookPet = item.petEntity.petName;
+                  this.myPet = item.petEntity.petBreed;
+                  this.bookOwner = item.bookingMasterEntity.userEntity.userName;
+                  this.bookPhone = item.bookingMasterEntity.userEntity.userTel;
+                  // console.log("this is pet: " + this.bookPet + item.petEntity.petName);
                   // this.myPet = this.bookPet.PetName
                   // this.bookOwner = item.bookingMasterEntity.userEntity.UserID;
                   // console.log(this.bookOwner);
@@ -188,11 +199,18 @@ export class FullcalendarComponent {
                   // console.log("bookowner " + JSON.stringify(this.bookOwner))
                   // this.bookPet = item.petEntity.PetName;
                   let event = {
-                    start : startOfDay(this.startDate),
-                    title : this.caName,
+                    start : addHours((this.startDate),0),
+                    // start: startOfDay((item.bookingDate)),
+                    // end: endOfDay(this.startDate),
+                    title : this.caName + " for " + this.myPet,
+                    PetName: this.bookPet,
+                    PetBreed : this.myPet,
                     Message: this.bookMessage,
-                    // pet: this.myPet
+                    PetOwner: this.bookOwner,
+                    Phone: this.bookPhone,
+
                   }
+                  console.log("start: " + JSON.stringify(event.start))
                   console.log(event);
                 this.events.push(event);
                 this.refresh.next();

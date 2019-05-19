@@ -184,7 +184,12 @@ export class BookingComponent implements OnInit {
       this.booknewService.bdstatus = this.currentStatus;
       // this.booknewService.serviceEntity.serID = this.selectedService.serID;
       // this.booknewService.petEntity.petID = this.tempID;
-      this.booknewService.bookingDate = this.selectedBMDate;
+      // this.booknewService.bookingDate = this.selectedBMDate;
+      let currentDate = new Date();
+      let stringDate = '';
+      stringDate = formatDate(currentDate, 'yyyy-MM-dd', 'en-US') + 'T' + formatDate(currentDate, 'hh:mm:ss', 'en-US');
+      console.log(this.logClass + "date: " + stringDate);
+      this.booknewService.bookingDate = stringDate;
       this.booknewService.message = this.selectedMessage;
       // this.booknewService.petEntity.petID = this.selectedPet.petID;
       console.log("this is service " + JSON.stringify(this.booknewService));
