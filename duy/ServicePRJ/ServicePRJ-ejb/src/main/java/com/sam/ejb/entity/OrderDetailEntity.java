@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -27,7 +28,9 @@ import javax.persistence.Table;
 @NamedQueries
         ({
             @NamedQuery(name="od.findAll",query = "SELECT od FROM OrderDetailEntity od"),
-            @NamedQuery(name="od.sort", query = "SELECT od FROM OrderDetailEntity od ORDER BY od.Qty DESC" )
+            @NamedQuery(name="od.sort", query = "SELECT od FROM OrderDetailEntity od ORDER BY od.Qty DESC" ),
+            @NamedQuery(name="od.getTotalQtyGroupByProduct", query = "SELECT od.productEntity.ProID, SUM(od.Qty) FROM OrderDetailEntity od GROUP BY od.productEntity.ProID" )
+            
         })
 public class OrderDetailEntity implements Serializable {
 

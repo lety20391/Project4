@@ -5,6 +5,7 @@
  */
 package com.sam.web.rest;
 
+import com.google.gson.Gson;
 import com.sam.ejb.OrderDetailSessionBean.OrderDetailSessionBeanLocal;
 import com.sam.ejb.entity.OrderDetailEntity;
 import java.util.List;
@@ -91,5 +92,13 @@ public class ManageOrderDetail {
     public Response deleteById(@PathParam("odId") Long odId){
         orderDetailSessionBeanLocal.deleteOrderDetail(odId);
         return Response.status(200).entity(new OrderDetailEntity()).build();
+    }
+    
+    @GET
+    @Path("/Report/TotalQtyByProduct")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response totalQtyByProduct(){
+        List<Object> result = orderDetailSessionBeanLocal.getTotalQtyGroupByProduct();
+        return Response.status(200).entity(new Gson().toJson(result)).build();
     }
 }
