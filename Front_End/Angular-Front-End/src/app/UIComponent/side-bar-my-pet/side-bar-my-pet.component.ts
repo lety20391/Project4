@@ -19,6 +19,7 @@ export class SideBarMyPetComponent implements OnInit {
 
   sendPetDetail(selectedPet : PetEntity): void{
     console.log('--Side bar my pet: ' + selectedPet.petName);
+    //khoi phat su kien pet duoc lua chon
     this.petSelected.emit(selectedPet);
   }
 
