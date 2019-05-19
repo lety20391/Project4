@@ -5,18 +5,18 @@
                 <h4 class="card-title">Form Add New Pet</h4>
                 <h6 class="card-subtitle">This is the form Add new Pet for Admin
                 </h6>
-                <form #productForm="ngForm">
-                    <div [hidden]="productForm.submitted">
+                <form #petForm="ngForm">
+                    <div [hidden]="petForm.submitted">
 
                         <div class="form-group">
                             <label for="ID">ID</label>
-                            <input id="ID" name="ID" class="form-control" type ="number" [(ngModel)]="detailedPet.PetID">
+                            <input id="ID" name="ID" class="form-control" type ="number" [(ngModel)]="newPet.petID" readonly>
 
                         </div>
 
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input id="name" name="name" class="form-control" required minlength="3" maxlength="50" [(ngModel)]="detailedPet.PetName" #name="ngModel">
+                            <input id="name" name="name" class="form-control" required minlength="3" maxlength="50" [(ngModel)]="newPet.petName" #name="ngModel">
                             <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
                                 <div *ngIf="name.errors.required"> Name is required. </div>
                                 <div *ngIf="name.errors.minlength"> Name must be at least 3 characters long. </div>
@@ -27,11 +27,11 @@
 
                         <div class="form-group">
                             <label for="Description">Breed</label>
-                            <input id="Description" name="Description" class="form-control" required minlength="10" maxlength="50" [(ngModel)]="detailedPet.PetBreed" #des="ngModel">
+                            <input id="Description" name="Description" class="form-control" required minlength="3" maxlength="20" [(ngModel)]="newPet.petBreed" #des="ngModel">
                             <div *ngIf="des.invalid && (des.dirty || des.touched)" class="alert alert-danger">
                                 <div *ngIf="des.errors.required"> Breed is required. </div>
-                                <div *ngIf="des.errors.minlength"> Breed must be at least 10 characters long. </div>
-                                <div *ngIf="des.errors.maxlength"> Breed can not greater than 50 characters long. </div>
+                                <div *ngIf="des.errors.minlength"> Breed must be at least 3 characters long. </div>
+                                <div *ngIf="des.errors.maxlength"> Breed can not greater than 20 characters long. </div>
                             </div>
                         </div>
 
@@ -40,7 +40,7 @@
                             <div class="form-group">
                                 <label for="Price">Price</label>
                                 <div class="form-control">
-                                  <input style="border:none" id="Price" name="Price" class="form-control" required type ="number" min="1" max="10000" [(ngModel)]="detailedPet.PetPrice" #price ="ngModel">
+                                  <input style="border:none" id="Price" name="Price" class="form-control" required type ="number" min="1" max="10000" [(ngModel)]="newPet.petPrice" #price ="ngModel">
                                   <div *ngIf="price.invalid && (price.dirty || price.touched)" class="alert alert-danger">
                                       <div *ngIf="price.errors.required"> Price is required. </div>
                                       <div *ngIf="price.errors.min"> Price must be greater than 0. </div>
@@ -54,7 +54,7 @@
                             <div class="form-group">
                                 <label for="Color">DOB</label>
                                 <div class="form-control">
-                                  <input style="border:none" id="Color" name="Color" class="form-control" required minlength="2" maxlength="20" [(ngModel)]="detailedPet.PetDOB" #Color="ngModel">
+                                  <input style="border:none" id="Color" name="Color" class="form-control" required minlength="2" maxlength="20" [(ngModel)]="newPet.petODB" #Color="ngModel">
                                   <div *ngIf="Color.invalid && (Color.dirty || Color.touched)" class="alert alert-danger">
                                       <div *ngIf="Color.errors.required"> DOB is required. </div>
                                       <!-- <div *ngIf="name.errors.forbiddenName"> Name cannot be Bob. </div> -->
@@ -68,9 +68,9 @@
 
                                   <label for="status" style="margin-left:10px;">Status</label>
                                   <div class="form-control">
-                                    <input id="status" name="status" type="checkbox" [(ngModel)]="detailedPet.PetStatus" style="margin-left:10px;">
-                                    <span class="btn btn-success" *ngIf="detailedPet.PetStatus" style="margin-left:10px;" >Activated</span>
-                                    <span class="btn btn-dark" *ngIf="!detailedPet.PetStatus" style="margin-left:10px;">Deactivated</span>
+                                    <input id="status" name="status" type="checkbox" [(ngModel)]="newPet.petStatus" style="margin-left:10px;">
+                                    <span class="btn btn-success" *ngIf="newPet.petStatus" style="margin-left:10px;" >Activated</span>
+                                    <span class="btn btn-dark" *ngIf="!newPet.petStatus" style="margin-left:10px;">Deactivated</span>
                                 </div>
                             </div>
                           </div>
@@ -86,13 +86,13 @@
 
                         </div>
 
-                        <button type="submit" class="btn btn-info btn-rounded" [disabled]="productForm.invalid">Create New</button>
-                        <button type="button" class="btn btn-inverse btn-rounded" (click)="productForm.resetForm({})">Reset</button>
+                        <button type="submit" class="btn btn-info btn-rounded" [disabled]="petForm.invalid" (click)="createPetInfo()">Create New</button>
+                        <button type="button" class="btn btn-inverse btn-rounded" (click)="petForm.resetForm({})">Reset</button>
 
                     </div>
-                    <div class="submitted-message" *ngIf="productForm.submitted">
-                        <p>You've submitted your hero, {{ productForm.value.name }}!</p>
-                        <button class="btn btn-inverse" (click)="productForm.resetForm({})">Add new hero</button>
+                    <div class="submitted-message" *ngIf="petForm.submitted">
+                        <p>You've submitted your Pet, {{ petForm.value.name }}!</p>
+                        <button class="btn btn-inverse" (click)="productForm.resetForm({})">Add new Pet</button>
                     </div>
                 </form>
             </div>
