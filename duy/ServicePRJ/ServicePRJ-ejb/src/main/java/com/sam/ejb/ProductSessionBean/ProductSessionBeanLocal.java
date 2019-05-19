@@ -17,6 +17,7 @@ import javax.ejb.Local;
 @Local
 public interface ProductSessionBeanLocal {
     public List<productEntity> listAll();
+    public List<productEntity> listByCate(Long cateID);
     public productEntity addProduct(productEntity product);
     public productEntity editProduct(productEntity product);
     public void deleteProduct(Long id);

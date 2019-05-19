@@ -43,12 +43,10 @@
             <div class="widget-title">
               Galleries
             </div>
-            <ul class="category-nav">
-              <li><a href="#">Foods</a></li>
-              <li><a href="#">Toys</a></li>
-              <li><a href="#">Outfits</a></li>
-              <li><a href="#">Accessories</a></li>
-            </ul>
+            <!-- <ul class="category-nav" *ngFor="let item of listCate">
+              <li><a href="#" >item.cateName</a></li>
+            </ul> -->
+            <app-gallery (selectedCate)="getProductByCate($event)"></app-gallery>
           </div>
 
           <div class="widget widget-text">

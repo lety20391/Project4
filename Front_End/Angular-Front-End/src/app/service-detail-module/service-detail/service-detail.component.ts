@@ -39,6 +39,7 @@ export class ServiceDetailComponent implements OnInit {
         result => {
                     console.log(this.logClass + ' Image Load');
                     this.listImage = result;
+                    
                   }
       );
     }

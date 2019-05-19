@@ -1,66 +1,23 @@
 <!-- CONTENT -->
-	<div id="class" class="">
+	<!-- <div id="class" class="">
 		<div class="content-wrap">
-			<div class="container">
+			<div class="container" >
 
-				<div class="row">
+				<div class="row"  >
 
 					<!-- Item 1 -->
-					<div class="col-12 col-sm-6 col-md-3">
+					<!-- <div class="col-12 col-sm-6 col-md-3" *ngFor="let item of listCategory">
   						<div class="rs-image-box">
       							<div class="media">
-      								<a href="#"><img src="http://localhost:9090/uploadedFiles/userUI/dummy-img-600x600-food.jpg" alt="" class="img-fluid"></a>
+      								<a href="#"><img src="http://localhost:9090/uploadedFiles/Category/{{item.cateID}}/{{item.listImage[0]}}"  alt="" class="img-fluid"></a>
       							</div>
-      							<div class="body-text">
-      								<h3 class="title"><a href="#">Pet Food</a></h3>
-      								We stock many of pet products to help you find the best formula and flavor available for your furry family member.
-      							</div>
-
+      							<div class="body-text"> -->
+      								<!-- <h3 class="title"><a href="#">{{item.cateName}}</a></h3> -->
+      								<!-- We stock many of pet products to help you find the best formula and flavor available for your furry family member. -->
+      							<!-- </div>
   						</div>
-					</div>
+					</div> -->
 
-					<!-- Item 2 -->
-					<div class="col-12 col-sm-6 col-md-3">
-  						<div class="rs-image-box">
-      							<div class="media">
-      								<a href="#"><img src="http://localhost:9090/uploadedFiles/userUI/dummy-img-600x600-toy.jpg" alt="" class="img-fluid"></a>
-      							</div>
-      							<div class="body-text">
-      								<h3 class="title"><a href="#">Pet Toy</a></h3>
-      								Find every kind of toy for every kind of pet at PetParadise, we carry a variety of appropriately-sized toys for your pet
-      							</div>
-  						</div>
-					</div>
-
-					<!-- Item 3 -->
-					<div class="col-12 col-sm-6 col-md-3">
-  						<div class="rs-image-box">
-      							<div class="media">
-      								<a href="#"><img src="http://localhost:9090/uploadedFiles/userUI/dummy-img-600x600-outfit.jpg" alt="" class="img-fluid"></a>
-      							</div>
-      							<div class="body-text">
-      								<h3 class="title"><a href="#">Pet Outfit</a></h3>
-      								Keep your best friend looking fashionable with the latest pet clothes, puppy pajamas, and other pet apparel
-      							</div>
-  						</div>
-					</div>
-					<!-- Item 4 -->
-					<div class="col-12 col-sm-6 col-md-3">
-							<div class="rs-image-box">
-										<div class="media">
-											<a href="#"><img src="http://localhost:9090/uploadedFiles/userUI/Accessories-720x340.jpg" alt="" class="img-fluid"></a>
-										</div>
-										<div class="body-text">
-											<h3 class="title"><a href="#">Pet's Accessories</a></h3>
-											Pet's Paradise offers quality products and accessories for a healthier, happier pet
-										</div>
-							</div>
-					</div>
-
-
-
-				</div>
-
-			</div>
-		</div>
-	</div>
+					<ul class="category-nav" *ngFor="let item of listCategory">
+						<li><a (click)="OnSelectedCate(item.cateID)" >{{item.cateName}}</a></li>
+					</ul>
