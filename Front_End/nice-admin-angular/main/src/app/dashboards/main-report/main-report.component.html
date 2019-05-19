@@ -178,8 +178,7 @@
                     </div>
                 </div>
                 <div class="sales ct-charts mt-5">
-                    <x-chartist class="earnings ct-charts" [data]="lineChart.data" [type]="lineChart.type" [options]="lineChart.options" [responsiveOptions]="lineChart.responsiveOptions"
-                        [events]="lineChart.events"> </x-chartist>
+                    <app-order-chart></app-order-chart>
                 </div>
             </div>
         </div>
@@ -350,7 +349,9 @@
                         </div>
                     </div>
                 </div>
-                <app-order-chart></app-order-chart>
+
+                <app-service-calendar></app-service-calendar>
+                <!-- <app-order-chart></app-order-chart> -->
                 <!-- <div class="m-t-30" style="height: 265px;">
                     <ngx-charts-bar-vertical [scheme]="colorScheme" [schemeType]="schemeType" [results]="single" [gradient]="gradient" [xAxis]="showXAxis"
                         [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"

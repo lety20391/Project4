@@ -20,6 +20,7 @@ import { Dashboard3Component } from './dashboard3/dashboard3.component';
 import { OrderChartComponent } from './order-chart/order-chart.component';
 import { ServiceCalendarComponent } from './service-calendar/service-calendar.component';
 import { MainReportComponent } from './main-report/main-report.component';
+import { DatingCalendarComponent } from './dating-calendar/dating-calendar.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { MainReportComponent } from './main-report/main-report.component';
     Dashboard3Component,
     OrderChartComponent,
     ServiceCalendarComponent,
-    MainReportComponent
+    MainReportComponent,
+    DatingCalendarComponent
   ]
 })
 export class DashboardModule { }

@@ -6,6 +6,7 @@ import { Dashboard3Component } from './dashboard3/dashboard3.component';
 import { OrderChartComponent } from './order-chart/order-chart.component';
 import { ServiceCalendarComponent } from './service-calendar/service-calendar.component';
 import { MainReportComponent } from './main-report/main-report.component';
+import { DatingCalendarComponent } from './dating-calendar/dating-calendar.component';
 
 export const DashboardRoutes: Routes = [
   {
@@ -49,6 +50,17 @@ export const DashboardRoutes: Routes = [
         component: ServiceCalendarComponent,
         data: {
           title: 'Service Report',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'Analytical Dashboard' }
+          ]
+        }
+      },
+      {
+        path: 'datingCalendar',
+        component: DatingCalendarComponent,
+        data: {
+          title: 'Dating Report',
           urls: [
             { title: 'Dashboard', url: '/dashboard' },
             { title: 'Analytical Dashboard' }
