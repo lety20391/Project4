@@ -42,6 +42,35 @@ export const EcomRoutes: Routes = [
           ]
         }
       },
+
+      // Product Category
+      {
+        path: 'products',
+        component: ProductComponent,
+        data: {
+          title: 'Products',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'Products' }
+          ]
+        }
+      },
+      {
+        path: 'addProduct',
+        component: AddProductComponent,
+        data: {
+          title: 'Add New Product',
+          urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Orders' }]
+        }
+      },
+      {
+        path: 'listProduct',
+        component: ListProductComponent,
+        data: {
+          title: 'List Product',
+          urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'List Product' }]
+        }
+      },
       {
         path: 'detailProduct/:id',
         component: DetailsComponent,
@@ -53,7 +82,17 @@ export const EcomRoutes: Routes = [
           ]
         }
       },
-
+      {
+        path: 'editProduct/:id',
+        component: EditComponent,
+        data: {
+          title: 'Edit Product',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'Edit Product' }
+          ]
+        }
+      },
       {
         path: 'updateProduct/:id',
         component: UpdateProductComponent,
@@ -77,6 +116,9 @@ export const EcomRoutes: Routes = [
           ]
         }
       },
+      // Product Category
+
+       // Pet Category
       {
         path: 'listPet',
         component: ListPetComponent,
@@ -158,19 +200,6 @@ export const EcomRoutes: Routes = [
           ]
         }
       },
-
-
-      {
-        path: 'editProduct/:id',
-        component: EditComponent,
-        data: {
-          title: 'Edit Product',
-          urls: [
-            { title: 'Dashboard', url: '/dashboard' },
-            { title: 'Edit Product' }
-          ]
-        }
-      },
       {
         path: 'orders',
         component: OrderComponent,
@@ -178,34 +207,8 @@ export const EcomRoutes: Routes = [
           title: 'Orders',
           urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Orders' }]
         }
-      },
-      {
-        path: 'addProduct',
-        component: AddProductComponent,
-        data: {
-          title: 'Add New Product',
-          urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Orders' }]
-        }
-      },
-      {
-        path: 'listProduct',
-        component: ListProductComponent,
-        data: {
-          title: 'List Product',
-          urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'List Product' }]
-        }
-      },
-      {
-        path: 'products',
-        component: ProductComponent,
-        data: {
-          title: 'Products',
-          urls: [
-            { title: 'Dashboard', url: '/dashboard' },
-            { title: 'Products' }
-          ]
-        }
       }
+
     ]
   }
 ];

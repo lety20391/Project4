@@ -5,7 +5,8 @@ import { HttpResponse, HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import {ProductServiceService} from '../product-service.service'
 import {JWTHeaderService} from '../../jwtheader.service';
-import { ProductEntity } from '../product/ProductEntity';
+import { ProductEntity } from '../Entity/ProductEntity';
+
 
 @Component({
   selector: 'app-list-product',

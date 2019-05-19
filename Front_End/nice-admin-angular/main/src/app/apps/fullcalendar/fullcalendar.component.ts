@@ -14,8 +14,7 @@ import {BookingDetailEntity} from '../../Booking/BookingDetailEntity';
 import { HttpResponse } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { PetEntity} from '../../ecommerce/list-pet/PetEntity';
-import {UserEntity} from '../../component/user/UserEntity';
+
 import {BookingMasterEntity} from '../../Booking/BookingMasterEntity';
 import {serviceEntity} from '../../serviceEntity/serviceEntity';
 import {
@@ -36,6 +35,7 @@ import {
   CalendarEventAction,
   CalendarEventTimesChangedEvent
 } from 'angular-calendar';
+import { PetEntity } from 'src/app/ecommerce/Entity/PetEntity';
 
 const colors: any = {
   red: {

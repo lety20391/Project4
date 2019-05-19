@@ -1,4 +1,5 @@
-import { CategoryEntity  } from '../cate/CategoryEntity';
+import { CategoryEntity } from "./CategoryEntity";
+
 export class ProductEntity{
   proID: number;
   proName: string;

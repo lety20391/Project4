@@ -1,5 +1,6 @@
-import {UserEntity} from '../component/user/UserEntity';
+
 import {BookingDetailEntity} from './BookingDetailEntity';
+import { UserEntity } from '../ecommerce/Entity/UserEntity';
 export class BookingMasterEntity {
   bookingID: number;
   creDate: string;

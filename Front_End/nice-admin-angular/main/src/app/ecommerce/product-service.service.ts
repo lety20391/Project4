@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { listUrlAPI } from '../listUrlAPI';
 import { UrlAPIEntity } from '../UrlAPIEntity';
-import {ProductEntity} from './product/ProductEntity';
 import { HttpResponse } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ProductEntity } from './Entity/ProductEntity';
 
 @Injectable({
   providedIn: 'root'

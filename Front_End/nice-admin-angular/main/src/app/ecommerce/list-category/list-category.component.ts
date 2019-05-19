@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CategoryEntity} from '../cate/CategoryEntity';
+import { CategoryEntity } from '../Entity/CategoryEntity';
 
 @Component({
   selector: 'app-list-category',
@@ -7,6 +7,7 @@ import {CategoryEntity} from '../cate/CategoryEntity';
   styleUrls: ['./list-category.component.css']
 })
 export class ListCategoryComponent implements OnInit {
+
 
   // listCategory: CategoryEntity[] = [
   //   {

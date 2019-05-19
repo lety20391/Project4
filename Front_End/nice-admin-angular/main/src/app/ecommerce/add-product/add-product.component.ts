@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ProductEntity} from '../product/ProductEntity';
-import { CategoryEntity } from '../cate/CategoryEntity';
+
+import { ProductEntity } from '../Entity/ProductEntity';
+import { CategoryEntity } from '../Entity/CategoryEntity';
 
 @Component({
   selector: 'app-add-product',

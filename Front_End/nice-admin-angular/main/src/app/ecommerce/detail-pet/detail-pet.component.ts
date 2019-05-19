@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {PetEntity} from '../list-pet/PetEntity';
+import { PetEntity } from '../Entity/PetEntity';
+
 @Component({
   selector: 'app-detail-pet',
   templateUrl: './detail-pet.component.html',
@@ -7,15 +8,15 @@ import {PetEntity} from '../list-pet/PetEntity';
 })
 export class DetailPetComponent implements OnInit {
 
-  detailedPet: PetEntity = {
-      PetID: 1,
-      PetName: 'Min',
-      PetBreed: 'Foxie',
-      PetImage: '',
-      PetStatus: true,
-      PetPrice: 29,
-      PetDOB: '12-12-2017'
-  };
+  // detailedPet: PetEntity = {
+  //     PetID: 1,
+  //     PetName: 'Min',
+  //     PetBreed: 'Foxie',
+  //     PetImage: '',
+  //     PetStatus: true,
+  //     PetPrice: 29,
+  //     PetDOB: '12-12-2017'
+  // };
 
   constructor() { }
 

@@ -1,6 +1,7 @@
 import {serviceEntity} from '../serviceEntity/serviceEntity';
 import {BookingMasterEntity} from './BookingMasterEntity';
-import { PetEntity} from '../ecommerce/list-pet/PetEntity';
+import { PetEntity } from '../ecommerce/Entity/PetEntity';
+
 export class BookingDetailEntity {
   bDetailID: number;
   bookingDate: string;

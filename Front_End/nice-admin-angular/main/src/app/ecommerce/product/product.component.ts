@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { listUrlAPI } from '../../listUrlAPI';
 import { UrlAPIEntity } from '../../UrlAPIEntity';
-import {ProductEntity} from './ProductEntity';
+
 import { HttpResponse, HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import {ProductServiceService} from '../product-service.service'
 import {JWTHeaderService} from '../../jwtheader.service';
 import {SmartTableLabelComponent} from '../smart-table-label/smart-table-label.component';
+import { ProductEntity } from '../Entity/ProductEntity';
 
 @Component({
   templateUrl: 'product.component.html'

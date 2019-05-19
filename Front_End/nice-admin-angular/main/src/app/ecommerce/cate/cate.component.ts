@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { listUrlAPI } from '../../listUrlAPI';
 import { UrlAPIEntity } from '../../UrlAPIEntity';
-import {CategoryEntity} from './CategoryEntity';
 import { HttpResponse, HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import {ProductServiceService} from '../product-service.service'
 import {JWTHeaderService} from '../../jwtheader.service';
 import {SmartTableLabelComponent} from '../smart-table-label/smart-table-label.component';
+import { CategoryEntity } from '../Entity/CategoryEntity';
 
 @Component({
   selector: 'app-cate',

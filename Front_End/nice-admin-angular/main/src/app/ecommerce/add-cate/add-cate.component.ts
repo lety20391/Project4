@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {CategoryEntity} from '../cate/CategoryEntity';
+import { CategoryEntity } from '../Entity/CategoryEntity';
+
 
 @Component({
   selector: 'app-add-cate',
