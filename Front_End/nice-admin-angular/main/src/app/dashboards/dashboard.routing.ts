@@ -5,6 +5,7 @@ import { Dashboard2Component } from './dashboard2/dashboard2.component';
 import { Dashboard3Component } from './dashboard3/dashboard3.component';
 import { OrderChartComponent } from './order-chart/order-chart.component';
 import { ServiceCalendarComponent } from './service-calendar/service-calendar.component';
+import { MainReportComponent } from './main-report/main-report.component';
 
 export const DashboardRoutes: Routes = [
   {
@@ -18,6 +19,17 @@ export const DashboardRoutes: Routes = [
           urls: [
             { title: 'Dashboard', url: '/dashboard' },
             { title: 'Classic Dashboard' }
+          ]
+        }
+      },
+      {
+        path: 'mainReport',
+        component: MainReportComponent,
+        data: {
+          title: 'Main Report',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'Analytical Dashboard' }
           ]
         }
       },
