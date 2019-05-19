@@ -1,6 +1,14 @@
 <!-- this is banner section -->
-<app-banner-small [bannerTitle]='"Your Cart"' [bannerContent]='"Happy shopping"'></app-banner-small>
-
+<!-- <app-banner-small [bannerTitle]='"Your Cart"' [bannerContent]='"Happy shopping"'></app-banner-small> -->
+<!-- BANNER -->
+	<div class="section banner-page" data-background="http://localhost:9090/uploadedFiles/userUI/dummy-img-1920x300.jpg" >
+		<div class="content-wrap pos-relative">
+			<div class="d-flex justify-content-center bd-highlight mb-2">
+				<div class="title-page">Your Cart</div>
+			</div>
+			<p class="text-center text-white">Happy shopping - Love Your Pet</p>
+		</div>
+	</div>
 
 <div id="class" class="">
   <div class="content-wrap">
@@ -30,13 +38,13 @@
                               <div class="row gutter30 block-section">
                                   <!-- Company Info -->
                                   <div class="col-sm-6">
-                                      <h3 class="sub-header"><i class="fa fa-suitcase"></i> Pet Paradise - Your Order</h3>
+                                      <h2 class="sub-header"><i class="fa fa-suitcase"></i> Pet's Paradise - Your Order</h2>
                                       <address>
                                           <strong>{{currentUser.userName}}</strong><br>
-                                          Address<br>
-                                          Region, Zip/Postal Code<br><br>
+                                          <!-- Address<br>
+                                          Region, Zip/Postal Code<br><br> -->
                                           <i class="fa fa-phone"></i> {{currentUser.userTel}}<br>
-                                          <i class="fa fa-envelope"></i> <a href="javascript:void(0)">{{currentUser.userMail}}</a>
+                                          <i class="fa fa-envelope"></i> <a href="javascript:void(0)"> {{currentUser.userMail}}</a>
                                       </address>
                                   </div>
                                   <!-- END Company Info -->
@@ -63,11 +71,11 @@
                                       <thead>
                                           <tr>
                                               <th></th>
-                                              <th class="text-center">Image</th>
-                                              <th style="width: 70%;">Product</th>
-                                              <th class="text-center">Quantity</th>
-                                              <th class="text-center">Unit Price</th>
-                                              <th class="text-right">Amount</th>
+                                              <th class="text-center"><strong>Image</strong></th>
+                                              <th style="width: 70%;"><strong>Product</strong></th>
+                                              <th class="text-center"><strong>Quantity</strong></th>
+                                              <th class="text-center"><strong>Unit Price</strong></th>
+                                              <th class="text-right"><strong>Amount</strong></th>
                                           </tr>
                                       </thead>
                                       <tbody>
@@ -117,11 +125,13 @@
                               <!-- END Table -->
                               <div class="col-xs-12 col-md-6">
           											<div class="form-group">
+                                  <h4><strong>Your address: </strong></h4>
           												<input type="text" id="name" name="name" value="" class="inputtext form-control" placeholder="Enter Shipping Address" >
           											</div>
           										</div>
           										<div class="col-xs-12 col-md-6">
           											<div class="form-group">
+                                    <h4><strong>Your shipping date: </strong> from 2 to 30 days after booking</h4>
           												<input type="text" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [min]="minDate"
                                         [max]="maxDate" id="name" name="name" value="" class="inputtext form-control"
                                                 placeholder="Enter Shipping Date" [(ngModel)]="newOrderMaster.shipDate"
