@@ -6,6 +6,8 @@ import { UrlAPIEntity } from '../../UrlAPIEntity';
 import { HttpResponse, HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import {JWTHeaderService} from '../../jwtheader.service';
+import { Router } from '@angular/router';
+
 // import {
 //   IBarChartOptions,
 //   IChartistAnimationOptions,
@@ -156,7 +158,8 @@ export class OrderChartComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private jwtService: JWTHeaderService
+    private jwtService: JWTHeaderService,
+    private route: Router
   ) { }
 
   ngOnInit() {
@@ -186,7 +189,7 @@ export class OrderChartComponent implements OnInit {
                       item => {
                             let tempData = new Array(2);
                             tempData = JSON.parse(JSON.stringify(item));
-                            
+
                             let tempData4Chart: dataForChart = new dataForChart();
                             tempData4Chart.name = tempData[0];
                             tempData4Chart.value = tempData[1];
@@ -199,6 +202,15 @@ export class OrderChartComponent implements OnInit {
 
           }
       );
+  }
+
+  sendSelectedProduct(event: Event): void{
+    console.log(this.logClass + ' product selected:' + JSON.stringify(event));
+    let tempProduct: dataForChart = new dataForChart();
+    tempProduct = JSON.parse(JSON.stringify(event));
+    console.log(this.logClass + ' selected Product ID' + tempProduct.name);
+    this.route.navigate([`ecom/detailProduct/${tempProduct.name}`]);
+
   }
 
   createHeader():HttpHeaders {
