@@ -15,10 +15,11 @@ import javax.ejb.Local;
  */
 @Local
 public interface OrderDetailSessionBeanLocal {
-        public List<OrderDetailEntity> listAll();
+    public List<OrderDetailEntity> listAll();
     public OrderDetailEntity addOrderDetail(OrderDetailEntity orderDetail);
     public OrderDetailEntity editOrderDetail(OrderDetailEntity orderDetail);
     public void deleteOrderDetail(Long id);
     public OrderDetailEntity findOne(Long id);
     public List <OrderDetailEntity> listTop();
+    public List<Object> getTotalQtyGroupByProduct();
 }

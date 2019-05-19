@@ -6,6 +6,7 @@
 package com.sam.web.rest;
 
 
+import com.google.gson.JsonObject;
 import java.io.InputStream;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -51,6 +52,7 @@ public class UploaderServiceResource {
     @POST
     @Path("/file/{cate}/{code}")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response uploadFile(
                     @FormDataParam("file") InputStream uploadedInputStream,
                     @FormDataParam("file") FormDataContentDisposition fileDetail,
@@ -82,8 +84,12 @@ public class UploaderServiceResource {
                     return Response.status(500).entity("Can not save file").build();
             }
             System.out.println("----File has been saved----");
+            JsonObject result = new JsonObject();
+            result.addProperty("id", code);
+            result.addProperty("res", "File save to" + uploadedFileLocation);
+            
             return Response.status(200)
-                            .entity("File saved to " + uploadedFileLocation).build();
+                            .entity(result.toString()).build();
     }
 	
 	private void saveToFile(InputStream inStream, String target)

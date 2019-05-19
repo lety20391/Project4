@@ -22,7 +22,9 @@ public class OrderDetailSessionBean implements OrderDetailSessionBeanLocal {
     @PersistenceUnit(unitName = "ServiceDB")
     private EntityManagerFactory entityManagerFactory;
     private EntityManager em;
-
+    
+    private final String logClass = "--Order Detail:";
+    
     @Override
     public List<OrderDetailEntity> listAll() {
         em = entityManagerFactory.createEntityManager();
@@ -60,5 +62,16 @@ em = entityManagerFactory.createEntityManager();
     public List<OrderDetailEntity> listTop() {
         em = entityManagerFactory.createEntityManager();
         return em.createNamedQuery("od.sort").getResultList();
+    }
+
+    @Override
+    public List<Object> getTotalQtyGroupByProduct() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println(logClass + " getTotalQtyGroupByProduct");
+        em = entityManagerFactory.createEntityManager();
+        List<Object> result = em.createNamedQuery("od.getTotalQtyGroupByProduct").getResultList();
+        System.out.println(logClass + result.toString());
+        System.out.println(logClass + " size:" + result.size());
+        return result;
     }
 }
