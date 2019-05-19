@@ -23,6 +23,13 @@ import {
   CalendarEventTimesChangedEvent,
   // CalendarView
 } from 'angular-calendar';
+import { listUrlAPI } from '../../listUrlAPI';
+import { UrlAPIEntity } from '../../UrlAPIEntity';
+import { HttpResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import {JWTHeaderService} from '../../jwtheader.service';
+import { Router } from '@angular/router';
+import { DatingDetailEntity } from 'src/app/ecommerce/Entity/DatingDetailEntity';
 
 const colors: any = {
   red: {
@@ -43,6 +50,21 @@ export class CalendarView{
   static Month = 'month';
   static Week = 'week';
   static Day = 'day';
+}
+
+export class myEvent implements CalendarEvent{
+  id?: string | number;  start: Date;
+  end?: Date;
+  title: string;
+  color?: import("C:/Users/Dat_Le/Desktop/Aptech/Project4/Front_End/nice-admin-angular/main/node_modules/calendar-utils/dist/calendar-utils").EventColor;
+  draggable?: boolean;
+  allDay?: boolean;
+  cssClass?: string;
+  resizable?: { beforeStart?: boolean; afterEnd?: boolean; };
+  meta?: any;
+  actions?: CalendarEventAction[];
+
+
 }
 
 @Component({
@@ -85,52 +107,95 @@ export class DatingCalendarComponent implements OnInit {
 
  refresh: Subject<any> = new Subject();
 
- events: CalendarEvent[] = [
-   {
-     start: subDays(startOfDay(new Date()), 1),
-     end: addDays(new Date(), 1),
-     title: 'A 3 day event',
-     color: colors.red,
-     actions: this.actions,
-     allDay: true,
-     resizable: {
-       beforeStart: true,
-       afterEnd: true
-     },
-     draggable: true
-   },
-   {
-     start: startOfDay(new Date()),
-     title: 'An event with no end date',
-     color: colors.yellow,
-     actions: this.actions
-   },
-   {
-     start: subDays(endOfMonth(new Date()), 3),
-     end: addDays(endOfMonth(new Date()), 3),
-     title: 'A long event that spans 2 months',
-     color: colors.blue,
-     allDay: true
-   },
-   {
-     start: addHours(startOfDay(new Date()), 2),
-     end: new Date(),
-     title: 'A draggable and resizable event',
-     color: colors.yellow,
-     actions: this.actions,
-     resizable: {
-       beforeStart: true,
-       afterEnd: true
-     },
-     draggable: true
-   }
- ];
+ // events: CalendarEvent[] = [
+ //   {
+ //     start: subDays(startOfDay(new Date()), 1),
+ //     end: addDays(new Date(), 1),
+ //     title: 'A 3 day event',
+ //     color: colors.red,
+ //     actions: this.actions,
+ //     allDay: true,
+ //     resizable: {
+ //       beforeStart: true,
+ //       afterEnd: true
+ //     },
+ //     draggable: true
+ //   },
+ //   {
+ //     start: startOfDay(new Date()),
+ //     title: 'An event with no end date',
+ //     color: colors.yellow,
+ //     actions: this.actions
+ //   },
+ //   {
+ //     start: subDays(endOfMonth(new Date()), 3),
+ //     end: addDays(endOfMonth(new Date()), 3),
+ //     title: 'A long event that spans 2 months',
+ //     color: colors.blue,
+ //     allDay: true
+ //   },
+ //   {
+ //     start: addHours(startOfDay(new Date()), 2),
+ //     end: new Date(),
+ //     title: 'A draggable and resizable event',
+ //     color: colors.yellow,
+ //     actions: this.actions,
+ //     resizable: {
+ //       beforeStart: true,
+ //       afterEnd: true
+ //     },
+ //     draggable: true
+ //   }
+ // ];
+
+ events: CalendarEvent[] = [];
 
  activeDayIsOpen: boolean = true;
 
- constructor(private modal: NgbModal) {}
+ urlAPI: UrlAPIEntity;
+ logClass = '--Dating Calendar Component: ';
+ listDatingDetail: DatingDetailEntity[] = [];
+
+ constructor(
+   private modal: NgbModal,
+   private http: HttpClient,
+   private jwtService: JWTHeaderService,
+   private route: Router
+ ) {}
 
  ngOnInit(): void {
+   this.getListDating();
+ }
+
+ getListDating(): void{
+   //prepare Url
+   this.urlAPI = listUrlAPI.find(url => url.name === 'datingDetailResource');
+   console.log(this.logClass + this.urlAPI.path);
+
+   //prepare headers
+   let headers = this.createHeader();
+
+   this.http.get<DatingDetailEntity>(this.urlAPI.path, {headers : headers})
+      .subscribe(
+          response => {
+                console.log(this.logClass + ' dating Detail');
+                console.log(this.logClass + JSON.stringify(response));
+                this.listDatingDetail = JSON.parse(JSON.stringify(response));
+                this.listDatingDetail.forEach(
+                      item => {
+                            //class myEvent duoc khai bao tren phan dau cua file
+                            let tempEvent: myEvent = new myEvent();
+                            tempEvent.title = item.petRequestEntity.petName + '&'+ item.petRecieveEntity.petName;
+                            tempEvent.start = new Date(item.datingDate);
+                            tempEvent.color = colors.yellow;
+                            tempEvent.actions = this.actions;
+                            //push event vao trong danh sach event cua calendar
+                            this.events.push(tempEvent);
+
+                      }
+                );
+          }
+      );
 
  }
 
@@ -198,6 +263,13 @@ export class DatingCalendarComponent implements OnInit {
 
  closeOpenMonthViewDay() {
    this.activeDayIsOpen = false;
+ }
+
+ createHeader():HttpHeaders {
+   let headers = new HttpHeaders();
+   headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+   headers = headers.set('Authorization', 'Bearer ' + this.jwtService.getJWT());
+   return headers;
  }
 
 }
