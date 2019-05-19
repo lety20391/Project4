@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { colorSets } from '@swimlane/ngx-charts/release/utils/color-sets';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { listUrlAPI } from '../../listUrlAPI';
+import { UrlAPIEntity } from '../../UrlAPIEntity';
+import { HttpResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import {JWTHeaderService} from '../../jwtheader.service';
 // import {
 //   IBarChartOptions,
 //   IChartistAnimationOptions,
@@ -10,6 +15,11 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 // import { Chart } from 'src/app/charts/chartist-js/chartistjs.component';
 
 
+
+export class dataForChart{
+  name: string;
+  value: number;
+};
 
 @Component({
   selector: 'app-order-chart',
@@ -137,11 +147,65 @@ export class OrderChartComponent implements OnInit {
   ];
 
 
+  listTotalQtyByProduct: [][] ; //du lieu tra ve la mang 2 chieu gom nhieu cap [proID, total] vi du: [[1,22],[2,9],[3,14]]
+  listDataForChart: dataForChart[] = [];
+  urlAPI: UrlAPIEntity;
+  logClass = '--Order Chart Component: ';
+  isShowChart: boolean = false;
 
 
-  constructor() { }
+  constructor(
+    private http: HttpClient,
+    private jwtService: JWTHeaderService
+  ) { }
 
   ngOnInit() {
+    this.getTotalQtyByProduct();
+  }
+
+  test():void{
+    console.log(this.logClass + ' data 4 Chart: ' + JSON.stringify(this.listDataForChart));
+    console.log(this.logClass + ' single' + JSON.stringify(this.single));
+  }
+
+  getTotalQtyByProduct(): void{
+    //prepare Url
+    this.urlAPI = listUrlAPI.find(url => url.name === 'orderDetailResource');
+    console.log(this.logClass + this.urlAPI.path);
+
+    //prepare headers
+    let headers = this.createHeader();
+
+    this.http.get<any[]>(this.urlAPI.path + '/Report/TotalQtyByProduct', {headers : headers})
+      .subscribe(
+          response => {
+                    console.log(this.logClass + 'Report Reponse from server: ' + JSON.stringify(response));
+                    this.listTotalQtyByProduct = JSON.parse(JSON.stringify(response));
+
+                    this.listTotalQtyByProduct.forEach(
+                      item => {
+                            let tempData = new Array(2);
+                            tempData = JSON.parse(JSON.stringify(item));
+                            
+                            let tempData4Chart: dataForChart = new dataForChart();
+                            tempData4Chart.name = tempData[0];
+                            tempData4Chart.value = tempData[1];
+                            this.listDataForChart.push(tempData4Chart);
+                      }
+                    );
+
+                    this.test();
+                    this.isShowChart = true;
+
+          }
+      );
+  }
+
+  createHeader():HttpHeaders {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+    headers = headers.set('Authorization', 'Bearer ' + this.jwtService.getJWT());
+    return headers;
   }
 
 }
