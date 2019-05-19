@@ -31,17 +31,17 @@
 								{{currentProduct.proName}}
 							</p>
 							<div class="price">${{currentProduct.proPrice}}</div>
-							<div class="rating">
+							<!-- <div class="rating">
 								<span></span>
 								<span></span>
 								<span></span>
 								<span></span>
 								<span></span>
-							</div>
+							</div> -->
 
 							<p class="mt-4">{{currentProduct.proDes}}</p>
 
-							<p class="btn btn-primary mt-4 mb-4" (click)="buyProduct(currentProduct)" >Buy Now</p>
+							<p class="btn btn-primary mt-4 mb-4" (click)="buyProduct(currentProduct)" >Add to Cart</p>
 
 							<p>SKU : N/A <br>Categories : {{currentProduct.cateEntity.cateName}} <br>Product ID : {{currentProduct.proID}}</p>
 							<div class="spacer-50"></div>
@@ -153,7 +153,7 @@
 
 							<div class="row">
 
-								<div class="col-sm-3 col-md-3">
+								<!-- <div class="col-sm-3 col-md-3">
 									<p>Choose Rating :</p>
 									<div class="form-check">
 									  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
@@ -205,7 +205,7 @@
 										</div>
 									  </label>
 									</div>
-								</div>
+								</div> -->
 							</div>
 
 
