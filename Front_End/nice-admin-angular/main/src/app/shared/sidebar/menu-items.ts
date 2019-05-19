@@ -34,6 +34,10 @@ export const ROUTES: RouteInfo[] = [
       }
     ]
   },
+
+  //**************************
+  //***** Product Section ****
+  //**************************
   {
     path: '',
     title: 'Product Management',
@@ -100,6 +104,74 @@ export const ROUTES: RouteInfo[] = [
 
     ]
   },
+
+  //**************************
+  //***** Product Section ****
+  //**************************
+
+
+  //**********************
+  //***** Pet Section ****
+  //**********************
+  {
+    path: '',
+    title: 'Pet Management',
+    icon: 'fa fa-paw',
+    class: 'has-arrow',
+    extralink: false,
+    submenu: [
+      {
+        path: '/ecom/pets',
+        title: 'Pets',
+        icon: ' icon-arrow-right-circle',
+        class: '',
+        extralink: false,
+        submenu: []
+      },
+      {
+        path: '/ecom/listPet',
+        title: 'List Pet',
+        icon: ' icon-arrow-right-circle',
+        class: '',
+        extralink: false,
+        submenu: []
+      },
+      {
+        path: '/ecom/addPet',
+        title: 'Add Pet',
+        icon: ' icon-arrow-right-circle',
+        class: '',
+        extralink: false,
+        submenu: []
+      },
+      {
+        path: '/ecom/updatePet/1',
+        title: 'Edit Pet',
+        icon: ' icon-arrow-right-circle',
+        class: '',
+        extralink: false,
+        submenu: []
+      },
+      {
+        path: '/ecom/detailPet/1',
+        title: 'Detail Pet',
+        icon: ' icon-arrow-right-circle',
+        class: '',
+        extralink: false,
+        submenu: []
+      },
+    ]
+  },
+      //**********************
+      //***** Pet Section ****
+      //**********************
+
+
+
+
+      //**************************
+      //***** Service Section ****
+      //**************************
   {
     path: '',
     title: 'Service Management',
@@ -125,6 +197,15 @@ export const ROUTES: RouteInfo[] = [
       }
     ]
   },
+
+  //**************************
+  //***** Service Section ****
+  //**************************
+
+
+  //**************************
+  //***** Dating Section *****
+  //**************************
   {
     path: '',
     title: 'Dating Management',
@@ -151,12 +232,9 @@ export const ROUTES: RouteInfo[] = [
     ]
   },
 
-
-
-
-
-
-
+  //**************************
+  //***** Dating Section *****
+  //**************************
   {
     path: '',
     title: 'Report',
