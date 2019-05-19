@@ -17,14 +17,15 @@ export class UploadAdapter extends FilePickerAdapter {
     const req = new HttpRequest('POST', this.urlUpload, form, {reportProgress: true});
     return this.http.request(req)
     .pipe(
-      map( (res: HttpEvent<any>) => {
-          if (res.type === HttpEventType.Response) {
-          return res.body.id.toString();
-        } else if (res.type ===  HttpEventType.UploadProgress) {
-            // Compute and show the % done:
-            const UploadProgress = +Math.round((100 * res.loaded) / res.total);
-            return UploadProgress;
-        }
+      map( 
+        (res: HttpEvent<any>) => {
+              if (res.type === HttpEventType.Response) {
+                  return res.body.id.toString();
+            } else if (res.type ===  HttpEventType.UploadProgress) {
+                  // Compute and show the % done:
+                  const UploadProgress = +Math.round((100 * res.loaded) / res.total);
+                  return UploadProgress;
+            }
       })
       );
   }
