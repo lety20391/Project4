@@ -180,6 +180,14 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: [
       {
+        path: '/apps/BookingManage',
+        title: 'All bookings',
+        icon: ' icon-arrow-right-circle',
+        class: '',
+        extralink: false,
+        submenu: []
+      },
+      {
         path: '/service/services',
         title: 'Services',
         icon: ' icon-arrow-right-circle',

@@ -41,34 +41,34 @@ Lots of heated and air conditioned indoor play space, which opens up into our ou
 
 GO
 Insert into dbo.tbBookingMaster ([creDate] , [bmStatus] , [userID]) values
-('2019-04-21',1,1),
-('2019-04-22',1,2),
-('2019-04-23',1,3),
-('2019-04-24',1,4),
-('2019-04-25',1,5)
+('2019-05-21',1,1),
+('2019-05-22',1,2),
+('2019-05-23',1,3),
+('2019-05-24',1,4),
+('2019-05-25',1,5)
 
 GO
 Insert into dbo.tbPet ( [petDating] ,[petBreed], [petDOB], [petImage], [petName], [petPrice], [petStatus], [userID], [petStory]) values
-(1,'Cardigan Welsh Corgi', '2017-1-1', 'null', 'MinMin', 120, 1, 1, 'The Cardigan Welsh Corgi is the older of the two Corgi dog breeds, with dogs of this type believed to have existed in Wales for more than 3,000 years. The Cardigan is distinguished by his long tail — like the sleeves of a cardigan sweater — and was used to drive cattle to market. Known as the yard-long dog, the Cardigan is sensible and affectionate. He loves to spend time with his family and is an active, fun-loving playmate for school-age children. The Cardigan’s medium-length coat comes in many colors and patterns, including red, brindle, blue merle and black, usually with white markings.'),
-(0,'Bolognese', '2017-1-1', 'null', 'Milk', 20, 1, 1, 'the Bolognese dog breed loves to be at his family’s side. However, he also loves getting his way and can be quite crafty about it, so be careful — you could find yourself being manipulated by a 10-pound furball.'),
-(1,'Boxer', '2017-1-1', 'null', 'Mi', 15, 1, 2, 'Boxers were originally bred to be medium-size guard dogs. Today, although they are a part of the AKC’s Working Group, they mostly find homes as loving family companions.'),
+(1,'Cardigan Welsh Corgi', '2017-1-1', 'null', 'Foxi', 120, 1, 1, 'The Cardigan Welsh Corgi is the older of the two Corgi dog breeds, with dogs of this type believed to have existed in Wales for more than 3,000 years. The Cardigan is distinguished by his long tail — like the sleeves of a cardigan sweater — and was used to drive cattle to market. Known as the yard-long dog, the Cardigan is sensible and affectionate. He loves to spend time with his family and is an active, fun-loving playmate for school-age children. The Cardigan’s medium-length coat comes in many colors and patterns, including red, brindle, blue merle and black, usually with white markings.'),
+(0,'Bolognese', '2017-1-1', 'null', 'Snow', 20, 1, 1, 'the Bolognese dog breed loves to be at his family’s side. However, he also loves getting his way and can be quite crafty about it, so be careful — you could find yourself being manipulated by a 10-pound furball.'),
+(1,'Boxer', '2017-1-1', 'null', 'Cau Vang', 15, 1, 2, 'Boxers were originally bred to be medium-size guard dogs. Today, although they are a part of the AKC’s Working Group, they mostly find homes as loving family companions.'),
 (1,'Chinook', '2017-1-1', 'null', 'Kiki', 19, 1, 3, 'Created in the White Mountains of New Hampshire, the Chinook dog breed made his name on Admiral Byrd’s first Antarctic expedition in 1928. These days he’s a multipurpose dog who’s happy hiking, competing in agility and other dog sports, pulling a sled or other conveyance, and playing with the kids.'),
-(1,'Japanese Chin', '2017-1-1', 'null', 'Kuku', 19, 1, 2, 'The Japanese Chin dog breed hails from Asia, where he has been prized as a companion for more than a thousand years. He was a popular member of Chinese and Japanese imperial courts, and it was in Japan that his distinctive look was developed. This breed is elegant and dainty, mild-mannered and playful.'),
-(1,'Pembroke Welsh Corgi', '2017-1-1', 'null', 'Lulu', 19, 1, 2, 'Originally bred to herd cattle, sheep, and horses, the Pembroke Welsh Corgi is an active and intelligent dog breed. Easy to train and eager to learn, Pembrokes are great with children and other pets, and you can find them in four different coat colors and markings.'),
-(1,'Poodle', '2017-1-1', 'null', 'Muc', 19, 1, 3, 'Elegant. Proud. Clever. Poodles are impressive dogs, as the many best-in-show winners from this dog breed can attest. Behind the blue ribbons, impressive hairdos, and regal attitude, you’ll find an affectionate family dog with an ancient history and many talents.'),
-(1,'Pomeranian', '2017-1-1', 'null', 'Nini', 19, 1, 3, 'Descended from large sled dog breeds, the now-tiny Pomeranian has a long and interesting history. The foxy-faced dog, nicknamed “the little dog who thinks he can,” is compact, active, and capable of competing in agility and obedience or simply being a family friend.')
+(1,'Japanese Chin', '2017-1-1', 'null', 'Mina', 19, 1, 2, 'The Japanese Chin dog breed hails from Asia, where he has been prized as a companion for more than a thousand years. He was a popular member of Chinese and Japanese imperial courts, and it was in Japan that his distinctive look was developed. This breed is elegant and dainty, mild-mannered and playful.'),
+(1,'Pembroke Welsh Corgi', '2017-1-1', 'null', 'Cuteo', 19, 1, 2, 'Originally bred to herd cattle, sheep, and horses, the Pembroke Welsh Corgi is an active and intelligent dog breed. Easy to train and eager to learn, Pembrokes are great with children and other pets, and you can find them in four different coat colors and markings.'),
+(1,'Poodle', '2017-1-1', 'null', 'Longlegs', 19, 1, 3, 'Elegant. Proud. Clever. Poodles are impressive dogs, as the many best-in-show winners from this dog breed can attest. Behind the blue ribbons, impressive hairdos, and regal attitude, you’ll find an affectionate family dog with an ancient history and many talents.'),
+(1,'Pomeranian', '2017-1-1', 'null', 'Vitamin', 19, 1, 3, 'Descended from large sled dog breeds, the now-tiny Pomeranian has a long and interesting history. The foxy-faced dog, nicknamed “the little dog who thinks he can,” is compact, active, and capable of competing in agility and obedience or simply being a family friend.')
 
 GO
 Insert into dbo.tbBookingDetail ([bookingDate], [bdstatus],[bookingID], [serID],[petID]) values
-('2019-4-15',1,1,1,1),
-('2019-4-16',1,2,2,2),
-('2019-4-17',1,3,1,1),
-('2019-4-18',1,2,3,2),
-('2019-4-19',1,4,1,3),
-('2019-4-20',1,1,5,1),
-('2019-4-21',1,2,4,3),
-('2019-4-22',1,3,3,5),
-('2019-4-23',1,5,1,4)
+('2019-05-22T17:00',1,1,1,1),
+('2019-05-22T10:00',1,2,2,2),
+('2019-05-23T12:00',1,3,1,1),
+('2019-05-23T15:00',1,2,3,2),
+('2019-05-23T18:00',1,4,1,3),
+('2019-05-25T10:00',1,1,5,1),
+('2019-05-26T15:00',1,2,4,3),
+('2019-05-27T18:00',1,3,3,5),
+('2019-05-31T09:00',1,5,1,4)
 
 GO
 Insert into dbo.datingMasterEntity  ( creDate, locat, [status], userID ) values
@@ -96,7 +96,7 @@ Insert into dbo.tbCategory ([CateName], [Status]) values
 
 GO
 Insert into dbo.tbProduct ([ProImage], [Status], [Cate_ID] , [ProPrice], [ProColor], [ProName] , [ProDes]) values
-('image', 1, 3, 70, 'black', 'dog hair cutting machine' , 'Type:
+('image', 1, 3, 70, 'black', 'Dog hair cutting machine' , 'Type:
 Pet Cleaning & Grooming Products
 Item Type:
 pet clipper
@@ -109,7 +109,7 @@ Voltage:
 Grooming Products Type:
 Clippers, Trimmers & Blades'),
 
-('image', 1, 3, 28, 'blue, pink, black, purple', 'leather collar' , 'New Ditsy Pet leather dog collars. Beautifully handcrafted in England using genuine leather with nickel plated buckles & D Rings. Available in an array of delightful bright colours. Comes with a Ditsy Pet presentation box too!'),
+('image', 1, 3, 28, 'blue, pink, black, purple', 'Leather collar' , 'New Ditsy Pet leather dog collars. Beautifully handcrafted in England using genuine leather with nickel plated buckles & D Rings. Available in an array of delightful bright colours. Comes with a Ditsy Pet presentation box too!'),
 ('image', 1, 3, 10, 'lemon', 'Dog Lead' , 'Dog Lead Sizes
 Extra Small – 16mm x 110cm
 Small/Medium – 20mm x 110cm

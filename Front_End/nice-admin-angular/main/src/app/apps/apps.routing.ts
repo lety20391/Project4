@@ -56,13 +56,13 @@ export const AppsRoutes: Routes = [
         }
       },
       {
-        path: 'fullcalendar',
+        path: 'BookingManage',
         component: FullcalendarComponent,
         data: {
-          title: 'Full-Calendar',
+          title: 'Booking Management',
           urls: [
             { title: 'Dashboard', url: '/dashboard' },
-            { title: 'Full-Calendar' }
+            { title: 'Booking Management' }
           ]
         }
       }
