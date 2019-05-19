@@ -26,6 +26,7 @@ import { DetailPetComponent } from './detail-pet/detail-pet.component';
 import { SmartTableLabelComponent } from './smart-table-label/smart-table-label.component';
 import { CateComponent } from './cate/cate.component';
 import { ListProductComponent } from './list-product/list-product.component';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 @NgModule({
   imports: [
@@ -33,7 +34,9 @@ import { ListProductComponent } from './list-product/list-product.component';
     RouterModule.forChild(EcomRoutes),
     FormsModule,
     NgbModule,
-    Ng2SmartTableModule
+    Ng2SmartTableModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule
   ],
   declarations: [
     CartComponent,

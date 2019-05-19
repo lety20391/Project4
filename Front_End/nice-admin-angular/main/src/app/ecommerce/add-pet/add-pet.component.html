@@ -52,11 +52,12 @@
 
                           <div class="col-md-4">
                             <div class="form-group">
-                                <label for="Color">DOB</label>
+                                <label for="DOB">DOB</label>
                                 <div class="form-control">
-                                  <input style="border:none" id="Color" name="Color" class="form-control" required minlength="2" maxlength="20" [(ngModel)]="newPet.petODB" #Color="ngModel">
-                                  <div *ngIf="Color.invalid && (Color.dirty || Color.touched)" class="alert alert-danger">
-                                      <div *ngIf="Color.errors.required"> DOB is required. </div>
+                                  <input type="text" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [max]="max" placeholder="Date of Birth" class="form-control" name="DOB" [(ngModel)]="newPet.petDOB" #DOB="ngModel">
+					                        <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+                                  <div *ngIf="DOB.invalid && (DOB.dirty || DOB.touched)" class="alert alert-danger">
+                                      <div *ngIf="DOB.errors.required"> DOB is required. </div>
                                       <!-- <div *ngIf="name.errors.forbiddenName"> Name cannot be Bob. </div> -->
                                   </div>
                                 </div>

@@ -44,10 +44,10 @@ export class AddPetComponent implements OnInit {
     // this.newPet.petDOB = stringDate;
 
     //reformat DOB DateTime again
-    // let pickedDOB = this.newPet.petDOB;
-    // pickedDOB = formatDate(pickedDOB, 'yyyy-MM-dd', 'en-US') + 'T' + formatDate(pickedDOB, 'hh:mm:ss', 'en-US');
-    // console.log(this.logClass + ' DOB:' + pickedDOB);
-    // this.newPet.petDOB = pickedDOB;
+    let pickedDOB = this.newPet.petDOB;
+    pickedDOB = formatDate(pickedDOB, 'yyyy-MM-dd', 'en-US') + 'T' + formatDate(pickedDOB, 'hh:mm:ss', 'en-US');
+    console.log(this.logClass + ' DOB:' + pickedDOB);
+    this.newPet.petDOB = pickedDOB;
 
     this.newPet.userEntity = new UserEntity();
     this.newPet.userEntity.userID = Number(localStorage.getItem('UserID'));
