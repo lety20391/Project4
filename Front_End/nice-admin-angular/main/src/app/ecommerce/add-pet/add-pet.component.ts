@@ -22,6 +22,17 @@ export class AddPetComponent implements OnInit {
   isReadyToUploadImage: boolean = false;
   UrlEntity: UrlAPIEntity;
   uploadUrl: string = '';
+  genderList = ['Male', 'Female'];
+
+  //***********************
+  //*** bat loi DOB********
+  //***********************
+  // Min moment: Today - 20 year
+    public minDate : Date;
+
+    // Max moment: Today - 6 month
+    public maxDate : Date;
+
 
   constructor(
     private http: HttpClient,
@@ -30,6 +41,24 @@ export class AddPetComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.prepareDate();
+  }
+
+  prepareDate(): void{
+    //ngay min la 20 nam truoc
+    //ngay max la 6 thang truoc
+
+    let tempDateInSecond = new Date().getTime();
+    //tru di 20 * 365 ngay ( 20 * 365 * 24 * 3600) vao tempDate hien tai
+    tempDateInSecond -= 20* 365 * 24 * 3600 * 1000;
+    this.minDate = new Date(tempDateInSecond);
+
+    tempDateInSecond = new Date().getTime();
+    //tru di 6 * 30 ngay ( 6 * 30 * 24 * 3600) vao tempDate hien tai
+    tempDateInSecond -= 6 * 30 * 24 * 3600 * 1000;
+    this.maxDate = new Date(tempDateInSecond);
+
+
   }
 
   createPetInfo(): void{

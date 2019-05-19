@@ -36,7 +36,25 @@
                         </div>
 
                         <div class="row">
-                          <div class="col-md-4">
+
+                          <div class="col-md-2">
+                            <div class="form-group">
+                              <label for="status" style="margin-left:10px;">Ready for Dating</label>
+                              <div class="form-control checkbox-control">
+                                  <input class="checkbox-control" type="checkbox" value="Yes" name="ready" checked [(ngModel)]="newPet.petDating" style="margin-left:10px">
+              										<!-- CSS lable nam trong create-pet.component.css -->
+              										<span class="label label-ready" *ngIf="newPet.petDating">Ready</span>
+              										<span class="label label-notReady" *ngIf="!newPet.petDating">Not Yet</span>
+                                  <!-- <div class="form-control">
+                                    <input id="status" name="status" type="checkbox" [(ngModel)]="newPet.petStatus" style="margin-left:10px;">
+                                    <span class="btn btn-success" *ngIf="newPet.petStatus" style="margin-left:10px;" >Activated</span>
+                                    <span class="btn btn-dark" *ngIf="!newPet.petStatus" style="margin-left:10px;">Deactivated</span>
+                                </div> -->
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-5">
                             <div class="form-group">
                                 <label for="Price">Price</label>
                                 <div class="form-control">
@@ -50,11 +68,15 @@
                             </div>
                           </div>
 
-                          <div class="col-md-4">
+                          <div class="col-md-5">
                             <div class="form-group">
                                 <label for="DOB">DOB</label>
                                 <div class="form-control">
-                                  <input type="text" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [max]="max" placeholder="Date of Birth" class="form-control" name="DOB" [(ngModel)]="newPet.petDOB" #DOB="ngModel">
+                                  <!-- ******************************************************************************** -->
+                                  <!-- Phan bat loi DOB nay nam trong phuong thuc prepareDate trong component.ts -->
+                                  <!-- Gan vao 2 gia tri min max ben duoi : [max]="maxDate" [min]="minDate" -->
+                                  <!-- ******************************************************************************** -->
+                                  <input type="text" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [max]="maxDate" [min]="minDate" placeholder="Date of Birth" class="form-control" name="DOB" [(ngModel)]="newPet.petDOB" #DOB="ngModel" required>
 					                        <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
                                   <div *ngIf="DOB.invalid && (DOB.dirty || DOB.touched)" class="alert alert-danger">
                                       <div *ngIf="DOB.errors.required"> DOB is required. </div>
@@ -64,14 +86,36 @@
                             </div>
                           </div>
 
-                          <div class="col-md-4">
-                            <div class="form-group">
 
-                                  <label for="status" style="margin-left:10px;">Status</label>
-                                  <div class="form-control">
-                                    <input id="status" name="status" type="checkbox" [(ngModel)]="newPet.petStatus" style="margin-left:10px;">
-                                    <span class="btn btn-success" *ngIf="newPet.petStatus" style="margin-left:10px;" >Activated</span>
-                                    <span class="btn btn-dark" *ngIf="!newPet.petStatus" style="margin-left:10px;">Deactivated</span>
+
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="Gender">Gender</label>
+                                <div class="form-control">
+                                  <select [(ngModel)]="newPet.petGender" style="margin-left:5px" [value]="'Male'" name="gender" #gender="ngModel" required>
+              									      <option *ngFor="let gender of genderList" [value]="gender" >
+              														{{gender}}
+              												</option>
+              										</select>
+                                  <div *ngIf="gender.invalid && (gender.dirty || gender.touched)" class="alert alert-danger">
+                                      <div *ngIf="gender.errors.required"> Gender is required. </div>
+                                  </div>
+                                </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-10">
+                            <div class="form-group">
+                                <label for="Story">Story</label>
+                                <div class="form-control">
+                                  <textarea id="p_message" class="form-control" rows="6" placeholder="Enter Your Pet's Story" [(ngModel)]="newPet.petStory" name="story" #story="ngModel"></textarea>
+                                  <div *ngIf="story.invalid && (story.dirty || story.touched)" class="alert alert-danger">
+                                      <div *ngIf="story.errors.required"> Story is required. </div>
+                                      <!-- <div *ngIf="name.errors.forbiddenName"> Name cannot be Bob. </div> -->
+                                  </div>
                                 </div>
                             </div>
                           </div>
