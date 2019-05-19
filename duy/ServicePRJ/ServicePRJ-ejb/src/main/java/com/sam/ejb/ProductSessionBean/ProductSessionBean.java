@@ -29,7 +29,8 @@ public class ProductSessionBean implements ProductSessionBeanLocal {
         em = entityManagerFactory.createEntityManager();
         return em.createNamedQuery("pro.findAll").getResultList();
     }
-
+    
+    
     @Override
     public productEntity addProduct(productEntity product) {        
         em = entityManagerFactory.createEntityManager();
@@ -58,4 +59,12 @@ public class ProductSessionBean implements ProductSessionBeanLocal {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+
+    @Override
+    public List<productEntity> listByCate(Long cateID) {
+             em = entityManagerFactory.createEntityManager();
+        return em.createNamedQuery("pro.findByCategory").setParameter("str", cateID).getResultList();
+    }
+
+ 
 }

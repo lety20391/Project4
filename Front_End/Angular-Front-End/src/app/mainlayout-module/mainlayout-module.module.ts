@@ -29,9 +29,12 @@ import { PetModuleModule } from '../pet-module/pet-module.module';
 import { ProductSingleComponent } from '../UIComponent/product-single/product-single.component';
 import { RegisterModule} from '../register-module/register.module';
 import { Error404Component } from '../UIComponent/error404/error404.component';
+
 // import { MainlayoutRoutingModule } from './mainlayout-routing.module';
 import { BookingModule} from '../booking-module/booking.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { GalleryComponent } from '../UIComponent/gallery/gallery.component';
+
 @NgModule({
   declarations: [
     LoadPageComponent,
@@ -56,7 +59,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     MainLayoutComponent,
     LoginComponent,
     ProductSingleComponent,
-    Error404Component
+    Error404Component,
+    GalleryComponent
   ],
   imports: [
     CommonModule,

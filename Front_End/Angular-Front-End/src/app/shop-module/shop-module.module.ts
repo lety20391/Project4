@@ -20,7 +20,7 @@ import { BannerSmallComponent } from '../UIComponent/banner-small/banner-small.c
 import { HttpClientModule }    from '@angular/common/http';
 import { ProductMockupComponent } from '../UIComponent/product-mockup/product-mockup.component';
 import { TopsellerComponent } from './top-seller/top-seller.component';
-
+import { GalleryComponent } from '../UIComponent/gallery/gallery.component';
 @NgModule({
   declarations: [
     ShopComponent,
@@ -41,7 +41,8 @@ import { TopsellerComponent } from './top-seller/top-seller.component';
     FunFactComponent,
     BannerSmallComponent,
     ProductMockupComponent,
-    TopsellerComponent
+    TopsellerComponent,
+    GalleryComponent
 
   ],
   imports: [

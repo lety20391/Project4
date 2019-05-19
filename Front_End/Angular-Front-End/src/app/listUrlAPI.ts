@@ -22,4 +22,6 @@ export const listUrlAPI: UrlAPIEntity[] = [
   {name: 'bookingMasterResource', path: localhost + '/ServicePRJ-web/rest/BookingMaster'},
   {name: 'bookingDetailResource', path: localhost + '/ServicePRJ-web/rest/BookingDetail'},
   {name: 'topsellerResource', path: localhost + '/ServicePRJ-web/rest/TopSeller'},
+  {name: 'categoryResource', path: localhost + '/ServicePRJ-web/rest/Category'}
+
 ];

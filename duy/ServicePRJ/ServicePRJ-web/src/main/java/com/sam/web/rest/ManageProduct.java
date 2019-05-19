@@ -53,7 +53,14 @@ public class ManageProduct {
         //TODO return proper representation object
         return productSessionBeanLocal.listAll();
     }
-
+    @GET
+    @Path("/list/{cateID}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<productEntity> getByCate(@PathParam("cateID") Long ID) {
+        //TODO return proper representation object
+        return productSessionBeanLocal.listByCate(ID);
+    }
+   
     
     //Add new Product
     @POST

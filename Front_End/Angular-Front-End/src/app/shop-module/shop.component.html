@@ -43,12 +43,10 @@
             <div class="widget-title">
               Galleries
             </div>
-            <ul class="category-nav">
-              <li><a href="#">Foods</a></li>
-              <li><a href="#">Toys</a></li>
-              <li><a href="#">Outfits</a></li>
-              <li><a href="#">Accessories</a></li>
-            </ul>
+            <!-- <ul class="category-nav" *ngFor="let item of listCate">
+              <li><a href="#" >item.cateName</a></li>
+            </ul> -->
+            <app-gallery (selectedCate)="getProductByCate($event)"></app-gallery>
           </div>
 
           <div class="widget widget-text">
@@ -87,13 +85,13 @@
                   <h4 class="title"><a href="shop-single.html">{{item.proName}}</a></h4>
                   <div class="meta">
                     <div class="price">${{item.proPrice}}</div>
-                    <div class="rating">
+                    <!-- <div class="rating">
                       <span></span>
                       <span></span>
                       <span></span>
                       <span></span>
                       <span></span>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -104,7 +102,7 @@
           <div class="row">
             <div class="col-sm-12 col-md-12">
 
-              <nav aria-label="Page navigation">
+              <!-- <nav aria-label="Page navigation">
                 <ul class="pagination">
                   <li class="page-item"><a class="page-link" href="#">Previous</a></li>
                   <li class="page-item active"><a class="page-link" href="#">1</a></li>
@@ -112,7 +110,7 @@
                   <li class="page-item"><a class="page-link" href="#">3</a></li>
                   <li class="page-item"><a class="page-link" href="#">Next</a></li>
                 </ul>
-              </nav>
+              </nav> -->
 
             </div>
           </div>

@@ -31,7 +31,7 @@ import { FormComponent } from './UIComponent/form/form.component';
 import { HomecontentComponent } from './UIComponent/homecontent/homecontent.component';
 import { RegisterComponent } from './UIComponent/register/register.component';
 import { LoginComponent } from './UIComponent/login/login.component';
-import { GalleryComponent } from './UIComponent/gallery/gallery.component';
+// import { GalleryComponent } from './UIComponent/gallery/gallery.component';
 import { TopsellerComponent } from './UIComponent/topseller/topseller.component';
 import { SearchComponent } from './UIComponent/search/search.component';
 import { ServiceMockupComponent } from './UIComponent/service-mockup/service-mockup/service-mockup.component';
@@ -41,6 +41,7 @@ import { ServiceCateComponent } from './UIComponent/service-cate-mockup/service-
 import { AppointmentComponent } from './UIComponent/appointment/appointment.component';
 import { AboutusComponent } from './UIComponent/aboutus/aboutus.component';
 import {OrderProductService} from './order-product.service';
+import { CateMockupComponent } from './UIComponent/gallery/cate-mockup/cate-mockup/cate-mockup.component';
 // import { SideBarMyPetComponent } from './UIComponent/side-bar-my-pet/side-bar-my-pet.component';
 
 // import { ServiceDetailModule } from './service-detail-module/service-detail.module';
@@ -52,7 +53,7 @@ import {OrderProductService} from './order-product.service';
     HomecontentComponent,
     RegisterComponent,
     LoginComponent,
-    GalleryComponent,
+    // GalleryComponent,
     TopsellerComponent,
     SearchComponent,
     SerComponent,
@@ -60,7 +61,8 @@ import {OrderProductService} from './order-product.service';
     ServiceDetailComponent,
     ServiceCateComponent,
     AppointmentComponent,
-    AboutusComponent
+    AboutusComponent,
+    CateMockupComponent
     // SideBarMyPetComponent
     // LoadPageComponent,
     // BackTopSectionComponent,
