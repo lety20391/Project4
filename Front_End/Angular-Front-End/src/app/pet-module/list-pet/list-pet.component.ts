@@ -317,6 +317,10 @@ export class ListPetComponent implements OnInit {
     this.updateCurrentDating(tempDating);
   }
 
+  getComponentType(): string{
+    return 'ListPetComponent';
+  }
+
   openDeleteDialog(): void {
         const dialogRef = this.dialog.open(SimpleDialogComponent, {
           width: '350px',

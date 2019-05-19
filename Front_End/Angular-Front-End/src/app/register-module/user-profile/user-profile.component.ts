@@ -13,6 +13,12 @@ export class UserProfileComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.initBasicData();
+  }
+
+  initBasicData():void{
+    this.currentUser = new UserEntity();
+    this.currentUser.listUserImage = [];
   }
 
 }
