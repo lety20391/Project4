@@ -96,7 +96,7 @@ Insert into dbo.tbCategory ([CateName], [Status]) values
 
 GO
 Insert into dbo.tbProduct ([ProImage], [Status], [Cate_ID] , [ProPrice], [ProColor], [ProName] , [ProDes]) values
-('image', 1, 3, 70, 'black', 'dog hair cutting machine' , 'Type:
+('image', 1, 3, 70, 'black', 'Dog hair cutting machine' , 'Type:
 Pet Cleaning & Grooming Products
 Item Type:
 pet clipper
@@ -109,7 +109,7 @@ Voltage:
 Grooming Products Type:
 Clippers, Trimmers & Blades'),
 
-('image', 1, 3, 28, 'blue, pink, black, purple', 'leather collar' , 'New Ditsy Pet leather dog collars. Beautifully handcrafted in England using genuine leather with nickel plated buckles & D Rings. Available in an array of delightful bright colours. Comes with a Ditsy Pet presentation box too!'),
+('image', 1, 3, 28, 'blue, pink, black, purple', 'Leather collar' , 'New Ditsy Pet leather dog collars. Beautifully handcrafted in England using genuine leather with nickel plated buckles & D Rings. Available in an array of delightful bright colours. Comes with a Ditsy Pet presentation box too!'),
 ('image', 1, 3, 10, 'lemon', 'Dog Lead' , 'Dog Lead Sizes
 Extra Small – 16mm x 110cm
 Small/Medium – 20mm x 110cm
