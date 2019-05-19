@@ -8,6 +8,8 @@ import {JWTHeaderService} from '../../jwtheader.service';
 import { ImageServiceService } from '../image-service.service';
 import { DatePipe, formatDate } from '@angular/common';
 import { UserEntity } from '../Entity/UserEntity';
+import { FilePickerAdapter } from 'ngx-awesome-uploader';
+import { UploadAdapter } from '../UploadAdapter/upload-adapter';
 
 @Component({
   selector: 'app-add-pet',
@@ -15,6 +17,8 @@ import { UserEntity } from '../Entity/UserEntity';
   styleUrls: ['./add-pet.component.css']
 })
 export class AddPetComponent implements OnInit {
+
+  adapter: UploadAdapter;
 
   newPet: PetEntity = new PetEntity();
   urlAPI: UrlAPIEntity;
@@ -41,7 +45,19 @@ export class AddPetComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.loadScript('./assets/js/cropper.js');
     this.prepareDate();
+  }
+
+  //load external js file into component
+  public loadScript(url: string) {
+    const body = <HTMLDivElement> document.body;
+    const script = document.createElement('script');
+    script.innerHTML = '';
+    script.src = url;
+    script.async = false;
+    script.defer = true;
+    body.appendChild(script);
   }
 
   prepareDate(): void{
@@ -94,8 +110,15 @@ export class AddPetComponent implements OnInit {
                     console.log('HTTP response', response);
                     let returnPet = response;
                     if (returnPet.petID != null){
-                      this.getUrl(returnPet.petID);
+                      // this.getUrl(returnPet.petID);
                       this.isReadyToUploadImage = true;
+
+                      //prepare Url
+                      this.urlAPI = listUrlAPI.find(url => url.name === 'uploadResource');
+                      this.urlAPI.path += "/file/" + "Pet/" + returnPet.petID;
+                      console.log(this.logClass + this.urlAPI.path);
+
+                      this.adapter = new UploadAdapter(this.http, this.urlAPI.path );
                     }
                   },
 
@@ -110,15 +133,15 @@ export class AddPetComponent implements OnInit {
     );
   }
 
-  getUrl(code: number): void{
-    //code will be use to create image Folder on server
-    console.log("------Create Pet: getUrl() ------");
-
-    //change your url name here
-    this.UrlEntity = listUrlAPI.find(url => url.name === 'uploadResource');
-    this.uploadUrl = this.UrlEntity.path + "/file/" + "Pet/" + code;
-    console.log(this.uploadUrl);
-  }
+  // getUrl(code: number): void{
+  //   //code will be use to create image Folder on server
+  //   console.log("------Create Pet: getUrl() ------");
+  //
+  //   //change your url name here
+  //   this.UrlEntity = listUrlAPI.find(url => url.name === 'uploadResource');
+  //   this.uploadUrl = this.UrlEntity.path + "/file/" + "Pet/" + code;
+  //   console.log(this.uploadUrl);
+  // }
 
   createHeader():HttpHeaders {
     let headers = new HttpHeaders();

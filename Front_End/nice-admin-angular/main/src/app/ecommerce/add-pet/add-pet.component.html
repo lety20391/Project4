@@ -6,7 +6,7 @@
                 <h6 class="card-subtitle">This is the form Add new Pet for Admin
                 </h6>
                 <form #petForm="ngForm">
-                    <div [hidden]="petForm.submitted">
+                    <!-- <div [hidden]="petForm.submitted"> -->
 
                         <div class="form-group">
                             <label for="ID">ID</label>
@@ -121,24 +121,34 @@
                           </div>
 
                         </div>
+                        <!-- ************************** -->
+                        <!-- day la phan upload hinh moi  -->
+                        <!-- ************************** -->
+                        <div class="form-group" *ngIf="isReadyToUploadImage">
+                          <label>Upload Image</label>
+                            <div class="form-control">
+                              <ngx-file-picker [adapter]="adapter" [enableCropper]="true">
+                              </ngx-file-picker>
+                            </div>
+                        </div>
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label>Image upload</label>
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Upload</span>
                                 <input type="file" class="btn">
                             </div>
 
-                        </div>
+                        </div> -->
 
-                        <button type="submit" class="btn btn-info btn-rounded" [disabled]="petForm.invalid" (click)="createPetInfo()">Create New</button>
+                        <button type="button" class="btn btn-info btn-rounded" [disabled]="petForm.invalid" (click)="createPetInfo()">Create New</button>
                         <button type="button" class="btn btn-inverse btn-rounded" (click)="petForm.resetForm({})">Reset</button>
 
-                    </div>
-                    <div class="submitted-message" *ngIf="petForm.submitted">
+                    <!-- </div> -->
+                    <!-- <div class="submitted-message" *ngIf="petForm.submitted">
                         <p>You've submitted your Pet, {{ petForm.value.name }}!</p>
                         <button class="btn btn-inverse" (click)="productForm.resetForm({})">Add new Pet</button>
-                    </div>
+                    </div> -->
                 </form>
             </div>
         </div>

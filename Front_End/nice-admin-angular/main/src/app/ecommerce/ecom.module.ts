@@ -27,6 +27,7 @@ import { SmartTableLabelComponent } from './smart-table-label/smart-table-label.
 import { CateComponent } from './cate/cate.component';
 import { ListProductComponent } from './list-product/list-product.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { FilePickerModule } from  'ngx-awesome-uploader';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
     NgbModule,
     Ng2SmartTableModule,
     OwlDateTimeModule,
-    OwlNativeDateTimeModule
+    OwlNativeDateTimeModule,
+    FilePickerModule
   ],
   declarations: [
     CartComponent,
