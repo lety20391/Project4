@@ -1,11 +1,84 @@
-<div *ngFor='let item of listTop; let index = index'>
-  <div class="shop-item-sidebar" *ngIf="index < 3">
-    <div class="media">
-      <img src="http://localhost:9090/uploadedFiles/Product/{{item.productEntity.proID}}/{{item.productEntity.proListImage}}" alt="" class="img-fluid">
+<div *ngIf="!isInPageMode">
+    <div *ngIf="isShowTopSeller">
+        <div *ngFor='let item of listTop; let index = index'>
+          <div class="shop-item-sidebar" *ngIf="index < 3">
+            <div class="media">
+              <img src="http://localhost:9090/uploadedFiles/Product/{{item.productEntity.proID}}/{{item.productEntity.proListImage[0]}}" alt="" class="img-fluid">
+            </div>
+            <div class="body-text">
+              <h4 class="title"><a routerLink="/mainlayout/productsingle/{{item.productEntity.proID}}">{{item.productEntity.proName}}</a></h4>
+              <div class="price">${{item.productEntity.proPrice}}</div>
+            </div>
+          </div>
+        </div>
     </div>
-    <div class="body-text">
-      <h4 class="title"><a routerLink="/mainlayout/productsingle/{{item.productEntity.proID}}">{{item.productEntity.proName}}</a></h4>
-      <div class="price">${{item.productEntity.proPrice}}</div>
-    </div>
-  </div>
+</div>
+
+<div id="class" class="" *ngIf="isInPageMode">
+  <div class="content-wrap">
+    <div class="container">
+
+      <div class="row">
+
+          <div class="col-12 col-sm-9 col-md-9">
+
+            <div class="row">
+              <!-- Item 1 -->
+              <div class="col-sm-4 col-md-4" *ngFor='let item of listTop'>
+                <div class="rs-shop-box mb-5">
+                  <div class="box-gallery">
+                    <!-- nho sua cho nay do style thay doi heigh cua img -->
+                    <a [routerLink]="'/mainlayout/productsingle/' + item.productEntity.proID">
+                      <img src="http://localhost:9090/uploadedFiles/Product/{{item.productEntity.proID}}/{{item.productEntity.proListImage[0]}}" alt="" class="img-fluid" style="height:250px;object-fit:cover; margin:auto">
+                      <div class="project-info">
+                        <div class="project-icon">
+                          <h3><span>Product Detail</span></h3>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="body-text">
+                    <h4 class="title"><a href="shop-single.html">{{item.productEntity.proName}}</a></h4>
+                    <div class="meta">
+                      <div class="price">${{item.productEntity.proPrice}}</div>
+                      <!-- <div class="rating">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            <!-- end shop -->
+
+            <div class="row">
+              <div class="col-sm-12 col-md-12">
+
+                <!-- <nav aria-label="Page navigation">
+                  <ul class="pagination">
+                    <li class="page-item.productEntity"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item.productEntity active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item.productEntity"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item.productEntity"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item.productEntity"><a class="page-link" href="#">Next</a></li>
+                  </ul>
+                </nav> -->
+
+              </div>
+            </div>
+
+
+
+          </div>
+
+          </div>
+      </div>
+
+</div>
+
+</div>
 </div>

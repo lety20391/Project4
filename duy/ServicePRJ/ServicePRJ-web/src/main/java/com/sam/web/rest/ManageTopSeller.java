@@ -5,8 +5,10 @@
  */
 package com.sam.web.rest;
 
+import com.google.gson.Gson;
 import com.sam.ejb.OrderDetailSessionBean.OrderDetailSessionBeanLocal;
 import com.sam.ejb.entity.OrderDetailEntity;
+import com.sam.ejb.entity.ReportObject;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.core.Context;
@@ -18,6 +20,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  * REST Web Service
@@ -32,6 +35,8 @@ public class ManageTopSeller {
     OrderDetailSessionBeanLocal orderDetailSessionBeanLocal;
     @Context
     private UriInfo context;
+    
+    private final String logClass = "--Manage Top Seller: ";
 
     /**
      * Creates a new instance of ManageTopSeller
@@ -46,9 +51,9 @@ public class ManageTopSeller {
     @Path("/list")
    @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<OrderDetailEntity> getJSON() {
-
-        return orderDetailSessionBeanLocal.listTop();
+    public Response getTopSeller() {
+        System.out.println(logClass + " get Top Seller");
+        return Response.status(200).entity( new Gson().toJson( orderDetailSessionBeanLocal.listTop())).build();
     }
 
     /**

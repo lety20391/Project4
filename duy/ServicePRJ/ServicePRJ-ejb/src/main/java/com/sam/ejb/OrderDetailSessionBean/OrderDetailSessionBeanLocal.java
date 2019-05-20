@@ -6,6 +6,7 @@
 package com.sam.ejb.OrderDetailSessionBean;
 
 import com.sam.ejb.entity.OrderDetailEntity;
+import com.sam.ejb.entity.ReportObject;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -20,6 +21,6 @@ public interface OrderDetailSessionBeanLocal {
     public OrderDetailEntity editOrderDetail(OrderDetailEntity orderDetail);
     public void deleteOrderDetail(Long id);
     public OrderDetailEntity findOne(Long id);
-    public List <OrderDetailEntity> listTop();
+    public List <ReportObject.Report2Column> listTop();
     public List<Object> getTotalQtyGroupByProduct();
 }
