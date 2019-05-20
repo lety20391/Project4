@@ -7,11 +7,13 @@ package com.sam.ejb.PetSessionBean;
 
 import com.sam.ejb.entity.PetEntity;
 import com.sam.ejb.entity.productEntity;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -92,5 +94,16 @@ public class PetManageSessionBean implements PetManageSessionBeanLocal {
         System.out.println(logClass + " search Pet Name and Breed: " + strSearch);
         em = entityManagerFactory.createEntityManager();
         return em.createNamedQuery("pet.searchNameAndBreed").setParameter("str", "%" + strSearch + "%").getResultList();
+    }
+
+    @Override
+    public List<PetEntity> filterByPetDOB(Date startDate, Date endDate) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println(logClass + " filter Pet Age: " + startDate.toString() + " - " + endDate.toString());
+        em = entityManagerFactory.createEntityManager();
+        return em.createNamedQuery("pet.filterPetByAge")
+                .setParameter("startDate", startDate, TemporalType.DATE)
+                .setParameter("endDate", endDate, TemporalType.DATE)
+                .getResultList();
     }
 }

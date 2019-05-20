@@ -7,6 +7,7 @@ package com.sam.ejb.PetSessionBean;
 
 import com.sam.ejb.entity.PetEntity;
 import com.sam.ejb.entity.productEntity;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -24,4 +25,5 @@ public interface PetManageSessionBeanLocal {
     public List<PetEntity> listPetOfUser(Long userID);
     public List<PetEntity> listPetExceptUser(Long userID);
     public List<PetEntity> searchPetNameAndBreed(String strSearch);
+    public List<PetEntity> filterByPetDOB(Date startDate, Date endDate);
 }

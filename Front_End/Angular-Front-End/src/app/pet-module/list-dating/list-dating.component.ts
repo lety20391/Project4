@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { DatePipe, formatDate } from '@angular/common';
 import { PetEntity } from '../PetEntity';
 import { listUrlAPI } from '../../listUrlAPI';
 import { UrlAPIEntity } from '../../UrlAPIEntity';
@@ -313,6 +314,52 @@ export class ListDatingComponent implements OnInit {
                       );
                 }
           );
+    }
+
+    filterPetByAge(): void{
+      console.log(this.logClass + 'min: ' + this.minValue + ' - max: ' + this.maxValue);
+
+      //xu ly du lieu DateTime , vi minh se search theo DOB nen can xu ly Age ve lai thanh ngay thang tuong ung
+      //minValue = x year, lay Today (tinh theo giay) - x * 365 * 24 * 3600
+      //luu y min se tuong ung voi toDate, con max se tuong ung voi fromDate
+      let minDOB: number = Date.now() - this.minValue * 365 * 24 * 3600 * 1000;
+      let toDate: string = formatDate(minDOB, 'yyyy-MM-dd', 'en-US') + 'T' + formatDate(minDOB, 'hh:mm:ss', 'en-US') + '.000+07:00';
+
+      //tuong tu xu ly du lieu MaxDate
+      let maxDOB: number = Date.now() - this.maxValue * 365 * 24 * 3600 * 1000;
+      let fromDate: string = formatDate(maxDOB, 'yyyy-MM-dd', 'en-US') + 'T' + formatDate(maxDOB, 'hh:mm:ss', 'en-US') + '.000+07:00';
+
+      //gui du lieu len server de Filter
+      console.log(this.logClass + ' minDOB' + toDate);
+      console.log(this.logClass + ' maxDOB' + fromDate);
+      this.urlAPI = listUrlAPI.find(url => url.name === 'petResource');
+
+      this.http.get<PetEntity[]>(this.urlAPI.path + '/list/FilterPetByDOB/' + fromDate + '/' + toDate)
+          .subscribe(
+              response => {
+                    console.log(this.logClass + ' filter result' + JSON.stringify(response));
+                    this.listPet = JSON.parse(JSON.stringify(response));
+                    this.listPet.forEach(
+                            item => {
+                                  item.petListImage = [];
+                                  console.log(this.logClass + " getImagePath");
+                                  this.urlAPI = listUrlAPI.find(url => url.name === 'getAllImageResource');
+                                  console.log(this.logClass + this.urlAPI.path);
+
+                                  //goi len server de lay danh sach hinh anh ve
+                                  this.http.get<string[]>(this.urlAPI.path + '/Pet/' + item.petID)
+                                  .subscribe(
+                                    result => {
+                                                console.log(this.logClass + ' Image Load:' + result);
+                                                //gan ket qua tra ve vao thuoc tinh petListImage
+                                                item.petListImage = result;
+                                              }
+                                  );
+                            }
+                    );
+              }
+          );
+
     }
 
     openDialog(requestDating: DatingDetailEntity) {

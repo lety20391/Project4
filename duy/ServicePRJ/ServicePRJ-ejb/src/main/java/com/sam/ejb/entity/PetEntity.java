@@ -19,6 +19,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -31,7 +32,8 @@ import javax.persistence.Table;
             @NamedQuery(name="pet.findAll",query = "SELECT p FROM PetEntity p"),
             @NamedQuery(name="pet.searchNameAndBreed", query ="SELECT p FROM PetEntity p WHERE p.PetName LIKE :str  OR p.PetBreed LIKE :str"),
             @NamedQuery(name="pet.getListPetOfUser", query ="SELECT p FROM PetEntity p WHERE p.userEntity.userID = :userID "),
-            @NamedQuery(name="pet.getAllPetExceptOneUser", query ="SELECT p FROM PetEntity p WHERE p.userEntity.userID != :userID ")
+            @NamedQuery(name="pet.getAllPetExceptOneUser", query ="SELECT p FROM PetEntity p WHERE p.userEntity.userID != :userID AND p.PetDating = TRUE AND p.PetStatus = TRUE"),
+            @NamedQuery(name="pet.filterPetByAge", query ="SELECT p FROM PetEntity p WHERE p.PetDOB BETWEEN :startDate AND :endDate")
             
         })
 public class PetEntity {
@@ -55,6 +57,7 @@ public class PetEntity {
     private int PetPrice;
     
     @Column(name="petDOB")
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date PetDOB;
     
     @Column(name="petDating")

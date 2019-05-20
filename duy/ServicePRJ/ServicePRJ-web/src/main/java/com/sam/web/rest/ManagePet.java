@@ -9,6 +9,12 @@ import com.google.gson.Gson;
 import com.sam.ejb.PetSessionBean.PetManageSessionBeanLocal;
 import com.sam.ejb.entity.PetEntity;
 import com.sam.ejb.entity.productEntity;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAccessor;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.core.Context;
@@ -85,6 +91,27 @@ public class ManagePet {
         //TODO return proper representation object
         //throw new UnsupportedOperationException();
         return petManageSessionBeanLocal.searchPetNameAndBreed(str);
+    }
+    
+    @GET
+    @Path("/list/FilterPetByDOB/{startDate}/{endDate}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<PetEntity> filterPetByDOB(@PathParam("startDate") String startDate, @PathParam("endDate") String endDate) throws ParseException {
+        //TODO return proper representation object
+        //throw new UnsupportedOperationException();
+//        Date beginDate = new SimpleDateFormat("yyyy-MM-dd T hh:mm:ss").parse(startDate);
+
+//        DateTimeFormatter timeFormatter = DateTimeFormatter.ISO_DATE_TIME;
+//        TemporalAccessor accessor = timeFormatter.parse("2015-10-27T16:22:27.605-07:00");
+        
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ISO_DATE_TIME;
+        TemporalAccessor accessor = timeFormatter.parse(startDate);
+        Date beginDate = Date.from(Instant.from(accessor));
+        
+        TemporalAccessor accessor2 = timeFormatter.parse(endDate);
+        Date finishDate = Date.from(Instant.from(accessor2));
+        
+        return petManageSessionBeanLocal.filterByPetDOB(beginDate, finishDate);
     }
     
     @POST
