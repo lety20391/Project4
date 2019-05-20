@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Ng5SliderModule } from 'ng5-slider';
 import { PetMockupComponent } from './pet-mockup/pet-mockup.component';
 import { ListPetComponent } from './list-pet/list-pet.component';
 import { ListDatingComponent } from './list-dating/list-dating.component';
@@ -47,7 +48,8 @@ import {UploadModuleModule} from '../upload-module/upload-module.module';
     OwlNativeDateTimeModule,
     MatDialogModule,
     RegisterModule,
-    UploadModuleModule
+    UploadModuleModule,
+    Ng5SliderModule
 
   ],
   exports:[

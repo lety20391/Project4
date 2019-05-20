@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { PetEntity } from '../PetEntity';
 import { listUrlAPI } from '../../listUrlAPI';
 import { UrlAPIEntity } from '../../UrlAPIEntity';
@@ -10,13 +10,25 @@ import {DatingDetailEntity} from '../DatingDetailEntity';
 import {DatingRequestComponent} from '../dating-request/dating-request.component';
 import { Router } from '@angular/router';
 import {JWTHeaderService} from '../../jwtheader.service';
+import { Options } from 'ng5-slider';
 
 @Component({
   selector: 'app-list-dating',
   templateUrl: './list-dating.component.html',
-  styleUrls: ['./list-dating.component.css']
+  styleUrls: ['./list-dating.component.css'],
+  encapsulation: ViewEncapsulation.None
+
 })
 export class ListDatingComponent implements OnInit {
+
+    //Age Slider
+    minValue: number = 1;
+    maxValue: number = 5;
+    options: Options = {
+      floor: 0,
+      ceil: 20,
+      step: 1
+    };
 
 
     listPet: PetEntity[] = [];
@@ -273,7 +285,7 @@ export class ListDatingComponent implements OnInit {
     }
 
     searchPet(): void{
-      
+
       console.log(this.logClass + ' get my list Pet');
       this.urlAPI = listUrlAPI.find(url => url.name === 'petResource');
 
