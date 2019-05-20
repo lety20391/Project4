@@ -33,6 +33,8 @@ export class ShopComponent implements OnInit {
     }
   };
 
+  isShowSlider: boolean = false;
+
   //this is title and content for small banner
   shopTitle = 'Shop';
   shopContent = "Your pet's health and well-being are our top priority.";
@@ -51,7 +53,8 @@ export class ShopComponent implements OnInit {
 
   ngOnInit() {
     this.fetchProduct();
-    this.loadScript('./assets/js/search.js');
+    //this.loadScript('./assets/js/search.js');
+    this.getMinMaxPrice();
   }
 
   loadCate(): void {
@@ -190,5 +193,30 @@ export class ShopComponent implements OnInit {
                     );
               }
         );
+  }
+
+  getMinMaxPrice(): void {
+    console.log(this.logClass + ' filter Product By Price');
+    this.urlAPI = listUrlAPI.find(url => url.name === 'productResource');
+
+    this.http.get<any[]>(this.urlAPI.path + '/GetMinMaxPrice/' )
+      .subscribe(
+            response =>  {
+                  console.log(this.logClass + ' Min Max Price from Server: ' + JSON.stringify(response));
+                  let tempArray = JSON.parse(JSON.stringify(response));
+                  if( tempArray instanceof Array){
+                    let insideArray = JSON.parse(JSON.stringify(tempArray[0]));
+                    if(insideArray instanceof Array){
+                      console.log(this.logClass + ' Min Price: ' + insideArray[0] + ' - Max Price:' + insideArray[1]);
+                      this.options.floor = Number(insideArray[0]);
+                      this.options.ceil = Number(insideArray[1]);
+                      this.minValue = Number(insideArray[0]);
+                      this.maxValue = Math.round( Number(insideArray[1]) / 2 );
+                      this.isShowSlider = true;
+                    }
+                  }
+            }
+
+      );
   }
 }

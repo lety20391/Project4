@@ -5,6 +5,7 @@
  */
 package com.sam.web.rest;
 
+import com.google.gson.Gson;
 import com.sam.ejb.ProductSessionBean.ProductSessionBeanLocal;
 import com.sam.ejb.entity.PetEntity;
 import com.sam.ejb.entity.productEntity;
@@ -78,6 +79,17 @@ public class ManageProduct {
         //TODO return proper representation object
         //throw new UnsupportedOperationException();
         return productSessionBeanLocal.filterProductByPrice(fromPrice, toPrice);
+    }
+    
+    @GET
+    @Path("/list/GetMinMaxPrice")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getMinMaxPrice() {
+        //TODO return proper representation object
+        //throw new UnsupportedOperationException();
+        System.out.println("--Manage Product: getMinMaxPrice");
+        List<Object> result = productSessionBeanLocal.findMinMaxPrice();
+        return Response.status(200).entity(new Gson().toJson(result)).build();
     }
    
     

@@ -85,5 +85,13 @@ public class ProductSessionBean implements ProductSessionBeanLocal {
                 .getResultList();
     }
 
+    @Override
+    public List<Object> findMinMaxPrice() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("--EJB: Product Sessionbean: find Min Max Price(): ");
+        em = entityManagerFactory.createEntityManager();
+        return em.createNamedQuery("pro.findMinMaxPrice").getResultList();
+    }
+
  
 }

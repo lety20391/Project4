@@ -30,7 +30,8 @@ import javax.persistence.Table;
             @NamedQuery(name="pro.findAll",query = "SELECT p FROM productEntity p WHERE p.Status = TRUE"),
             @NamedQuery(name="pro.findByCategory",query = "SELECT p FROM productEntity p WHERE p.cateEntity.CateID = :str"),
             @NamedQuery(name="pro.findByName",query = "SELECT p FROM productEntity p WHERE p.ProName LIKE :str"),
-            @NamedQuery(name="pro.filterProductByPrice",query = "SELECT p FROM productEntity p WHERE p.ProPrice > :fromPrice AND p.ProPrice < :toPrice")
+            @NamedQuery(name="pro.findMinMaxPrice",query = "SELECT MIN(p.ProPrice), MAX(p.ProPrice) FROM productEntity p WHERE p.Status = TRUE"),
+            @NamedQuery(name="pro.filterProductByPrice",query = "SELECT p FROM productEntity p WHERE p.ProPrice >= :fromPrice AND p.ProPrice <= :toPrice")
             
 //            @NamedQuery(name="ser.search", query ="SELECT s FROM serviceEntity s WHERE s.name LIKE :str ")
         })
