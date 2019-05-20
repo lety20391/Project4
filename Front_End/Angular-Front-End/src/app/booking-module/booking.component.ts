@@ -10,7 +10,7 @@ import { ServiceManageService} from '../service-module/service-manage.service';
 import { PetEntity} from '../pet-module/PetEntity';
 import { HttpResponse } from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ListPetComponent } from '../pet-module/list-pet/list-pet.component'; //de get list;
 import { BookingMasterEntity} from './BookingMasterEntity';
 
@@ -54,6 +54,7 @@ export class BookingComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
+    private router: Router,
     private serviceManageService: ServiceManageService,
     private location : Location
   ) { }
@@ -250,9 +251,18 @@ export class BookingComponent implements OnInit {
               //roi gan vao listPet
               console.log(JSON.stringify(response.body));
               this.myListPet = JSON.parse(JSON.stringify(response.body));
-
+              if(this.myListPet.length == 0)
+              {
+                console.log("no pet");
+                alert("You don't have any Pet. Redirecting to Pet Create");
+              setTimeout(() =>
+              {
+                this.router.navigateByUrl('mainlayout/createPet');
+              }, 2000
+                );
+              }
               //voi moi item trong danh sach Pet minh goi len server lay danh sach Image
-              this.myListPet.forEach(
+              else{this.myListPet.forEach(
                 item => {
                   //khoi tao thuoc tinh petListImage vi thuoc tinh nay dang null
                   item.petListImage = [];
@@ -271,7 +281,7 @@ export class BookingComponent implements OnInit {
                   );
                 }
               );
-
+            }
 
             }
           }

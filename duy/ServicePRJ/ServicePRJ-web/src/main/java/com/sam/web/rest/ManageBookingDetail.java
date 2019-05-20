@@ -54,7 +54,15 @@ public class ManageBookingDetail {
     public Response resToRequest(){
         return Response.ok().build();
     }
-
+    
+            @GET
+    @Path("/list/{bookingID}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<bookingDetailEntity> getBMOfBD(@PathParam("bookingID") Long bookingID) {
+        //TODO return proper representation object
+        //throw new UnsupportedOperationException();
+        return bookingDetailSessionBeanLocal.listBMofBD(bookingID);
+    }
     /**
      * Retrieves representation of an instance of com.sam.web.rest.ManageBookingDetail
      * @return an instance of java.lang.String

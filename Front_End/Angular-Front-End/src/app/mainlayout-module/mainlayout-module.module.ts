@@ -35,7 +35,7 @@ import { BookingModule} from '../booking-module/booking.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { GalleryComponent } from '../UIComponent/gallery/gallery.component';
 import { MySliderModule } from '../my-slider/my-slider.module';
-
+import {MyOrderComponent} from '../UIComponent/MyOrder/my-order.component';
 @NgModule({
   declarations: [
     LoadPageComponent,
@@ -61,7 +61,8 @@ import { MySliderModule } from '../my-slider/my-slider.module';
     LoginComponent,
     ProductSingleComponent,
     Error404Component,
-    GalleryComponent
+    GalleryComponent,
+    MyOrderComponent
   ],
   imports: [
     CommonModule,

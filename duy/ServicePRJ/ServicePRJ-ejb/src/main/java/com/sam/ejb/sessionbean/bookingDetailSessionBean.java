@@ -53,5 +53,11 @@ public class bookingDetailSessionBean implements bookingDetailSessionBeanLocal {
         return em.find(bookingDetailEntity.class, id);
     }
 
+    @Override
+    public List<bookingDetailEntity> listBMofBD(Long bookingID) {
+        em = entityManagerFactory.createEntityManager();
+        return em.createNamedQuery("bd.getListBDofBM").setParameter("bookingID", bookingID).getResultList();
+    }
+
  
 }
