@@ -32,6 +32,8 @@ export class ListDatingComponent implements OnInit {
 
     newRequestDating: DatingDetailEntity = new DatingDetailEntity();
 
+    searchNameAndBreed: string = '';
+
 
 
     constructor(
@@ -268,6 +270,37 @@ export class ListDatingComponent implements OnInit {
       console.log(JSON.stringify(this.newRequestDating));
       this.openDialog(this.newRequestDating);
 
+    }
+
+    searchPet(): void{
+      
+      console.log(this.logClass + ' get my list Pet');
+      this.urlAPI = listUrlAPI.find(url => url.name === 'petResource');
+
+      this.http.get<PetEntity[]>(this.urlAPI.path + '/list/Search/' + this.searchNameAndBreed)
+          .subscribe(
+                response => {
+                      this.listPet = JSON.parse(JSON.stringify(response));
+                      this.listPet.forEach(
+                              item => {
+                                    item.petListImage = [];
+                                    console.log(this.logClass + " getImagePath");
+                                    this.urlAPI = listUrlAPI.find(url => url.name === 'getAllImageResource');
+                                    console.log(this.logClass + this.urlAPI.path);
+
+                                    //goi len server de lay danh sach hinh anh ve
+                                    this.http.get<string[]>(this.urlAPI.path + '/Pet/' + item.petID)
+                                    .subscribe(
+                                      result => {
+                                                  console.log(this.logClass + ' Image Load:' + result);
+                                                  //gan ket qua tra ve vao thuoc tinh petListImage
+                                                  item.petListImage = result;
+                                                }
+                                    );
+                              }
+                      );
+                }
+          );
     }
 
     openDialog(requestDating: DatingDetailEntity) {

@@ -85,4 +85,12 @@ public class PetManageSessionBean implements PetManageSessionBeanLocal {
         em = entityManagerFactory.createEntityManager();
         return em.createNamedQuery("pet.getAllPetExceptOneUser").setParameter("userID", userID).getResultList();
     }
+
+    @Override
+    public List<PetEntity> searchPetNameAndBreed(String strSearch) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println(logClass + " search Pet Name and Breed: " + strSearch);
+        em = entityManagerFactory.createEntityManager();
+        return em.createNamedQuery("pet.searchNameAndBreed").setParameter("str", "%" + strSearch + "%").getResultList();
+    }
 }

@@ -23,4 +23,5 @@ public interface PetManageSessionBeanLocal {
     public void deletePet(Long id);
     public List<PetEntity> listPetOfUser(Long userID);
     public List<PetEntity> listPetExceptUser(Long userID);
+    public List<PetEntity> searchPetNameAndBreed(String strSearch);
 }

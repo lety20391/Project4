@@ -78,6 +78,15 @@ public class ManagePet {
         return petManageSessionBeanLocal.listPetExceptUser(userID);
     }
     
+    @GET
+    @Path("/list/Search/{str}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<PetEntity> searchPetNameAndBreed(@PathParam("str") String str) {
+        //TODO return proper representation object
+        //throw new UnsupportedOperationException();
+        return petManageSessionBeanLocal.searchPetNameAndBreed(str);
+    }
+    
     @POST
     @Path("/Post")
     @Produces(MediaType.APPLICATION_JSON)
