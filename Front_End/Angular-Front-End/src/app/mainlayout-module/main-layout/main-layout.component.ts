@@ -48,18 +48,26 @@ export class MainLayoutComponent implements OnInit {
     //kiem tra ten cua Component truoc khi goi cac method len
     if( component.getComponentType() == 'ProductSingleComponent' || component.getComponentType() == 'ShopingCartComponent'){
 
-        //lay du lieu ve Product dang duoc Buy
-        component.buyNewProduct.subscribe(
-          item => {
-            console.log('Item: ' + JSON.stringify(item));
-            console.log('***Buy New***');
-            //this.totalOrder += 1;
-            //lay du lieu tu Order Service cho an toan :v
-            this.totalOrder = this.orderService.getTotalQuantity();
-          }
-        );
+            //lay du lieu ve Product dang duoc Buy
+            component.buyNewProduct.subscribe(
+                  item => {
+                    console.log('Item: ' + JSON.stringify(item));
+                    console.log('***Buy New***');
+                    //this.totalOrder += 1;
+                    //lay du lieu tu Order Service cho an toan :v
+                    this.totalOrder = this.orderService.getTotalQuantity();
+                  }
+            );
 
 
+            if( component.getComponentType() == 'ShopingCartComponent'){
+                component.checkOutFinish.subscribe(
+                    item => {
+                        this.totalOrder = 0;
+                    }
+                );
+
+            }
     }
   }
 

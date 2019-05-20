@@ -6,6 +6,7 @@
 package com.sam.ejb.OrderDetailSessionBean;
 
 import com.sam.ejb.entity.OrderDetailEntity;
+import com.sam.ejb.entity.ReportObject;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -59,9 +60,12 @@ em = entityManagerFactory.createEntityManager();
     // "Insert Code > Add Business Method")
 
     @Override
-    public List<OrderDetailEntity> listTop() {
+    public List<ReportObject.Report2Column> listTop() {
+        System.out.println(logClass + " listTop");
         em = entityManagerFactory.createEntityManager();
-        return em.createNamedQuery("od.sort").getResultList();
+        List<ReportObject.Report2Column> listResult = em.createNamedQuery("od.sort").getResultList();
+        System.out.println(logClass + listResult.toString());
+        return listResult;
     }
 
     @Override
