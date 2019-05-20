@@ -65,10 +65,19 @@ public class ManageProduct {
     @GET
     @Path("/list/Search/{str}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<productEntity> searchPetNameAndBreed(@PathParam("str") String str) {
+    public List<productEntity> searchProductNameAndBreed(@PathParam("str") String str) {
         //TODO return proper representation object
         //throw new UnsupportedOperationException();
         return productSessionBeanLocal.searchProductByName(str);
+    }
+    
+    @GET
+    @Path("/list/Filter/{fromPrice}/{toPrice}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<productEntity> filterProductByPrice(@PathParam("fromPrice") int fromPrice, @PathParam("toPrice") int toPrice) {
+        //TODO return proper representation object
+        //throw new UnsupportedOperationException();
+        return productSessionBeanLocal.filterProductByPrice(fromPrice, toPrice);
     }
    
     

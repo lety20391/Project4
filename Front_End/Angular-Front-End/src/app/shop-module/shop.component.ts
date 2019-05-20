@@ -16,11 +16,11 @@ import { Options, LabelType } from 'ng5-slider';
 })
 export class ShopComponent implements OnInit {
 
-  minValue: number = 100;
-  maxValue: number = 400;
+  minValue: number = 10;
+  maxValue: number = 30;
   options: Options = {
     floor: 0,
-    ceil: 500,
+    ceil: 100,
     translate: (value: number, label: LabelType): string => {
       switch (label) {
         case LabelType.Low:
@@ -137,6 +137,36 @@ export class ShopComponent implements OnInit {
     this.urlAPI = listUrlAPI.find(url => url.name === 'productResource');
 
     this.http.get<productEntity[]>(this.urlAPI.path + '/Search/' + this.searchNameProduct)
+        .subscribe(
+              response => {
+                    this.listProduct = JSON.parse(JSON.stringify(response));
+                    this.listProduct.forEach(
+                            item => {
+                                  item.proListImage = [];
+                                  console.log(this.logClass + " getImagePath");
+                                  this.urlAPI = listUrlAPI.find(url => url.name === 'getAllImageResource');
+                                  console.log(this.logClass + this.urlAPI.path);
+
+                                  //goi len server de lay danh sach hinh anh ve
+                                  this.http.get<string[]>(this.urlAPI.path + '/Product/' + item.proID)
+                                  .subscribe(
+                                    result => {
+                                                console.log(this.logClass + ' Image Load:' + result);
+                                                //gan ket qua tra ve vao thuoc tinh petListImage
+                                                item.proListImage = result;
+                                              }
+                                  );
+                            }
+                    );
+              }
+        );
+  }
+
+  filterProductByPrice(): void{
+    console.log(this.logClass + ' filter Product By Price');
+    this.urlAPI = listUrlAPI.find(url => url.name === 'productResource');
+
+    this.http.get<productEntity[]>(this.urlAPI.path + '/Filter/' + this.minValue + '/' + this.maxValue)
         .subscribe(
               response => {
                     this.listProduct = JSON.parse(JSON.stringify(response));

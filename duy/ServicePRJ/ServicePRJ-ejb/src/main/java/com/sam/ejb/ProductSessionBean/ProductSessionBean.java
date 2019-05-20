@@ -74,5 +74,16 @@ public class ProductSessionBean implements ProductSessionBeanLocal {
         return em.createNamedQuery("pro.findByName").setParameter("str", "%" + strSearch + "%").getResultList();
     }
 
+    @Override
+    public List<productEntity> filterProductByPrice(int fromPrice, int toPrice) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("--EJB: Product Sessionbean: filterProductByPrice(): " + fromPrice + " - " + toPrice);
+        em = entityManagerFactory.createEntityManager();
+        return em.createNamedQuery("pro.filterProductByPrice")
+                .setParameter("fromPrice", fromPrice)
+                .setParameter("toPrice", toPrice)
+                .getResultList();
+    }
+
  
 }
