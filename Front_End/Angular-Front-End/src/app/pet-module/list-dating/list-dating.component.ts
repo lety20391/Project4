@@ -26,9 +26,9 @@ export class ListDatingComponent implements OnInit {
     minValue: number = 1;
     maxValue: number = 5;
     options: Options = {
-      floor: 0,
+      floor: 0.5,
       ceil: 20,
-      step: 1
+      step: 0.5
     };
 
 
