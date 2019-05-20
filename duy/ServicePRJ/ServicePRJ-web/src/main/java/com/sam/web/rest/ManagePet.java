@@ -69,6 +69,15 @@ public class ManagePet {
         return petManageSessionBeanLocal.listPetOfUser(userID);
     }
     
+    @GET
+    @Path("/list/Except/{userID}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<PetEntity> getPetExceptUser(@PathParam("userID") Long userID) {
+        //TODO return proper representation object
+        //throw new UnsupportedOperationException();
+        return petManageSessionBeanLocal.listPetExceptUser(userID);
+    }
+    
     @POST
     @Path("/Post")
     @Produces(MediaType.APPLICATION_JSON)

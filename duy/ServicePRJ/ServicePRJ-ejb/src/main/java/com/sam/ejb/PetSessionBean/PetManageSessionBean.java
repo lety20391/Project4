@@ -77,4 +77,12 @@ public class PetManageSessionBean implements PetManageSessionBeanLocal {
         return em.createNamedQuery("pet.getListPetOfUser").setParameter("userID", userID).getResultList();
         
     }
+
+    @Override
+    public List<PetEntity> listPetExceptUser(Long userID) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println(logClass + " list Pet Except User: " + userID);
+        em = entityManagerFactory.createEntityManager();
+        return em.createNamedQuery("pet.getAllPetExceptOneUser").setParameter("userID", userID).getResultList();
+    }
 }

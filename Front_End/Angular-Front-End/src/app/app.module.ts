@@ -41,7 +41,7 @@ import { ServiceCateComponent } from './UIComponent/service-cate-mockup/service-
 import { AppointmentComponent } from './UIComponent/appointment/appointment.component';
 import { AboutusComponent } from './UIComponent/aboutus/aboutus.component';
 import {OrderProductService} from './order-product.service';
-import { CateMockupComponent } from './UIComponent/gallery/cate-mockup/cate-mockup/cate-mockup.component';
+// import { CateMockupComponent } from './UIComponent/gallery/cate-mockup/cate-mockup/cate-mockup.component';
 // import { SideBarMyPetComponent } from './UIComponent/side-bar-my-pet/side-bar-my-pet.component';
 
 // import { ServiceDetailModule } from './service-detail-module/service-detail.module';
@@ -61,8 +61,8 @@ import { CateMockupComponent } from './UIComponent/gallery/cate-mockup/cate-mock
     ServiceDetailComponent,
     ServiceCateComponent,
     AppointmentComponent,
-    AboutusComponent,
-    CateMockupComponent
+    AboutusComponent
+    // CateMockupComponent
     // SideBarMyPetComponent
     // LoadPageComponent,
     // BackTopSectionComponent,

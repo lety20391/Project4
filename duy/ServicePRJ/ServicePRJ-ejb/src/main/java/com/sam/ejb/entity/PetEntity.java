@@ -30,7 +30,8 @@ import javax.persistence.Table;
         ({
             @NamedQuery(name="pet.findAll",query = "SELECT p FROM PetEntity p"),
             @NamedQuery(name="pet.search", query ="SELECT p FROM PetEntity p WHERE p.PetName LIKE :str "),
-            @NamedQuery(name="pet.getListPetOfUser", query ="SELECT p FROM PetEntity p WHERE p.userEntity.userID = :userID ")
+            @NamedQuery(name="pet.getListPetOfUser", query ="SELECT p FROM PetEntity p WHERE p.userEntity.userID = :userID "),
+            @NamedQuery(name="pet.getAllPetExceptOneUser", query ="SELECT p FROM PetEntity p WHERE p.userEntity.userID != :userID ")
             
         })
 public class PetEntity {

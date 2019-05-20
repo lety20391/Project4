@@ -168,7 +168,7 @@ export class ListDatingComponent implements OnInit {
       this.urlAPI = listUrlAPI.find(url => url.name === 'petResource');
       console.log(this.logClass + this.urlAPI.path)
 
-      this.http.get<HttpResponse<Object[]>>(this.urlAPI.path + "/list",  { observe: 'response' })
+      this.http.get<HttpResponse<Object[]>>(this.urlAPI.path + '/list/Except/' + this.currentUserID,  { observe: 'response' })
         .subscribe(
             response => {
               console.log( response);
