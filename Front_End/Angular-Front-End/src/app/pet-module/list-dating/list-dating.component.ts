@@ -25,6 +25,7 @@ export class ListDatingComponent implements OnInit {
     //Age Slider
     minValue: number = 1;
     maxValue: number = 5;
+    testValue: number = 2;
     options: Options = {
       floor: 0.5,
       ceil: 20,
@@ -317,6 +318,10 @@ export class ListDatingComponent implements OnInit {
     }
 
     filterPetByAge(): void{
+      //neu slider bi loi min > max thi tra ve k tim kiem gi het
+      if (this.minValue == this.maxValue)
+          return;
+
       console.log(this.logClass + 'min: ' + this.minValue + ' - max: ' + this.maxValue);
 
       //xu ly du lieu DateTime , vi minh se search theo DOB nen can xu ly Age ve lai thanh ngay thang tuong ung

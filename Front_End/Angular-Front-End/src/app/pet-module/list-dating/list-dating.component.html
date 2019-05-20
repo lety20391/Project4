@@ -130,6 +130,13 @@
         									<div class="custom-slider">
         									  <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
         									</div>
+                          <input type="number" [(ngModel)]="minValue" name="minValue" #minSelect="ngModel" hidden>
+                          <input type="number" [(ngModel)]="maxValue" name="minValue" #maxSeleect="ngModel" hidden>
+                          <div *ngIf="minValue == maxValue" class="alert alert-danger">
+                                    <!-- <div *ngIf="minSelect.errors.minlength"> Search length must be greater than 3. </div>
+                                    <div *ngIf="minSelect.errors.maxlength"> Search length can not greater than 10. </div> -->
+                                    <div>Min cannot equal Max</div>
+                          </div>
         								</li>
 
         							</ul>
