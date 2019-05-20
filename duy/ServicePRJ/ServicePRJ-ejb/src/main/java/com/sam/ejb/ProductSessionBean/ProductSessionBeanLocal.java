@@ -22,4 +22,5 @@ public interface ProductSessionBeanLocal {
     public productEntity editProduct(productEntity product);
     public void deleteProduct(Long id);
     public productEntity findOne(Long id);
+    public List<productEntity> searchProductByName(String strSearch);
 }

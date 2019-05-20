@@ -6,6 +6,7 @@
 package com.sam.web.rest;
 
 import com.sam.ejb.ProductSessionBean.ProductSessionBeanLocal;
+import com.sam.ejb.entity.PetEntity;
 import com.sam.ejb.entity.productEntity;
 import java.util.List;
 import javax.ejb.EJB;
@@ -59,6 +60,15 @@ public class ManageProduct {
     public List<productEntity> getByCate(@PathParam("cateID") Long ID) {
         //TODO return proper representation object
         return productSessionBeanLocal.listByCate(ID);
+    }
+    
+    @GET
+    @Path("/list/Search/{str}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<productEntity> searchPetNameAndBreed(@PathParam("str") String str) {
+        //TODO return proper representation object
+        //throw new UnsupportedOperationException();
+        return productSessionBeanLocal.searchProductByName(str);
     }
    
     

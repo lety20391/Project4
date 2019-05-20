@@ -66,5 +66,13 @@ public class ProductSessionBean implements ProductSessionBeanLocal {
         return em.createNamedQuery("pro.findByCategory").setParameter("str", cateID).getResultList();
     }
 
+    @Override
+    public List<productEntity> searchProductByName(String strSearch) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("--EJB: Product Sessionbean: searchProductByName()--");
+        em = entityManagerFactory.createEntityManager();
+        return em.createNamedQuery("pro.findByName").setParameter("str", "%" + strSearch + "%").getResultList();
+    }
+
  
 }

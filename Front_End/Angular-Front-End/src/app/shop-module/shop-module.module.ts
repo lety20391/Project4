@@ -21,6 +21,9 @@ import { HttpClientModule }    from '@angular/common/http';
 import { ProductMockupComponent } from '../UIComponent/product-mockup/product-mockup.component';
 import { TopsellerComponent } from './top-seller/top-seller.component';
 import { GalleryComponent } from '../UIComponent/gallery/gallery.component';
+import { MySliderModule } from '../my-slider/my-slider.module';
+
+
 @NgModule({
   declarations: [
     ShopComponent,
@@ -48,6 +51,7 @@ import { GalleryComponent } from '../UIComponent/gallery/gallery.component';
   imports: [
     HttpClientModule,
     CommonModule
+    // MySliderModule
   ]
 })
 export class ShopModuleModule { }

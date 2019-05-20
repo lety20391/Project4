@@ -34,6 +34,7 @@ import { Error404Component } from '../UIComponent/error404/error404.component';
 import { BookingModule} from '../booking-module/booking.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { GalleryComponent } from '../UIComponent/gallery/gallery.component';
+import { MySliderModule } from '../my-slider/my-slider.module';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { GalleryComponent } from '../UIComponent/gallery/gallery.component';
     PetModuleModule,
     RegisterModule,
     BookingModule,
-    NgbModule
+    NgbModule,
+    MySliderModule
   ],
   exports: [
     MainLayoutComponent

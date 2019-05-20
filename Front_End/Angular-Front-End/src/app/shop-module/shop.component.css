@@ -86,3 +86,25 @@
 .dropdown a:hover {background-color: #ddd;}
 
 .show {display: block;}
+
+.btnLabel{
+	background-color: #fd7e14;
+	color: #f8f9fa;
+	font-weight: bold;
+	padding: 5px 0;
+	margin: 10px;
+	border-radius: 5px;
+}
+
+.btnLabel:hover{
+	background-color: #ffc107;
+}
+
+.form-group .btnLabel{
+	padding-left:10px;
+	padding-right: 10px;
+}
+
+.form-group .btnLable:hover{
+	background-color: #ffc107;
+}

@@ -92,10 +92,14 @@ import {OrderProductService} from './order-product.service';
     MainlayoutModuleModule,
     FormsModule,
     BrowserAnimationsModule
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+
+  ]
 })
 export class AppModule { }

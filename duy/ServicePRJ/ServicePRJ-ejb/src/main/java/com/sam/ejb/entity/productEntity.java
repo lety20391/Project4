@@ -27,8 +27,9 @@ import javax.persistence.Table;
 @Table(name="tbProduct")
 @NamedQueries
         ({
-            @NamedQuery(name="pro.findAll",query = "SELECT p FROM productEntity p"),
-            @NamedQuery(name="pro.findByCategory",query = "SELECT p FROM productEntity p WHERE p.cateEntity.CateID = :str")
+            @NamedQuery(name="pro.findAll",query = "SELECT p FROM productEntity p WHERE p.Status = TRUE"),
+            @NamedQuery(name="pro.findByCategory",query = "SELECT p FROM productEntity p WHERE p.cateEntity.CateID = :str"),
+            @NamedQuery(name="pro.findByName",query = "SELECT p FROM productEntity p WHERE p.ProName LIKE :str")
             
 //            @NamedQuery(name="ser.search", query ="SELECT s FROM serviceEntity s WHERE s.name LIKE :str ")
         })

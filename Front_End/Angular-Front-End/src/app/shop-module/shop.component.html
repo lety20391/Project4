@@ -11,27 +11,32 @@
           <div class="widget categories">
 							<div class="widget-title">
 									Search
-									<span class="fa fa-search"></span>
 							</div>
-							<div class="category-nav">
-								<form class="form-contact">
-									<input class="form-control" type="text" placeholder="Search Name Product"/>
-								</form>
-							</div>
+              <div class="category-nav">
+                <form class="form-contact form-inline">
+
+                    <input class="form-control" type="text" placeholder="Search Product Name" name="searchString"
+                          [(ngModel)]="searchNameProduct" #strSearch="ngModel" minlength="3" maxlength="10"/>
+                    <div *ngIf="strSearch.invalid && (strSearch.dirty || strSearch.touched)" class="alert alert-danger">
+                              <div *ngIf="strSearch.errors.minlength"> Search length must be greater than 3</div>
+                              <div *ngIf="strSearch.errors.maxlength"> Search length can not greater than 10</div>
+                    </div>
+                    <div class="form-group">
+                        <div class="btnLabel" (click)="searchProduct()">Search</div>
+                        <div class="btnLabel" (click)="fetchProduct()">Show All</div>
+                    </div>
+
+                </form>
+                <hr>
+              </div>
 							<div class="widget-title">
 								Filter
 							</div>
 							<ul class="category-nav">
 
 								<li>
-									<hr>
-								</li>
+                    <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
 
-								<li>
-									<a href="#">Price <span id="demo" style="color: #F7941D"></span></a>
-									<div class="slidecontainer">
-									  <input type="range" min="1" max="10" value="5" step="1" class="slider" id="myRange">
-									</div>
 								</li>
 
 							</ul>
