@@ -73,6 +73,7 @@ export class ShopingCartComponent implements OnInit {
     vat = 0.1;
     urlAPI: UrlAPIEntity;
     @Output() buyNewProduct = new EventEmitter();
+    @Output() checkOutFinish = new EventEmitter();
     currentUser: UserEntity = new UserEntity();
     newOrderMaster: OrderMaster = new OrderMaster();
 
@@ -174,6 +175,7 @@ export class ShopingCartComponent implements OnInit {
                           console.log('HTTP response', response.status);
                           console.log('checkout OrderMaster: ' + response.body.orderID);
                           this.newOrderMaster.orderID = response.body.orderID;
+
                           this.saveOrderDetail(this.newOrderMaster);
 
 
@@ -188,6 +190,9 @@ export class ShopingCartComponent implements OnInit {
             //day la doan mac dinh
             () => console.log('HTTP request completed.')
       );
+
+
+
 
 
 
@@ -218,6 +223,9 @@ export class ShopingCartComponent implements OnInit {
                 // return this.http.post<OrderDetail>(this.urlAPI.path, newOrderDetail);
               }
     );
+
+    localStorage.setItem('listOrder', '');
+    this.checkOutFinish.emit();
   }
 
   getCurrentDateTime(): string{
