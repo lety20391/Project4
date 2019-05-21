@@ -10,6 +10,7 @@ export class SmartTableProImgComponent implements OnInit {
   logClass = '--SmartTableProImg: ';
   renderValue: string;
   isActive: boolean = false;
+  currentID: number = 0;
 
   @Input() value: string | number;
   //@Input() value: boolean;
@@ -26,6 +27,12 @@ export class SmartTableProImgComponent implements OnInit {
   createRenderValue():void{
     const imgURL = 'http://localhost:9090/uploadedFiles/Product' + this.value;
     this.renderValue = imgURL;
+
+    //cat lay ID tu trong value vi trong product.component minh da ghep chuoi thanh
+    //dang ID/hinh.jpg vi du  2/abc.jpg
+    //su dung lenh split se thanh -> '' , '2' , 'abc.jpg'
+    //nen minh se lay phan tu [1]
+    this.currentID = Number( this.value.toString().split('/')[1] );
   }
 
 }
