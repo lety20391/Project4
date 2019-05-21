@@ -4,9 +4,9 @@
       <div class="card">
           <div class="card-body">
               <h4 class="card-title">List Order Master</h4>
-              <div class="table table-responsive smart-table" *ngIf="isShowTable">
+              <div class="table table-responsive smart-table" >
                   <ng2-smart-table [settings]="settings2" [source]="listOrderMaster"
-                          class="" (rowSelect)="selectedOrderMaster($event)"
+                          class="" (userRowSelect)="selectedOrderMaster($event)"
                                 (editConfirm)="updateOrderMasterRow($event)" (deleteConfirm)="deleteOrderMasterRow($event)"
                                   >
 

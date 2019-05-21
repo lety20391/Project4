@@ -115,6 +115,7 @@ export class OrderComponent {
                     creDate: {
                       title: 'Cre Date',
                       width: '15%',
+                      sort : true,
                     },
                     shipDate: {
                       title: 'Ship',
@@ -163,6 +164,7 @@ export class OrderComponent {
   logClass = '--Order Component: ';
   tempOrderDetail: OrderDetail = new OrderDetail();
   tempOrderMaster: OrderMaster = new OrderMaster();
+  currentOrderMasterID: number;
   isShowTable: boolean = false;
 
 
@@ -384,8 +386,8 @@ export class OrderComponent {
 
               //reload data from server
               this.isShowTable = false;
-              this.getAllByOrderMaster();
-              this.getAllByOrderDetail(1);
+              //this.getAllByOrderMaster();
+              this.getAllByOrderDetail(this.currentOrderMasterID);
 
             }
             // if (response.status == 200){
@@ -432,8 +434,8 @@ export class OrderComponent {
 
               //reload data from server
               this.isShowTable = false;
-              this.getAllByOrderMaster();
-              this.getAllByOrderDetail(1);
+              //this.getAllByOrderMaster();
+              this.getAllByOrderDetail(this.currentOrderMasterID);
 
             }
             // if (response.status == 200){
@@ -488,6 +490,10 @@ export class OrderComponent {
 
 
       }
+    }else{
+      this.isShowTable = false;
+      this.currentOrderMasterID = event.data.orderID;
+      this.getAllByOrderDetail(event.data.orderID);
     }
 
   }
