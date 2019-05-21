@@ -149,6 +149,10 @@ export class AddProductComponent implements OnInit {
   //   console.log(this.uploadUrl);
   // }
 
+  oneFileUploadSuccess(event: any): void{
+    alert('**File: ' + JSON.stringify(event.fileName) + ' UPLOAD SUCCESSFULLY**');
+  }
+
   createHeader():HttpHeaders {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
