@@ -141,6 +141,9 @@ export class AddPetComponent implements OnInit {
   //   this.uploadUrl = this.UrlEntity.path + "/file/" + "Pet/" + code;
   //   console.log(this.uploadUrl);
   // }
+  oneFileUploadSuccess(event: any): void{
+    alert('**File: ' + JSON.stringify(event.fileName) + ' UPLOAD SUCCESSFULLY**');
+  }
 
   createHeader():HttpHeaders {
     let headers = new HttpHeaders();

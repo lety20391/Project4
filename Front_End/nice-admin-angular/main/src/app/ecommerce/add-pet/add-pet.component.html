@@ -148,7 +148,7 @@
             <div class="card-body" *ngIf="isReadyToUploadImage">
               <label>Upload Image</label>
                 <div class="form-control">
-                  <ngx-file-picker [adapter]="adapter" [enableCropper]="false">
+                  <ngx-file-picker [adapter]="adapter" [enableCropper]="false" (uploadSuccess)="oneFileUploadSuccess($event)">
                   </ngx-file-picker>
                 </div>
             </div>
