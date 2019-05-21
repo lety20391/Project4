@@ -30,6 +30,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { FilePickerModule } from  'ngx-awesome-uploader';
 import { SmartTableProImgComponent } from './smart-table-pro-img/smart-table-pro-img.component';
 import { BDtableComponent } from '../UI/BDTable/BDtable.component';
+import { PetTableComponent } from './pet-table/pet-table.component';
 
 @NgModule({
   imports: [
@@ -63,7 +64,8 @@ import { BDtableComponent } from '../UI/BDTable/BDtable.component';
     SmartTableLabelComponent,
     CateComponent,
     ListProductComponent,
-    SmartTableProImgComponent
+    SmartTableProImgComponent,
+    PetTableComponent
 
   ],
   exports: [

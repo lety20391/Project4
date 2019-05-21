@@ -159,7 +159,7 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: [
       {
-        path: '/ecom/pets',
+        path: '/ecom/petTable',
         title: 'Pets',
         icon: ' icon-arrow-right-circle',
         class: '',
