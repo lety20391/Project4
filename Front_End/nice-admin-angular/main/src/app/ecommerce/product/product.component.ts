@@ -70,7 +70,8 @@ export class ProductComponent {
                     },
                     proPrice: {
                       title: 'Price',
-                      width: '100px'
+                      width: '100px',
+                      sort : true,                      
                     },
                     proColor:{
                       title: 'Color'
