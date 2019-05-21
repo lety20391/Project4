@@ -39,6 +39,6 @@ export class ServiceAddComponent implements OnInit {
   this.service.serShortDes = this.ShortDes;
   this.service.status = this.Status;
   // this.service.serImage = this.Image;
-  this.http.post<serviceEntity>(this.urlAPI.path, this.service, httpOptions).subscribe(result => {console.log(result)});
+  this.http.post<serviceEntity>(this.urlAPI.path + "/add", this.service, httpOptions).subscribe(result => {console.log(result)});
   }
 }
