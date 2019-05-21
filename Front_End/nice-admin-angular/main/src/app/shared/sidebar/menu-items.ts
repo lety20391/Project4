@@ -167,6 +167,55 @@ export const ROUTES: RouteInfo[] = [
       //**********************
 
 
+      //**********************
+      //***** Report Section ****
+      //**********************
+      {
+        path: '',
+        title: 'Report',
+        icon: 'fas fa-chart-line',
+        class: 'has-arrow',
+        extralink: false,
+        submenu: [
+          {
+            path: '/dashboard/mainReport',
+            title: 'Main Report',
+            icon: 'fas fa-chart-line',
+            class: '',
+            extralink: false,
+            submenu: []
+          },
+          {
+            path: '/dashboard/orderChart',
+            title: 'Order Report',
+            icon: 'fas fa-chart-bar',
+            class: '',
+            extralink: false,
+            submenu: []
+          },
+          {
+            path: '/dashboard/serviceCalendar',
+            title: 'Service Report',
+            icon: 'fa fa-table',
+            class: '',
+            extralink: false,
+            submenu: []
+          },
+          {
+            path: '/dashboard/datingCalendar',
+            title: 'Dating Report',
+            icon: 'fa fa-table',
+            class: '',
+            extralink: false,
+            submenu: []
+          },
+        ]
+      },
+          //**********************
+          //***** Report Section ****
+          //**********************
+
+
 
 
       //**************************
