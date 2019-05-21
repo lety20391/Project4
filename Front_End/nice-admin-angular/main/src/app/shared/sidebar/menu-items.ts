@@ -237,6 +237,14 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
       },
       {
+        path: '/ecom/pendingBooking',
+        title: 'Manage bookings',
+        icon: ' icon-arrow-right-circle',
+        class: '',
+        extralink: false,
+        submenu: []
+      },
+      {
         path: '/service/services',
         title: 'Services',
         icon: ' icon-arrow-right-circle',
