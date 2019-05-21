@@ -35,6 +35,60 @@ export const ROUTES: RouteInfo[] = [
     ]
   },
 
+
+  //**************************
+  //***** Category Section ****
+  //**************************
+  {
+    path: '',
+    title: 'Category Management',
+    icon: 'icon-docs',
+    class: 'has-arrow',
+    extralink: false,
+    submenu: [
+      {
+        path: '/ecom/category',
+        title: 'Category Management',
+        icon: 'icon-docs',
+        class: '',
+        extralink: false,
+        submenu: []
+      },
+    ]
+  },
+
+  //**************************
+  //***** Category Section ****
+  //**************************
+
+
+  //**************************
+  //***** Order Section ****
+  //**************************
+  {
+    path: '',
+    title: 'Order Management',
+    icon: 'far fa-money-bill-alt',
+    class: 'has-arrow',
+    extralink: false,
+    submenu: [
+      {
+        path: '/ecom/orders',
+        title: 'Order Management',
+        icon: 'far fa-money-bill-alt',
+        class: '',
+        extralink: false,
+        submenu: []
+      },
+    ]
+  },
+
+  //**************************
+  //***** Order Section ****
+  //**************************
+
+
+
   //**************************
   //***** Product Section ****
   //**************************
@@ -80,22 +134,6 @@ export const ROUTES: RouteInfo[] = [
       {
         path: '/ecom/detailProduct/1',
         title: 'Detail Product',
-        icon: ' icon-arrow-right-circle',
-        class: '',
-        extralink: false,
-        submenu: []
-      },
-      {
-        path: '/ecom/orders',
-        title: 'Order',
-        icon: ' icon-arrow-right-circle',
-        class: '',
-        extralink: false,
-        submenu: []
-      },
-      {
-        path: '/ecom/category',
-        title: 'Category',
         icon: ' icon-arrow-right-circle',
         class: '',
         extralink: false,
@@ -271,15 +309,7 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: [
       {
-        path: '',
-        title: 'Pet',
-        icon: ' icon-arrow-right-circle',
-        class: '',
-        extralink: false,
-        submenu: []
-      },
-      {
-        path: '',
+        path: '/dashboard/datingCalendar',
         title: 'Dating',
         icon: ' icon-arrow-right-circle',
         class: '',
