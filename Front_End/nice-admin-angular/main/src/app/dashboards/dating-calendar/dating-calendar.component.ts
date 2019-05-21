@@ -53,10 +53,15 @@ export class CalendarView{
 }
 
 export class myEvent implements CalendarEvent{
+  Message: string;
+  PetName?: string;
+  PetOwner?: string;
+  Phone?: string;
+  PetBreed?: string;
   id?: string | number;  start: Date;
   end?: Date;
   title: string;
-  color?: import("C:/Users/Dat_Le/Desktop/Aptech/Project4/Front_End/nice-admin-angular/main/node_modules/calendar-utils/dist/calendar-utils").EventColor;
+  // color?: import("C:/Users/Dat_Le/Desktop/Aptech/Project4/Front_End/nice-admin-angular/main/node_modules/calendar-utils/dist/calendar-utils").EventColor;
   draggable?: boolean;
   allDay?: boolean;
   cssClass?: string;
@@ -187,7 +192,7 @@ export class DatingCalendarComponent implements OnInit {
                             let tempEvent: myEvent = new myEvent();
                             tempEvent.title = item.petRequestEntity.petName + '&'+ item.petRecieveEntity.petName;
                             tempEvent.start = new Date(item.datingDate);
-                            tempEvent.color = colors.yellow;
+                            // tempEvent.color = colors.yellow;
                             tempEvent.actions = this.actions;
                             //push event vao trong danh sach event cua calendar
                             this.events.push(tempEvent);
@@ -236,22 +241,22 @@ export class DatingCalendarComponent implements OnInit {
    this.modal.open(this.modalContent, { size: 'lg' });
  }
 
- addEvent(): void {
-   this.events = [
-     ...this.events,
-     {
-       title: 'New event',
-       start: startOfDay(new Date()),
-       end: endOfDay(new Date()),
-       color: colors.red,
-       draggable: true,
-       resizable: {
-         beforeStart: true,
-         afterEnd: true
-       }
-     }
-   ];
- }
+ // addEvent(): void {
+ //   this.events = [
+ //     ...this.events,
+ //     {
+ //       title: 'New event',
+ //       start: startOfDay(new Date()),
+ //       end: endOfDay(new Date()),
+ //       // color: colors.red,
+ //       draggable: true,
+ //       resizable: {
+ //         beforeStart: true,
+ //         afterEnd: true
+ //       }
+ //     }
+ //   ];
+ // }
 
  deleteEvent(eventToDelete: CalendarEvent) {
    this.events = this.events.filter(event => event !== eventToDelete);

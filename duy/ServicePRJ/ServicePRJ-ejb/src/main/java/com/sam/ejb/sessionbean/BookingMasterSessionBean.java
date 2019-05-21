@@ -54,5 +54,12 @@ public class BookingMasterSessionBean implements BookingMasterSessionBeanLocal {
         em = entityManagerFactory.createEntityManager();
         return em.find(bookingMasterEntity.class, id);
     }
+
+    @Override
+    public List<bookingMasterEntity> listBMOfUser(Long userID) {
+//         System.out.println(logClass + " list Pet of User: " + userID);
+        em = entityManagerFactory.createEntityManager();
+        return em.createNamedQuery("bm.getListBMOfUser").setParameter("userID", userID).getResultList();
+    }
     
 }

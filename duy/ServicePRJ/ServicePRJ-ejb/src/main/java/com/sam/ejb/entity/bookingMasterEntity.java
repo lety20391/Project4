@@ -31,7 +31,10 @@ import javax.persistence.Table;
 @Table(name="tbBookingMaster")
 @NamedQueries
         ({
-            @NamedQuery(name="bm.findAll",query = "SELECT m FROM bookingMasterEntity m")
+            @NamedQuery(name="bm.findAll",query = "SELECT m FROM bookingMasterEntity m"),
+            @NamedQuery(name="bm.getListBMOfUser", query ="SELECT m FROM bookingMasterEntity m WHERE m.userEntity.userID = :userID ")
+//                @NamedQuery(name="pet.getListPetOfUser", query ="SELECT p FROM PetEntity p WHERE p.userEntity.userID = :userID ")
+
 //            @NamedQuery(name="ser.search", query ="SELECT s FROM serviceEntity s WHERE s.name LIKE :str ")
         })
 public class bookingMasterEntity {

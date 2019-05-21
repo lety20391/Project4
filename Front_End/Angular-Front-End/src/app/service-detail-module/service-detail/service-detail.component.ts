@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { serviceEntity } from '../../serviceEntity/serviceEntity';
 import { ServiceManageService } from '../../service-module/service-manage.service';
 @Component({
@@ -12,20 +12,24 @@ export class ServiceDetailComponent implements OnInit {
   listServiceCate: serviceEntity[] = [];
   listImage: string[] = [];
   logClass : "Pet-detail";
+  currentSerID : number;
   constructor(
      private route: ActivatedRoute,
      private ServiceManageService: ServiceManageService
   ) { }
 
   ngOnInit() {
-     this.getServiceDetail();
+     this.getID();
      this.fetchServiceCate();
-     this.getAllServiceImage(this.detail.serID);
+     //
   }
-  getServiceDetail(): void {
-      const id = +this.route.snapshot.paramMap.get('id');
+  getServiceDetail(id: number): void {
+      // const id = +this.route.snapshot.paramMap.get('id');
       this.ServiceManageService.getServiceDetail(id)
-        .subscribe(detail => this.detail = detail);
+        .subscribe(detail =>{
+          this.detail = detail;
+            this.getAllServiceImage(this.detail.serID);
+        });
     }
     fetchServiceCate(): void{
       this.ServiceManageService.getServiceList().subscribe(
@@ -39,8 +43,14 @@ export class ServiceDetailComponent implements OnInit {
         result => {
                     console.log(this.logClass + ' Image Load');
                     this.listImage = result;
-                    
+
                   }
       );
+    }
+    getID(): void{
+      const id = +this.route.snapshot.paramMap.get('id');
+      this.currentSerID = id;
+      console.log("this is current service ID: " + this.currentSerID);
+      this.getServiceDetail(this.currentSerID);
     }
 }

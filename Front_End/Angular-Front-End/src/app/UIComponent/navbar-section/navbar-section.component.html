@@ -47,29 +47,22 @@
               </li>
 
               <!-- GALLERY -->
-              <li class="nav-item addPadding">
-                      <a class="nav-link" [routerLink]="['/mainlayout/gallery']">CATEGORY</a>
-              </li>
 
               <!-- SHOP -->
-              <li class="nav-item dropdown dmenu addPadding">
-                      <a class="nav-link dropdown-toggle" href="#"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        SHOP
-
-                      </a>
-                      <div class="dropdown-menu">
-                        <a class="dropdown-item" [routerLink]="['/mainlayout/shops']">Go to shop</a>
-                        <a class="dropdown-item" [routerLink]="['/mainlayout/topseller']">Top Seller</a>
-                      </div>
+              <li class="nav-item addPadding">
+                      <a class="nav-link" [routerLink]="['/mainlayout/shops']">SHOP</a>
               </li>
               <li class="nav-item">
-                      <a class="nav-link" [routerLink]="['/mainlayout/cart']">
-                        YOUR CART
+                      <a class="nav-link" [routerLink]="['/mainlayout/cart']">MY CART
                         <span class="spanBox totalOrder">
                           {{amountOfOrderDetail}}
                         </span>
                       </a>
               </li>
+              <li class="nav-item addPadding">
+                      <a class="nav-link" [routerLink]="['/mainlayout/myorder']">MY ORDERS</a>
+              </li>
+
               <!-- REGISTER/LOGIN -->
               <li class="nav-item dropdown dmenu addPadding" *ngIf="!isLogin">
                       <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

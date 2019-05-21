@@ -29,7 +29,7 @@ import {DetailDatingComponent} from './pet-module/detail-dating/detail-dating.co
 import {BookingComponent} from './booking-module/booking.component';
 import {DatingRequestComponent} from './pet-module/dating-request/dating-request.component';
 import { UserProfileComponent } from './register-module/register.module';
-
+import { MyOrderComponent} from './UIComponent/MyOrder/my-order.component';
 // import {RegisterComponent} from './UIComponent/register/register.component'
 
 const routes: Routes = [
@@ -62,7 +62,9 @@ const routes: Routes = [
         {path: 'servicebook', component: BookingComponent},
         {path: 'datingRequest', component: DatingRequestComponent},
         {path: 'TopSeller', component: TopsellerComponent},
-        {path: 'userProfile', component: UserProfileComponent}
+        {path: 'userProfile', component: UserProfileComponent},
+        {path: 'myorder', component: MyOrderComponent}
+
       ]
   },
   // link nao bi loi thi hien thi trang nay

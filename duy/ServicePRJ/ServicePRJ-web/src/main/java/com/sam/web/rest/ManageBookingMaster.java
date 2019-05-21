@@ -5,6 +5,7 @@
  */
 package com.sam.web.rest;
 
+import com.sam.ejb.entity.PetEntity;
 import com.sam.ejb.entity.bookingMasterEntity;
 import com.sam.ejb.sessionbean.BookingMasterSessionBeanLocal;
 import java.util.List;
@@ -56,7 +57,14 @@ public class ManageBookingMaster {
         return bookingMasterSessionBeanLocal.listAll();
     }
 
-    
+        @GET
+    @Path("/list/{userID}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<bookingMasterEntity> getPetOfUser(@PathParam("userID") Long userID) {
+        //TODO return proper representation object
+        //throw new UnsupportedOperationException();
+        return bookingMasterSessionBeanLocal.listBMOfUser(userID);
+    }
     //Add new booking master
     @POST
     @Path("/Post")

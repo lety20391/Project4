@@ -61,8 +61,12 @@ public class ManageUser {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response addNewUser(UserEntity newUser){
-        userManageSessionBeanLocal.addUser(newUser);
+        UserEntity returnUser = userManageSessionBeanLocal.getUserByPhone(newUser.getUserTel());
+        if(returnUser.getUserTel() == "0000000000" )
+        {userManageSessionBeanLocal.addUser(newUser);
         return Response.status(200).entity(newUser).build();
+        }else
+            return Response.status(321).build();
     }
     
     //Find one by Id
