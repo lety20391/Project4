@@ -59,6 +59,7 @@ public class ManageService {
     
     //Add new Service
     @POST
+    @Path("add")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response addNewService(serviceEntity service){

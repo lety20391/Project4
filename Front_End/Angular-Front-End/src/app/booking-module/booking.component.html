@@ -19,7 +19,7 @@
 				<div class="row">
 					<div class="col-sm-12 col-md-8">
 
-						<form #bookserviceForm="ngForm">
+						<form #bookserviceForm="ngForm" >
 							<div class="row">
 
 								<div class="col-sm-6 col-md-12">
@@ -62,14 +62,14 @@
 
 								<div class="col-sm-6 col-md-12">
 									<div class="form-group">
-										<input type="text" class="form-control" id="p_subject" [(ngModel)]="selectedPet.petBreed" disabled="true"  name="petBreed" placeholder="Pet Breed">
+										<input type="text" class="form-control" id="def" [(ngModel)]="selectedPet.petBreed" disabled="true"  name="petBreed" placeholder="Pet Breed">
 										<div class="help-block with-errors"></div>
 									</div>
 								</div>
 								<div class="col-sm-6 col-md-12">
 									<div class="form-group">
 										<select class="form-control" name ="listService" required  [(ngModel)]="sertempID" (ngModelChange)="setSelectedService($event)"  #servicename="ngModel">
-												<option value="undefined" hidden>Select Service</option>
+												<option id="abc" value="undefined" hidden>Select Service</option>
 												<option *ngFor="let ser of listservice" [ngValue]="ser.serID" >
 														{{ser.serName}}
 												</option>
@@ -104,17 +104,22 @@
 								<button type="submit" class="btn btn-info btn-rounded" [disabled]="bookserviceForm.invalid" (click)="addtoCart()">Request Appointment</button>
 							</div>
 							<div class="form-group">
+								<div *ngIf="bookSuccess"><h4>Request successfully. Your booking will be confirmed only when you click "Confirm Booking"</h4>
+									<p>We will call you back to confirm your appointment, after you've request an appointment.</p>
+									</div>
 								<div id="success"></div>
 								<button type="submited" class="btn btn-primary" [disabled]="!acceptTobook" (click)="createBooking()">Confirm Booking</button>
 							</div>
 						</form>
 						<div class="margin-bottom-50"></div>
-						<p><em>We will call you back to confirm your appointment, after you've request an appointment.</em></p>
+
 
 					</div>
 					<div class="col-sm-4 col-md-4">
 						<img src="assets/images/dummy-img-600x700-APPOINTMENT.jpg" alt="" class="img-fluid">
 					</div>
+					<div *ngIf="listBookingDetail?.length == 1 "><h4>There is {{listBookingDetail?.length}} service waiting for being confirmed </h4></div>
+					<div *ngIf="listBookingDetail?.length > 1 "><h4>There are {{listBookingDetail?.length}} services waiting for being confirmed</h4></div>
 				</div>
 						<app-service-cart></app-service-cart>
 			</div>
