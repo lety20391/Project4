@@ -45,5 +45,8 @@ export class ServiceComponentComponent implements OnInit {
       );
     }
 
+    filterActiveService(){
+      return this.listService.filter( item => item.status == true);
+    }
 
 }

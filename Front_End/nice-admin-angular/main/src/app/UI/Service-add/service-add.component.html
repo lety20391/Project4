@@ -13,20 +13,7 @@
                                     <label class="control-label">Service Name</label>
                                     <input type="text" [(ngModel)]="Name" name="firstName" class="form-control"  placeholder=""> </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Status</label>
-                                    <br/>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline1" [(ngModel)]="Status" value=true name="customRadioInline1" class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadioInline1" >Available</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline2" [(ngModel)]="Status" value=false name="customRadioInline1" class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadioInline2">Unavailable</label>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                         <div class="row">
                             <div class="col-md-12">
@@ -46,22 +33,15 @@
                         </div>
                         <!--/row-->
                         <div class="row">
-                            <!--/span-->
-                            <!-- <div class="col-md-3">
-                                <label class="control-label">Image Upload</label>
-                                <div class="el-element-overlay">
-                                    <div class="el-card-item">
-                                        <div class="el-card-avatar el-overlay-1">
-                                            <img src="/assets/images/400x400.jpg" alt="user" />
 
-                                        </div>
-                                    </div>
+                            <div class="form-group" *ngIf="isReadyToUploadImage">
+                              <label>Upload Image</label>
+                                <div class="form-control">
+                                  <ngx-file-picker [adapter]="adapter" [enableCropper]="false">
+                                  </ngx-file-picker>
                                 </div>
-                                <div class="btn btn-info waves-effect waves-light">
-                                    <span>Upload Image   </span>
-                                    <input type="file" class="upload"> </div>
-                            </div> -->
-                            <app-upload-file></app-upload-file>
+                            </div>
+
                         </div>
 
                         <hr> </div>
@@ -72,7 +52,7 @@
                             <i class="fa fa-check"></i> Add New </button>
                             </div>
                             <div class="col-md-2">
-                        <button type="button" class="btn btn-dark btn-rounded btn-lg btn-block">Cancel</button>
+                        <button type="button" class="btn btn-dark btn-rounded btn-lg btn-block" (click)="openCancelDialog()">Cancel</button>
                         </div>
                         </div>
                     </div>

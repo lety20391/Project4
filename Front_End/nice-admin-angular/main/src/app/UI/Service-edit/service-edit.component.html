@@ -11,21 +11,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Service Name</label>
-                                    <input type="text" id="firstName" class="form-control" [(ngModel)]="edit.serName" name="name" > </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group" >
-                                    <label>Status</label>
-                                    <br/>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline1" [(ngModel)]="edit.status" [value]=true name="customRadioInline1" class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadioInline1" >Available</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline2" [(ngModel)]="edit.status" [value]=false name="customRadioInline1" class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadioInline2">Unavailable</label>
-                                    </div>
-                                </div>
+                                    <input type="text" id="firstName" class="form-control" [(ngModel)]="edit.serName" name="name" >
+                                  </div>
                             </div>
                         </div>
                         <div class="row">
@@ -45,23 +32,7 @@
                             </div>
                         </div>
                         <!--/row-->
-                        <div class="row">
-                            <!--/span-->
-                            <div class="col-md-3">
-                                <label class="control-label">Image Upload</label>
-                                <div class="el-element-overlay">
-                                    <div class="el-card-item">
-                                        <div class="el-card-avatar el-overlay-1">
-                                            <img src="{{edit.serImage}}" alt="user" />
 
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="btn btn-info waves-effect waves-light">
-                                    <span>Upload Image   </span>
-                                    <input type="file" class="upload"> </div>
-                            </div>
-                        </div>
 
                         <hr> </div>
                     <div class="form-actions m-t-40">
@@ -71,7 +42,7 @@
                             <i class="fa fa-check" ></i> Save </button>
                             </div>
                             <div class="col-md-2">
-                        <button type="button" class="btn btn-dark btn-rounded btn-lg btn-block">Cancel</button>
+                        <button type="button" class="btn btn-dark btn-rounded btn-lg btn-block" (click)="openCancelDialog()">Cancel</button>
                         </div>
                         </div>
                     </div>

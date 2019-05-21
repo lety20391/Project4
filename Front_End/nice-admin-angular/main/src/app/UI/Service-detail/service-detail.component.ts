@@ -5,7 +5,10 @@ import { serviceEntity } from '../../serviceEntity/serviceEntity';
 import { ServiceManageService } from '../Service/service-manage.service';
 import { MatDialog } from '@angular/material';
 import { ConfirmDialogComponent } from '../Dialog/confirm-dialog.component';
+import { listUrlAPI } from '../../listUrlAPI';
+import { UrlAPIEntity } from '../../UrlAPIEntity';
 import {Observable, of} from 'rxjs';
+import { HttpClient, HttpResponse,  HttpHeaders } from '@angular/common/http';
 // import { ServiceComponentComponent} from '../Service/service-component.component';
 @Component({
   selector: 'app-service-detail',
@@ -16,6 +19,8 @@ export class ServiceDetailComponent implements OnInit {
   @Input() detail: serviceEntity  = new serviceEntity();
   logClass : "service detail component";
   serListImage: string[] = [];
+  urlAPI: UrlAPIEntity;
+  newDetail = new serviceEntity();
   // listServiceCate: serviceEntity[];
   constructor(
      private route: ActivatedRoute,
@@ -23,6 +28,7 @@ export class ServiceDetailComponent implements OnInit {
      private dialog: MatDialog,
      private router: Router,
      private location: Location,
+     private http : HttpClient
      // private serviceComponentComponent : ServiceComponentComponent
   ) { }
 
@@ -44,10 +50,38 @@ export class ServiceDetailComponent implements OnInit {
 
   deleteServiceDetail(){
         const id = +this.route.snapshot.paramMap.get('id');
-        this.ServiceManageService.deleteServiceDetail(id)
-        .subscribe();
-        console.log("delete complete");
-         setTimeout(() =>{this.location.back()}, 500);
+        this.ServiceManageService.getServiceDetail(id)
+        .subscribe(
+          item => {
+                this.newDetail = item;
+                this.newDetail.status = false;
+                this.urlAPI = listUrlAPI.find(url => url.name === 'serviceResource' );
+                this.http.put<HttpResponse<serviceEntity>>(this.urlAPI.path + "/edit", this.newDetail, {observe : 'response'}).subscribe(
+                response =>
+                {
+                  if(response.status == 200)
+                  {
+                    alert("Delete service successfully!!!");
+                    this.location.back();
+                  }
+                } );             
+          }
+        );
+
+         // setTimeout(() =>{this.location.back()}, 500);
+      }
+      editService(edit : serviceEntity): void {
+        this.urlAPI = listUrlAPI.find(url => url.name === 'serviceResource' );
+      this.http.put<HttpResponse<serviceEntity>>(this.urlAPI.path + "/edit", edit, {observe : 'response'}).subscribe(
+        response =>
+        {
+          if(response.status == 200)
+          {
+            alert("Edit service successfully!!!");
+            this.location.back();
+          }
+        }
+      );
       }
       // fetchServiceCate(): void{
       //   this.ServiceManageService.getServiceList().subscribe(

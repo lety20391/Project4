@@ -19,11 +19,11 @@ import { UploadAdapter } from '../UploadAdapter/upload-adapter';
 export class AddPetComponent implements OnInit {
 
   adapter: UploadAdapter;
-
+  isReadyToUploadImage: boolean = false;
   newPet: PetEntity = new PetEntity();
   urlAPI: UrlAPIEntity;
   logClass = '--List Pet Component: ';
-  isReadyToUploadImage: boolean = false;
+  // isReadyToUploadImage: boolean = false;
   UrlEntity: UrlAPIEntity;
   uploadUrl: string = '';
   genderList = ['Male', 'Female'];
@@ -112,7 +112,6 @@ export class AddPetComponent implements OnInit {
                     if (returnPet.petID != null){
                       // this.getUrl(returnPet.petID);
                       this.isReadyToUploadImage = true;
-
                       //prepare Url
                       this.urlAPI = listUrlAPI.find(url => url.name === 'uploadResource');
                       this.urlAPI.path += "/file/" + "Pet/" + returnPet.petID;

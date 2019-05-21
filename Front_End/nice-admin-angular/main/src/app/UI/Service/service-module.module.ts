@@ -9,7 +9,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ServiceRoutes} from './service.routing'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ServiceMockupComponent } from './service-mockup/service-mockup.component';
-
+// import { BDtableComponent } from '../BDTable/BDtable.component';
 @NgModule({
   declarations: [ServiceComponentComponent, ServiceMockupComponent],
   imports: [

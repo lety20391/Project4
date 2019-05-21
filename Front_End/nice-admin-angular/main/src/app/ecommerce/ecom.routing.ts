@@ -18,6 +18,7 @@ import { UpdatePetComponent } from './update-pet/update-pet.component';
 import { DetailPetComponent } from './detail-pet/detail-pet.component';
 import {CateComponent} from './cate/cate.component';
 import { ListProductComponent } from './list-product/list-product.component';
+import { BDtableComponent } from '../UI/BDTable/BDtable.component';
 
 export const EcomRoutes: Routes = [
   {
@@ -42,7 +43,17 @@ export const EcomRoutes: Routes = [
           ]
         }
       },
-
+      {
+        path: 'pendingBooking',
+        component: BDtableComponent,
+        data: {
+          title: 'List Booking',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'List Booking' }
+          ]
+        }
+      },
       // Product Category
       {
         path: 'products',

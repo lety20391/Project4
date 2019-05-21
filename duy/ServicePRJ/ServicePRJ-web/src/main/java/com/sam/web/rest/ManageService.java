@@ -87,7 +87,7 @@ public class ManageService {
     
     //Delete service
     @DELETE
-    @Path("{serviceId}")
+    @Path("delete/{serviceId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteById(@PathParam("serviceId") Long serviceId){
         serviceSessionBeanLocal.deleteService(serviceId);

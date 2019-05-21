@@ -29,6 +29,7 @@ import { ListProductComponent } from './list-product/list-product.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { FilePickerModule } from  'ngx-awesome-uploader';
 import { SmartTableProImgComponent } from './smart-table-pro-img/smart-table-pro-img.component';
+import { BDtableComponent } from '../UI/BDTable/BDtable.component';
 
 @NgModule({
   imports: [
@@ -58,10 +59,12 @@ import { SmartTableProImgComponent } from './smart-table-pro-img/smart-table-pro
     AddPetComponent,
     UpdatePetComponent,
     DetailPetComponent,
+    BDtableComponent,
     SmartTableLabelComponent,
     CateComponent,
     ListProductComponent,
     SmartTableProImgComponent
+
   ],
   exports: [
     SmartTableLabelComponent,
@@ -73,3 +76,4 @@ import { SmartTableProImgComponent } from './smart-table-pro-img/smart-table-pro
   ]
 })
 export class EcomModule {}
+export {SmartTableLabelComponent}
