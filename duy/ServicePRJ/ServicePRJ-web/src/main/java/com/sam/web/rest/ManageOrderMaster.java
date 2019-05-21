@@ -53,6 +53,14 @@ public class ManageOrderMaster {
         //TODO return proper representation object
         return orderMasterSessionBeanLocal.listAll();
     }
+    
+    @GET
+    @Path("/list/OrderByCreDate")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<OrderMasterEntity> listAllOrderByCreDate() {
+        //TODO return proper representation object
+        return orderMasterSessionBeanLocal.listAllOrderByCreDate();
+    }
 
     
     //Add new booking detail

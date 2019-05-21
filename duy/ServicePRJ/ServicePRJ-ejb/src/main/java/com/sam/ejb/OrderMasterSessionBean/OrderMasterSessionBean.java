@@ -58,4 +58,12 @@ public class OrderMasterSessionBean implements OrderMasterSessionBeanLocal {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+
+    @Override
+    public List<OrderMasterEntity> listAllOrderByCreDate() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("------BMaster Bean----");
+        em = entityManagerFactory.createEntityManager();
+        return em.createNamedQuery("om.findAllOrderByCreDate").getResultList();
+    }
 }

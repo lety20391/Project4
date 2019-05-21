@@ -23,4 +23,5 @@ public interface OrderDetailSessionBeanLocal {
     public OrderDetailEntity findOne(Long id);
     public List <ReportObject.Report2Column> listTop();
     public List<Object> getTotalQtyGroupByProduct();
+    public List<OrderDetailEntity> listAllByOrderMaster(Long id);
 }

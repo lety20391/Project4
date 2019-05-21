@@ -56,6 +56,14 @@ public class ManageOrderDetail {
         //TODO return proper representation object
         return orderDetailSessionBeanLocal.listAll();
     }
+    
+    @GET
+    @Path("/list/findAllByOrderMaster/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<OrderDetailEntity> listAllByOrderMaster(@PathParam("id") Long omID) {
+        //TODO return proper representation object
+        return orderDetailSessionBeanLocal.listAllByOrderMaster(omID);
+    }
 
     
     //Add new booking detail

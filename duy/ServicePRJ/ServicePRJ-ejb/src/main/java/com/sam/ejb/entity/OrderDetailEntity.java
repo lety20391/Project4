@@ -28,6 +28,7 @@ import javax.persistence.Table;
 @NamedQueries
         ({
             @NamedQuery(name="od.findAll",query = "SELECT od FROM OrderDetailEntity od"),
+            @NamedQuery(name="od.findAllByOrderMaster",query = "SELECT od FROM OrderDetailEntity od WHERE od.OrderMasterEntity.OrderID = :omID"),
 //            @NamedQuery(name="od.sort", query = "SELECT od FROM OrderDetailEntity od ORDER BY od.Qty DESC" ),
             @NamedQuery(name="od.sort", query = "SELECT od.productEntity.ProID, SUM(od.Qty) FROM OrderDetailEntity od GROUP BY od.productEntity.ProID ORDER BY SUM(od.Qty) DESC" ),
             @NamedQuery(name="od.getTotalQtyGroupByProduct", query = "SELECT od.productEntity.ProID, SUM(od.Qty) FROM OrderDetailEntity od GROUP BY od.productEntity.ProID" )
