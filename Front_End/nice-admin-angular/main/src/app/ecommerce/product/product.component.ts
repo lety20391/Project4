@@ -8,6 +8,7 @@ import {ProductServiceService} from '../product-service.service'
 import {JWTHeaderService} from '../../jwtheader.service';
 import {SmartTableLabelComponent} from '../smart-table-label/smart-table-label.component';
 import { ProductEntity } from '../Entity/ProductEntity';
+import { SmartTableProImgComponent } from '../smart-table-pro-img/smart-table-pro-img.component';
 
 @Component({
   templateUrl: 'product.component.html'
@@ -71,13 +72,25 @@ export class ProductComponent {
                     proPrice: {
                       title: 'Price',
                       width: '100px',
-                      sort : true,                      
+                      sort : true,
                     },
                     proColor:{
                       title: 'Color'
                     },
                     proImage:{
-                      title: 'Image'
+                      title: 'Image',
+                      type: 'custom',
+                      renderComponent: SmartTableProImgComponent,
+                      onComponentInitFunction(instance) {
+                                instance.save
+                                  .subscribe(
+                                      row => {
+                                          //alert(`${row.proColor} test!`);
+                                          //localStorage.setItem('changedProductID', `${row.proID}`);
+                                        }
+                                    );
+
+                              }
                     },
                     // proImage:{
                     //   title: 'Image'
@@ -120,6 +133,7 @@ export class ProductComponent {
   urlAPI: UrlAPIEntity;
   logClass = '--Product Component: ';
   tempProduct: ProductEntity = new ProductEntity();
+  isShowTable: boolean = false;
 
   constructor(
     private productService: ProductServiceService,
@@ -147,6 +161,34 @@ export class ProductComponent {
                 //roi gan vao listPet
                 console.log(JSON.stringify(response.body));
                 this.listProduct = JSON.parse(JSON.stringify(response.body));
+
+                //lay hinh ve
+                let index: number = 0;
+                this.listProduct.forEach(
+                      item => {
+                        this.productService.getAllProductImage(item.proID)
+                          .subscribe(
+                            result => {
+                              let tempImgList = JSON.parse(JSON.stringify(result));
+                              //lay 1 hinh lam mau cho proImage
+                              //them proID vao Img de lay hinh
+                              //vi du: /1/ab
+                              if(tempImgList instanceof Array){
+                                item.proImage= '/' + item.proID + '/' + tempImgList[0];
+                                console.log(this.logClass + ' link Pro Img: ' + item.proImage);
+                              }
+
+                              index += 1;
+                              if( index == this.listProduct.length){
+                                this.isShowTable = true;
+                                index = 0;
+                              }
+
+                            }
+                          );
+                      }
+                );
+
 
               }
               // if (response.status == 200){
