@@ -31,33 +31,31 @@ import javax.persistence.Table;
 public class cateEntity {
      @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long CateID;    
-    @Column(name="CateName",columnDefinition = "VARCHAR(255) NOT NULL")
+    private Long cateID;    
+    @Column(name="cateName",columnDefinition = "VARCHAR(255) NOT NULL")
     private String CateName;
     
-    @Column(name="Status")
+    @Column(name="status")
     private Boolean Status;
     
     @OneToMany(mappedBy = "cateEntity", fetch = FetchType.LAZY)
-    private List<productEntity> productList;
+    private List<productEntity> listProduct;
 
     public cateEntity() {
     }
 
-    public cateEntity(Long CateID, String CateName, Boolean Status) {
-        this.CateID = CateID;
+    public cateEntity(Long cateID, String CateName, Boolean Status) {
+        this.cateID = cateID;
         this.CateName = CateName;
         this.Status = Status;
     }
 
-    
-
     public Long getCateID() {
-        return CateID;
+        return cateID;
     }
 
-    public void setCateID(Long CateID) {
-        this.CateID = CateID;
+    public void setCateID(Long cateID) {
+        this.cateID = cateID;
     }
 
     public String getCateName() {
@@ -68,14 +66,6 @@ public class cateEntity {
         this.CateName = CateName;
     }
 
-//    public List<productEntity> getProductList() {
-//        return productList;
-//    }
-
-    public void setProductList(List<productEntity> productList) {
-        this.productList = productList;
-    }
-
     public Boolean getStatus() {
         return Status;
     }
@@ -83,7 +73,15 @@ public class cateEntity {
     public void setStatus(Boolean Status) {
         this.Status = Status;
     }
-    
+
+//    public List<productEntity> getListProduct() {
+//        return listProduct;
+//    }
+
+    public void setListProduct(List<productEntity> listProduct) {
+        this.listProduct = listProduct;
+    }
+
     
     
 }

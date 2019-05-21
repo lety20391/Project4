@@ -200,7 +200,7 @@ export class CateComponent implements OnInit {
 
     //update Database
     //delete is just update status form True to False
-    this.tempCategory.Status = false;
+    this.tempCategory.status = false;
     this.http.put<HttpResponse<CategoryEntity>>(this.urlAPI.path , this.tempCategory , { headers: headers, observe: 'response' })
       .subscribe(
           response => {
@@ -232,7 +232,7 @@ export class CateComponent implements OnInit {
     console.log(this.logClass + ' add Product' + JSON.stringify(this.tempCategory));
 
     //delete ID de cho Backend tu dong tao
-    delete this.tempCategory.CateID;
+    delete this.tempCategory.cateID;
 
     //update Local listProduct
     //waiting for Backend return newID
