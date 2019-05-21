@@ -36,7 +36,6 @@ export class BDtableComponent {
 
                     currentService:{
                       title: 'Service',
-                      type: 'custom'
                     },
                     // proImage:{
                     //   title: 'Image'
