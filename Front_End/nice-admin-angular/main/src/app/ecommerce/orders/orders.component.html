@@ -1,18 +1,30 @@
 
 <div class="row">
     <div class="col-4">
-      <p>Order Master</p>
-    </div>
+      <div class="card">
+          <div class="card-body">
+              <h4 class="card-title">List Order Master</h4>
+              <div class="table table-responsive smart-table" *ngIf="isShowTable">
+                  <ng2-smart-table [settings]="settings2" [source]="listOrderMaster"
+                          class="" (rowSelect)="selectedOrderMaster($event)"
+                                (editConfirm)="updateOrderMasterRow($event)" (deleteConfirm)="deleteOrderMasterRow($event)"
+                                  >
+
+                  </ng2-smart-table>
+              </div>
+            </div>
+          </div>
+  </div>
     <div class="col-8">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Edit Delete and update Table</h4>
-                <h6 class="card-subtitle">Smart data table library with sorting, filtering, pagination & add/edit/delete functions.</h6>
+                <h4 class="card-title">Detail</h4>
+                <!-- <h6 class="card-subtitle">Smart data table library with sorting, filtering, pagination & add/edit/delete functions.</h6> -->
                 <div class="table table-responsive smart-table" *ngIf="isShowTable">
                     <ng2-smart-table [settings]="settings" [source]="listOrderDetail"
-                            class="" (rowSelect)="selectedRow($event)"
-                                  (editConfirm)="updateRow($event)" (deleteConfirm)="deleteRow($event)"
-                                    (createConfirm)="createRow($event)">
+                            class="" (rowSelect)="selectedOrderDetailRow($event)"
+                                  (editConfirm)="updateOrderDetailRow($event)" (deleteConfirm)="deleteOrderDetailRow($event)"
+                                    >
 
                     </ng2-smart-table>
                 </div>
