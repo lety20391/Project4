@@ -19,19 +19,19 @@
 				<div class="row">
 					<div class="col-sm-12 col-md-8">
 
-						<form action="#" class="form-contact" id="contactForm" data-toggle="validator" novalidate="true">
+						<form #bookserviceForm="ngForm">
 							<div class="row">
 
 								<div class="col-sm-6 col-md-12">
 									<div class="form-group">
-										<input type="text" class="form-control" [(ngModel)]='userdetail.userName' disabled="true" name="ownername" id="p_name"  required="">
+										<input type="text" class="form-control" [(ngModel)]='userdetail.userName' disabled="true" name="ownername" id="p_name"  required>
 										<div class="help-block with-errors"></div>
 									</div>
 								</div>
 								<div class="col-sm-6 col-md-12">
 									<div class="form-group">
 										<!-- <input type="text" class="form-control" id="p_phone" [(ngModel)]="selectedPet.petDOB" name="petAge"  placeholder="pet Age"> -->
-													<input type="number" class="form-control" name="phone" [(ngModel)]="userdetail.userTel" disabled="true" id="p_phone" placeholder="Enter Phone Number">
+													<input type="number" class="form-control" name="phone"  required [(ngModel)]="userdetail.userTel" disabled="true" id="p_phone" placeholder="Enter Phone Number">
 										<div class="help-block with-errors"></div>
 									</div>
 								</div>
@@ -44,12 +44,19 @@
 
                 <div class="col-sm-6 col-md-12">
 									<div class="form-group">
-										<select name ="listPet"  [(ngModel)]="tempID" required (ngModelChange)="setPet($event)" class="form-control" >
-												<option value="a" disabled>Please choose a pet</option>
+										<select name ="listPet"  [(ngModel)]="tempID" required (ngModelChange)="setPet($event)" class="form-control"  #name="ngModel">
+												<option value="undefined" hidden>Pet Name</option>
 												<option  *ngFor="let pet of myListPet" [ngValue]="pet.petID" >
 														{{pet.petName}}
 												</option>
 										</select>
+										<div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+													<div *ngIf="name.errors.required"> Please select a Pet. </div>
+													<!-- <div *ngIf="name.errors.minlength"> Name must be at least 3 characters long. </div>
+													<div *ngIf="name.errors.maxlength"> Name can not greater than 50 characters long. </div> -->
+										<!-- <div *ngIf="name.errors.forbiddenName"> Name cannot be Bob. </div> -->
+										</div>
+
 									</div>
                 </div>
 
@@ -61,19 +68,25 @@
 								</div>
 								<div class="col-sm-6 col-md-12">
 									<div class="form-group">
-										<select class="form-control" name ="listService" [(ngModel)]="sertempID" (ngModelChange)="setSelectedService($event)" value="name" >
-												<option value="a" disabled>Please choose a service</option>
+										<select class="form-control" name ="listService" required  [(ngModel)]="sertempID" (ngModelChange)="setSelectedService($event)"  #servicename="ngModel">
+												<option value="undefined" hidden>Select Service</option>
 												<option *ngFor="let ser of listservice" [ngValue]="ser.serID" >
 														{{ser.serName}}
 												</option>
 										</select>
+										<div *ngIf="servicename.invalid && (servicename.dirty || servicename.touched)" class="alert alert-danger">
+													<div *ngIf="servicename.errors.required"> Please select a service. </div>
+													<!-- <div *ngIf="name.errors.minlength"> Name must be at least 3 characters long. </div>
+													<div *ngIf="name.errors.maxlength"> Name can not greater than 50 characters long. </div> -->
+										<!-- <div *ngIf="name.errors.forbiddenName"> Name cannot be Bob. </div> -->
+										</div>
 									</div>
                 </div>
 
 
                 <div class="col-sm-6 col-md-12">
                   <div class="form-group">
-										<input type="text" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3" [min]="min" id="name" name="name" value="" class="inputtext form-control" placeholder="Enter Service Date/Time" [(ngModel)]="selectedBMDate">
+										<input type="text" [owlDateTime]="dt3" required [owlDateTimeTrigger]="dt3" [min]="min" id="name" name="name" value="" class="inputtext form-control" placeholder="Enter Service Date/Time" [(ngModel)]="selectedBMDate">
 										<owl-date-time  #dt3	></owl-date-time>
                     <div class="help-block with-errors"></div>
                   </div>
@@ -83,16 +96,16 @@
 
 							</div>
 							<div class="form-group">
-								 <textarea id="p_message" class="form-control" rows="6" id="message" name="nessage" [(ngModel)]="selectedMessage" placeholder="Enter Your Message"></textarea>
+								 <textarea id="p_message" class="form-control"  rows="6" id="message" name="nessage" [(ngModel)]="selectedMessage" placeholder="Enter Your Message"></textarea>
 								<div class="help-block with-errors"></div>
 							</div>
 							<div class="form-group">
 								<div id="success"></div>
-								<button type="submit" class="btn btn-primary" (click)="addtoCart()">Request Appointment</button>
+								<button type="submit" class="btn btn-info btn-rounded" [disabled]="bookserviceForm.invalid" (click)="addtoCart()">Request Appointment</button>
 							</div>
 							<div class="form-group">
 								<div id="success"></div>
-								<button type="submit" class="btn btn-primary" (click)="createBooking()">Book</button>
+								<button type="submited" class="btn btn-primary" [disabled]="!acceptTobook" (click)="createBooking()">Confirm Booking</button>
 							</div>
 						</form>
 						<div class="margin-bottom-50"></div>

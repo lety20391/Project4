@@ -47,9 +47,11 @@ export class BookingComponent implements OnInit {
   currentID: number;
   currentService: serviceEntity = new serviceEntity();
   selectedBMDate : string;
+  displayDate : string;
   selectedMessage: string;
   listBookingDetail : BookingDetailEntity[] = [];
     listBookingChange: EventEmitter<BookingDetailEntity[]> = new EventEmitter();
+    acceptTobook: boolean;
 //servicart-end
   constructor(
     private http: HttpClient,
@@ -60,12 +62,23 @@ export class BookingComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.getServiceList();
     this.getCurrentUserID();
     this.UserDetail();
     // this.createBookingMaster();
     this.getListPet();
     this.getMyListPet();
+    this.checkLocalStorage();
+    }
+    checkLocalStorage() : void {
+      console.log("local length: " + localStorage.listBookingDetail)
+      if(localStorage.listBookingDetail == '' || localStorage.listBookingDetail == null)
+      {
+        this.acceptTobook =  false;
+      }else{
+        this.acceptTobook = true;
+      }
     }
  // insert a booking-detail to cart
  getDataFromLocalStorage():void {
@@ -119,6 +132,7 @@ export class BookingComponent implements OnInit {
           this.newBm.bookingID = this.currentbmID;
           this.saveBookingDetail(this.newBm);
           //rối
+          this.acceptTobook = false;
 
         }
       );
@@ -171,6 +185,7 @@ export class BookingComponent implements OnInit {
     }
     addtoCart(): void {
         this.createNew();
+
     }
 
     createNew(): void {
@@ -186,7 +201,8 @@ export class BookingComponent implements OnInit {
       // this.booknewService.serviceEntity.serID = this.selectedService.serID;
       // this.booknewService.petEntity.petID = this.tempID;
       // this.booknewService.bookingDate = this.selectedBMDate;
-      let currentDate = new Date();
+      this.displayDate = formatDate(this.selectedBMDate, 'hh:mm', 'en-US') + ' on ' + formatDate(this.selectedBMDate, 'dd-MM-yyyy', 'en-US') ;
+      let currentDate = this.selectedBMDate;
       let stringDate = '';
       stringDate = formatDate(currentDate, 'yyyy-MM-dd', 'en-US') + 'T' + formatDate(currentDate, 'hh:mm:ss', 'en-US');
       console.log(this.logClass + "date: " + stringDate);
@@ -198,7 +214,7 @@ export class BookingComponent implements OnInit {
       this.saveToLocalStorage();
       this.listBookingChange.emit(this.listBookingDetail);
       this.bookNewDetail.emit(this.booknewService);
-
+      this.checkLocalStorage();
 
 
     }

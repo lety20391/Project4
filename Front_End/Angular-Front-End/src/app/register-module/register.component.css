@@ -1,8 +1,12 @@
 .disableFunction {
   pointer-events: none;
   opacity: 0.2;
+  background-color: inherit;
 }
 
+.invalid {
+  background-color: red;
+}
 .forUpdateMode{
   padding-bottom: 10px;
 }
