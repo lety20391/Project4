@@ -13,6 +13,7 @@ import {Observable, of} from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ListPetComponent } from '../pet-module/list-pet/list-pet.component'; //de get list;
 import { BookingMasterEntity} from './BookingMasterEntity';
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-booking',
@@ -20,6 +21,7 @@ import { BookingMasterEntity} from './BookingMasterEntity';
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit {
+  @ViewChild('bookserviceForm') myForm;
   @Input() userdetail = new UserEntity();
 @Input() myListPet: PetEntity[] = [];
 @Input() listservice: serviceEntity[] = [];
@@ -28,7 +30,7 @@ export class BookingComponent implements OnInit {
   urlAPI: UrlAPIEntity;
   tempID :number ;
   sertempID: number;
-
+  bookSuccess = false;
   currentUserID: number;
   newBm: BookingMasterEntity = new BookingMasterEntity() ;
   selectedPet : PetEntity = new PetEntity();
@@ -170,6 +172,7 @@ export class BookingComponent implements OnInit {
         }
       );
         }
+
     bookservice(newBd = this.booknewService): void {
       this.urlAPI = listUrlAPI.find(url => url.name === 'bookingDetailResource');
       this.http.post<HttpResponse<BookingDetailEntity>>(this.urlAPI.path + '/Post', newBd,{ observe: 'response' }).subscribe(
@@ -183,10 +186,12 @@ export class BookingComponent implements OnInit {
       );
 
     }
+
     addtoCart(): void {
         this.createNew();
 
     }
+
 
     createNew(): void {
 
@@ -215,7 +220,8 @@ export class BookingComponent implements OnInit {
       this.listBookingChange.emit(this.listBookingDetail);
       this.bookNewDetail.emit(this.booknewService);
       this.checkLocalStorage();
-
+      this.bookSuccess = true;
+      // this.myForm.def.setText("abc");
 
     }
 

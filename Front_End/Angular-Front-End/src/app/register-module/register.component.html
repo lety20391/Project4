@@ -8,9 +8,11 @@
 							<p class="title-heading text-primary mb-5">
 								Register Form
 							</p>
+													</div>
+
 							<p class="subheading">Please enter your name, your email address, date of birth and phone number.</p>
-						</div>
-						<form #registerForm="ngForm" >
+
+						<form #registerForm="ngForm">
 							<div class="row">
 								<div class="col-sm-6 col-md-6">
 									<div class="form-group">
@@ -45,7 +47,7 @@
 										<!-- <div class="help-block with-errors"></div> -->
 									</div>
 									<div *ngIf="DOBirth.invalid && (DOBirth.dirty || DOBirth.touched)" class="alert alert-danger">
-												<div *ngIf="DOBirth.errors.required"> Please enter your phone number. </div>
+												<div *ngIf="DOBirth.errors.required"> Please enter your date of birth. </div>
 												<!-- <div *ngIf="phone.errors.pattern"> Please enter a correct phone number. </div> -->
 												<!-- <div *ngIf="name.errors.minlength"> Name must be at least 3 characters long. </div>
 												<div *ngIf="name.errors.maxlength"> Name can not greater than 50 characters long. </div> -->
@@ -57,9 +59,13 @@
 									<div class="form-group">
 										<input type="text" class="form-control" id="p_phone" pattern="(03[2|3|4|5|6|7|8|9]|05[6|8|9]|07[0|6|7|8|9]|08[6|9|1|2|3|4|5|8]|09[6|7|8|0|3|1|4|2|9])+([0-9]{7})\b" name="phone" [(ngModel)]="Telephone" placeholder="Enter Phone Number" required #phone="ngModel">
 										<div class="help-block with-errors"></div>
+											<div *ngIf="isShowErr" class="alert alert-danger">
+												<div>This Phone number has been registered</div>
+											</div>
 										<div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert alert-danger">
 													<div *ngIf="phone.errors.required"> Please enter your phone number. </div>
 													<div *ngIf="phone.errors.pattern"> Please enter a correct phone number. </div>
+
 													<!-- <div *ngIf="name.errors.minlength"> Name must be at least 3 characters long. </div>
 													<div *ngIf="name.errors.maxlength"> Name can not greater than 50 characters long. </div> -->
 										<!-- <div *ngIf="name.errors.forbiddenName"> Name cannot be Bob. </div> -->

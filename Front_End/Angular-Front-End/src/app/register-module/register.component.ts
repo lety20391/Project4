@@ -39,6 +39,7 @@ export class RegisterComponent implements OnInit {
   isReadyToUploadImage = false;
   inputID: number;
   showSpinner = false;
+  isShowErr = false;
     @Input() uploadUrl = '';
     @Input() buttonTitle = 'Submit';
   @Input() isInUpdateMode = false;
@@ -50,6 +51,12 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.checkLogin();
+  }
+  checkLogin() {
+    if(localStorage.JWT.length != "") {
+      this.router.navigateByUrl("/mainlayout/home");
+    }
   }
   turnLoginPage(): void {
     this.router.navigateByUrl("/mainlayout/login");
@@ -121,6 +128,7 @@ export class RegisterComponent implements OnInit {
             response => {
                   if(response.status == 200)
                       {
+                        this.isShowErr = false;
                         let currentUserID = JSON.parse(JSON.stringify(response.body));
                       this.showSpinner = true;
                       setTimeout(() =>{
@@ -129,12 +137,10 @@ export class RegisterComponent implements OnInit {
                         this.isReadyToUploadImage = true;
                       }, 4000);
                     }
-          //end spinner
-                    },
-          error => {
-            console.log("lêu lêu");
-            console.log("error code: " + error.status);
-          }
+                  if(response.status == 321) {
+                    this.isShowErr = true
+                  }
+                    }
           );
         }
 
