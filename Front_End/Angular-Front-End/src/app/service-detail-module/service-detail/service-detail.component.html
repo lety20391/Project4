@@ -32,7 +32,7 @@
 
           <div class="widget categories">
             <h3 class="title text-primary">Our Services</h3>
-            <ul *ngFor='let item of listServiceCate' class="category-nav">
+            <ul *ngFor='let item of filterActiveService()' class="category-nav">
             <app-service-cate [inputService]='item' ></app-service-cate>
             </ul>
           </div>

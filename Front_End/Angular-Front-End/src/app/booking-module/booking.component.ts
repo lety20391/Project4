@@ -378,9 +378,8 @@ export class BookingComponent implements OnInit {
     );
     return listAllImage;
 
-
-
   }
-
-
+  filterActiveService(){
+    return this.listservice.filter( item => item.status == true);
+  }
 }

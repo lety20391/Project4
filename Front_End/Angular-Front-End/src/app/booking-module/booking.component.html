@@ -70,7 +70,7 @@
 									<div class="form-group">
 										<select class="form-control" name ="listService" required  [(ngModel)]="sertempID" (ngModelChange)="setSelectedService($event)"  #servicename="ngModel">
 												<option id="abc" value="undefined" hidden>Select Service</option>
-												<option *ngFor="let ser of listservice" [ngValue]="ser.serID" >
+												<option *ngFor="let ser of filterActiveService()" [ngValue]="ser.serID" >
 														{{ser.serName}}
 												</option>
 										</select>
