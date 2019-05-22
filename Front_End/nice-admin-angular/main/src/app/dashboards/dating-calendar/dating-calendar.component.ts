@@ -60,7 +60,11 @@ export class myEvent implements CalendarEvent{
   // color?: EventColor;
   allDay?: boolean;
   petName?: string;
+  Owner1?: string;
+  petPartner?: string;
+  Owner2?: string;
   cssClass?: string;
+  location?: string;
   // resizable?: {
   //     beforeStart?: boolean;
   //     afterEnd?: boolean;
@@ -196,7 +200,11 @@ export class DatingCalendarComponent implements OnInit {
                             tempEvent.start = new Date(item.datingDate);
                             // tempEvent.color = colors.yellow;
                             tempEvent.actions = this.actions;
-                            tempEvent.petName = item.petRequestEntity.petName;
+                            tempEvent.petName = item.petRequestEntity.petName + ' - ' + item.petRequestEntity.petBreed + ' -';
+                            tempEvent.petPartner = item.petRecieveEntity.petName + ' - ' + item.petRecieveEntity.petBreed + ' -';
+                            tempEvent.Owner1 = item.petRequestEntity.userEntity.userName + ' - ' + item.petRequestEntity.userEntity.userTel ;
+                            tempEvent.Owner2 = item.petRecieveEntity.userEntity.userName + ' - ' + item.petRecieveEntity.userEntity.userTel ;
+                            tempEvent.location = item.datingLocation;
 
                             index += 1;
                             //push event vao trong danh sach event cua calendar
