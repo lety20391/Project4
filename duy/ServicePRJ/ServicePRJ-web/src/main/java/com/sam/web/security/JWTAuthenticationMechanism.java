@@ -27,6 +27,7 @@ public class JWTAuthenticationMechanism implements HttpAuthenticationMechanism {
     private static final String BEARER = "Bearer ";
     private static String whitelistURL[] = new String [] {
                                                             "/tokens",
+                                                            "/AdminAuthTokens",
                                                             "/BookingDetail/getAll",
                                                             "/User/add",
                                                             "/User/list",

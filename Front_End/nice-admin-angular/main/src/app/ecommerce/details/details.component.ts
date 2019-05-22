@@ -33,11 +33,14 @@ export class DetailsComponent {
       urlAPI: UrlAPIEntity;
       logClass = '--Detail Product Component: ';
       currentProduct: ProductEntity = new ProductEntity();
+      isShowProduct: boolean = false;
+      listInfo: string [] = [];
 
       constructor(
                   private route: ActivatedRoute,
                   private location: Location,
-                  private http: HttpClient
+                  private http: HttpClient,
+                  private productService: ProductServiceService
                   ) { }
 
       ngOnInit() {
@@ -66,6 +69,22 @@ export class DetailsComponent {
                   //roi gan vao listPet
                   console.log(JSON.stringify(response.body));
                   this.currentProduct = JSON.parse(JSON.stringify(response.body));
+
+                  this.productService.getAllProductImage(this.currentProduct.proID)
+                    .subscribe(
+                            response => {
+                              this.currentProduct.proListImage = JSON.parse(JSON.stringify(response));
+
+                              if(this.currentProduct.proDes.includes('.')){
+                                  this.listInfo = this.currentProduct.proDes.split('.');
+                              }else if ( this.currentProduct.proDes.includes(',') ){
+                                  this.listInfo = this.currentProduct.proDes.split(',');
+                              }else if ( this.currentProduct.proDes.includes(':')){
+                                  this.listInfo = this.currentProduct.proDes.split(':');
+                              }
+                              this.isShowProduct = true;
+                            }
+                    );
 
                 }
                 // if (response.status == 200){

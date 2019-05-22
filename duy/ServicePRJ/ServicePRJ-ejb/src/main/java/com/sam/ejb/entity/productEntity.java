@@ -28,7 +28,7 @@ import javax.persistence.Table;
 @NamedQueries
         ({
             @NamedQuery(name="pro.findAll",query = "SELECT p FROM productEntity p WHERE p.Status = TRUE"),
-            @NamedQuery(name="pro.findByCategory",query = "SELECT p FROM productEntity p WHERE p.cateEntity.CateID = :str"),
+            @NamedQuery(name="pro.findByCategory",query = "SELECT p FROM productEntity p WHERE p.cateEntity.cateID = :str"),
             @NamedQuery(name="pro.findByName",query = "SELECT p FROM productEntity p WHERE p.ProName LIKE :str"),
             @NamedQuery(name="pro.findMinMaxPrice",query = "SELECT MIN(p.ProPrice), MAX(p.ProPrice) FROM productEntity p WHERE p.Status = TRUE"),
             @NamedQuery(name="pro.filterProductByPrice",query = "SELECT p FROM productEntity p WHERE p.ProPrice >= :fromPrice AND p.ProPrice <= :toPrice")
@@ -45,9 +45,9 @@ public class productEntity {
     private String ProDes;
     @Column(name="ProPrice", columnDefinition= "INT NOT NULL")
     private Integer ProPrice;
-    @Column(name="ProColor", columnDefinition="VARCHAR(255) NOT NULL")
+    @Column(name="ProColor", columnDefinition="VARCHAR(255)")
     private String ProColor;
-    @Column(name="ProImage" ,columnDefinition = "VARCHAR(max) NOT NULL")
+    @Column(name="ProImage" ,columnDefinition = "VARCHAR(max)")
     private String ProImage;
     @Column(name="Status")
     private boolean Status;

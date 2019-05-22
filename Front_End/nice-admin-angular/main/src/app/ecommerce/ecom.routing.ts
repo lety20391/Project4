@@ -19,6 +19,7 @@ import { DetailPetComponent } from './detail-pet/detail-pet.component';
 import {CateComponent} from './cate/cate.component';
 import { ListProductComponent } from './list-product/list-product.component';
 import { BDtableComponent } from '../UI/BDTable/BDtable.component';
+import { PetTableComponent } from './pet-table/pet-table.component';
 
 export const EcomRoutes: Routes = [
   {
@@ -130,6 +131,17 @@ export const EcomRoutes: Routes = [
       // Product Category
 
        // Pet Category
+       {
+         path: 'petTable',
+         component: PetTableComponent,
+         data: {
+           title: 'Pet list',
+           urls: [
+             { title: 'Dashboard', url: '/dashboard' },
+             { title: 'category list' }
+           ]
+         }
+       },
       {
         path: 'listPet',
         component: ListPetComponent,

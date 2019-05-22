@@ -12,6 +12,7 @@ export const listUrlAPI: UrlAPIEntity[] = [
   {name: 'serviceDetailResource', path: localhost + '/ServicePRJ-web/rest/Service/getDetail/findID'},
   {name: 'uploadResource', path: localhost + '/ServicePRJ-web/rest/uploader'},
   {name: 'orderDetailResource', path: localhost + '/ServicePRJ-web/rest/OrderDetail'},
+  {name: 'orderMasterFullResource', path: localhost + '/ServicePRJ-web/rest/OrderMaster'},
   {name: 'orderMasterResource', path: localhost + '/ServicePRJ-web/rest/OrderMaster/Post'},
   {name: 'getAllImageResource', path: localhost + '/ServicePRJ-web/rest/GetImage'},
   {name: 'petResource', path: localhost + '/ServicePRJ-web/rest/Pet'},
@@ -20,5 +21,6 @@ export const listUrlAPI: UrlAPIEntity[] = [
   {name: 'userDetailResource', path: localhost + '/ServicePRJ-web/rest/User/getDetail/findID'},
   {name: 'bookingMasterResource', path: localhost + '/ServicePRJ-web/rest/BookingMaster'},
   {name: 'bookingDetailResource', path: localhost + '/ServicePRJ-web/rest/BookingDetail'},
-  {name: 'categoryResource', path: localhost + '/ServicePRJ-web/rest/Category'}
+  {name: 'categoryResource', path: localhost + '/ServicePRJ-web/rest/Category'},
+  {name: 'adminAuthResource', path: localhost + '/ServicePRJ-web/rest/Admin'}
 ];

@@ -1,5 +1,5 @@
 export class CategoryEntity {
-  CateID: number;
-  CateName: string;
-  Status: boolean;
+  cateID: number;
+  cateName: string;
+  status: boolean;
 }
