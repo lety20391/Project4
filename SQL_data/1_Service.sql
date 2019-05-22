@@ -1,9 +1,15 @@
 ﻿
 Use Prj4
 GO
+insert into [dbo].[tbAdmin] ([userName] , [userTel] , [superAdmin]  ) values
+('DatLe', '0394641271', 1),
+('DuyShit', '0708886925', 0),
+('Elisa', '0934117989', 0)
+
+GO
 Insert into dbo.tbUser([userDOB], [userMail], [userName], [userStatus], [userTel]) Values 
 ('1996-10-20','lecongdat@gmail.com','DatLe',1,'0394641271'),
-('1995-10-20','ElisaMuoi@gmail.com','Elisa',1,'dat'),
+('1995-10-20','ElisaMuoi@gmail.com','Elisa',1,'0934117989'),
 ('1994-10-20','duytantran@gmail.com','Duy',1,'0708886925'),
 ('1993-10-20','vohuynhnhu@gmail.com','Nichai',1,'0909090909'),
 ('1993-10-20','leminhtruyen@gmail.com','Trennle',1,'0909090908'),

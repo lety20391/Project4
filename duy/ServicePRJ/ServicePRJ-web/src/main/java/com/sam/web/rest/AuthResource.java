@@ -95,7 +95,7 @@ public class AuthResource {
             
             // TODO: Groups should retrieve from database based on authenticate user.
             //String token = this.jwtStore.generateToken(username, Arrays.asList("ADMIN", "MEMBER"));
-            String token = this.jwtStore.generateToken(phone, Arrays.asList("ADMIN"));
+            String token = this.jwtStore.generateToken(phone, Arrays.asList("MEMBER"));
             //logger.info( () -> MessageFormat.format("Token={0}", token));
             System.out.println(token);
             return Response.ok().header(AUTHORIZATION, token).build();
