@@ -7,7 +7,7 @@
                 <div class="table table-responsive smart-table" *ngIf="isShowTable">
                     <ng2-smart-table [settings]="settings" [source]="listPet"
                             class="" (userRowSelect)="selectedPetRow($event)"
-                                  (editConfirm)="updateRow($event)" (deleteConfirm)="deleteRow($event)"
+                                  (editConfirm)="updatePetRow($event)" (deleteConfirm)="deleteRow($event)"
                                     (createConfirm)="createRow($event)">
 
                     </ng2-smart-table>
