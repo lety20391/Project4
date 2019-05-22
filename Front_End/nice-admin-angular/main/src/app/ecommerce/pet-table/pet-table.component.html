@@ -6,7 +6,7 @@
                 <h6 class="card-subtitle">Smart data table library with sorting, filtering, pagination & add/edit/delete functions.</h6>
                 <div class="table table-responsive smart-table" *ngIf="isShowTable">
                     <ng2-smart-table [settings]="settings" [source]="listPet"
-                            class="" (rowSelect)="selectedRow($event)"
+                            class="" (userRowSelect)="selectedPetRow($event)"
                                   (editConfirm)="updateRow($event)" (deleteConfirm)="deleteRow($event)"
                                     (createConfirm)="createRow($event)">
 

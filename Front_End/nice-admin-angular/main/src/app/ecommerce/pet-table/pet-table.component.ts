@@ -40,7 +40,25 @@ export class PetTableComponent implements OnInit {
                       title: 'DOB'
                     },
                     petDating:{
-                      title: 'Dating'
+                      title: 'Dating',
+                      editable: false,
+                      width: '100px',
+                      type: 'custom',
+                      renderComponent: SmartTableLabelComponent,
+                      onComponentInitFunction(instance) {
+                                instance.save
+                                  .subscribe(
+                                      row => {
+                                          //alert(`${row.proColor} test!`);
+                                          //localStorage.setItem('changedPetID', `${row.petID}`);
+                                          //alert(`${row.petID}`);
+                                          localStorage.setItem('changedPetID', `${row.petID}`);
+                                          localStorage.setItem('changedPetDatingID', `${row.petID}`);
+                                        }
+                                    );
+
+                              }
+
                     },
                     petGender:{
                       title: 'Gender'
@@ -76,7 +94,8 @@ export class PetTableComponent implements OnInit {
                                   .subscribe(
                                       row => {
                                           //alert(`${row.proColor} test!`);
-                                          localStorage.setItem('changedProductID', `${row.proID}`);
+                                          //alert(`${row.status}`);
+                                          localStorage.setItem('changedPetID', `${row.petID}`);
                                         }
                                     );
 
@@ -181,6 +200,77 @@ export class PetTableComponent implements OnInit {
 
             }
       );
+  }
+
+  selectedPetRow(event: any): void{
+    console.log(this.logClass + ' selected Row:' + JSON.stringify(event.data));
+    //lay ID tu localStorage de  kiem tra xem co phai day la update status khong
+    let stringID = localStorage.getItem('changedPetID');
+    if(stringID != null && stringID != ''){
+      if(JSON.stringify(event.data.petID) == stringID){
+        //update Status
+        console.log(this.logClass + 'update row' + JSON.stringify(event.data));
+        this.urlAPI = listUrlAPI.find(url => url.name === 'petResource');
+        console.log(this.logClass + this.urlAPI.path);
+
+        //prepare headers
+        let headers = this.createHeader();
+
+
+        //************************************
+        //khuc nay chi danh rieng cho bang Pet
+        //************************************
+        //kiem tra neu trong localStorage co changedPetDatingID nghia la dang change Dating
+        if(localStorage.getItem('changedPetDatingID') != null && localStorage.getItem('changedPetDatingID') != ''){
+            console.log(this.logClass + ' dao nguoc trang thai');
+            //dao nguoc lai status va petStatus
+            event.data.status = !event.data.status;
+            event.data.petDating = !event.data.petDating;
+        }else{
+          //doi status thanh petStatus
+          event.data.petStatus = event.data.status;
+        }
+        //************************************
+        //khuc nay chi danh rieng cho bang Pet
+        //************************************
+
+        //update Database
+        this.http.put<HttpResponse<PetEntity>>(this.urlAPI.path + '/update' , event.data ,{ headers: headers, observe: 'response' })
+          .subscribe(
+              response => {
+                console.log( response);
+                console.log( response.status );
+                if (response.status == 200){
+                  console.log(this.logClass + " response: " + response);
+                  //chuyen du lieu tu response.body ve lai kieu array
+                  //roi gan vao listPet
+                  console.log(JSON.stringify(response.body));
+                  localStorage.setItem('changedPetID', '');
+
+                  //************************************
+                  //khuc nay chi danh rieng cho bang Pet
+                  //************************************
+                  if(localStorage.getItem('changedPetDatingID') != null && localStorage.getItem('changedPetDatingID') != ''){
+                    localStorage.setItem('changedPetDatingID', '');
+                  }
+                  //************************************
+                  //khuc nay chi danh rieng cho bang Pet
+                  //************************************
+
+                  //update data source trong bang
+                  event.source.update(event.data);
+
+
+                }
+
+
+              }
+        );
+
+
+      }
+    }
+
   }
 
   createHeader():HttpHeaders {
