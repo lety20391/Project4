@@ -17,7 +17,7 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: [
       {
-        path: '',
+        path: '/dashboard/manageAdmin',
         title: 'Admin',
         icon: '  icon-user-following',
         class: '',

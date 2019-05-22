@@ -7,6 +7,7 @@ import { OrderChartComponent } from './order-chart/order-chart.component';
 import { ServiceCalendarComponent } from './service-calendar/service-calendar.component';
 import { MainReportComponent } from './main-report/main-report.component';
 import { DatingCalendarComponent } from './dating-calendar/dating-calendar.component';
+import { ManageAdminComponent } from './manage-admin/manage-admin.component';
 
 export const DashboardRoutes: Routes = [
   {
@@ -20,6 +21,17 @@ export const DashboardRoutes: Routes = [
           urls: [
             { title: 'Dashboard', url: '/dashboard' },
             { title: 'Classic Dashboard' }
+          ]
+        }
+      },
+      {
+        path: 'manageAdmin',
+        component: ManageAdminComponent,
+        data: {
+          title: 'Manage Admin',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'Analytical Dashboard' }
           ]
         }
       },
