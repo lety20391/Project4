@@ -78,20 +78,20 @@ Insert into dbo.tbBookingDetail ([bookingDate], [bdstatus],[bookingID], [serID],
 
 GO
 Insert into dbo.datingMasterEntity  ( creDate, locat, [status], userID ) values
-('2019-3-11', 'Ho Chinh Minh city', 1, 1),
-('2018-4-17', 'Vung Tau beach', 1, 2),
-('2018-5-10', 'Nha Trang city', 1, 3),
-('2018-5-15', 'Ho Chi Minh city', 1, 1)
+('2019-6-11', 'Ho Chinh Minh city', 1, 1),
+('2018-6-17', 'Vung Tau beach', 1, 2),
+('2018-5-30', 'Nha Trang city', 1, 3),
+('2018-7-15', 'Ho Chi Minh city', 1, 1)
 
 GO
 Insert into dbo.datingDetailEntity  ( [datingDate], [datingLocation], [datingMaster_ID], [petRequest_ID], [petRecieve_ID], [isAccepted], [specialStatus], [isNewNotification])  values
-('2019-1-1', '195 Cao Thang - District 3', 1, 1, 2, 1, 0, 1),
-('2019-1-10', 'Tao Dan Park', 1, 1, 2, 1, 1, 1),
-('2019-1-15', '195 Cao Thang - District 3', 1, 1, 2, 1, 2, 1),
-('2019-1-18', 'Vung Tau beach', 1, 1, 2, 1, 3, 1),
-('2019-2-19', 'Nha Trang beach', 2, 3, 2, 1, 0, 1),
-('2019-3-21', '23-9 park', 3, 2, 3, 1, 0, 1),
-('2019-4-13', 'Pet Shop', 1, 2, 1, 1, 0, 1)
+('2019-10-1', '195 Cao Thang - District 3', 1, 1, 2, 1, 0, 1),
+('2019-10-10', 'Tao Dan Park', 1, 1, 2, 1, 1, 1),
+('2019-10-15', '195 Cao Thang - District 3', 1, 1, 2, 1, 2, 1),
+('2019-10-18', 'Vung Tau beach', 1, 1, 2, 1, 3, 1),
+('2019-6-19', 'Nha Trang beach', 2, 3, 2, 1, 0, 1),
+('2019-6-21', '23-9 park', 3, 2, 3, 1, 0, 1),
+('2019-6-13', 'Pet Shop', 1, 2, 1, 1, 0, 1)
 
 GO
 Insert into dbo.tbCategory ([CateName], [Status]) values
