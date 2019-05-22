@@ -31,6 +31,7 @@ import { FilePickerModule } from  'ngx-awesome-uploader';
 import { SmartTableProImgComponent } from './smart-table-pro-img/smart-table-pro-img.component';
 import { BDtableComponent } from '../UI/BDTable/BDtable.component';
 import { PetTableComponent } from './pet-table/pet-table.component';
+import { SmartTablePetImgComponent } from './smart-table-pet-img/smart-table-pet-img.component';
 
 @NgModule({
   imports: [
@@ -65,16 +66,19 @@ import { PetTableComponent } from './pet-table/pet-table.component';
     CateComponent,
     ListProductComponent,
     SmartTableProImgComponent,
-    PetTableComponent
+    PetTableComponent,
+    SmartTablePetImgComponent
 
   ],
   exports: [
     SmartTableLabelComponent,
-    SmartTableProImgComponent
+    SmartTableProImgComponent,
+    SmartTablePetImgComponent
   ],
   entryComponents: [
     SmartTableLabelComponent,
-    SmartTableProImgComponent
+    SmartTableProImgComponent,
+    SmartTablePetImgComponent
   ]
 })
 export class EcomModule {}

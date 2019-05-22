@@ -10,6 +10,7 @@ import {SmartTableLabelComponent} from '../smart-table-label/smart-table-label.c
 import { ProductEntity } from '../Entity/ProductEntity';
 import { SmartTableProImgComponent } from '../smart-table-pro-img/smart-table-pro-img.component';
 import { PetEntity } from '../Entity/PetEntity';
+import { SmartTablePetImgComponent } from '../smart-table-pet-img/smart-table-pet-img.component';
 
 @Component({
   selector: 'app-pet-table',
@@ -23,6 +24,21 @@ export class PetTableComponent implements OnInit {
                       title: 'ID',
                       editable: false,
                       width: '20px',
+                    },
+                    petSingleImage:{
+                      title: 'Image',
+                      type: 'custom',
+                      renderComponent: SmartTablePetImgComponent,
+                      onComponentInitFunction(instance) {
+                                instance.save
+                                  .subscribe(
+                                      row => {
+                                          //alert(`${row.proColor} test!`);
+                                          //localStorage.setItem('changedProductID', `${row.proID}`);
+                                        }
+                                    );
+
+                              }
                     },
                     petName: {
                       title: 'Name',
@@ -68,21 +84,6 @@ export class PetTableComponent implements OnInit {
                       title: 'Story'
                     },
 
-                    // petSingleImage:{
-                    //   title: 'Image',
-                    //   type: 'custom',
-                    //   renderComponent: SmartTableProImgComponent,
-                    //   onComponentInitFunction(instance) {
-                    //             instance.save
-                    //               .subscribe(
-                    //                   row => {
-                    //                       //alert(`${row.proColor} test!`);
-                    //                       //localStorage.setItem('changedProductID', `${row.proID}`);
-                    //                     }
-                    //                 );
-                    //
-                    //           }
-                    // },
                     status:{
                       title: 'Status',
                       editable: false,
@@ -170,7 +171,7 @@ export class PetTableComponent implements OnInit {
                                     //vi du: /1/ab
                                     if(tempImgList instanceof Array){
                                       item.petSingleImage= '/' + item.petID + '/' + tempImgList[0];
-                                      console.log(this.logClass + ' link Pro Img: ' + item.petSingleImage);
+                                      console.log(this.logClass + ' link Pet Img: ' + item.petSingleImage);
                                     }
 
                                     item.status = item.petStatus;
