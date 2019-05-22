@@ -63,6 +63,15 @@ public class ManageBookingDetail {
         //throw new UnsupportedOperationException();
         return bookingDetailSessionBeanLocal.listBMofBD(bookingID);
     }
+      
+            @GET
+    @Path("/list/userID/{userID}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<bookingDetailEntity> getBMofUser(@PathParam("userID") Long userID) {
+        //TODO return proper representation object
+        //throw new UnsupportedOperationException();
+        return bookingDetailSessionBeanLocal.listBMofUser(userID);
+    }
     /**
      * Retrieves representation of an instance of com.sam.web.rest.ManageBookingDetail
      * @return an instance of java.lang.String

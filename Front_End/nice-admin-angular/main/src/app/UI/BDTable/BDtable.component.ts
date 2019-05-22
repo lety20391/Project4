@@ -19,23 +19,25 @@ export class BDtableComponent {
                     bDetailID: {
                       title: 'ID',
                       editable: false,
-                      width: '20px',
+                      width: '5%',
                     },
                     bookingDate: {
                       title: 'Date',
                       width: '15%',
                     },
                     message: {
-                      title: 'Message'
+                      title: 'Message',
+                      width: '25%'
                     },
                     currentPet: {
-                      title: 'Pet Name',
-                      width: '100px',
+                      title: 'Telephone',
+                      width: '10%',
                       sort : true,
                     },
 
                     currentService:{
                       title: 'Service',
+                      width:'15%',
                     },
                     // proImage:{
                     //   title: 'Image'
@@ -43,7 +45,7 @@ export class BDtableComponent {
                     status:{
                       title: 'Status',
                       editable: false,
-                      width: '100px',
+                      width: '20%',
                       type: 'custom',
                       renderComponent: SmartTableLabelComponent,
                       onComponentInitFunction(instance) {
@@ -51,7 +53,7 @@ export class BDtableComponent {
                                   .subscribe(
                                       row => {
                                           //alert(`${row.proColor} test!`);
-                                          localStorage.setItem('changedProductID', `${row.proID}`);
+                                          localStorage.setItem('changedBookingDetailID', `${row.bDetailID}`);
                                         }
                                     );
 
@@ -71,7 +73,8 @@ export class BDtableComponent {
                     saveButtonContent: '<i class="ti-save text-success m-r-10"></i>',
                     cancelButtonContent: '<i class="ti-close text-danger"></i>'
                   },
-                  add: {confirmCreate: true},
+                  actions: false,
+
                   mode: 'inline'
             };
   listBD: BookingDetailEntity[] = [];
@@ -114,30 +117,14 @@ export class BDtableComponent {
                 let index: number = 0;
                 this.listBD.forEach(
                       item => {
-                        item.currentPet = item.petEntity.petName;
+                        item.currentPet = item.bookingMasterEntity.userEntity.userTel;
                         item.currentService = item.serviceEntity.serName;
-                        // this.service.getAllServiceImage(item.petEntity.petID)
-                        //   .subscribe(
-                        //     result => {
-                        //
-                        //       let tempImgList = JSON.parse(JSON.stringify(result));
-                        //       //lay 1 hinh lam mau cho proImage
-                        //       //them proID vao Img de lay hinh
-                        //       //vi du: /1/ab
-                        //       if(tempImgList instanceof Array){
-                        //         item.petEntity.petImage= '/' + item.petEntity.petID + '/' + tempImgList[0];
-                        //         console.log(this.logClass + ' link Pro Img: ' + item.petEntity.petImage);
-                        //         this.currentImage = item.petEntity.petImage;
-                        //       }
-                        //
+                              //
                               index += 1;
                               if( index == this.listBD.length){
                                   this.isShowTable = true;
                                 index = 0;
                               }
-                        //
-                        //     }
-                        //   );
                       }
                 );
 
@@ -156,46 +143,48 @@ export class BDtableComponent {
             }
       );
   }
-  //
-  // selectedRow(event: any): void{
-  //   console.log(this.logClass + ' selected Row:' + JSON.stringify(event.data));
-  //   //lay ID tu localStorage de  kiem tra xem co phai day la update status khong
-  //   let stringID = localStorage.getItem('changedProductID');
-  //   if(stringID != null && stringID != ''){
-  //     if(JSON.stringify(event.data.proID) == stringID){
-  //       //update Status
-  //       //prepare headers
-  //       let headers = this.createHeader();
-  //
-  //       //update Database
-  //       this.http.put<HttpResponse<ProductEntity>>(this.urlAPI.path , event.data ,{ headers: headers, observe: 'response' })
-  //         .subscribe(
-  //             response => {
-  //               console.log( response);
-  //               console.log( response.status );
-  //               if (response.status == 200){
-  //                 console.log(this.logClass + " response: " + response);
-  //                 //chuyen du lieu tu response.body ve lai kieu array
-  //                 //roi gan vao listPet
-  //                 console.log(JSON.stringify(response.body));
-  //                 localStorage.setItem('changedProductID', '');
-  //
-  //                 //update data source trong bang
-  //                 event.source.update(event.data);
-  //
-  //
-  //               }
-  //
-  //
-  //             }
-  //       );
-  //
-  //
-  //     }
-  //   }
-  //
-  // }
-  //
+
+  selectedRow(event: any): void{
+    console.log(this.logClass + ' selected Row:' + JSON.stringify(event.data));
+    //lay ID tu localStorage de  kiem tra xem co phai day la update status khong
+    let stringID = localStorage.getItem('changedBookingDetailID');
+    if(stringID != null && stringID != ''){
+
+      if(JSON.stringify(event.data.bDetailID) == stringID){
+        console.log("success: "+ event.data.bDetailID);
+        //update Status
+        //prepare headers
+        let headers = this.createHeader();
+
+        //update Database
+        this.http.put<HttpResponse<BookingDetailEntity>>(this.urlAPI.path , event.data ,{ headers: headers, observe: 'response' })
+          .subscribe(
+              response => {
+                console.log( response);
+                console.log( response.status );
+                if (response.status == 200){
+                  console.log(this.logClass + " response: " + response);
+                  //chuyen du lieu tu response.body ve lai kieu array
+                  //roi gan vao listPet
+                  console.log(JSON.stringify(response.body));
+                  localStorage.setItem('changedBookingDetailID', '');
+
+                  //update data source trong bang
+                  event.source.update(event.data);
+
+
+                }
+
+
+              }
+        );
+
+
+      }
+    }
+
+  }
+
   // updateRow(event: any): void{
   //   this.tempProduct = JSON.parse(JSON.stringify(event.newData));
   //   console.log(this.logClass + ' updated Product' + JSON.stringify(this.tempProduct));
