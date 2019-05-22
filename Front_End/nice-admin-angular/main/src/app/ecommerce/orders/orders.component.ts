@@ -56,6 +56,11 @@ export class OrderComponent {
                       width: '100px',
                       sort : true,
                     },
+                    totalPrice: {
+                      title: 'Total',
+                      width: '100px',
+                      sort : true,
+                    },
                     status:{
                       title: 'Status',
                       editable: false,
@@ -87,7 +92,9 @@ export class OrderComponent {
                     saveButtonContent: '<i class="ti-save text-success m-r-10"></i>',
                     cancelButtonContent: '<i class="ti-close text-danger"></i>'
                   },
-                  add: {confirmCreate: true},
+                  actions :{
+                    add: false,
+                  },
                   mode: 'inline'
             };
   listOrderDetail: OrderDetail[] = [];

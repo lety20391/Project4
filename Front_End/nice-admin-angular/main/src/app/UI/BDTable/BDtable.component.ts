@@ -27,25 +27,25 @@ export class BDtableComponent {
                     },
                     message: {
                       title: 'Message',
-                      width: '35%'
+                      width: '25%'
                     },
                     currentPet: {
-                      title: 'Pet Name',
-                      width: '15%',
+                      title: 'Telephone',
+                      width: '10%',
                       sort : true,
                     },
 
-                    // currentService:{
-                    //   title: 'Service',
-                    //   type: 'custom'
-                    // },
+                    currentService:{
+                      title: 'Service',
+                      width:'15%',
+                    },
                     // proImage:{
                     //   title: 'Image'
                     // },
                     status:{
                       title: 'Status',
                       editable: false,
-                      width: '30%',
+                      width: '20%',
                       type: 'custom',
                       renderComponent: SmartTableLabelComponent,
                       onComponentInitFunction(instance) {
@@ -117,8 +117,8 @@ export class BDtableComponent {
                 let index: number = 0;
                 this.listBD.forEach(
                       item => {
-                        item.currentPet = item.petEntity.petName;
-                        // item.currentService = item.serviceEntity.serName;
+                        item.currentPet = item.bookingMasterEntity.userEntity.userTel;
+                        item.currentService = item.serviceEntity.serName;
                               //
                               index += 1;
                               if( index == this.listBD.length){
