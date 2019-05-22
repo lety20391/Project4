@@ -74,5 +74,7 @@ export class SerComponent implements OnInit {
       }
     );
   }
-
+  filterActiveService(){
+    return this.listService.filter( item => item.status == true);
+  }
 }

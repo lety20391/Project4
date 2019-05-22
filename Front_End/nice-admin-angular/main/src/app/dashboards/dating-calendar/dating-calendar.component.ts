@@ -53,20 +53,22 @@ export class CalendarView{
 }
 
 export class myEvent implements CalendarEvent{
-  Message: string;
-  PetName?: string;
-  PetOwner?: string;
-  Phone?: string;
-  PetBreed?: string;
-  id?: string | number;  start: Date;
+  id?: string | number;
+  start: Date;
   end?: Date;
   title: string;
-  // color?: import("C:/Users/Dat_Le/Desktop/Aptech/Project4/Front_End/nice-admin-angular/main/node_modules/calendar-utils/dist/calendar-utils").EventColor;
-  draggable?: boolean;
+  // color?: EventColor;
   allDay?: boolean;
+  petName?: string;
+  Owner1?: string;
+  petPartner?: string;
+  Owner2?: string;
   cssClass?: string;
-  resizable?: { beforeStart?: boolean; afterEnd?: boolean; };
-  meta?: any;
+  location?: string;
+  // resizable?: {
+  //     beforeStart?: boolean;
+  //     afterEnd?: boolean;
+  // };
   actions?: CalendarEventAction[];
 
 
@@ -153,7 +155,7 @@ export class DatingCalendarComponent implements OnInit {
  //   }
  // ];
 
- events: CalendarEvent[] = [];
+ events: myEvent[] = [];
 
  activeDayIsOpen: boolean = true;
 
@@ -194,10 +196,15 @@ export class DatingCalendarComponent implements OnInit {
                       item => {
                             //class myEvent duoc khai bao tren phan dau cua file
                             let tempEvent: myEvent = new myEvent();
-                            tempEvent.title = item.petRequestEntity.petName + '&'+ item.petRecieveEntity.petName;
+                            tempEvent.title = item.petRequestEntity.petName + ' & '+ item.petRecieveEntity.petName;
                             tempEvent.start = new Date(item.datingDate);
                             // tempEvent.color = colors.yellow;
                             tempEvent.actions = this.actions;
+                            tempEvent.petName = item.petRequestEntity.petName + ' - ' + item.petRequestEntity.petBreed + ' -';
+                            tempEvent.petPartner = item.petRecieveEntity.petName + ' - ' + item.petRecieveEntity.petBreed + ' -';
+                            tempEvent.Owner1 = item.petRequestEntity.userEntity.userName + ' - ' + item.petRequestEntity.userEntity.userTel ;
+                            tempEvent.Owner2 = item.petRecieveEntity.userEntity.userName + ' - ' + item.petRecieveEntity.userEntity.userTel ;
+                            tempEvent.location = item.datingLocation;
 
                             index += 1;
                             //push event vao trong danh sach event cua calendar

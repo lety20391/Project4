@@ -11,3 +11,5 @@
 
 /* Datetime picker */
 @import "~ng-pick-datetime/assets/style/picker.min.css";
+
+@import "../node_modules/angular-calendar/css/angular-calendar.css";

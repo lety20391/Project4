@@ -23,6 +23,8 @@ export class DetailDatingComponent implements OnInit {
   listImage: string[] = [];
   currentDating: DatingDetailEntity = new DatingDetailEntity();
   min = new Date();
+  listInfo: string[] =[];
+
   constructor(
     private route: ActivatedRoute,
     private location: Location,
@@ -60,6 +62,15 @@ export class DetailDatingComponent implements OnInit {
       result => {
                   console.log(this.logClass + ' Product load:' + result.petName);
                   this.currentPet = result;
+
+                  if(this.currentPet.petStory.includes('.')){
+                      this.listInfo = this.currentPet.petStory.split('.');
+                  }else if ( this.currentPet.petStory.includes(',') ){
+                      this.listInfo = this.currentPet.petStory.split(',');
+                  }else if ( this.currentPet.petStory.includes(':')){
+                      this.listInfo = this.currentPet.petStory.split(':');
+                  }
+
                 }
     );
   }

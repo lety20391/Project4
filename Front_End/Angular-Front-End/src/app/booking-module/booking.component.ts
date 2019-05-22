@@ -38,7 +38,7 @@ export class BookingComponent implements OnInit {
   booknewService: BookingDetailEntity = new BookingDetailEntity();
   selectedService: serviceEntity = new serviceEntity();
   currentbmID: number;
-  currentStatus = true;
+  currentStatus = false;
   min = new Date();
   max = new Date();
 //service -cart
@@ -378,9 +378,8 @@ export class BookingComponent implements OnInit {
     );
     return listAllImage;
 
-
-
   }
-
-
+  filterActiveService(){
+    return this.listservice.filter( item => item.status == true);
+  }
 }

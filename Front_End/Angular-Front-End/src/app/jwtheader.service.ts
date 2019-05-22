@@ -23,4 +23,7 @@ export class JWTHeaderService {
       return localStorage.getItem('JWT');
     return '';
   }
+  clearLocalStorage(){
+    return localStorage.clear();
+}
 }

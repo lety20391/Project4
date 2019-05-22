@@ -33,6 +33,7 @@ export class ServiceCalendarComponent implements OnInit {
   bookOwner: string;
   myPet: string;
   bookPhone: string;
+  Status: string;
   // --------end----------------
   modalData: {
     action: string;
@@ -147,6 +148,7 @@ export class ServiceCalendarComponent implements OnInit {
                   this.myPet = item.petEntity.petBreed;
                   this.bookOwner = item.bookingMasterEntity.userEntity.userName;
                   this.bookPhone = item.bookingMasterEntity.userEntity.userTel;
+                  
                   // console.log("this is pet: " + this.bookPet + item.petEntity.petName);
                   // this.myPet = this.bookPet.PetName
                   // this.bookOwner = item.bookingMasterEntity.userEntity.UserID;
