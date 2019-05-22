@@ -40,7 +40,7 @@ export class Login2Component {
   getCode(): void {
     console.log("getCode");
     //change your url name here
-    this.urlAPI = listUrlAPI.find(url => url.name === 'loginResource');
+    this.urlAPI = listUrlAPI.find(url => url.name === 'adminAuthResource');
     console.log(this.urlAPI);
     this.loginUser.username = this.phone;
     this.loginUser.password= this.pass;
@@ -78,7 +78,7 @@ export class Login2Component {
   login(): void{
     console.log("Login");
     //change your url name here
-    this.urlAPI = listUrlAPI.find(url => url.name === 'loginResource');
+    this.urlAPI = listUrlAPI.find(url => url.name === 'adminAuthResource');
     console.log(this.urlAPI);
     this.loginUser.username = this.phone;
     this.loginUser.password= this.pass;
