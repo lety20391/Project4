@@ -21,4 +21,6 @@ export class PetEntity {
   totalDatingRequestNeedAccept: number;
   totalNewDatingAnswer: number;
   listAnswerDetail: DatingDetailEntity[] = [];
+  status: boolean;
+  petSingleImage: string;
 }

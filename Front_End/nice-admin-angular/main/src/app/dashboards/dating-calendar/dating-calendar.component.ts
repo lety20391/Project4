@@ -53,10 +53,15 @@ export class CalendarView{
 }
 
 export class myEvent implements CalendarEvent{
+  Message: string;
+  PetName?: string;
+  PetOwner?: string;
+  Phone?: string;
+  PetBreed?: string;
   id?: string | number;  start: Date;
   end?: Date;
   title: string;
-  color?: import("C:/Users/Dat_Le/Desktop/Aptech/Project4/Front_End/nice-admin-angular/main/node_modules/calendar-utils/dist/calendar-utils").EventColor;
+  // color?: import("C:/Users/Dat_Le/Desktop/Aptech/Project4/Front_End/nice-admin-angular/main/node_modules/calendar-utils/dist/calendar-utils").EventColor;
   draggable?: boolean;
   allDay?: boolean;
   cssClass?: string;
@@ -75,7 +80,7 @@ export class myEvent implements CalendarEvent{
 export class DatingCalendarComponent implements OnInit {
 
 
-  @ViewChild('modalContent') modalContent: TemplateRef<any>;
+  @ViewChild('modalContent2') modalContent2: TemplateRef<any>;
 
  view: CalendarView = CalendarView.Month;
  // view: 'month';
@@ -156,6 +161,8 @@ export class DatingCalendarComponent implements OnInit {
  logClass = '--Dating Calendar Component: ';
  listDatingDetail: DatingDetailEntity[] = [];
 
+ isShowCalendar: boolean = false;
+
  constructor(
    private modal: NgbModal,
    private http: HttpClient,
@@ -181,16 +188,23 @@ export class DatingCalendarComponent implements OnInit {
                 console.log(this.logClass + ' dating Detail');
                 console.log(this.logClass + JSON.stringify(response));
                 this.listDatingDetail = JSON.parse(JSON.stringify(response));
+
+                let index : number = 0;
                 this.listDatingDetail.forEach(
                       item => {
                             //class myEvent duoc khai bao tren phan dau cua file
                             let tempEvent: myEvent = new myEvent();
                             tempEvent.title = item.petRequestEntity.petName + '&'+ item.petRecieveEntity.petName;
                             tempEvent.start = new Date(item.datingDate);
-                            tempEvent.color = colors.yellow;
+                            // tempEvent.color = colors.yellow;
                             tempEvent.actions = this.actions;
+
+                            index += 1;
                             //push event vao trong danh sach event cua calendar
                             this.events.push(tempEvent);
+                            this.refresh.next();
+                            if( index == this.listDatingDetail.length)
+                              this.isShowCalendar = true;
 
                       }
                 );
@@ -233,25 +247,25 @@ export class DatingCalendarComponent implements OnInit {
 
  handleEvent(action: string, event: CalendarEvent): void {
    this.modalData = { event, action };
-   this.modal.open(this.modalContent, { size: 'lg' });
+   this.modal.open(this.modalContent2, { size: 'lg' });
  }
 
- addEvent(): void {
-   this.events = [
-     ...this.events,
-     {
-       title: 'New event',
-       start: startOfDay(new Date()),
-       end: endOfDay(new Date()),
-       color: colors.red,
-       draggable: true,
-       resizable: {
-         beforeStart: true,
-         afterEnd: true
-       }
-     }
-   ];
- }
+ // addEvent(): void {
+ //   this.events = [
+ //     ...this.events,
+ //     {
+ //       title: 'New event',
+ //       start: startOfDay(new Date()),
+ //       end: endOfDay(new Date()),
+ //       // color: colors.red,
+ //       draggable: true,
+ //       resizable: {
+ //         beforeStart: true,
+ //         afterEnd: true
+ //       }
+ //     }
+ //   ];
+ // }
 
  deleteEvent(eventToDelete: CalendarEvent) {
    this.events = this.events.filter(event => event !== eventToDelete);

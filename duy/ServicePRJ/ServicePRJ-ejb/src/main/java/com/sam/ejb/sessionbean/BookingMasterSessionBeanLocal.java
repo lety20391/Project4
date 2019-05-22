@@ -5,6 +5,7 @@
  */
 package com.sam.ejb.sessionbean;
 
+import com.sam.ejb.entity.PetEntity;
 import com.sam.ejb.entity.bookingMasterEntity;
 import java.util.List;
 import javax.ejb.Local;
@@ -20,4 +21,5 @@ public interface BookingMasterSessionBeanLocal {
     public bookingMasterEntity editbookingMaster(bookingMasterEntity service);
     public void deletebookingMaster(Long id);
     public bookingMasterEntity findOne(Long id);
+    public List<bookingMasterEntity> listBMOfUser(Long userID);
 }

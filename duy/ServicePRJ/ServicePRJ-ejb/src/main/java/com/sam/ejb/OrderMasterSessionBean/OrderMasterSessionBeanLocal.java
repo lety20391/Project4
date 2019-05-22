@@ -20,4 +20,6 @@ public interface OrderMasterSessionBeanLocal {
     public OrderMasterEntity editOrderMaster(OrderMasterEntity orderMaster);
     public void deleteOrderMaster(Long id);
     public OrderMasterEntity findOne(Long id);
+    public List<OrderMasterEntity> listAllOrderByCreDate();
+    
 }

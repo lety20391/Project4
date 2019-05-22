@@ -21,4 +21,5 @@ public interface bookingDetailSessionBeanLocal {
     public bookingDetailEntity editBookingDetail(bookingDetailEntity service);
     public void deleteBookingDetail(Long id);
     public bookingDetailEntity findOne(Long id);
+        public List<bookingDetailEntity> listBMofBD(Long userID);
 }

@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body" *ngIf="!isReadyToUploadImage">
                 <h4 class="card-title">Form Add New Pet</h4>
                 <h6 class="card-subtitle">This is the form Add new Pet for Admin
                 </h6>
@@ -121,16 +121,7 @@
                           </div>
 
                         </div>
-                        <!-- ************************** -->
-                        <!-- day la phan upload hinh moi  -->
-                        <!-- ************************** -->
-                        <div class="form-group" *ngIf="isReadyToUploadImage">
-                          <label>Upload Image</label>
-                            <div class="form-control">
-                              <ngx-file-picker [adapter]="adapter" [enableCropper]="false">
-                              </ngx-file-picker>
-                            </div>
-                        </div>
+
 
                         <!-- <div class="form-group">
                             <label>Image upload</label>
@@ -150,6 +141,16 @@
                         <button class="btn btn-inverse" (click)="productForm.resetForm({})">Add new Pet</button>
                     </div> -->
                 </form>
+            </div>
+            <!-- ************************** -->
+            <!-- day la phan upload hinh moi  -->
+            <!-- ************************** -->
+            <div class="card-body" *ngIf="isReadyToUploadImage">
+              <label>Upload Image</label>
+                <div class="form-control">
+                  <ngx-file-picker [adapter]="adapter" [enableCropper]="false" (uploadSuccess)="oneFileUploadSuccess($event)">
+                  </ngx-file-picker>
+                </div>
             </div>
         </div>
     </div>

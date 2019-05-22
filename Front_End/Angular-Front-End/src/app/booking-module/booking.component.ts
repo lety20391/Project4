@@ -10,9 +10,10 @@ import { ServiceManageService} from '../service-module/service-manage.service';
 import { PetEntity} from '../pet-module/PetEntity';
 import { HttpResponse } from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ListPetComponent } from '../pet-module/list-pet/list-pet.component'; //de get list;
 import { BookingMasterEntity} from './BookingMasterEntity';
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-booking',
@@ -20,6 +21,7 @@ import { BookingMasterEntity} from './BookingMasterEntity';
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit {
+  @ViewChild('bookserviceForm') myForm;
   @Input() userdetail = new UserEntity();
 @Input() myListPet: PetEntity[] = [];
 @Input() listservice: serviceEntity[] = [];
@@ -28,7 +30,7 @@ export class BookingComponent implements OnInit {
   urlAPI: UrlAPIEntity;
   tempID :number ;
   sertempID: number;
-
+  bookSuccess = false;
   currentUserID: number;
   newBm: BookingMasterEntity = new BookingMasterEntity() ;
   selectedPet : PetEntity = new PetEntity();
@@ -47,24 +49,38 @@ export class BookingComponent implements OnInit {
   currentID: number;
   currentService: serviceEntity = new serviceEntity();
   selectedBMDate : string;
+  displayDate : string;
   selectedMessage: string;
   listBookingDetail : BookingDetailEntity[] = [];
     listBookingChange: EventEmitter<BookingDetailEntity[]> = new EventEmitter();
+    acceptTobook: boolean;
 //servicart-end
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
+    private router: Router,
     private serviceManageService: ServiceManageService,
     private location : Location
   ) { }
 
   ngOnInit() {
+
     this.getServiceList();
     this.getCurrentUserID();
     this.UserDetail();
     // this.createBookingMaster();
     this.getListPet();
     this.getMyListPet();
+    this.checkLocalStorage();
+    }
+    checkLocalStorage() : void {
+      console.log("local length: " + localStorage.listBookingDetail)
+      if(localStorage.listBookingDetail == '' || localStorage.listBookingDetail == null)
+      {
+        this.acceptTobook =  false;
+      }else{
+        this.acceptTobook = true;
+      }
     }
  // insert a booking-detail to cart
  getDataFromLocalStorage():void {
@@ -118,6 +134,7 @@ export class BookingComponent implements OnInit {
           this.newBm.bookingID = this.currentbmID;
           this.saveBookingDetail(this.newBm);
           //rối
+          this.acceptTobook = false;
 
         }
       );
@@ -155,6 +172,7 @@ export class BookingComponent implements OnInit {
         }
       );
         }
+
     bookservice(newBd = this.booknewService): void {
       this.urlAPI = listUrlAPI.find(url => url.name === 'bookingDetailResource');
       this.http.post<HttpResponse<BookingDetailEntity>>(this.urlAPI.path + '/Post', newBd,{ observe: 'response' }).subscribe(
@@ -168,9 +186,12 @@ export class BookingComponent implements OnInit {
       );
 
     }
+
     addtoCart(): void {
         this.createNew();
+
     }
+
 
     createNew(): void {
 
@@ -185,7 +206,8 @@ export class BookingComponent implements OnInit {
       // this.booknewService.serviceEntity.serID = this.selectedService.serID;
       // this.booknewService.petEntity.petID = this.tempID;
       // this.booknewService.bookingDate = this.selectedBMDate;
-      let currentDate = new Date();
+      this.displayDate = formatDate(this.selectedBMDate, 'hh:mm', 'en-US') + ' on ' + formatDate(this.selectedBMDate, 'dd-MM-yyyy', 'en-US') ;
+      let currentDate = this.selectedBMDate;
       let stringDate = '';
       stringDate = formatDate(currentDate, 'yyyy-MM-dd', 'en-US') + 'T' + formatDate(currentDate, 'hh:mm:ss', 'en-US');
       console.log(this.logClass + "date: " + stringDate);
@@ -197,8 +219,9 @@ export class BookingComponent implements OnInit {
       this.saveToLocalStorage();
       this.listBookingChange.emit(this.listBookingDetail);
       this.bookNewDetail.emit(this.booknewService);
-
-
+      this.checkLocalStorage();
+      this.bookSuccess = true;
+      // this.myForm.def.setText("abc");
 
     }
 
@@ -250,9 +273,18 @@ export class BookingComponent implements OnInit {
               //roi gan vao listPet
               console.log(JSON.stringify(response.body));
               this.myListPet = JSON.parse(JSON.stringify(response.body));
-
+              if(this.myListPet.length == 0)
+              {
+                console.log("no pet");
+                alert("You don't have any Pet. Redirecting to Pet Create");
+              setTimeout(() =>
+              {
+                this.router.navigateByUrl('mainlayout/createPet');
+              }, 2000
+                );
+              }
               //voi moi item trong danh sach Pet minh goi len server lay danh sach Image
-              this.myListPet.forEach(
+              else{this.myListPet.forEach(
                 item => {
                   //khoi tao thuoc tinh petListImage vi thuoc tinh nay dang null
                   item.petListImage = [];
@@ -271,7 +303,7 @@ export class BookingComponent implements OnInit {
                   );
                 }
               );
-
+            }
 
             }
           }

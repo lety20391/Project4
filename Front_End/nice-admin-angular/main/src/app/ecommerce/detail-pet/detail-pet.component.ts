@@ -21,6 +21,7 @@ export class DetailPetComponent implements OnInit {
   urlAPI: UrlAPIEntity;
   logClass = '--Detail Pet Ecommerce: ';
   currentPet: PetEntity = new PetEntity();
+  isShowPet: boolean = false;
 
   constructor(
               private route: ActivatedRoute,
@@ -58,6 +59,20 @@ export class DetailPetComponent implements OnInit {
                   //roi gan vao listPet
                   console.log(JSON.stringify(response.body));
                   this.currentPet = JSON.parse(JSON.stringify(response.body));
+
+                  this.urlAPI = listUrlAPI.find(url => url.name === 'getAllImageResource');
+                  console.log(this.logClass + this.urlAPI.path);
+                  //prepare headers
+                  let headers = this.createHeader();
+
+                  this.http.get<string[]>(this.urlAPI.path + '/Pet/' + this.currentPet.petID , {headers: headers})
+                    .subscribe(
+                        response => {
+                              console.log(this.logClass + ' get All Pet Image: ' + JSON.stringify(response));
+                              this.currentPet.petListImage = JSON.parse(JSON.stringify(response));
+                              this.isShowPet = true;
+                        }
+                    );
 
                 }
                 // if (response.status == 200){

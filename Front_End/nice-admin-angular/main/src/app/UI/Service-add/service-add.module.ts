@@ -5,8 +5,9 @@ import { ServiceAddComponent } from './service-add.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ServiceAddRoutes} from './service-add.routing';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule} from '@angular/forms'
-import { UploadFileComponent} from '../upload-file/upload-file.component'
+import { FormsModule} from '@angular/forms';
+import { UploadFileComponent} from '../upload-file/upload-file.component';
+import { FilePickerModule } from  'ngx-awesome-uploader';
 @NgModule({
   declarations: [ServiceAddComponent,
   UploadFileComponent],
@@ -15,7 +16,9 @@ import { UploadFileComponent} from '../upload-file/upload-file.component'
     HttpClientModule,
     RouterModule.forChild(ServiceAddRoutes),
     NgbModule,
-    FormsModule
+    FormsModule,
+    FilePickerModule
+
   ]
 })
 export class ServiceAddModule { }

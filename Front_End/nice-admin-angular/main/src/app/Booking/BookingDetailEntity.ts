@@ -10,4 +10,7 @@ export class BookingDetailEntity {
   petEntity: PetEntity;
   bookingMasterEntity: BookingMasterEntity;
   serviceEntity: serviceEntity;
+  currentPet: string;
+  currentService : string;
+  status: boolean;
 }

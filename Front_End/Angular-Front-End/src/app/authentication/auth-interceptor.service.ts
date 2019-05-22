@@ -31,10 +31,12 @@ export class AuthInterceptorService implements HttpInterceptor {
             catchError(
               error => {
                 if( error instanceof HttpErrorResponse)
-                  console.log('--Http Response Error(noJWT):' + JSON.stringify(error));
-                  if (error.status == 401)
-                    this.route.navigate(['/mainlayout/login']);
-                return of(error);
+                          console.log('--Http Response Error(noJWT):' + JSON.stringify(error));
+                          if (error.status == 401){
+                            this.route.navigate(['/mainlayout/login']);
+                        return of(error);
+                      }
+                      throw error;
               }
             )
         );
@@ -55,10 +57,12 @@ export class AuthInterceptorService implements HttpInterceptor {
             catchError(
               error => {
                 if( error instanceof HttpErrorResponse)
-                  console.log('--Http Response Error(noJWT):' + JSON.stringify(error));
-                  if (error.status == 401)
-                    this.route.navigate(['/mainlayout/login']);
-                return of(error);
+                          console.log('--Http Response Error(noJWT):' + JSON.stringify(error));
+                          if (error.status == 401){
+                            this.route.navigate(['/mainlayout/login']);
+                        return of(error);
+                      }
+                      throw error;
               }
             )
         );

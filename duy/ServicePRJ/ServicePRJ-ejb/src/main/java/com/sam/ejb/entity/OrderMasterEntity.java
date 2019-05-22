@@ -28,7 +28,8 @@ import javax.persistence.Table;
 @Table(name="tbOrderMaster")
 @NamedQueries
         ({
-            @NamedQuery(name="om.findAll",query = "SELECT om FROM OrderMasterEntity om")
+            @NamedQuery(name="om.findAll",query = "SELECT om FROM OrderMasterEntity om"),
+            @NamedQuery(name="om.findAllOrderByCreDate",query = "SELECT om FROM OrderMasterEntity om ORDER BY om.CreDate DESC")
 //            @NamedQuery(name="ser.search", query ="SELECT s FROM serviceEntity s WHERE s.name LIKE :str ")
         })
 public class OrderMasterEntity {

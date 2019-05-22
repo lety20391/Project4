@@ -5,7 +5,7 @@
             <div class="card-body">
                 <h4 class="card-title">Edit Delete and update Table</h4>
                 <h6 class="card-subtitle">Smart data table library with sorting, filtering, pagination & add/edit/delete functions.</h6>
-                <div class="table table-responsive smart-table">
+                <div class="table table-responsive smart-table" *ngIf="isShowTable">
                     <ng2-smart-table [settings]="settings" [source]="listProduct"
                             class="" (rowSelect)="selectedRow($event)"
                                   (editConfirm)="updateRow($event)" (deleteConfirm)="deleteRow($event)"

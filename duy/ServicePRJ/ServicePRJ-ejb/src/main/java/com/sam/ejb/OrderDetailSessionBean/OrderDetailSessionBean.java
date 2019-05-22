@@ -78,4 +78,11 @@ em = entityManagerFactory.createEntityManager();
         System.out.println(logClass + " size:" + result.size());
         return result;
     }
+
+    @Override
+    public List<OrderDetailEntity> listAllByOrderMaster(Long id) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        em = entityManagerFactory.createEntityManager();
+        return em.createNamedQuery("od.findAllByOrderMaster").setParameter("omID", id).getResultList();
+    }
 }

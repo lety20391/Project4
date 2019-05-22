@@ -26,7 +26,8 @@ import javax.persistence.Table;
 @Table(name="tbBookingDetail")
 @NamedQueries
         ({
-            @NamedQuery(name="bd.findAll",query = "SELECT b FROM bookingDetailEntity b")
+            @NamedQuery(name="bd.findAll",query = "SELECT b FROM bookingDetailEntity b"),
+            @NamedQuery(name="bd.getListBDofBM", query ="SELECT b FROM bookingDetailEntity b WHERE b.bookingMasterEntity.bookingID = :bookingID ")    
 //            @NamedQuery(name="ser.search", query ="SELECT s FROM serviceEntity s WHERE s.name LIKE :str ")
         })
 public class bookingDetailEntity {

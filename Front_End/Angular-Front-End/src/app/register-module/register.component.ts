@@ -7,6 +7,7 @@ import {Observable, of} from 'rxjs';
 import { HttpClient, HttpResponse,  HttpHeaders } from '@angular/common/http';
 import { DatePipe, formatDate } from '@angular/common';
 import { Router } from '@angular/router';
+import { catchError } from 'rxjs/operators';
 // import { UploadComponent } from '../UIComponent/upload/upload.component';
 // const httpOptions = {
 //   headers: new HttpHeaders({
@@ -29,7 +30,7 @@ export class RegisterComponent implements OnInit {
   keyCode = "";
   key_dateCreated = "";
   pickedDOB : string;
-  max = new Date();
+  max = new Date(2004,11,31);
   UrlEntity : UrlAPIEntity;
   // uploadUrl = '';
   user: UserEntity = new UserEntity();
@@ -38,6 +39,7 @@ export class RegisterComponent implements OnInit {
   isReadyToUploadImage = false;
   inputID: number;
   showSpinner = false;
+  isShowErr = false;
     @Input() uploadUrl = '';
     @Input() buttonTitle = 'Submit';
   @Input() isInUpdateMode = false;
@@ -49,6 +51,12 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.checkLogin();
+  }
+  checkLogin() {
+    if(localStorage.JWT.length != "") {
+      this.router.navigateByUrl("/mainlayout/home");
+    }
   }
   turnLoginPage(): void {
     this.router.navigateByUrl("/mainlayout/login");
@@ -63,9 +71,9 @@ export class RegisterComponent implements OnInit {
   }
 
 
-    createNewUser(newUser: UserEntity): Observable<UserEntity> {
+    createNewUser(newUser: UserEntity): void {
       this.UrlEntity = listUrlAPI.find(url=> url.name === 'registerResource');
-      return  this.http.post<UserEntity>(this.UrlEntity.path ,  newUser);
+       this.http.post<HttpResponse<UserEntity>>(this.UrlEntity.path ,  newUser, {observe: 'response'});
     }
 
 
@@ -84,20 +92,56 @@ export class RegisterComponent implements OnInit {
     pickedDOB = formatDate(pickedDOB, 'yyyy-MM-dd', 'en-US') + 'T' + formatDate(pickedDOB, 'hh:mm:ss', 'en-US');
     console.log(this.logClass + ' DOB:' + pickedDOB);
     this.user.userDOB = pickedDOB;
-          //
-          // this.user.userID = 1;
-    this.createNewUser(this.user).subscribe(
-            response => {
-              console.log("response::" + JSON.stringify(response))
-                  this.showSpinner = true;
-                  setTimeout(() =>{
-                    this.showSpinner = false,
-                    this.getUrl(response.userID);
-                    this.isReadyToUploadImage = true;
-                  }, 4000);
-                  //end spinner
+    this.UrlEntity = listUrlAPI.find(url=> url.name === 'registerResource');
+     // this.http.post<HttpResponse<UserEntity>>(this.UrlEntity.path ,  this.user , {observe: 'response'}).subscribe(
+     //        response => {
+     //              if(response.status == 200)
+     //                  {
+     //                    let currentUserID = JSON.parse(JSON.stringify(response.body));
+     //                  this.showSpinner = true;
+     //                  setTimeout(() =>{
+     //                    this.showSpinner = false,
+     //                    this.getUrl(currentUserID);
+     //                    this.isReadyToUploadImage = true;
+     //                  }, 4000);
+     //                }
+     //      //end spinner
+     //                },
+     //      err => {
+     //        console.log("lêu lêu");
+     //        console.log("error code: " + err.status);
+     //      }
+     //      );
 
-            }
+
+     //test
+     this.http.post<UserEntity>(this.UrlEntity.path ,  this.user , {observe: 'response'})
+          .pipe(
+            catchError(
+              error => {
+                console.log("error:::" + error.status);
+                return of(error);
+              }
+            )
+          )
+          .subscribe(
+            response => {
+                  if(response.status == 200)
+                      {
+                        this.isShowErr = false;
+                        let currentUserID = JSON.parse(JSON.stringify(response.body));
+                      this.showSpinner = true;
+                      setTimeout(() =>{
+                        this.showSpinner = false,
+                        this.getUrl(currentUserID);
+                        this.isReadyToUploadImage = true;
+                      }, 4000);
+                    }
+                  if(response.status == 321) {
+                    this.isShowErr = true
+                  }
+                    }
           );
         }
+
 }

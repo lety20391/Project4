@@ -19,11 +19,11 @@ import { UploadAdapter } from '../UploadAdapter/upload-adapter';
 export class AddPetComponent implements OnInit {
 
   adapter: UploadAdapter;
-
+  isReadyToUploadImage: boolean = false;
   newPet: PetEntity = new PetEntity();
   urlAPI: UrlAPIEntity;
   logClass = '--List Pet Component: ';
-  isReadyToUploadImage: boolean = false;
+  // isReadyToUploadImage: boolean = false;
   UrlEntity: UrlAPIEntity;
   uploadUrl: string = '';
   genderList = ['Male', 'Female'];
@@ -62,7 +62,7 @@ export class AddPetComponent implements OnInit {
 
   prepareDate(): void{
     //ngay min la 20 nam truoc
-    //ngay max la 6 thang truoc
+    //ngay max la 1 thang truoc
 
     let tempDateInSecond = new Date().getTime();
     //tru di 20 * 365 ngay ( 20 * 365 * 24 * 3600) vao tempDate hien tai
@@ -70,8 +70,8 @@ export class AddPetComponent implements OnInit {
     this.minDate = new Date(tempDateInSecond);
 
     tempDateInSecond = new Date().getTime();
-    //tru di 6 * 30 ngay ( 6 * 30 * 24 * 3600) vao tempDate hien tai
-    tempDateInSecond -= 6 * 30 * 24 * 3600 * 1000;
+    //tru di 1 * 30 ngay ( 1 * 30 * 24 * 3600) vao tempDate hien tai
+    tempDateInSecond -= 1 * 30 * 24 * 3600 * 1000;
     this.maxDate = new Date(tempDateInSecond);
 
 
@@ -112,7 +112,6 @@ export class AddPetComponent implements OnInit {
                     if (returnPet.petID != null){
                       // this.getUrl(returnPet.petID);
                       this.isReadyToUploadImage = true;
-
                       //prepare Url
                       this.urlAPI = listUrlAPI.find(url => url.name === 'uploadResource');
                       this.urlAPI.path += "/file/" + "Pet/" + returnPet.petID;
@@ -142,6 +141,9 @@ export class AddPetComponent implements OnInit {
   //   this.uploadUrl = this.UrlEntity.path + "/file/" + "Pet/" + code;
   //   console.log(this.uploadUrl);
   // }
+  oneFileUploadSuccess(event: any): void{
+    alert('**File: ' + JSON.stringify(event.fileName) + ' UPLOAD SUCCESSFULLY**');
+  }
 
   createHeader():HttpHeaders {
     let headers = new HttpHeaders();

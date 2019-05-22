@@ -3,42 +3,73 @@
 			<div class="container">
 
 				<div class="row">
-					<div class="col-sm-12 col-md-12">
-						<p class="title-heading text-primary mb-5">
-							Register Form
-						</p>
-						<p class="subheading">Please enter your name, your email address, date of birth and phone number.</p>
-					</div>
-				</div>
-
-				<div class="row">
 					<div class="col-sm-6 col-md-6" [class.disableFunction]="isReadyToUploadImage">
-						<form action="#" class="form-contact" id="contactForm" data-toggle="validator" novalidate="true">
+						<div class="col-sm-6 col-md-6">
+							<p class="title-heading text-primary mb-5">
+								Register Form
+							</p>
+													</div>
+
+							<p class="subheading">Please enter your name, your email address, date of birth and phone number.</p>
+
+						<form #registerForm="ngForm">
 							<div class="row">
 								<div class="col-sm-6 col-md-6">
 									<div class="form-group">
-										<input type="text" class="form-control" [(ngModel)]="Name" name="UserName" id="p_name" placeholder="Enter Name" required="">
+										<input type="text" class="form-control" [(ngModel)]="Name" name="UserName" pattern="[A-Za-z ]+" id="p_name" placeholder="Enter Name" required #name="ngModel">
 										<div class="help-block with-errors"></div>
+										<div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+													<div *ngIf="name.errors.required"> Please enter a name. </div>
+													<div *ngIf="name.errors.pattern"> Name includes only letters. </div>
+													<!-- <div *ngIf="name.errors.minlength"> Name must be at least 3 characters long. </div>
+													<div *ngIf="name.errors.maxlength"> Name can not greater than 50 characters long. </div> -->
+										<!-- <div *ngIf="name.errors.forbiddenName"> Name cannot be Bob. </div> -->
+										</div>
 									</div>
 								</div>
 								<div class="col-sm-6 col-md-6">
 									<div class="form-group">
-										<input type="email" class="form-control" id="p_email" name="Mail" [(ngModel)]="Mail" placeholder="Enter Email" required="">
+										<input type="email" class="form-control" id="p_email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="Mail" [(ngModel)]="Mail" placeholder="Enter Email" required #email="ngModel">
 										<div class="help-block with-errors"></div>
+									</div>
+									<div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+												<div *ngIf="email.errors.required"> Please enter your email address. </div>
+												<div *ngIf="email.errors.pattern"> Please enter a correct email address. </div>
+												<!-- <div *ngIf="name.errors.minlength"> Name must be at least 3 characters long. </div>
+												<div *ngIf="name.errors.maxlength"> Name can not greater than 50 characters long. </div> -->
+									<!-- <div *ngIf="name.errors.forbiddenName"> Name cannot be Bob. </div> -->
 									</div>
 								</div>
 								<div class="col-sm-6 col-md-6">
 									<div class="form-group">
-										<input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [max]="max" class="form-control" name="dateofbirth" id="p_subject" [(ngModel)]="DOB" placeholder="DoB">
-										<owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+										<input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [max]="max" required class="form-control" readonly="true" name="dateofbirth" id="p_subject" [(ngModel)]="DOB" placeholder="DoB" #DOBirth="ngModel">
+										<owl-date-time [pickerType]="'calendar'" [startView]="'multi-years'"  #dt1></owl-date-time>
 										<!-- <div class="help-block with-errors"></div> -->
+									</div>
+									<div *ngIf="DOBirth.invalid && (DOBirth.dirty || DOBirth.touched)" class="alert alert-danger">
+												<div *ngIf="DOBirth.errors.required"> Please enter your date of birth. </div>
+												<!-- <div *ngIf="phone.errors.pattern"> Please enter a correct phone number. </div> -->
+												<!-- <div *ngIf="name.errors.minlength"> Name must be at least 3 characters long. </div>
+												<div *ngIf="name.errors.maxlength"> Name can not greater than 50 characters long. </div> -->
+									<!-- <div *ngIf="name.errors.forbiddenName"> Name cannot be Bob. </div> -->
 									</div>
 								</div>
 
 								<div class="col-sm-6 col-md-6">
 									<div class="form-group">
-										<input type="text" class="form-control" id="p_phone" name="phone" [(ngModel)]="Telephone" placeholder="Enter Phone Number">
+										<input type="text" class="form-control" id="p_phone" pattern="(03[2|3|4|5|6|7|8|9]|05[6|8|9]|07[0|6|7|8|9]|08[6|9|1|2|3|4|5|8]|09[6|7|8|0|3|1|4|2|9])+([0-9]{7})\b" name="phone" [(ngModel)]="Telephone" placeholder="Enter Phone Number" required #phone="ngModel">
 										<div class="help-block with-errors"></div>
+											<div *ngIf="isShowErr" class="alert alert-danger">
+												<div>This Phone number has been registered</div>
+											</div>
+										<div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert alert-danger">
+													<div *ngIf="phone.errors.required"> Please enter your phone number. </div>
+													<div *ngIf="phone.errors.pattern"> Please enter a correct phone number. </div>
+
+													<!-- <div *ngIf="name.errors.minlength"> Name must be at least 3 characters long. </div>
+													<div *ngIf="name.errors.maxlength"> Name can not greater than 50 characters long. </div> -->
+										<!-- <div *ngIf="name.errors.forbiddenName"> Name cannot be Bob. </div> -->
+										</div>
 									</div>
 								</div>
 							</div>
@@ -46,7 +77,7 @@
 							<div class="col-sm-6 col-md-6">
 							<div class="form-group">
 								<div id="success"></div>
-								<button type="submit" class="btn btn-primary" (click)="registerNewUser()"  *ngIf="!isInUpdateMode">{{buttonTitle}}</button>
+								<button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid" (click)="registerNewUser()"  *ngIf="!isInUpdateMode">{{buttonTitle}}</button>
 							</div>
 							</div>
 
@@ -58,7 +89,7 @@
 					<h3 *ngIf="showSpinner">Register successfully!!!</h3>
 				</div>
 
-						<div class="margin-bottom-50"></div>
+						<!-- <div class="margin-bottom-50"></div> -->
 
 					</div>
 					<div class="col-sm-6 col-md-6" [class.disableFunction]="!isReadyToUploadImage && !isInUpdateMode">
@@ -76,9 +107,6 @@
 							<div (click)='sendID()'>
 								abc
 							</div> -->
-					</div>
-					<div class="col-sm-4 col-md-4">
-						<!-- <img src="images/dummy-img-600x700.jpg" alt="" class="img-fluid"> -->
 					</div>
 				</div>
 
