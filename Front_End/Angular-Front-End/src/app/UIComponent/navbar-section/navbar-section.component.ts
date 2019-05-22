@@ -24,7 +24,9 @@ export class NavbarSectionComponent implements OnInit {
       this.isLogin = true;
     }
     logOut(): void {
-      this.jwtService.cleanJWT();
+        // this.jwtService.cleanJWT();
+      this.jwtService.clearLocalStorage();
+
       window.location.reload();
     }
 

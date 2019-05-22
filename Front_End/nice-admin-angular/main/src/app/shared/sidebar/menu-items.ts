@@ -229,7 +229,7 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: [
       {
-        path: '/apps/BookingManage',
+        path: '/dashboard/serviceCalendar',
         title: 'All bookings',
         icon: ' icon-arrow-right-circle',
         class: '',

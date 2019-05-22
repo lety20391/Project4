@@ -35,7 +35,12 @@ import { BookingModule} from '../booking-module/booking.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { GalleryComponent } from '../UIComponent/gallery/gallery.component';
 import { MySliderModule } from '../my-slider/my-slider.module';
-import {MyOrderComponent} from '../UIComponent/MyOrder/my-order.component';
+import {ServiceCalendarComponent} from '../UIComponent/MyOrder/my-order.component';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     LoadPageComponent,
@@ -62,7 +67,7 @@ import {MyOrderComponent} from '../UIComponent/MyOrder/my-order.component';
     ProductSingleComponent,
     Error404Component,
     GalleryComponent,
-    MyOrderComponent
+    ServiceCalendarComponent
   ],
   imports: [
     CommonModule,
@@ -74,7 +79,13 @@ import {MyOrderComponent} from '../UIComponent/MyOrder/my-order.component';
     RegisterModule,
     BookingModule,
     NgbModule,
-    MySliderModule
+    MySliderModule,
+    NgbModalModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    })
   ],
   exports: [
     MainLayoutComponent
