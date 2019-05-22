@@ -8,6 +8,7 @@ package com.sam.web.rest;
 import com.sam.ejb.UserSessionBean.UserManageSessionBeanLocal;
 import com.sam.ejb.entity.UserEntity;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -22,6 +23,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
 
 /**
  * REST Web Service
@@ -36,6 +38,9 @@ public class ManageUser {
     private UriInfo context;
     @EJB
     UserManageSessionBeanLocal userManageSessionBeanLocal;
+    
+    @Context
+    SecurityContext sc;
     /**
      * Creates a new instance of ManageUser
      */
@@ -48,6 +53,7 @@ public class ManageUser {
      */
     @GET
     @Path("/list")
+    @RolesAllowed("SUPERADMIN")
     @Produces(MediaType.APPLICATION_JSON)
     public List<UserEntity> getListUser() {
         //TODO return proper representation object

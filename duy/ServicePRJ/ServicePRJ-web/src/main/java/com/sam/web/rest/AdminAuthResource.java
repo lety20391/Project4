@@ -34,7 +34,7 @@ import org.apache.commons.text.RandomStringGenerator;
  *
  * @author Dat Le
  */
-@Path("AdminAuth")
+@Path("AdminAuthTokens")
 @RequestScoped
 public class AdminAuthResource {
 
@@ -74,7 +74,7 @@ public class AdminAuthResource {
     public void putXml(String content) {
     }
     
-    @POST
+     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response authenticate(User credential) {
         System.out.println("---------API Authenticate---------");
@@ -95,16 +95,21 @@ public class AdminAuthResource {
             return Response.ok().header(AUTHORIZATION, token).build();
         }else if(!phone.isEmpty() && !password.isEmpty()){
             //check account neu co ca phone va pass
-            AdminEntity returnAdmin = adminSessionBeanLocal.getAdminByPhone(phone);
-            if (returnAdmin.getKeyCode().equals(password)){
+            AdminEntity returnUser = adminSessionBeanLocal.getAdminByPhone(phone);
+            if (returnUser.getKeyCode().equals(password)){
                 //login success
                 //xoa keyCode trong database
-                returnAdmin.setKeyCode("");
-                adminSessionBeanLocal.updateAdmin(returnAdmin);
+                returnUser.setKeyCode("");
+                adminSessionBeanLocal.updateAdmin(returnUser);
                 
                 // TODO: Groups should retrieve from database based on authenticate user.
                 //String token = this.jwtStore.generateToken(username, Arrays.asList("ADMIN", "MEMBER"));
-                String token = this.jwtStore.generateToken(returnAdmin.getUsername(), Arrays.asList("MEMBER"));
+                String token ="";
+                if(!returnUser.isSuperAdmin()){
+                    token = this.jwtStore.generateToken(returnUser.getUsername(), Arrays.asList("ADMIN"));
+                }else{
+                    token = this.jwtStore.generateToken(returnUser.getUsername(), Arrays.asList("SUPERADMIN"));
+                }
                 //logger.info( () -> MessageFormat.format("Token={0}", token));
                 System.out.println(token);
                 return Response.ok().header(AUTHORIZATION, token).build();
@@ -117,7 +122,9 @@ public class AdminAuthResource {
             //neu chi co phone chua co pass thi gui pass ve dien thoai
             
             //lay user dang su dung so phone
-            AdminEntity returnAdmin = adminSessionBeanLocal.getAdminByPhone(phone);
+            AdminEntity returnUser = adminSessionBeanLocal.getAdminByPhone(phone);
+            if (returnUser.getUserTel().equals("0000000000"))
+                return Response.noContent().build();
             
             //tao code random
             RandomStringGenerator generator = new RandomStringGenerator.Builder()
@@ -125,15 +132,16 @@ public class AdminAuthResource {
             String smsCode = generator.generate(6);
             
             //set code vao user nay roi update user
-            returnAdmin.setKeyCode(smsCode);
+            returnUser.setKeyCode(smsCode);
             //update user nay len database de luu code vao database
-            AdminEntity adminAfterCodeSaved = adminSessionBeanLocal.updateAdmin(returnAdmin);
+            AdminEntity userAfterCodeSaved = adminSessionBeanLocal.updateAdmin(returnUser);
             
-            System.out.println(logClass + " code update: " + adminAfterCodeSaved.getKeyCode() );
+            System.out.println(logClass + " code update: " + userAfterCodeSaved.getKeyCode() );
             
             mobileService.getMobileCode(smsCode, phone);
-            return Response.ok().entity(returnAdmin.getAdminID()).build();            
+            return Response.ok().entity(returnUser.getAdminID()).build();            
         }
         return Response.noContent().build();
     }
+    
 }
