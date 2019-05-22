@@ -25,10 +25,10 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="control-label">Short Description</label>
-                                    <textarea name="shortdes" rows="8" cols="80" class="form-control" required minlength="10" [(ngModel)]="ShortDes" #shortDes="ngModel" ></textarea>
-                                      <div *ngIf="shortDes.invalid && (shortDes.dirty || shortDes.touched)" class="alert alert-danger">
-                                          <div *ngIf="shortDes.errors.required"> Please enter short Description </div>
-                													<div *ngIf="shortDes.errors.minlength"> Description is too short </div>
+                                    <textarea name="shortdes" rows="8" cols="80" class="form-control" required minlength="10" [(ngModel)]="ShortDes" #shortDess="ngModel" ></textarea>
+                                      <div *ngIf="shortDess.invalid && (shortDess.dirty || shortDess.touched)" class="alert alert-danger">
+                                          <div *ngIf="shortDess.errors.required"> Please enter short Description </div>
+                													<div *ngIf="shortDess.errors.minlength"> Description is too short </div>
           													<!-- <div *ngIf="name.errors.maxlength"> Name can not greater than 50 characters long. </div> -->
           										<!-- <div *ngIf="name.errors.forbiddenName"> Name cannot be Bob. </div> -->
           										        </div>
@@ -40,10 +40,10 @@
                         <div class="row">
                             <div class="col-md-12 ">
                                 <div class="form-group">
-                                    <textarea name="des" class="form-control" required minlength="20"  [(ngModel)]="Des" rows="8" cols="80" #Des="ngModel"></textarea>
-                                <div *ngIf="Des.invalid && (Des.dirty || Des.touched)" class="alert alert-danger">
-                              <div *ngIf="Des.errors.required"> Please enter short Description </div>
-                              <div *ngIf="Des.errors.minlength"> Description is too short </div>
+                                    <textarea name="des" class="form-control" required minlength="20"  [(ngModel)]="Des" rows="8" cols="80" #Dess="ngModel"></textarea>
+                                <div *ngIf="Dess.invalid && (Dess.dirty || Dess.touched)" class="alert alert-danger">
+                              <div *ngIf="Dess.errors.required"> Please enter Description </div>
+                              <div *ngIf="Dess.errors.minlength"> Description is too short </div>
                               <!-- <div *ngIf="name.errors.maxlength"> Name can not greater than 50 characters long. </div> -->
                         <!-- <div *ngIf="name.errors.forbiddenName"> Name cannot be Bob. </div> -->
                         </div>
