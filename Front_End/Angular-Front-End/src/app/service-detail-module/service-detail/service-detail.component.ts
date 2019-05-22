@@ -53,4 +53,7 @@ export class ServiceDetailComponent implements OnInit {
       console.log("this is current service ID: " + this.currentSerID);
       this.getServiceDetail(this.currentSerID);
     }
+    filterActiveService(){
+      return this.listServiceCate.filter( item => item.status == true);
+    }
 }
