@@ -20,8 +20,8 @@
                 <h6>Pet Owner: <b>{{modalData?.event.PetOwner}}</b></h6>
                 <h6>Phone: <b>{{modalData?.event.Phone}}</b></h6>
                 <h6>Message: <b>{{modalData?.event.Message}}</b></h6>
-                <b><h6 class=" btn btn-primary" *ngIf="modalData?.event.Status == false">Awaiting Confirm</h6>
-                <h6 class="btn btn-warning"   *ngIf="modalData?.event.Status == true">Confirmed</h6></b>
+                <h6 *ngIf="modalData?.event.Status == false">Awaiting Confirm</h6>
+                <h6 *ngIf="modalData?.event.Status == true">Confirmed</h6>
                   </div>
             </div>
             <div class="modal-footer">
