@@ -32,7 +32,6 @@ import { SmartTableProImgComponent } from './smart-table-pro-img/smart-table-pro
 import { BDtableComponent } from '../UI/BDTable/BDtable.component';
 import { PetTableComponent } from './pet-table/pet-table.component';
 import { SmartTablePetImgComponent } from './smart-table-pet-img/smart-table-pet-img.component';
-import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   imports: [
@@ -68,8 +67,7 @@ import { AdminComponent } from './admin/admin.component';
     ListProductComponent,
     SmartTableProImgComponent,
     PetTableComponent,
-    SmartTablePetImgComponent,
-    AdminComponent
+    SmartTablePetImgComponent
 
   ],
   exports: [

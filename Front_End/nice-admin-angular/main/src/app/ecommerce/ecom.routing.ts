@@ -20,7 +20,6 @@ import {CateComponent} from './cate/cate.component';
 import { ListProductComponent } from './list-product/list-product.component';
 import { BDtableComponent } from '../UI/BDTable/BDtable.component';
 import { PetTableComponent } from './pet-table/pet-table.component';
-import { AdminComponent } from './admin/admin.component';
 
 export const EcomRoutes: Routes = [
   {
@@ -39,17 +38,6 @@ export const EcomRoutes: Routes = [
         component: CheckoutComponent,
         data: {
           title: 'Checkout',
-          urls: [
-            { title: 'Dashboard', url: '/dashboard' },
-            { title: 'Checkout' }
-          ]
-        }
-      },
-      {
-        path: 'admin',
-        component: AdminComponent,
-        data: {
-          title: 'Admin',
           urls: [
             { title: 'Dashboard', url: '/dashboard' },
             { title: 'Checkout' }
