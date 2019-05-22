@@ -14,7 +14,7 @@
                                     <input type="text" [(ngModel)]="Name" name="firstName" required maxlength="20" minlength="3" class="form-control" #servicename="ngModel"  placeholder="">
                                         <div *ngIf="servicename.invalid && (servicename.dirty || servicename.touched)" class="alert alert-danger">
                       													<div *ngIf="servicename.errors.required"> Please enter service name </div>
-                                                	<div *ngIf="servicename.errors.maxlength"> Name can not greater than 50 characters long. </div>
+                                                	<div *ngIf="servicename.errors.maxlength"> Service name can not greater than 20 characters long. </div>
                       													<div *ngIf="servicename.errors.minlength"> Service name must be at least 3 characters long. </div>
 
 										                    </div>
