@@ -20,18 +20,24 @@
 
 
 
-						<!-- <form action="#" class="form-contact" id="contactForm" data-toggle="validator" novalidate="true"> -->
+
 							<div class="row">
 								<div class="col-sm-6 col-md-6">
 									<div class="form-group" [class.disableFunction]="isRecievedCode">
-										<input type="text" class="form-control" placeholder="Enter Phone" required="" [(ngModel)]="phone">
-										<div class="help-block with-errors"></div>
+										<input type="text" class="form-control" pattern="(03[2|3|4|5|6|7|8|9]|05[6|8|9]|07[0|6|7|8|9]|08[6|9|1|2|3|4|5|8]|09[6|7|8|0|3|1|4|2|9])+([0-9]{7})\b" placeholder="Enter Phone" required="" [(ngModel)]="phone" #phoneModel="ngModel">
+										<div *ngIf="phoneModel.invalid && (phoneModel.dirty || phoneModel.touched)" class="alert alert-danger">
+													<div *ngIf="phoneModel.errors.required"> Please enter your phone number. </div>
+													<div *ngIf="phoneModel.errors.pattern"> Please enter a correct phone number. </div>
+										</div>
 									</div>
 								</div>
 								<div class="col-sm-6 col-md-6" [class.disableFunction]="!isRecievedCode">
 									<div class="form-group">
-										<input type="email" class="form-control" placeholder="Enter Your SMS code" required="" [(ngModel)]="pass">
-										<div class="help-block with-errors"></div>
+										<input type="text" class="form-control" pattern="[a-zA-Z0-9]{6}" placeholder="Enter Your SMS code" required="" [(ngModel)]="pass" name="code" #codeSMS="ngModel">
+										<div *ngIf="codeSMS.invalid && (codeSMS.dirty || codeSMS.touched)" class="alert alert-danger">
+													<div *ngIf="codeSMS.errors.required"> Please enter your SMS code. </div>
+													<div *ngIf="codeSMS.errors.pattern"> Code contain 6 symbol of A-Z a-z 0-9 </div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -40,18 +46,18 @@
 								<div class="col-sm-6 col-md-6" [class.disableFunction]="isRecievedCode">
 									<div class="form-group" >
 										<div id="success"></div>
-										<button type="button" (click)="getCode()" class="btn btn-primary" >GetCode</button>
+											<button type="button" (click)="getCode()" class="btn btn-primary" [class.disableFunction]="phoneModel.invalid" >GetCode</button>
 									</div>
 								</div>
 
 								<div class="col-sm-6 col-md-6" [class.disableFunction]="!isRecievedCode">
 									<div class="form-group">
 										<div id="success"></div>
-										<button type="button" (click)="login()" class="btn btn-primary" >Login</button>
+										<button type="button" (click)="login()" class="btn btn-primary">Login</button>
 									</div>
 								</div>
 							</div>
-						<!-- </form> -->
+
 
 					</div>
 					<!-- Hinh anh cua user -->
@@ -88,7 +94,7 @@
 								<div class="col-sm-6 col-md-6" >
 									<div class="form-group" >
 										<div id="success"></div>
-										<button type="button" (click)="getCode()" class="btn btn-primary" >GetCode</button>
+										<button type="button" (click)="getCode()" class="btn btn-primary" [class.disableFunction]="phoneModel.invalid" >GetCode</button>
 									</div>
 								</div>
 
