@@ -313,6 +313,49 @@ export class PetTableComponent implements OnInit {
 
   }
 
+  deleteRow(event: any): void {
+    this.tempPet = JSON.parse(JSON.stringify(event.data));
+    console.log(this.logClass + ' delete Product' + JSON.stringify(this.tempPet));
+    this.urlAPI = listUrlAPI.find(url => url.name === 'petResource');
+    console.log(this.logClass + this.urlAPI.path);
+
+    //update Local listProduct
+    event.confirm.resolve();
+
+    //prepare headers
+    let headers = this.createHeader();
+
+    //update Database
+    //delete is just update status form True to False
+    this.tempPet.petStatus = false;
+    this.http.put<HttpResponse<ProductEntity>>(this.urlAPI.path +'/update', this.tempPet , { headers: headers, observe: 'response' })
+      .subscribe(
+          response => {
+            console.log( response);
+            console.log( response.status );
+            if (response.status == 200){
+              console.log(this.logClass + " response: " + response);
+              //chuyen du lieu tu response.body ve lai kieu array
+              //roi gan vao listPet
+              console.log(JSON.stringify(response.body));
+              this.isShowTable = false;
+              this.getAllPetList();
+
+            }
+            // if (response.status == 200){
+            //   this.isLogined = true;
+            //   console.log( response.headers.get('Authorization') );
+            //   let auth = response.headers.get('Authorization');
+            //   this.jwtService.addJWT(auth);
+            //   console.log('Get jwt: ' + this.jwtService.getJWT());
+            // }else{
+            //   this.pass = 'Please Enter Code Again';
+            // }
+
+          }
+    );
+  }
+
   createHeader():HttpHeaders {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
