@@ -92,26 +92,30 @@
     </div>
 </div>
 <ng-template #modalContent2 let-close="close">
-  <div class="modal-header">
-    <h5 class="modal-title">Event action occurred</h5>
-    <button type="button" class="close" (click)="close()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <div>
-      Action:
-      <pre>{{ modalData?.action }}</pre>
-    </div>
-    <div>
-      Event:
-      <pre>{{ modalData?.event | json }}</pre>
-      <h3>Day la Event{{modalData.event.title}}</h3>
-    </div>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-secondary" (click)="close()">
-      OK
-    </button>
-  </div>
-</ng-template>
+            <div class="modal-header">
+                <h3 class="modal-title">Dating Detail</h3>
+                <button type="button" class="close" (click)="close()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- <div> Action:
+                    <pre>{{ modalData?.action }}</pre> </div> -->
+                <div>
+                    <!-- <pre>{{ modalData?.event | json }}</pre> -->
+                <h3><b>{{modalData?.event.title}}</b></h3>
+                <!-- <h6>Pet Name: <b>{{modalData?.event.PetName}}</b></h6> -->
+                <h6>Date: <b>{{modalData?.event.start}}</b></h6>
+                <h6>Breed: <b>{{modalData?.event.PetBreed}}</b></h6>
+                <h6>Pet Name: <b>{{modalData?.event.petName}}</b></h6>
+                <h6>Pet Owner: <b>{{modalData?.event.PetOwner}}</b></h6>
+                <h6>Phone: <b>{{modalData?.event.Phone}}</b></h6>
+                <h6>Message: <b>{{modalData?.event.Message}}</b></h6>
+                <h6 *ngIf="modalData?.event.Status == false">Awaiting Confirm</h6>
+                <h6 *ngIf="modalData?.event.Status == true">Confirmed</h6>
+                  </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" (click)="close()">OK</button>
+            </div>
+        </ng-template>
