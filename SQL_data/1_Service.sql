@@ -65,16 +65,16 @@ Insert into dbo.tbPet ([petGender]  ,[petDating] ,[petBreed], [petDOB], [petImag
 ('Male', 1,'Pomeranian', '2010-1-1', 'null', 'Vitamin', 19, 1, 3, 'Descended from large sled dog breeds, the now-tiny Pomeranian has a long and interesting history. The foxy-faced dog, nicknamed “the little dog who thinks he can,” is compact, active, and capable of competing in agility and obedience or simply being a family friend.')
 
 GO
-Insert into dbo.tbBookingDetail ([bookingDate], [bdstatus],[bookingID], [serID],[petID]) values
-('2019-05-22T17:00:00',1,1,1,1),
-('2019-05-22T10:00:00',1,2,2,2),
-('2019-05-23T12:00:00',1,3,1,1),
-('2019-05-23T15:00:00',1,2,3,2),
-('2019-05-23T18:00:00',1,4,1,3),
-('2019-05-25T10:00:00',1,1,5,1),
-('2019-05-26T15:00:00',1,2,4,3),
-('2019-05-27T18:00:00',1,3,3,5),
-('2019-05-31T09:00:00',1,5,1,4)
+Insert into dbo.tbBookingDetail ([bookingDate], [bdstatus],[bookingID], [serID],[petID],[message]) values
+('2019-05-22T17:00:00',1,1,1,1,'request doctor Dat Le'),
+('2019-05-22T10:00:00',1,2,2,2,'request doctor DatLe'),
+('2019-05-23T12:00:00',1,3,1,1,'request doctor Tori'),
+('2019-05-23T15:00:00',1,2,3,2,'request doctor Philip'),
+('2019-05-23T18:00:00',1,4,1,3,'request doctor David'),
+('2019-05-25T10:00:00',1,1,5,1,'request doctor Tom Cruise'),
+('2019-05-26T15:00:00',1,2,4,3,'request doctor Ngoc Trinh'),
+('2019-05-27T18:00:00',1,3,3,5,'request doctor Andrew'),
+('2019-05-31T09:00:00',1,5,1,4,'request doctor DuyXit')
 
 GO
 Insert into dbo.datingMasterEntity  ( creDate, locat, [status], userID ) values
