@@ -11,6 +11,7 @@ import { ChartistModule } from 'ng-chartist';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CalendarModule, CalendarDateFormatter } from 'angular-calendar';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 import { DashboardRoutes } from './dashboard.routing';
 
@@ -21,6 +22,7 @@ import { OrderChartComponent } from './order-chart/order-chart.component';
 import { ServiceCalendarComponent } from './service-calendar/service-calendar.component';
 import { MainReportComponent } from './main-report/main-report.component';
 import { DatingCalendarComponent } from './dating-calendar/dating-calendar.component';
+import { ManageAdminComponent } from './manage-admin/manage-admin.component';
 
 @NgModule({
   imports: [
@@ -33,7 +35,8 @@ import { DatingCalendarComponent } from './dating-calendar/dating-calendar.compo
     PerfectScrollbarModule,
     CalendarModule.forRoot(),
     NgxChartsModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    Ng2SmartTableModule
   ],
   declarations: [
     Dashboard1Component,
@@ -42,7 +45,8 @@ import { DatingCalendarComponent } from './dating-calendar/dating-calendar.compo
     OrderChartComponent,
     ServiceCalendarComponent,
     MainReportComponent,
-    DatingCalendarComponent
+    DatingCalendarComponent,
+    ManageAdminComponent
   ]
 })
 export class DashboardModule { }

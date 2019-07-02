@@ -7,7 +7,7 @@ import { HttpResponse, HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import {JWTHeaderService} from '../../jwtheader.service';
 import { AdminEntity } from 'src/app/ecommerce/Entity/AdminEntity';
-import { SmartTableLabelComponent } from 'src/app/ecommerce/ecom.module';
+import { SmartTableLabelComponent } from '../smart-table-label/smart-table-label.component';
 
 @Component({
   selector: 'app-admin',
