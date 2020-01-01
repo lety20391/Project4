@@ -1,0 +1,5 @@
+docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=a1B@c3d4' -p 1691:1691 -d --network devnetwork mcr.microsoft.com/mssql/server
+
+docker exec -it <container_id|container_name> /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P a1B@c3d4
+
+sqlcmd -S tcp:127.18.0.2,1691 -U sa -P a1B@c3d4
