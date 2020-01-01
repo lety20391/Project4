@@ -6,8 +6,8 @@
         <property name="portNumber" value="1433"/>
         <property name="databaseName" value="Prj4"/>
         <property name="User" value="sa"/>
-        <property name="Password" value="abc123"/>
-        <property name="URL" value="jdbc:sqlserver://localhost:1433;databaseName=Prj4"/>
+        <property name="Password" value="a1B@c3d4"/>
+        <property name="URL" value="jdbc:sqlserver://sqlserver:1433;databaseName=Prj4"/>
         <property name="driverClass" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="java:app/SVJNDI" object-type="user" pool-name="microsoft_sql_Prj4_saPool"/>
