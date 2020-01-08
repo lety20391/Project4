@@ -4,7 +4,7 @@
 					<div class="col-12 col-sm-6 col-md-4">
 						<div class="rs-team-1 mb-5">
 							<div class="media">
-								<img src="http://localhost:9090/uploadedFiles/User/{{currentUser.userID}}/{{currentUser.listUserImage[0]}}" alt="" class="img-fluid">
+								<img src="http://localhost:8080/ServicePRJ-web/WebResources/uploadedFiles/User/{{currentUser.userID}}/{{currentUser.listUserImage[0]}}" alt="" class="img-fluid">
 								<!-- <div class="sosmed-icon">
 									<a href="#"><i class="fa fa-facebook"></i></a>
 									<a href="#"><i class="fa fa-twitter"></i></a>
@@ -59,8 +59,8 @@
 				<!-- ITEM 1 -->
 				<div class="col-sm-6 col-md-4" *ngFor="let image of currentUser.listUserImage; let i = index">
 					<div class="box-gallery">
-						<a href="http://localhost:9090/uploadedFiles/User/{{currentUser.userID}}/{{image}}" title="#{{i + 1}}_{{currentUser.userName}} ">
-							<img src="http://localhost:9090/uploadedFiles/User/{{currentUser.userID}}/{{image}}" alt="" class="img-fluid">
+						<a href="http://localhost:8080/ServicePRJ-web/WebResources/uploadedFiles/User/{{currentUser.userID}}/{{image}}" title="#{{i + 1}}_{{currentUser.userName}} ">
+							<img src="http://localhost:8080/ServicePRJ-web/WebResources/uploadedFiles/User/{{currentUser.userID}}/{{image}}" alt="" class="img-fluid">
 							<div class="project-info">
 								<div class="project-icon">
 									<span class="fa fa-search"></span>

@@ -1,7 +1,7 @@
 <!-- this is banner section -->
 <!-- <app-banner-small [bannerTitle]='"Your Cart"' [bannerContent]='"Happy shopping"'></app-banner-small> -->
 <!-- BANNER -->
-	<div class="section banner-page" data-background="http://localhost:9090/uploadedFiles/userUI/dummy-img-1920x300.jpg" >
+	<div class="section banner-page" data-background="http://localhost:8080/ServicePRJ-web/WebResources/uploadedFiles/userUI/dummy-img-1920x300.jpg" >
 		<div class="content-wrap pos-relative">
 			<div class="d-flex justify-content-center bd-highlight mb-2">
 				<div class="title-page">Your Cart</div>
@@ -84,7 +84,7 @@
                                                 {{$index + 1}}
                                                 <i class="fa fa-trash-o changeQty" (click)="removeProduct(item)"></i>
                                               </td>
-                                              <td class="text-center"><img src="http://localhost:9090/uploadedFiles/Product/{{item.productEntity.proID}}/{{item.productEntity.proListImage[0]}}" style="width:30px;"/></td>
+                                              <td class="text-center"><img src="http://localhost:8080/ServicePRJ-web/WebResources/uploadedFiles/Product/{{item.productEntity.proID}}/{{item.productEntity.proListImage[0]}}" style="width:30px;"/></td>
                                               <td>
                                                   <h4><strong>{{item.productEntity.proName}}</strong></h4>
                                                   <p>{{item.productEntity.proDes}}</p>

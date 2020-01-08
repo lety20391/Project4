@@ -50,8 +50,8 @@
                       							<!-- ITEM 1 -->
                       							<div class="col-sm-6 col-md-4" *ngFor="let image of currentPet.petListImage; let i = index">
                       								<div class="box-gallery">
-                      									<a href="http://localhost:9090/uploadedFiles/Pet/{{currentPet.petID}}/{{image}}" title="#{{i + 1}}_{{currentPet.petName}} ">
-                      										<img src="http://localhost:9090/uploadedFiles/Pet/{{currentPet.petID}}/{{image}}" alt="" class="img-fluid">
+                      									<a href="http://localhost:8080/ServicePRJ-web/WebResources/uploadedFiles/Pet/{{currentPet.petID}}/{{image}}" title="#{{i + 1}}_{{currentPet.petName}} ">
+                      										<img src="http://localhost:8080/ServicePRJ-web/WebResources/uploadedFiles/Pet/{{currentPet.petID}}/{{image}}" alt="" class="img-fluid">
                       										<!-- <div class="project-info">
                       											<div class="project-icon">
                       												<span class="fa fa-search"></span>
@@ -100,13 +100,13 @@
 
                         					<div class="col-12 col-sm-6 col-md-6">
                         						<div class="media-detail">
-                        							<img src="http://localhost:9090/uploadedFiles/Pet/{{currentDating.petRequestEntity.petID}}/{{currentDating.petRequestEntity.petListImage[0]}}" alt="" class="img-fluid">
+                        							<img src="http://localhost:8080/ServicePRJ-web/WebResources/uploadedFiles/Pet/{{currentDating.petRequestEntity.petID}}/{{currentDating.petRequestEntity.petListImage[0]}}" alt="" class="img-fluid">
                         						</div>
                                     <div class="row mt-3">
                         							<div class="row popup-gallery gutter-5">
                         								<div class="col" *ngFor='let image of currentDating.petRequestEntity.petListImage'>
-                        									<a href="http://localhost:9090/uploadedFiles/Pet/{{currentDating.petRequestEntity.petID}}/{{image}}" title='abc'>
-                        										<img src="http://localhost:9090/uploadedFiles/Pet/{{currentDating.petRequestEntity.petID}}/{{image}}" alt="" class="border-img img-fluid">
+                        									<a href="http://localhost:8080/ServicePRJ-web/WebResources/uploadedFiles/Pet/{{currentDating.petRequestEntity.petID}}/{{image}}" title='abc'>
+                        										<img src="http://localhost:8080/ServicePRJ-web/WebResources/uploadedFiles/Pet/{{currentDating.petRequestEntity.petID}}/{{image}}" alt="" class="border-img img-fluid">
                         									</a>
                         								</div>
                         							</div>

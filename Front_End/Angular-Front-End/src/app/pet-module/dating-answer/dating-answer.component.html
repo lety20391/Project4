@@ -4,7 +4,7 @@
 							<div class="media comment" *ngFor="let answer of listAnswer; let $index = index"
                 (click)="change2OldMess($index)" [class.isNewNoti]="answer.isNewNotification">
 
-  								<img class="mr-3" alt="80x80" src="http://localhost:9090/uploadedFiles/Pet/{{answer.petRecieveEntity.petID}}/{{answer.petRecieveEntity.petListImage[0]}}"
+  								<img class="mr-3" alt="80x80" src="http://localhost:8080/ServicePRJ-web/WebResources/uploadedFiles/Pet/{{answer.petRecieveEntity.petID}}/{{answer.petRecieveEntity.petListImage[0]}}"
                         [class.disableFunction]="answer.specialStatus == 2 || answer.specialStatus == 3"  />
   								<div class="media-body">
                     <h5 class="media-heading mt-0 mb-1" *ngIf="answer.specialStatus == 1">

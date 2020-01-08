@@ -3,7 +3,7 @@
         <div *ngFor='let item of listTop; let index = index'>
           <div class="shop-item-sidebar" *ngIf="index < 3">
             <div class="media">
-              <img src="http://localhost:9090/uploadedFiles/Product/{{item.productEntity.proID}}/{{item.productEntity.proListImage[0]}}" alt="" class="img-fluid">
+              <img src="http://localhost:8080/ServicePRJ-web/WebResources/uploadedFiles/Product/{{item.productEntity.proID}}/{{item.productEntity.proListImage[0]}}" alt="" class="img-fluid">
             </div>
             <div class="body-text">
               <h4 class="title"><a routerLink="/mainlayout/productsingle/{{item.productEntity.proID}}">{{item.productEntity.proName}}</a></h4>
@@ -29,7 +29,7 @@
                   <div class="box-gallery">
                     <!-- nho sua cho nay do style thay doi heigh cua img -->
                     <a [routerLink]="'/mainlayout/productsingle/' + item.productEntity.proID">
-                      <img src="http://localhost:9090/uploadedFiles/Product/{{item.productEntity.proID}}/{{item.productEntity.proListImage[0]}}" alt="" class="img-fluid" style="height:250px;object-fit:cover; margin:auto">
+                      <img src="http://localhost:8080/ServicePRJ-web/WebResources/uploadedFiles/Product/{{item.productEntity.proID}}/{{item.productEntity.proListImage[0]}}" alt="" class="img-fluid" style="height:250px;object-fit:cover; margin:auto">
                       <div class="project-info">
                         <div class="project-icon">
                           <h3><span>Product Detail</span></h3>

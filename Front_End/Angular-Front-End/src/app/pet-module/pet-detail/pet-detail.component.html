@@ -7,13 +7,13 @@
 					<div class="col-12 col-sm-6 col-md-6">
 
 						<div class="media-detail">
-							<img src="http://localhost:9090/uploadedFiles/Pet/{{currentID}}/{{listImage[0]}}" alt="" class="img-fluid">
+							<img src="http://localhost:8080/ServicePRJ-web/WebResources/uploadedFiles/Pet/{{currentID}}/{{listImage[0]}}" alt="" class="img-fluid">
 						</div>
 						<div class="row mt-3">
 							<div class="row popup-gallery gutter-5">
 								<div class="col" *ngFor='let image of listImage' >
-									<a href="http://localhost:9090/uploadedFiles/Pet/{{currentID}}/{{image}}" title='{{currentPet.petName}}'>
-										<img src="http://localhost:9090/uploadedFiles/Pet/{{currentID}}/{{image}}" alt="" class="border-img img-fluid">
+									<a href="http://localhost:8080/ServicePRJ-web/WebResources/uploadedFiles/Pet/{{currentID}}/{{image}}" title='{{currentPet.petName}}'>
+										<img src="http://localhost:8080/ServicePRJ-web/WebResources/uploadedFiles/Pet/{{currentID}}/{{image}}" alt="" class="border-img img-fluid">
 									</a>
 								</div>
 							</div>
@@ -35,7 +35,7 @@
 
 							<p class="mt-4">{{currentPet.petStory}}</p>
 
-							
+
 							<a href="#requestDating" class="btn btn-primary mt-4 mb-4">Update Information</a><br>
 							<a href="#requestDating" class="btn btn-primary mt-4 mb-4">Remove Your Pet</a><br>
 
