@@ -1,5 +1,5 @@
 <div *ngIf="!isInPageMode">
-    <div *ngIf="isShowTopSeller">
+    <div *ngIf="isShowTopSeller && (listTop.leng >=1 ) ">
         <div *ngFor='let item of listTop; let index = index'>
           <div class="shop-item-sidebar" *ngIf="index < 3">
             <div class="media">
