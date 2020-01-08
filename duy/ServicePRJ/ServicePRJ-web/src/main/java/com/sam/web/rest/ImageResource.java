@@ -44,7 +44,9 @@ public class ImageResource {
     
     private static final String logClass ="---Image Resource: ";
 
-    private String IMG_FOLDER = "d:/WebResources/uploadedFiles/";
+//    private String IMG_FOLDER = "d:/WebResources/uploadedFiles/";
+    //Change folder to root folder of Glassfish server
+    private String IMG_FOLDER = "/usr/local/glassfish4/glassfish/domains/domain1/applications/ServicePRJ-ear-1.0-SNAPSHOT/ServicePRJ-web-1.0-SNAPSHOT_war/WebResources/uploadedFiles/";
     /**
      * Creates a new instance of ImageResource
      */
