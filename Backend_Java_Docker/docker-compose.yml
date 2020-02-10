@@ -1,0 +1,56 @@
+version: '2'
+
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:latest
+    restart: unless-stopped
+    networks:
+      #- webgateway
+      - default
+    #command:
+    #  -
+    ports:
+      - 1433:1433
+    environment:
+      - "SA_PASSWORD=a1B@c3d4"
+      - "ACCEPT_EULA=Y"
+    volumes:
+      - ./sql-data/Final_Service.sql:/opt/Final_Service.sql
+    #command:
+      #- bash -c "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P a1B@c3d4 -i /opt/Final_Service.sql"
+
+  web:
+    image: glassfish:latest
+    restart: unless-stopped
+    networks:
+      #- webgateway
+      - default
+    #command:
+      #- bash -c "echo 'AS_ADMIN_PASSWORD=\nAS_ADMIN_ADMINPASSWORD=abc123\nAS_ADMIN_USERPASSWORD=abc123\nAS_ADMIN_MASTERPASSWORD=abc123\nAS_ADMIN_NEWPASSWORD=abc123' >> /usr/local/glassfish4/glassfish/bin/masterpwdfile.txt"
+      #- bash -c "/usr/local/glassfish4/glassfish/bin/asadmin start-domain"
+      #- bash -c "/usr/local/glassfish4/glassfish/bin/asadmin --user admin --passwordfile /usr/local/glassfish4/glassfish/domains/domain1/lib/masterpassword.txt  change-admin-password"
+      #- bash -c "rm -rf glassfish/bin/masterpwdfile.txt"
+      #- bash -c "/usr/local/glassfish4/glassfish/bin/asadmin restart-domain"
+    ports:
+      - 8080:8080
+      - 4848:4848
+    #labels:
+      #- "traefik.enable=true"
+#      - "traefik.http.routers.port-http.rule=Host(`port.vt01.hiurd.xyz`)"
+      #- "traefik.http.services.port-http.loadbalancer.server.port=9000"
+      #- "traefik.http.routers.port-http.entrypoints=http"
+#      - "traefik.http.routers.port-https.rule=Host(`port.vt01.hiurd.xyz`)"
+      #- "traefik.http.routers.port-https.entrypoints=https"
+      #- "traefik.docker.network=webgateway"
+      #- "traefik.http.routers.port-https.tls.certresolver=myhttpchallenge"
+      ##- "traefik.http.middlewares.port-redirect.redirectscheme.scheme=https"
+      #- "traefik.http.middlewares.port-redirect.redirectscheme.permanent=true"
+      #- "traefik.http.routers.port-http.middlewares=port-redirect"
+    volumes:
+      #- /var/run/docker.sock:/var/run/docker.sock
+      - ./web_data/ServicePRJ-ear-1.0-SNAPSHOT.ear:/usr/local/glassfish4/glassfish/domains/domain1/autodeploy/ServicePRJ-ear-1.0-SNAPSHOT.ear
+      - ./web_lib/sqljdbc42.jar:/usr/local/glassfish4/glassfish/domains/domain1/lib/sqljdbc42.jar
+      - ./web_lib/masterpassword.txt:/usr/local/glassfish4/glassfish/domains/domain1/lib/masterpassword.txt
+#networks:
+  #webgateway:
+    #external: true
